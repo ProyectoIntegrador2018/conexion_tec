@@ -1,6 +1,6 @@
-# Nombre del proyecto
+# Conexión Tec
 
-Conexión tec
+Página web para el manejo del evento conexión tec.
 
 ## Table of contents
 
