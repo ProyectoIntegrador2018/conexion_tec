@@ -51,10 +51,13 @@ You should ask for access to this tools if you don't have it already:
 ## Development
 
 * Ruby – Version 2.4.2
+\
 `rvm use ruby-2.4.2 --default`
 * Rails – Version 5.2.1
+\
 `gem install rails -v 5.2.1`
 * Postgres – Version 0.20.0
+\
 Inside Gemfile
 '''
 group :production do
