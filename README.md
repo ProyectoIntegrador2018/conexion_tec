@@ -59,11 +59,11 @@ You should ask for access to this tools if you don't have it already:
 * Postgres – Version 0.20.0
 \
 Inside Gemfile
-'''
+```
 group :production do
   gem 'pg', '0.20.0'
 end
-'''
+```
 
 ### Setup the project
 
