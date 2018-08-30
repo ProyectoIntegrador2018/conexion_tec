@@ -49,7 +49,7 @@ You should ask for access to this tools if you don't have it already:
 * [Documentation](https://goo.gl/EyBjWj)
 
 ## Development
-
+* RVM – `\curl -sSL https://get.rvm.io | bash -s stable`
 * Ruby – Version 2.4.2
 \
 `rvm use ruby-2.4.2 --default`
@@ -59,11 +59,7 @@ You should ask for access to this tools if you don't have it already:
 * Postgres – Version 0.20.0
 \
 Inside Gemfile
-```
-group :production do
-  gem 'pg', '0.20.0'
-end
-```
+`gem 'pg'`
 
 ### Setup the project
 
