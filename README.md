@@ -58,7 +58,7 @@ You should ask for access to this tools if you don't have it already:
 `gem install rails -v 5.2.1`
 * Postgres – Version 0.20.0
 \
-Inside Gemfile
+*Inside Gemfile*  
 `gem 'pg'`
 
 ### Setup the project
