@@ -50,6 +50,10 @@ You should ask for access to this tools if you don't have it already:
 
 ## Development
 
+* Ruby – Version 2.4.2
+* Rails – Version 5.2.1
+* Postgres – Version 0.20.0
+
 ### Setup the project
 
 You'll definitely want to install [`plis`](https://github.com/IcaliaLabs/plis), as in this case will
