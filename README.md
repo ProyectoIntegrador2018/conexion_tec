@@ -44,7 +44,7 @@ Página web para el manejo del evento conexión tec.
 You should ask for access to this tools if you don't have it already:
 
 * [Github repo](https://github.com/ProyectoIntegrador2018/conexion_tec)
-* [Backlog]()
+* [Backlog](https://github.com/ProyectoIntegrador2018/conexion_tec/projects/1) - Check Project inside this repository.
 * [Heroku]() - to be defined 
 * [Documentation](https://goo.gl/EyBjWj)
 
