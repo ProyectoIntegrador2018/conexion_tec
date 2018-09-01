@@ -6,14 +6,13 @@ Página web para el manejo del evento conexión tec.
 
 * [Client Details](#client-details)
 * [Environment URLS](#environment-urls)
-* [Da Team](#team)
+* [The Team](#team)
 * [Management resources](#management-resources)
-* [Setup the project](#setup-the-project)
-* [Running the stack for development](#running-the-stack-for-development)
+* [Development](#development)
+* [Setup the project for development](#setup-the-project-for-development)
 * [Stop the project](#stop-the-project)
-* [Restoring the database](#restoring-the-database)
 * [Debugging](#debugging)
-* [Running specs](#running-specs)
+* [Running tests](#running-tests)
 * [Checking code for potential issues](#checking-code-for-potential-issues)
 
 
@@ -45,7 +44,7 @@ You should ask for access to this tools if you don't have it already:
 
 * [Github repo](https://github.com/ProyectoIntegrador2018/conexion_tec)
 * [Backlog](https://github.com/ProyectoIntegrador2018/conexion_tec/projects/1) - Check Project inside this repository.
-* [Heroku]() - to be defined 
+* [Heroku](TBD) 
 * [Documentation](https://goo.gl/EyBjWj)
 
 ## Development
