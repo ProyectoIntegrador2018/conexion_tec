@@ -45,13 +45,13 @@ You should ask for access to this tools if you don't have it already:
 
 * [Github repo](https://github.com/ProyectoIntegrador2018/conexion_tec)
 * [Backlog]()
-* [Heroku](https://crowdfront-staging.herokuapp.com/)
+* [Heroku]() - to be defined 
 * [Documentation](https://goo.gl/EyBjWj)
 
 ## Development
 * RVM
 \
-`$ \curl -sSL https://get.rvm.io | bash -s stable`
+`$ curl -sSL https://get.rvm.io | bash -s stable`
 * Ruby – Version 2.4.2
 \
 `$ rvm use ruby-2.4.2 --default`
@@ -70,7 +70,7 @@ We will usedthe basic tools that come with rails. (rails server, test, and coons
 1. Clone this repository into your local machine
 
 ```bash
-$ git clone 
+$ git clone https://github.com/ProyectoIntegrador2018/conexion_tec.git
 ```
 
 2. Setup the database:
@@ -79,13 +79,13 @@ $ git clone
 $ rails db:init
 ```
 ```
-% rails db:migrate
+$ rails db:migrate
 ```
 
-3. Start the applications:
+3. Start the application:
 
 ```
-% rails s
+$ rails s
 ```
 
 Once you see an output like this:
@@ -103,10 +103,6 @@ This means the project is up and running.
 ### Stop the project
 
 In order to stop the project just hit Ctrl-C on the terminal where rails server is running.
-
-
-### Restoring the database
-
 
 
 ### Debugging
@@ -130,18 +126,4 @@ $ rails t test/<view, controller,etc.>/<filename>
 
 ### Checking code for potential issues
 
-To run specs, you can do:
-
-```
-$ plis run web reek
-```
-
-```
-$ plis run web rubocop
-```
-
-```
-$ plis run web scss_lint
-```
-
-Or any other linter you have.
+To format ruby code, the gem `rubocop` will be used. Check usage on their repository - [Rubocop](https://github.com/rubocop-hq/rubocop). 
