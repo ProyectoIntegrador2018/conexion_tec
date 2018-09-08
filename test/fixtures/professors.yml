@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  enrollment: MyString
+  email: MyString
+  department: 1
+
+two:
+  enrollment: MyString
+  email: MyString
+  department: 1

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @project.name %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @project.password %>
+</p>
+
+<p>
+  <strong>Field:</strong>
+  <%= @project.field %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @project.type %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @project.client %>
+</p>
+
+<p>
+  <strong>Abstract:</strong>
+  <%= @project.abstract %>
+</p>
+
+<p>
+  <strong>Video url:</strong>
+  <%= @project.video_url %>
+</p>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

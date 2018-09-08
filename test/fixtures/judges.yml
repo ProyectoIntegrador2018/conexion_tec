@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  has_tablet: false
+  department: 1
+  email: MyString
+  name: MyString
+
+two:
+  has_tablet: false
+  department: 1
+  email: MyString
+  name: MyString
