@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_08_213858) do
+ActiveRecord::Schema.define(version: 2018_09_08_214811) do
 
   create_table "evaluations", force: :cascade do |t|
     t.decimal "total"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 2018_09_08_213858) do
     t.string "major"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "project_id"
+    t.index ["project_id"], name: "index_students_on_project_id"
   end
 
 end
