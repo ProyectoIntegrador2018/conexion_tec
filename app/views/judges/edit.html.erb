@@ -1,7 +1,44 @@
 <h1>Editing Judge</h1>
+ 
 
-<%= render 'layouts/notification' %> 
-<%= render 'form', judge: @judge %>
+<div class="container">
+
+	<%= render 'layouts/notification' %>
+	<%= form_for @judge do |f| %>
+		<div class="row">
+			<div class="col">
+				<%= f.label :has_tablet %>
+			    <%= f.check_box :has_tablet %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+			    <%= f.label :department %>
+			    <%= f.number_field :department %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<%= f.label :email %>
+		    	<%= f.text_field :email %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<%= f.label :name %>
+		    	<%= f.text_field :name %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="btn btn-primary actions">
+				    <%= f.submit %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+
+</div> 
 
 <%= link_to 'Show', @judge %> |
 <%= link_to 'Back', judges_path %>
