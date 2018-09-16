@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :professors
   resources :projects
   resources :students
-  root 'application#hello'
+  root 'main_screen#main'
 end
