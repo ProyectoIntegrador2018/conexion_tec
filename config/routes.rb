@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   resources :professors
   resources :students
 
-  resources :projects, except: [:new, :create]
+  resources :projects
+
   get 'signup-proyecto', to: 'projects#new', as: :signup_project
   post 'signup-proyecto', to: 'projects#create'
 end
