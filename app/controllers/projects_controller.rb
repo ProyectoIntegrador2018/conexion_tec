@@ -5,19 +5,35 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  # renders new view
   def new   
     @project = Project.new 
   end
 
+  # insert data in db
   def create
-      @project = Project.new(project_params)
-      debugger
-      if @project.save
-        flash[:success] = "Proyecto creado exitosamente!"
-        redirect_to @project
-      else
-          render 'new'
-      end
+    @project = Project.new(project_params)
+    debugger
+    if @project.save
+      flash[:success] = "Proyecto creado exitosamente!"
+      redirect_to @project
+    else
+      render 'new'
+    end
+  end
+
+  # renders edit view
+  def edit
+  end
+
+  # updates data in db
+  def update
+    if @project.update_attributes(project_params)
+      flash[:success] = "Información del proyecto actualizada"
+      redirect_to @project
+    else
+      render "edit"
+    end
   end
 
   private
