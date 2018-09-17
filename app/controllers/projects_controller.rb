@@ -13,7 +13,6 @@ class ProjectsController < ApplicationController
   # insert data in db
   def create
     @project = Project.new(project_params)
-    debugger
     if @project.save
       flash[:success] = "Proyecto creado exitosamente!"
       redirect_to @project

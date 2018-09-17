@@ -2,11 +2,12 @@
   <div id="error_explanation">
     <div class="alert alert-danger">
       Hay <%= pluralize(@project.errors.count, "datos") %> incorrectos.
+      <button class="close" data-dismiss="alert">×</button>
+      <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </div>
-    <ul>
-    <% @project.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
   </div>
 <% end %>
