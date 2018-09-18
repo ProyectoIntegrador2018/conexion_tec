@@ -27,10 +27,12 @@ class JudgesController < ApplicationController
     @judge = Judge.new(judge_params)
 
     respond_to do |format|
-      if @judge.save
+      if @judge.valid? and @judge.save
+        flash[:success] = "Judge Succesfully created"
         format.html { redirect_to @judge, notice: 'Judge was successfully created.' }
         format.json { render :show, status: :created, location: @judge }
       else
+        flash[:success] = "Judge Could not be created"
         format.html { render :new }
         format.json { render json: @judge.errors, status: :unprocessable_entity }
       end

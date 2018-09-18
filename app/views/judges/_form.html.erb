@@ -1,15 +1,14 @@
 <%= form_with(model: judge, local: true) do |form| %>
-  <% if judge.errors.any? %>
+   <!-- <% if judge.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(judge.errors.count, "error") %> prohibited this judge from being saved:</h2>
-
       <ul>
       <% judge.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
-  <% end %>
+  <% end %>-->
 
   <div class="field">
     <%= form.label :has_tablet %>
@@ -31,7 +30,7 @@
     <%= form.text_field :name %>
   </div>
 
-  <div class="actions">
+  <div class="btn btn-primary actions">
     <%= form.submit %>
   </div>
 <% end %>
