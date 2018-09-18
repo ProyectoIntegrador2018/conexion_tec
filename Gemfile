@@ -29,8 +29,8 @@ gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.3'
 gem 'bootstrap', '~> 4.1.3'
 
-# Secure password
-gem 'bcrypt', '3.1.12'
+# user authentication library
+gem 'sorcery', '~> 0.12.0'
 
 
 group :development, :test do
