@@ -4,7 +4,8 @@ class AdministratorSessionController < ApplicationController
 	end
 
 	def create
-		if login(params[:administrator_session][:email], params[:administrator_session][:password])
+		user = login(params[:administrator_session][:email], params[:administrator_session][:password])
+		if user && user.role = "admin"
 			flash.now[:danger] = 'Log in!!'
 			render 'new'
 		else
