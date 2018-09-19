@@ -26,30 +26,25 @@ class JudgesController < ApplicationController
   def create
     @judge = Judge.new(judge_params)
 
-    respond_to do |format|
-      if @judge.valid? and @judge.save
-        flash[:success] = "Judge Succesfully created"
-        format.html { redirect_to @judge, notice: 'Judge was successfully created.' }
-        format.json { render :show, status: :created, location: @judge }
-      else
-        flash[:success] = "Judge Could not be created"
-        format.html { render :new }
-        format.json { render json: @judge.errors, status: :unprocessable_entity }
-      end
+    if @judge.valid? and @judge.save
+      flash[:success] = "Judge Succesfully created"
+      format.html { redirect_to @judge, notice: 'Judge was successfully created.' }
+      format.json { render :show, status: :created, location: @judge }
+    else
+      flash[:success] = "Judge Could not be created"
+      format.html { render :new }
+      format.json { render json: @judge.errors, status: :unprocessable_entity }
     end
   end
 
   # PATCH/PUT /judges/1
   # PATCH/PUT /judges/1.json
   def update
-    respond_to do |format|
-      if @judge.update(judge_params)
-        format.html { redirect_to @judge, notice: 'Judge was successfully updated.' }
-        format.json { render :show, status: :ok, location: @judge }
-      else
-        format.html { render :edit }
-        format.json { render json: @judge.errors, status: :unprocessable_entity }
-      end
+    if @judge.update(judge_params)
+      render 'show'
+      flash[:success] = "Perfil actualizado exitosamente"
+    else
+      flash[:error] = "Campos vacíos o no válidos"
     end
   end
 

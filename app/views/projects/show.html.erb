@@ -1,39 +1,28 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Password:</strong>
-  <%= @project.password %>
-</p>
+  <div class="row">
+    <div class="col">
+      <p>
+        <strong>Nombre del proyecto:</strong>
+        <%= @project.name %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>
+        <strong>Email:</strong>
+        <%= @project.email %>
+      </p>
+    </div>
+  </div>
 
-<p>
-  <strong>Field:</strong>
-  <%= @project.field %>
-</p>
+  <%= link_to 'Edit', edit_project_path(@project) %> |
+  <%= link_to 'Back', projects_path %>
+</div>
 
-<p>
-  <strong>Type:</strong>
-  <%= @project.type %>
-</p>
 
-<p>
-  <strong>Client:</strong>
-  <%= @project.client %>
-</p>
 
-<p>
-  <strong>Abstract:</strong>
-  <%= @project.abstract %>
-</p>
 
-<p>
-  <strong>Video url:</strong>
-  <%= @project.video_url %>
-</p>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>

@@ -29,6 +29,9 @@ gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.3'
 gem 'bootstrap', '~> 4.1.3'
 
+# user authentication library
+gem 'sorcery', '~> 0.12.0'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

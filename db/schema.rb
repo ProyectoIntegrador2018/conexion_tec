@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_08_221307) do
+ActiveRecord::Schema.define(version: 2018_09_18_194539) do
 
   create_table "evaluations", force: :cascade do |t|
     t.decimal "total"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2018_09_08_221307) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_judges_on_user_id"
   end
 
   create_table "professors", force: :cascade do |t|
@@ -46,6 +48,10 @@ ActiveRecord::Schema.define(version: 2018_09_08_221307) do
     t.string "video_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "email"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -65,6 +71,17 @@ ActiveRecord::Schema.define(version: 2018_09_08_221307) do
     t.datetime "updated_at", null: false
     t.integer "project_id"
     t.index ["project_id"], name: "index_students_on_project_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "crypted_password"
+    t.string "salt"
+    t.string "role", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
