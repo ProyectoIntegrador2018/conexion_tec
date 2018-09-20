@@ -6,7 +6,8 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get projects_url
+    authenticated = ApplicationHelper.encrypt("admin")
+    get projects_url, params: {message: authenticated}
     assert_response :success
   end
 
