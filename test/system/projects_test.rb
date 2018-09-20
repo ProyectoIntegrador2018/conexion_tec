@@ -19,7 +19,7 @@ class ProjectsTest < ApplicationSystemTestCase
     fill_in "Field", with: @project.field
     fill_in "Name", with: @project.name
     fill_in "Password", with: @project.password
-    fill_in "Type", with: @project.type
+    fill_in "Kind", with: @project.kind
     fill_in "Video Url", with: @project.video_url
     click_on "Create Project"
 
@@ -36,7 +36,7 @@ class ProjectsTest < ApplicationSystemTestCase
     fill_in "Field", with: @project.field
     fill_in "Name", with: @project.name
     fill_in "Password", with: @project.password
-    fill_in "Type", with: @project.type
+    fill_in "Kind", with: @project.kind
     fill_in "Video Url", with: @project.video_url
     click_on "Update Project"
 

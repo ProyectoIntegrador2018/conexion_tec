@@ -34,7 +34,7 @@ class JudgesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update judge" do
-    patch judge_url(@judge), params: { judge: { department: @judge.department, email: @judge.email, has_tablet: @judge.has_tablet, name: @judge.name } }
+    patch judge_url(@judge), params: { judge: { department: @judge.department, email: @judge.email, has_tablet: @judge.has_tablet, name: "test" } }
     assert_redirected_to judge_url(@judge)
   end
 

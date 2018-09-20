@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
-  setup do
+  def setup
     @project = projects(:one)
   end
 
@@ -17,9 +17,8 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create project" do
     assert_difference('Project.count') do
-      post projects_url, params: { project: { abstract: @project.abstract, client: @project.client, field: @project.field, name: @project.name, password: @project.password, type: @project.type, video_url: @project.video_url } }
+      post projects_url, params: { project: { abstract: @project.abstract, client: @project.client, field: @project.field, name: @project.name, password: "password", password_confirmation: "password", kind: @project.kind, video_url: @project.video_url, email: "test@test.com" } }
     end
-
     assert_redirected_to project_url(Project.last)
   end
 
@@ -34,7 +33,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update project" do
-    patch project_url(@project), params: { project: { abstract: @project.abstract, client: @project.client, field: @project.field, name: @project.name, password: @project.password, type: @project.type, video_url: @project.video_url } }
+    patch project_url(@project), params: { project: { abstract: @project.abstract, client: @project.client, field: @project.field, name: @project.name, password: "password", kind: @project.kind, video_url: @project.video_url, email: @project.email } }
     assert_redirected_to project_url(@project)
   end
 

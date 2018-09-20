@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_18_194539) do
+ActiveRecord::Schema.define(version: 2018_09_19_234749) do
 
   create_table "evaluations", force: :cascade do |t|
     t.decimal "total"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2018_09_18_194539) do
     t.string "name"
     t.string "password"
     t.integer "field"
-    t.integer "type"
+    t.integer "kind"
     t.integer "client"
     t.string "abstract"
     t.string "video_url"

@@ -5,6 +5,10 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  def index
+    @projects = Project.all
+  end
+
   # renders new view
   def new   
     @project = Project.new 
@@ -33,6 +37,12 @@ class ProjectsController < ApplicationController
     else
       render "edit"
     end
+  end
+
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to projects_url
   end
 
   private
