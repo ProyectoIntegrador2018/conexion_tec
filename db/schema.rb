@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_19_234749) do
+ActiveRecord::Schema.define(version: 2018_09_20_132400) do
 
   create_table "evaluations", force: :cascade do |t|
     t.decimal "total"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2018_09_19_234749) do
     t.string "password_digest"
     t.string "email"
     t.integer "user_id"
+    t.integer "status", default: 0
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
