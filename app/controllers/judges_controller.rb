@@ -1,46 +1,32 @@
 class JudgesController < ApplicationController
   before_action :set_judge, only: [:show, :edit, :update, :destroy]
 
-  # GET /judges
-  # GET /judges.json
   def index
     @judges = Judge.all
   end
 
-  # GET /judges/1
-  # GET /judges/1.json
   def show
   end
 
-  # GET /judges/new
   def new
-    @judge = Judge.new
+    @user = User.new
+    @user.build_judge
   end
 
-  # GET /judges/1/edit
   def edit
   end
 
-  # POST /judges
-  # POST /judges.json
   def create
-    @judge = Judge.new(judge_params)
+    @user = User.new(judge_params)
 
-    respond_to do |format|
-      if @judge.valid? and @judge.save
-        flash[:success] = "Judge Succesfully created"
-        format.html { redirect_to @judge, notice: 'Judge was successfully created.' }
-        format.json { render :show, status: :created, location: @judge }
-      else
-        flash[:success] = "Judge Could not be created"
-        format.html { render :new }
-        format.json { render json: @judge.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      auto_login(@user)
+      redirect_to @user.judge
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /judges/1
-  # PATCH/PUT /judges/1.json
   def update
     if @judge.update_attributes(judge_params)
       flash[:success] = "Perfil actualizado exitosamente"
@@ -69,6 +55,7 @@ class JudgesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def judge_params
-      params.require(:judge).permit(:has_tablet, :department, :email, :name)
+      params.require(:user).permit(:email, :password, :password_confirmation, :role,
+        judge_attributes: [:has_tablet, :department, :name])
     end
 end
