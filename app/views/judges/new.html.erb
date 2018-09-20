@@ -1,39 +1,68 @@
-<h1>New Judge</h1>
-
 <div class="container">
 
-	<%= form_for @judge do |f| %>
-		<div class="row">
-			<div class="col">
-				<%= f.label :has_tablet %>
-			    <%= f.check_box :has_tablet %>
+	<h1>New Judge</h1>
+
+	<%= render "errors" %>
+
+	<%= form_for @user, url: signup_judge_path do |f| %>
+		<%= f.fields_for :judge, @user.judge do |j| %>
+
+			<%= f.hidden_field :role, :value => "judge" %>
+
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<%= f.label :email %>
+				    	<%= f.email_field :email, class: "form-control" %>
+			    	</div>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-			    <%= f.label :department %>
-			    <%= f.number_field :department %>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<%= f.label :password %>
+			    		<%= f.password_field :password, class: "form-control" %>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<%= f.label :email %>
-		    	<%= f.text_field :email %>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<%= f.label :password_confirmation %>
+			    		<%= f.password_field :password_confirmation, class: "form-control" %>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<%= f.label :name %>
-		    	<%= f.text_field :name %>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<%= j.label :name %>
+			    		<%= j.text_field :name, class: "form-control" %>
+					</div>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<%= j.label :has_tablet, class: "form-check-label" %>
+				    	<%= j.check_box :has_tablet, class: "checkbox" %>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<%= f.submit "Actualizar", class: "btn btn-primary" %>
+			<div class="row">
+				<div class="col">
+					<div class="form-group">
+						<%= j.label :department %>
+				    	<%= j.number_field :department, class: "form-control" %>
+					</div>
+				</div>
 			</div>
-		</div>
+			<div class="row">
+				<div class="col">
+					<%= f.submit "Crear cuenta", class: "btn btn-primary" %>
+				</div>
+			</div>
+		<% end %>
 	<% end %>
 
 </div>
-
-<%= link_to 'Back', judges_path %>
