@@ -6,7 +6,16 @@ class ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.all
+    if params[:message].nil?
+      puts "Params #{params}"
+      redirect_to root_url
+    else
+      user_role = ApplicationHelper.decrypt(params[:message])
+      if (user_role != "admin")
+        redirect_to root_url
+      end
+      @projects = Project.all
+    end
   end
 
   # renders new view

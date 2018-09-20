@@ -6,8 +6,7 @@ class AdministratorSessionController < ApplicationController
 	def create
 		user = login(params[:administrator_session][:email], params[:administrator_session][:password])
 		if user && user.role = "admin"
-			flash.now[:danger] = 'Log in!!'
-			render 'new'
+			redirect_to projects_url(message: ApplicationHelper.encrypt(user.role))
 		else
 			flash.now[:danger] = 'Invalid email/password combination'
 			render 'new'
