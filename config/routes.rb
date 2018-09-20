@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'login_page/home', to: 'login_page#home'
   get 'login-proyecto', to: 'project_sessions#new', as: :login_project
   get 'login-juez', to: 'judge_sessions#new', as: :login_judge
   get 'login-administrador', to: 'administrator_session#new', as: :login_admin
