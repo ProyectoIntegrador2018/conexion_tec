@@ -38,6 +38,7 @@ class ProjectsController < ApplicationController
 
   # renders edit view
   def edit
+    @user = @project.user
   end
 
   # updates data in db
@@ -62,6 +63,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-		params.require(:user).permit(:name, :email, :password, :password_confirmation, :role, project_attributes: [:name, :field, :kind, :client, :abstract, :video_url, :status])
+      params.require(:project).permit(:name, :field, :kind, :client, :abstract, :video_url, :status, user_attributes: [:name, :email, :password, :password_confirmation])
     end
 end

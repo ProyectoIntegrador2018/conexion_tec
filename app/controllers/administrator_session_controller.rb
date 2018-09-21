@@ -5,6 +5,7 @@ class AdministratorSessionController < ApplicationController
 
 	def create
 		user = login(params[:email], params[:password])
+		puts "User: #{user}"
 		if user && user.role == "admin"
 			redirect_to projects_url(message: ApplicationHelper.encrypt(user.role))
 		else
