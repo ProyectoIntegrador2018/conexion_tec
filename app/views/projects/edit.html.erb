@@ -10,55 +10,55 @@
   
   <div class="row">
     <div class="col-12 col-md-6 offset-md-3">
-      <%= form_for(@project, url: project_path) do |f| %>
-        <%= f.fields_for :user, @project.user do |j| %>
+      <%= form_for @user, url: project_path do |f| %>
+        <%= f.fields_for :project, @user.project do |j| %>
 
-        <%= render "errors_inverse" %>
+        <%= render "errors" %>
 
         <div>
-            <%= f.label :name, "Nombre del proyecto" %>
-            <%= f.text_field :name, class: "form-control" %>
+            <%= j.label :name, "Nombre del proyecto" %>
+            <%= j.text_field :name, class: "form-control" %>
         </div>
 
         <div>
             <%= f.label :email, "Correo" %>
-            <%= j.email_field :email, class: "form-control" %>
+            <%= f.email_field :email, class: "form-control" %>
         </div>
 
         <div>
             <%= f.label :password, "Contraseña" %>
-            <%= j.password_field :password, class: "form-control" %>
+            <%= f.password_field :password, class: "form-control" %>
         </div>
 
         <div>
             <%= f.label :password_confirmation, "Confirmación" %>
-            <%= j.password_field :password_confirmation, class: "form-control" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
 
         <% if session[:message] = "admin" %>
         <div>
-          <%= f.label :field, "Field del proyecto"%>
-          <%= f.text_field :field, class: "form-control" %>
+          <%= j.label :field, "Field del proyecto"%>
+          <%= j.text_field :field, class: "form-control" %>
         </div>
 
         <div>
-          <%= f.label :client, "Cliente del proyecto" %>
-          <%= f.text_field :client, class: "form-control"%>
+          <%= j.label :client, "Cliente del proyecto" %>
+          <%= j.text_field :client, class: "form-control"%>
         </div>
 
         <div>
-          <%= f.label :abstract, "Abstract del proyecto"%>
-          <%= f.text_field :abstract, class: "form-control" %>
+          <%= j.label :abstract, "Abstract del proyecto"%>
+          <%= j.text_field :abstract, class: "form-control" %>
         </div>
 
         <div>
-          <%= f.label :video_url, "URL del video" %>
-          <%= f.text_field :video_url, class: "form-control"%>
+          <%= j.label :video_url, "URL del video" %>
+          <%= j.text_field :video_url, class: "form-control"%>
         </div>
 
         <div>
-          <%= f.label :status, "Status del proyecto" %>
-          <%= f.text_field :status, class:"form-control" %>
+          <%= j.label :status, "Status del proyecto" %>
+          <%= j.text_field :status, class:"form-control" %>
         </div>
         <% end %>
 
