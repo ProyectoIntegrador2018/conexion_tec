@@ -46,7 +46,7 @@
 				<div class="col">
 					<div class="form-group">
 						<%= j.label :field, class: "form-check-label" %>
-						<%= j.text_field :field, class: "form-control" %>
+						<%= j.select :field, Project.fields.keys.to_a, {}, class: "form-control" %>
 					</div>
 				</div>
 			</div>
@@ -54,7 +54,7 @@
 				<div class="col">
 					<div class="form-group">
 						<%= j.label :kind %>
-						<%= j.text_field :kind, class: "form-control" %>
+						<%= j.select :kind, Project.kinds.keys.to_a, {}, class: "form-control" %>
 					</div>
 				</div>
 			</div>
@@ -62,7 +62,7 @@
 				<div class="col">
 					<div class="form-group">
 						<%= j.label :client %>
-						<%= j.text_field :client, class: "form-control" %>
+						<%= j.select :client, Project.clients.keys.to_a, {}, class: "form-control" %>
 					</div>
 				</div>
 			</div>
@@ -70,7 +70,7 @@
 				<div class="col">
 					<div class="form-group">
 						<%= j.label :abstract %>
-						<%= j.text_field :abstract, class: "form-control" %>
+						<%= j.text_area :abstract, class: "form-control" %>
 					</div>
 				</div>
 			</div>
