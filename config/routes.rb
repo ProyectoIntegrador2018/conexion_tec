@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'login-juez', to: 'judge_sessions#create'
   get 'login-administrador', to: 'administrator_session#new', as: :login_admin
   post 'login-administrador', to: 'administrator_session#create', as: :login_admin_create
+  post 'login-proyecto', to: 'project_sessions#create', as: :login_project_create
 
   resources :evaluations
   resources :questions

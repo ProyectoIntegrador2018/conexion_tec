@@ -20,15 +20,17 @@ class ProjectsController < ApplicationController
 
   # renders new view
   def new   
-    @project = Project.new 
+	  @user = User.new
+	  @user.build_project
   end
 
   # insert data in db
   def create
-    @project = Project.new(project_params)
-    if @project.save
+	@user = User.new(project_params)
+    if @user.save
       flash[:success] = "Proyecto creado exitosamente!"
-      redirect_to @project
+	  auto_login(@user)
+	  redirect_to @user.project
     else
       render 'new'
     end
@@ -60,6 +62,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:name, :email, :password, :password_confirmation)
+		params.require(:user).permit(:name, :email, :password, :password_confirmation, :role, project_attributes: [:name, :field, :kind, :client, :abstract, :video_url, :status])
     end
 end
