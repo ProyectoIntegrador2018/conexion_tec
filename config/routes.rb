@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :judge_sessions, only: [:new, :destroy, :create]
   resources :project_sessions, only: [:new, :destroy, :create]
+  resources :administrator_sessions, only: [:new, :destroy, :create]
 
   get 'login-proyecto', to: 'project_sessions#new', as: :login_project
   post 'login-proyecto', to: 'project_sessions#create'
