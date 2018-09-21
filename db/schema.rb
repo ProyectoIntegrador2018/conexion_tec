@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_20_132400) do
+ActiveRecord::Schema.define(version: 2018_09_20_204652) do
 
   create_table "evaluations", force: :cascade do |t|
     t.decimal "total"
@@ -21,11 +21,9 @@ ActiveRecord::Schema.define(version: 2018_09_20_132400) do
   create_table "judges", force: :cascade do |t|
     t.boolean "has_tablet"
     t.integer "department"
-    t.string "email"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password"
     t.integer "user_id"
     t.index ["user_id"], name: "index_judges_on_user_id"
   end
@@ -40,7 +38,6 @@ ActiveRecord::Schema.define(version: 2018_09_20_132400) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.string "password"
     t.integer "field"
     t.integer "kind"
     t.integer "client"
@@ -48,8 +45,6 @@ ActiveRecord::Schema.define(version: 2018_09_20_132400) do
     t.string "video_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
-    t.string "email"
     t.integer "user_id"
     t.integer "status", default: 0
     t.index ["user_id"], name: "index_projects_on_user_id"
