@@ -53,7 +53,7 @@
 				<div class="col">
 					<div class="form-group">
 						<%= j.label :department %>
-				    	<%= j.number_field :department, class: "form-control" %>
+				    	<%= j.select :department, Judge.departments.keys.to_a, {}, class: "form-control" %>
 					</div>
 				</div>
 			</div>
