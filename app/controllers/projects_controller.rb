@@ -7,13 +7,13 @@ class ProjectsController < ApplicationController
 
   def index
     if params[:message].nil?
-      puts "Params #{params}"
       redirect_to root_url
     else
-      user_role = ApplicationHelper.decrypt(params[:message])
-      if (user_role != "admin")
+      @user_role = ApplicationHelper.decrypt(params[:message])
+      if (@user_role != "admin")
         redirect_to root_url
       end
+      session[:message] = @user_role
       @projects = Project.all
     end
   end
