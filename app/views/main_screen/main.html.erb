@@ -1,30 +1,104 @@
-<h1>Conexión Tec</h1>
 
-<div class='row'>
-	<div class='column'>
-		<form method="get" action="/judges/new" class="button_to">
-			<input value="Registro juez" type="submit" />
-		</form>
+<header>
+	<div class="container">
+		<h1>Conexión Tec</h1>		
 	</div>
-	<div class='column'>
-		<button>Login Juez</button>
-	</div>
-</div>
+</header>
 
-<div class='row'>
-	<div class='column'>
-		<form method='get' action='/projects/new' class='button_to'>
-			<input value="Registro Proyecto" type="submit"/>
-		</form>
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-6">
+				<p>
+					Conexión Tec es un evento que se realiza al final de cada semestre académico donde se exponen proyectos estudiantiles que atienden problemas de ingeniería relevantes de la industria y de la sociedad.
+				</p>
+			</div>
+			<div class="col-12 col-md-6">
+				<p>El evento tiene los siguientes objetivos principales:</p>
+				<ul>
+					<li>
+						Acercar a alumnos y profesores con líderes de la industria, en un ambiente de innovación y emprendimiento, para fortalecer la vinculación de la Escuela de Ingeniería y Ciencias con la industria. 
+					</li>
+					<li>
+						Promover el interés y la participación de alumnos y profesores en realizar proyectos retadores que atiendan necesidades específicas aplicando las competencias de su área profesional.
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
-	<div class='column'>
-		<%= button_to "Login Proyecto", login_project_path, :method=> :get%>
-	</div>
-</div>
-</div>
+</section>
 
-<div class ='row'>
-	<div class='column'>
-		<%= button_to "Login administrador", login_admin_path, :method=> :get%>
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-4">
+				<div class="my-2">
+					<button class="btn btn-primary btn-block">
+						<%= link_to "Login Proyecto", login_project_path, class: "text-white" %>
+					</button>
+				</div>
+				<div class="my-2">
+					<button class="btn btn-primary btn-block">
+						<%= link_to "Registro Proyecto", signup_project_path, class: "text-white" %>
+					</button>
+				</div>
+			</div>
+			<div class="col-12 col-md-4 text-center">
+				<div class="my-2">
+					<button class="btn btn-danger btn-block">
+						<%= link_to "Login administrador", login_admin_path, class: "text-white" %>
+					</button>
+				</div>		
+			</div>
+			<div class="col-12 col-md-4">
+				<div class="my-2">
+					<button class="btn btn-success btn-block">
+						<%= link_to "Login Juez", login_judge_path, class: "text-white" %>
+					</button>
+				</div>
+				<div class="my-2">
+					<button class="btn btn-success btn-block">
+						<%= link_to "Registro Juez", signup_judge_path, class: "text-white" %>
+					</button>
+				</div>
+			</div>
+		</div> 
 	</div>
-</div>
+</section>
+
+
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col text-center">
+				<h3>¿Quiénes pueden participar?</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-md-6">
+				<div class="row">
+					<div class="col text-center"><h3>Como juez...</h3></div>
+				</div>
+				<div class="row">
+					<div class="col text-justify">
+						Lorem impsum
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6">
+				<div class="row">
+					<div class="col text-center"><h3>Como proyecto...</h3></div>
+				</div>
+				<div class="row">
+					<div class="col text-justify">
+						Lorem impsum
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="footer">
+	
+</footer>
