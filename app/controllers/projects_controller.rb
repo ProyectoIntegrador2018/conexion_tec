@@ -63,6 +63,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:name, :field, :kind, :client, :abstract, :video_url, :status, user_attributes: [:name, :email, :password, :password_confirmation])
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :role, project_attributes: [:name, :field, :kind, :client, :abstract, :video_url, :status])
     end
 end
