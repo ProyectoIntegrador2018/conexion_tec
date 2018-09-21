@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :judge_sessions, only: [:new, :destroy, :create]
+
   get 'login-proyecto', to: 'project_sessions#new', as: :login_project
   get 'login-juez', to: 'judge_sessions#new', as: :login_judge
   post 'login-juez', to: 'judge_sessions#create'
