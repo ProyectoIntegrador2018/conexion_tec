@@ -1,0 +1,14 @@
+admin:
+    email: 'admin@admin.com'
+    password: 'password'
+    role: 'admin'
+
+judge:
+    email: 'judge@judge.com'
+    password: 'password'
+    role: 'judge'
+
+project:
+    email: 'project@project.com'
+    password: 'password'
+    role: 'project'
