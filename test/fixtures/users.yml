@@ -1,14 +1,14 @@
 admin:
-    email: 'admin@admin.com'
-    password: 'password'
-    role: 'admin'
+  email: 'admin@admin.com'
+  crypted_password: '$2a$10$8uCZ9wCTsFoqa0aIfpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe'
+  role: 'admin'
 
 judge:
-    email: 'judge@judge.com'
-    password: 'password'
-    role: 'judge'
+  email: 'judge@judge.com'
+  crypted_password: '$2a$10$8uCZ9wCTsFoqa0aIfpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe'
+  role: 'judge'
 
 project:
-    email: 'project@project.com'
-    password: 'password'
-    role: 'project'
+  email: 'project@project.com'
+  crypted_password: '$2a$10$8uCZ9wCTsFoqa0aIfpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe'
+  role: 'project'

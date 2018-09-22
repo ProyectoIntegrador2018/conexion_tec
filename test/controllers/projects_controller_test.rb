@@ -2,9 +2,9 @@ require 'test_helper'
 
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
   def setup
-	@user = users(:project)
+    @user = users(:project)
     @project = projects(:one)
-	@project.user = @user
+    @project.user = @user
   end
 
   test "should get index" do
@@ -20,7 +20,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create project" do
     assert_difference('Project.count') do
-      post signup_proyecto_url, params: { user: {email: @user.email, password: @user.password, role: @user.role, password_confirmation: "password", project_attributes: { abstract: @project.abstract, client: @project.client, field: @project.field, name: @project.name, kind: @project.kind, video_url: @project.video_url}}}
+      post signup_proyecto_url, params: { user: {email: @user.email, password: @user.password, role: @user.role, password: "password", project_attributes: { abstract: @project.abstract, client: @project.client, field: @project.field, name: @project.name, kind: @project.kind, video_url: @project.video_url}}}
     end
     assert_redirected_to project_url(Project.last)
   end

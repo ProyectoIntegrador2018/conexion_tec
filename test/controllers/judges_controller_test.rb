@@ -2,7 +2,9 @@ require 'test_helper'
 
 class JudgesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:judge)
     @judge = judges(:one)
+    @judge.user = @user
   end
 
   test "should get index" do
@@ -17,7 +19,7 @@ class JudgesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create judge" do
     assert_difference('Judge.count') do
-      post judges_url, params: { judge: { department: @judge.department, email: @judge.email, has_tablet: @judge.has_tablet, name: @judge.name } }
+      post judges_url, params: { judge: { department: @judge.department, email: @judge.user.email, has_tablet: @judge.has_tablet, name: @judge.name } }
     end
 
     assert_redirected_to judge_url(Judge.last)
