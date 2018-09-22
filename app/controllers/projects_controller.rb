@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
 
   # insert data in db
   def create
-	@user = User.new(project_params)
+	  @user = User.new(project_params)
     if @user.save
       flash[:success] = "Proyecto creado exitosamente!"
 	  auto_login(@user)
@@ -65,6 +65,11 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:user).permit(:id, :email, :password, :password_confirmation, :role, project_attributes: [:id, :name, :field, :kind, :client, :abstract, :video_url, :status])
+      params.require(:user).permit(
+        :id, :email, :password, :password_confirmation, :role, 
+        project_attributes: [
+          :id, :name, :field, :kind, :client, :abstract, :video_url, :status, :professor_id
+        ]
+      )
     end
 end

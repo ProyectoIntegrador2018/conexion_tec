@@ -8,7 +8,7 @@
 		<%= f.fields_for :project, @user.project do |j| %>
 
 			<%= f.hidden_field :role, :value => "project" %>
-			<%= f.hidden_field :status, :value => 0 %>
+			<%= j.hidden_field :status, :value => 0 %>
 
 			<div class="row">
 				<div class="col">
@@ -79,6 +79,14 @@
 					<div class="form-group">
 						<%= j.label :video_url %>
 						<%= j.text_field :video_url, class: "form-control" %>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col"> 
+					<div class="form-group">
+						<%= j.label :professor_id %>
+						<%= j.select :professor_id, Professor.all.collect{ |p| [ p.name, p.id ] }, {}, class: "form-control" %>
 					</div>
 				</div>
 			</div>
