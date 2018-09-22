@@ -84,6 +84,14 @@
 			</div>
 			<div class="row">
 				<div class="col">
+					<div class="form-group">
+						<%= f.label :professor_id, "Profesor" %>
+						<%= f.select :professor_id, Profesor.all.collect { |p| [ p.name, p.id ] }, class: "form-control "  %>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
 					<%= f.submit "Crear cuenta", class: "btn btn-primary" %>
 				</div>
 			</div>
