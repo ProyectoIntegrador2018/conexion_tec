@@ -18,7 +18,7 @@
       <tr>
         <td><%= judge.has_tablet %></td>
         <td><%= judge.department %></td>
-        <td><%= judge.email %></td>
+        <td><%= judge.user.email %></td>
         <td><%= judge.name %></td>
         <td><%= link_to 'Show', judge %></td>
         <td><%= link_to 'Edit', edit_judge_path(judge) %></td>

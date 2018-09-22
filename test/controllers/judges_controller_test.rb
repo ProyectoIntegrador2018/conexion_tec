@@ -18,11 +18,16 @@ class JudgesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create judge" do
-    assert_difference('Judge.count') do
-      post judges_url, params: { judge: { department: @judge.department, email: @judge.user.email, has_tablet: @judge.has_tablet, name: @judge.name } }
+    assert_difference('User.count') do
+      post signup_proyecto_url, params: { 
+        user: { 
+          email: @user.email, crypted_password: @user.crypted_password,
+          judge_attributes: { 
+            department: @judge.department, has_tablet: @judge.has_tablet, name: @judge.name 
+          } 
+        }
+      }
     end
-
-    assert_redirected_to judge_url(Judge.last)
   end
 
   test "should show judge" do
