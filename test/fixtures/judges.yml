@@ -4,8 +4,10 @@ one:
   has_tablet: false
   department: 1
   name: MyString
+  id: 1
 
 two:
   has_tablet: false
   department: 1
   name: MyString
+  id: 2

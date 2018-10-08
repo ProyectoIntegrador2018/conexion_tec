@@ -38,13 +38,12 @@ class ProjectsController < ApplicationController
 
   # renders edit view
   def edit
-    @user = @project.user
   end
 
   # updates data in db
   def update
     
-    if @project.update_attributes(project_params[:project_attributes]) && @user.save
+    if @user.update_attributes(project_params)
       flash[:success] = "Información del proyecto actualizada"
       redirect_to @project
     else
@@ -67,9 +66,6 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:user).permit(
         :id, :email, :password, :password_confirmation, :role, 
-        project_attributes: [
-          :id, :name, :field, :kind, :client, :abstract, :video_url, :status, :professor_id
-        ]
-      )
+        project_attributes: [:id, :name, :field, :professor_id, :kind, :client, :abstract, :video_url, :status])
     end
 end
