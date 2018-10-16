@@ -67,6 +67,16 @@
 				</div>
 			</div>
 			<div class="row">
+		        <div class="col">
+		          <div class="form-group">
+		            <%= j.label :professor %>
+		            <%= j.select :professor, 
+		                  options_for_select(Professor.all.collect{ |p| [p.name, p.id] } ), 
+		                  {}, class: "form-control" %>
+		          </div>
+		        </div>
+		    </div>
+			<div class="row">
 				<div class="col">
 					<div class="form-group">
 						<%= j.label :abstract %>
@@ -82,6 +92,7 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="row">
 				<div class="col"> 
 					<div class="form-group">

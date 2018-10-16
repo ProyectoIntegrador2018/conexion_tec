@@ -4,7 +4,7 @@ class JudgesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:judge)
     @judge = judges(:one)
-    @judge.user = @user
+    @judge.user_id = @user_id
   end
 
   test "should get index" do
@@ -21,7 +21,7 @@ class JudgesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('User.count') do
       post signup_proyecto_url, params: { 
         user: { 
-          email: @user.email, crypted_password: @user.crypted_password,
+          email: @user.email, crypted_password: @user.crypted_password, salt: @user.salt,
           judge_attributes: { 
             department: @judge.department, has_tablet: @judge.has_tablet, name: @judge.name 
           } 

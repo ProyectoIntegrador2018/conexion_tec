@@ -55,4 +55,9 @@ class Project < ApplicationRecord
 		"Software",
 		"Otro"
 	], _prefix: true
+
+	enum status: [
+		"No aprobado",
+		"Aprobado"
+	]
 end
