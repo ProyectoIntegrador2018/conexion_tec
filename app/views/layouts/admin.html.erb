@@ -10,16 +10,11 @@
   </head>
 
   <body>
-    <%= render 'layouts/main_navbar'%>
+    Admin namespace
+    <%= render 'layouts/admin/navbar' %>
     <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %>
-          <button class="close" data-dismiss="alert">×</button>
-        </div>
-      <% end %>
+      <%= yield %>
     </div>
-    <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
-
+    <%= render 'layouts/admin/footer' %>
   </body>
 </html>
