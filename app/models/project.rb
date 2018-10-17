@@ -57,6 +57,8 @@ class Project < ApplicationRecord
 	], _prefix: true
 
 	enum status: [
+		"No calificado",
+		"Calificado",
 		"No aprobado",
 		"Aprobado"
 	]

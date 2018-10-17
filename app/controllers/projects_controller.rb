@@ -38,6 +38,7 @@ class ProjectsController < ApplicationController
 
   # renders edit view
   def edit
+    
   end
 
   # updates data in db
