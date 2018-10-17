@@ -24,5 +24,17 @@ Rails.application.routes.draw do
   get 'signup-juez', to: 'judges#new', as: :signup_judge
   post 'signup-juez', to: 'judges#create'
 
+  namespace :judge do
+    get 'profile', to: 'profile#show'
+  end
+
+  namespace :project do
+    get 'profile', to: 'profile#show'
+  end
+
+  namespace :admin do
+    get 'profile', to: 'profile#show'
+  end
+
   root 'main_screen#main'
 end

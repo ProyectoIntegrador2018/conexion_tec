@@ -18,4 +18,12 @@ class User < ApplicationRecord
 		self.judge.present?
 	end
 
+  def is_admin?
+    self.role == 'admin'
+  end
+
+  def is_project?
+    self.project.present?
+  end
+
 end
