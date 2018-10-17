@@ -8,7 +8,7 @@
 		<%= f.fields_for :project, @user.project do |j| %>
 
 			<%= f.hidden_field :role, :value => "project" %>
-			<%= j.hidden_field :status, :value => 0 %>
+			<%= j.hidden_field :status, :value => "No aprobado" %>
 
 			<div class="row">
 				<div class="col">
