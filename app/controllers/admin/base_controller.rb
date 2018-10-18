@@ -7,7 +7,7 @@ class Admin::BaseController < ActionController::Base
 	helper_method :current_admin
 
 	def current_admin
-		@current_admin ||= current_user.admin
+		@current_admin ||= current_user
 	end
 
 	def require_admin
