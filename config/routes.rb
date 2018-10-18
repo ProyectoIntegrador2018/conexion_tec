@@ -25,15 +25,21 @@ Rails.application.routes.draw do
   post 'signup-juez', to: 'judges#create'
 
   namespace :judge do
-    get 'profile', to: 'profile#show'
+    get 'perfil', to: 'profile#show'
+    get 'perfil/editar', to: 'profile#edit'
+    post 'perfil/editar', to: 'profile#update'
   end
 
   namespace :project do
-    get 'profile', to: 'profile#show'
+    get 'perfil', to: 'profile#show'
+    get 'perfil/editar', to: 'profile#edit'
+    post 'perfil/editar', to: 'profile#update'
   end
 
   namespace :admin do
-    get 'profile', to: 'profile#show'
+    get 'perfil', to: 'profile#show'
+    get 'perfil/editar', to: 'profile#edit'
+    post 'perfil/editar', to: 'profile#update'
   end
 
   root 'main_screen#main'
