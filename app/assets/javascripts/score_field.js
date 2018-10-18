@@ -6,13 +6,20 @@ $(document).on('turbolinks:load',function() {
 	if (status == "Calificado") {
 		document.getElementById("scoreDiv").style.display = "block";
 	}
+	if (status == "No aprobado") {
+		document.getElementById("rejectedDiv").style.display = "block"
+	}
 
 	$('#user_project_attributes_status').on('change', function() {
-		var scoreFields = document.getElementById("scoreDiv");
 		if ($('#user_project_attributes_status').val() == "Calificado") {
-			scoreFields.style.display = "block";
+			document.getElementById("scoreDiv").style.display = "block";
+			document.getElementById("rejectedDiv").style.display = "none"
+		} else if ($('#user_project_attributes_status').val() == "No aprobado") {
+			document.getElementById("rejectedDiv").style.display = "block"
+			document.getElementById("scoreDiv").style.display = "none";
 		} else {
-			scoreFields.style.display = "none";
+			document.getElementById("rejectedDiv").style.display = "none"
+			document.getElementById("scoreDiv").style.display = "none";
 		}
 	});
 });
