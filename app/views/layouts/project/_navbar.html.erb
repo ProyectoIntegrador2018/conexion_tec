@@ -1,1 +1,26 @@
-navbar project
+<nav class="navbar navbar-expand-md navbar-light">
+  <%= link_to 'Conexión Tec', '#', class: 'navbar-brand' %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMenu" aria-controls="navbarTogglerMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerMenu">
+    <ul class="navbar-nav mx-auto justify-content-center">
+      <li class="nav-item">
+        <%= link_to "Información", '#', class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Jueces Asignados", '#', class: "nav-link" %>
+      </li>
+    </ul>
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= current_admin.name %>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <%= link_to "Cerrar Sesión", '#', class: 'dropdown-item' %>
+      </div>
+    </div>
+  </div>
+</nav>
