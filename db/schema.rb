@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_17_222619) do
+ActiveRecord::Schema.define(version: 2018_10_17_233528) do
 
   create_table "evaluations", force: :cascade do |t|
     t.decimal "total"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2018_10_17_222619) do
     t.integer "user_id"
     t.integer "status", default: 0
     t.integer "professor_id"
-    t.integer "score"
+    t.integer "score", default: 0
     t.index ["professor_id"], name: "index_projects_on_professor_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end

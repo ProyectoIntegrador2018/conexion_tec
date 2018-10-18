@@ -38,7 +38,6 @@ class ProjectsController < ApplicationController
 
   # renders edit view
   def edit
-    
   end
 
   # updates data in db
@@ -67,6 +66,6 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:user).permit(
         :id, :email, :password, :password_confirmation, :role, 
-        project_attributes: [:id, :name, :field, :professor_id, :kind, :client, :abstract, :video_url, :status])
+        project_attributes: [:id, :name, :field, :professor_id, :kind, :client, :abstract, :video_url, :status, :score])
     end
 end
