@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
       if (@user_role != "admin")
         redirect_to root_url
       end
-      session[:message] = @user_role
+      session[:role] = @user_role
       @projects = Project.all
     end
   end

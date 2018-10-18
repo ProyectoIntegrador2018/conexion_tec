@@ -7,6 +7,7 @@ class ProjectSessionsController < ApplicationController
         # @project = User.new(params[:project])    # Not the final implementation!
 		@user = login(params[:email], params[:password])
 		if @user
+            session[:role] = "project"
 			redirect_to @user.project     
 			# Handle a successful save.
         else
