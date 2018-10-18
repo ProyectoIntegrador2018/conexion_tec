@@ -99,14 +99,14 @@
       </div>
 
       <% if session[:role] == "admin" %>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <%= j.label :status %>
-            <%= j.select :status, Project.statuses.keys.to_a, {}, class: "form-control"%>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <%= j.label :status %>
+              <%= j.select :status, Project.statuses.keys.to_a, {}, class: "form-control"%>
+            </div>
           </div>
         </div>
-      </div>
 
         <div id="scoreDiv" style="display:none">
           <div class="row">
