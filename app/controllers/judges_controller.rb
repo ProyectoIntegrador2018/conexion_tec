@@ -18,7 +18,6 @@ class JudgesController < ApplicationController
 
   def create
     @user = User.new(judge_params)
-
     if @user.save
       auto_login(@user)
       redirect_to @user.judge
@@ -56,6 +55,6 @@ class JudgesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def judge_params
       params.require(:user).permit(:email, :password, :password_confirmation, :role,
-        judge_attributes: [:has_tablet, :department, :name])
+        judge_attributes: [:has_tablet, :department, :name, expertise_area_ids: []])
     end
 end

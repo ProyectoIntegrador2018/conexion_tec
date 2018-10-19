@@ -20,7 +20,6 @@ class JudgeSessionsController < ApplicationController
     end
 
     def destroy
-        
     end
 
 end

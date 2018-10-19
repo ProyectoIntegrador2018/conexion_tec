@@ -10,12 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_18_212220) do
+ActiveRecord::Schema.define(version: 2018_10_19_175348) do
 
   create_table "evaluations", force: :cascade do |t|
     t.decimal "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "expertise_areas", force: :cascade do |t|
+    t.string "area"
+  end
+
+  create_table "expertise_areas_judges", force: :cascade do |t|
+    t.integer "expertise_area_id"
+    t.integer "judge_id"
+    t.index ["expertise_area_id"], name: "index_expertise_areas_judges_on_expertise_area_id"
+    t.index ["judge_id"], name: "index_expertise_areas_judges_on_judge_id"
   end
 
   create_table "judges", force: :cascade do |t|
