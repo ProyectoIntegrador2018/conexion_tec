@@ -1,2 +1,104 @@
-Editin project...
-<%= @project.name %>
+<% provide(:title, 'Editar proyecto') %>
+
+<div class="row text-center">
+  <div class="col-12 col-md-6 offset-md-3">
+    <h1>Actualiza tu proyecto</h1>
+  </div>
+</div>
+
+
+<%= form_for @user, url: project_perfil_editar_path do |f| %>
+  <%= f.fields_for :project, @user.project do |j| %>
+  <div class="row">
+  	<%= render "errors" %>
+
+  	<div class="col-12 col-sm-6">
+
+  		<div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= j.label :name %>
+            <%= j.text_field :name, class: "form-control" %>
+          </div>
+        </div>
+      </div>  
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= j.label :field, class: "form-check-label" %>
+            <%= j.select :field, Project.fields.keys.to_a, {}, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= j.label :kind %>
+            <%= j.select :kind, Project.kinds.keys.to_a, {}, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= j.label :client %>
+            <%= j.select :client, Project.clients.keys.to_a, {}, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+  	</div>
+  	<div class="col-12 col-sm-6">
+  		
+  		<div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= j.label :abstract %>
+            <%= j.text_area :abstract, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= j.label :video_url %>
+            <%= j.text_field :video_url, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= j.label :professor %>
+            <%= j.select :professor_id, 
+                  options_for_select(Professor.all.collect{ |p| [p.name, p.id] } ), 
+                  {}, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= j.label :status %>
+            <%= j.select :status, Project.statuses.keys.to_a, {}, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row text-right">
+      	<div class="col">
+      		<%= f.submit "Editar proyecto", class: "btn btn-primary" %>
+      	</div>
+      </div>
+  	</div>
+	  	
+  </div>
+	<% end %>
+<% end %>

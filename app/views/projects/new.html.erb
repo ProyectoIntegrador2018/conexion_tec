@@ -69,8 +69,8 @@
 			<div class="row">
 		        <div class="col">
 		          <div class="form-group">
-		            <%= j.label :professor %>
-		            <%= j.select :professor, 
+		            <%= j.label :professor_id %>
+		            <%= j.select :professor_id, 
 		                  options_for_select(Professor.all.collect{ |p| [p.name, p.id] } ), 
 		                  {}, class: "form-control" %>
 		          </div>

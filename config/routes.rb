@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :judges
   resources :professors
   resources :students
-  resources :projects
+  resources :projects, only: [:new, :create]
 
   get 'signup-proyecto', to: 'projects#new', as: :signup_project
   post 'signup-proyecto', to: 'projects#create'
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   namespace :project do
     get 'perfil', to: 'profile#show'
     get 'perfil/editar', to: 'profile#edit'
-    post 'perfil/editar', to: 'profile#update'
+    patch 'perfil/editar', to: 'profile#update'
   end
 
   namespace :admin do

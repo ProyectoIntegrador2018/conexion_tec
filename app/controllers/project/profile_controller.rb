@@ -1,8 +1,7 @@
 class Project::ProfileController < Project::BaseController
+  before_action :set_project, only: [:show, :edit, :update]
 
 	def show
-		@project = current_project
-		@user = @project.user
 	end
 
   # renders edit view
@@ -13,7 +12,7 @@ class Project::ProfileController < Project::BaseController
   def update
     if @user.update_attributes(project_params)
       flash[:success] = "Información del proyecto actualizada"
-      redirect_to @project
+      redirect_to project_perfil_path
     else
       render "edit"
     end
@@ -21,6 +20,11 @@ class Project::ProfileController < Project::BaseController
 
   private
     
+    def set_project
+      @project = current_project
+      @user = @project.user
+    end
+
     def project_params
       params.require(:user).permit(
         :id, :email, :password, :password_confirmation, :role, 
