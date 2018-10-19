@@ -20,10 +20,3 @@ first_user = User.create(
 	role:"admin",
 	project: Project.create(name: "Name", field: 1, kind: 1, abstract: "asd", video_url: "asd.com", client: 1, professor: first_professor)
 	)
-
-
-
-
-
-
-

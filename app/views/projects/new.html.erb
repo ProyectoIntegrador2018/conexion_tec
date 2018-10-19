@@ -86,11 +86,12 @@
 					</div>
 				</div>
 			</div>
+			
 			<div class="row">
-				<div class="col">
+				<div class="col"> 
 					<div class="form-group">
-						<%= j.label :video_url %>
-						<%= j.text_field :video_url, class: "form-control" %>
+						<%= j.label :professor_id %>
+						<%= j.select :professor_id, Professor.all.collect{ |p| [ p.name, p.id ] }, {}, class: "form-control" %>
 					</div>
 				</div>
 			</div>
@@ -101,5 +102,4 @@
 			</div>
 		<% end %>
 	<% end %>
-
 </div>

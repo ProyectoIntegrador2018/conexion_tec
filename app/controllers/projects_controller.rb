@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-    # renders new view
+  # renders new view
   def new   
 	  @user = User.new
 	  @user.build_project
