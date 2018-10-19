@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     if @user.save
       flash[:success] = "Proyecto creado exitosamente!"
 	  auto_login(@user)
-	  redirect_to project_perfil_editar
+	  redirect_to project_perfil_path
     else
       render 'new'
     end
@@ -21,6 +21,6 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:user).permit(
         :id, :email, :password, :password_confirmation, :role, 
-        project_attributes: [:id, :name, :field, :professor_id, :kind, :client, :abstract, :video_url, :status])
+        project_attributes: [:id, :name, :field, :professor_id, :kind_id, :client, :abstract, :video_url, :status])
     end
 end

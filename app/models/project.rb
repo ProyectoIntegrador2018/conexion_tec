@@ -8,6 +8,7 @@ class Project < ApplicationRecord
 	validates :video_url, presence: true
 	validates :status, presence: true
 	has_many :students
+	belongs_to :kind
 	belongs_to :professor
 	accepts_nested_attributes_for :user
 
@@ -32,29 +33,6 @@ class Project < ApplicationRecord
 		"Emprendimiento de base tecnológica",
 		"Otra"
 	]
-
-	enum kind: [
-		"Agrobiotecnología",
-		"Automatización de proceso",
-		"Bionegocios",
-		"Diseño Industrial",
-		"Electrónica-Hardware",
-		"Ingeniería Civil",
-		"Ingeniería de Alimentos",
-		"Ingeniería Industrial",
-		"Ingeniería Mecánica",
-		"Ingeniería Mecatrónica",
-		"Ingeniería Química",
-		"Modelo Arquitectónico",
-		"Modelo de negocio",
-		"Multidiscplinario",
-		"Nanotecnología",
-		"Proceso de producción",
-		"Química-Bioquímica",
-		"Sistemas Embebidos",
-		"Software",
-		"Otro"
-	], _prefix: true
 
 	enum status: [
 		"No aprobado",
