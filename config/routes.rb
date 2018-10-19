@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :judges
   resources :professors
   resources :students
-  resources :projects
+
 
   get 'signup-proyecto', to: 'projects#new', as: :signup_project
   post 'signup-proyecto', to: 'projects#create'
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'profile', to: 'profile#show'
+    resources 'projects'
   end
 
   root 'main_screen#main'
