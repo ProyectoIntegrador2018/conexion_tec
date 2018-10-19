@@ -10,12 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_19_212439) do
+ActiveRecord::Schema.define(version: 2018_10_19_222126) do
 
   create_table "evaluations", force: :cascade do |t|
     t.decimal "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "project_id"
+    t.integer "judge_id"
+    t.index ["judge_id"], name: "index_evaluations_on_judge_id"
+    t.index ["project_id"], name: "index_evaluations_on_project_id"
+  end
+
+  create_table "evaluations_questions", force: :cascade do |t|
+    t.integer "evaluation_id"
+    t.integer "questions_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "result", default: 0
+    t.index ["evaluation_id"], name: "index_evaluations_questions_on_evaluation_id"
+    t.index ["questions_id"], name: "index_evaluations_questions_on_questions_id"
   end
 
   create_table "expertise_areas", force: :cascade do |t|
@@ -67,9 +81,9 @@ ActiveRecord::Schema.define(version: 2018_10_19_212439) do
     t.integer "user_id"
     t.integer "status", default: 0
     t.integer "professor_id"
-    t.integer "kind_id"
     t.integer "score", default: 0
     t.string "reason"
+    t.integer "kind_id"
     t.index ["kind_id"], name: "index_projects_on_kind_id"
     t.index ["professor_id"], name: "index_projects_on_professor_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
@@ -81,6 +95,8 @@ ActiveRecord::Schema.define(version: 2018_10_19_212439) do
     t.integer "scale"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "expertise_area_id"
+    t.index ["expertise_area_id"], name: "index_questions_on_expertise_area_id"
   end
 
   create_table "students", force: :cascade do |t|
