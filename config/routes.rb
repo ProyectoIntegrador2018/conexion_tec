@@ -36,5 +36,10 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#show'
   end
 
+  namespace :monitor do
+	  get 'projects', to: 'evaluation#index'
+	  patch 'evaluation', to: 'evaluation#update'
+  end
+
   root 'main_screen#main'
 end
