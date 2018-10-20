@@ -18,5 +18,5 @@ first_user = User.create(
 	password:"password", 
 	password_confirmation: "password", 
 	role:"admin",
-	project: Project.create(name: "Name", field: 1, kind: 1, abstract: "asd", video_url: "asd.com", client: 1, professor: first_professor)
+	project: Project.create(name: "Name", field: 1, kind_id: 1, abstract: "asd", video_url: "asd.com", client: 1, professor: first_professor)
 	)
