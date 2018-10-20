@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_18_212133) do
+ActiveRecord::Schema.define(version: 2018_10_19_212439) do
 
   create_table "evaluations", force: :cascade do |t|
     t.decimal "total"
@@ -18,29 +18,47 @@ ActiveRecord::Schema.define(version: 2018_10_18_212133) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "expertise_areas", force: :cascade do |t|
+    t.string "area"
+  end
+
+  create_table "expertise_areas_judges", force: :cascade do |t|
+	  t.integer "expertise_area_id"
+	  t.integer "judge_id"
+	  t.datetime "created_at"
+	  t.datetime "updated_at"
+	  t.index ["expertise_area_id"], name: "index_expertise_areas_judges_on_expertise_area_id"
+	  t.index ["judge_id"], name: "index_expertise_areas_judges_on_judge_id"
+  end
+
   create_table "judges", force: :cascade do |t|
-    t.boolean "has_tablet"
-    t.integer "department"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_judges_on_user_id"
+	  t.boolean "has_tablet"
+	  t.integer "department"
+	  t.string "name"
+	  t.datetime "created_at", null: false
+	  t.datetime "updated_at", null: false
+	  t.integer "user_id"
+	  t.index ["user_id"], name: "index_judges_on_user_id"
+  end
+
+  create_table "kinds", force: :cascade do |t|
+	  t.string "name"
+	  t.datetime "created_at", null: false
+	  t.datetime "updated_at", null: false
   end
 
   create_table "professors", force: :cascade do |t|
-    t.string "enrollment"
-    t.string "email"
-    t.integer "department"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
+	  t.string "enrollment"
+	  t.string "email"
+	  t.integer "department"
+	  t.datetime "created_at", null: false
+	  t.datetime "updated_at", null: false
+	  t.string "name"
   end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.integer "field"
-    t.integer "kind"
     t.integer "client"
     t.string "abstract"
     t.string "video_url"
@@ -51,6 +69,10 @@ ActiveRecord::Schema.define(version: 2018_10_18_212133) do
     t.integer "professor_id"
     t.boolean "assistance", default: false
     t.boolean "active", default: false
+    t.integer "score", default: 0
+    t.string "reason"
+    t.integer "kind_id"
+    t.index ["kind_id"], name: "index_projects_on_kind_id"
     t.index ["professor_id"], name: "index_projects_on_professor_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end

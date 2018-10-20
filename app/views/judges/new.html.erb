@@ -57,6 +57,18 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="col">
+					<%= j.label "Area de expertise" %>
+					<%= j.collection_check_boxes :expertise_area_ids, ExpertiseArea.all, :id, :area do |b| %>
+					<div class="collection-check-box">
+						<%= b.check_box %>
+						<%= b.label %>
+					</div>
+					<% end %>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col">
 					<%= f.submit "Crear cuenta", class: "btn btn-primary" %>

@@ -53,8 +53,10 @@
 			<div class="row">
 				<div class="col">
 					<div class="form-group">
-						<%= j.label :kind %>
-						<%= j.select :kind, Project.kinds.keys.to_a, {}, class: "form-control" %>
+						<%= j.label :kind_id %>
+						<%= j.select :kind_id, 
+							options_for_select(Kind.all.collect{ |p| [p.name, p.id] } ), 
+		                  	{}, class: "form-control" %>
 					</div>
 				</div>
 			</div>
@@ -69,8 +71,8 @@
 			<div class="row">
 		        <div class="col">
 		          <div class="form-group">
-		            <%= j.label :professor %>
-		            <%= j.select :professor, 
+		            <%= j.label :professor_id %>
+		            <%= j.select :professor_id, 
 		                  options_for_select(Professor.all.collect{ |p| [p.name, p.id] } ), 
 		                  {}, class: "form-control" %>
 		          </div>
@@ -81,14 +83,6 @@
 					<div class="form-group">
 						<%= j.label :abstract %>
 						<%= j.text_area :abstract, class: "form-control" %>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<div class="form-group">
-						<%= j.label :video_url %>
-						<%= j.text_field :video_url, class: "form-control" %>
 					</div>
 				</div>
 			</div>
@@ -108,5 +102,4 @@
 			</div>
 		<% end %>
 	<% end %>
-
 </div>

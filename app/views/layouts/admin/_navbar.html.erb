@@ -1,1 +1,31 @@
-navbar admin
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <%= link_to 'Conexión Tec', '#', class: 'navbar-brand' %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMenu" aria-controls="navbarTogglerMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerMenu">
+    <ul class="navbar-nav mx-auto justify-content-center">
+      <li class="nav-item">
+        <%= link_to "Proyectos", admin_projects_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Jueces", '#', class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Configuración", '#', class: "nav-link" %>
+      </li>
+    </ul>
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= current_admin.name %>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <%= link_to "Mi Perfil", '#', class: 'dropdown-item' %>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Cerrar Sesión", '#', class: 'dropdown-item' %>
+      </div>
+    </div>
+  </div>
+</nav>

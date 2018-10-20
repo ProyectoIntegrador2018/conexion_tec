@@ -1,3 +1,73 @@
-<div>
-	<%= @project.name %>
-</div>
+
+<div class="row">
+		<div class="col">
+			<p>
+			<strong>Nombre del proyecto:</strong>
+			<%= @project.name %>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<p>
+			<strong>Email:</strong>
+			<%= @project.user.email %>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<p>
+			<strong>Field:</strong>
+			<%= @project.field %>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<p>
+			<strong>Professor:</strong>
+			<%= @project.professor.name %>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<p>
+			<strong>Kind:</strong>
+			<%= @project.kind.name %>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<p>
+			<strong>Client:</strong>
+			<%= @project.client %>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<p>
+			<strong>Abstract:</strong>
+			<%= @project.abstract %>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<p>
+			<strong>Video_URL:</strong>
+			<%= @project.video_url %>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<p>
+			<strong>Status:</strong>
+			<%= @project.status %>
+			</p>
+		</div>
+	</div>
