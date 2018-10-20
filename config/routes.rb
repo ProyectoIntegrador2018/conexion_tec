@@ -26,14 +26,20 @@ Rails.application.routes.draw do
 
   namespace :judge do
     get 'profile', to: 'profile#show'
+    resources 'judges'
   end
 
   namespace :project do
     get 'profile', to: 'profile#show'
+    get 'profile/edit', to: 'profile#edit'
+    patch 'profile/edit', to: 'profile#update'
   end
 
   namespace :admin do
     get 'profile', to: 'profile#show'
+    get 'profile/edit', to: 'profile#edit'
+    patch 'profile/edit', to: 'profile#update'
+    resources 'projects'
   end
 
   namespace :monitor do

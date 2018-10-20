@@ -1,0 +1,2 @@
+module Judge::JudgesHelper
+end

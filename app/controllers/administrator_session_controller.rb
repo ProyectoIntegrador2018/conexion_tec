@@ -7,7 +7,7 @@ class AdministratorSessionController < ApplicationController
 		user = login(params[:email], params[:password])
 		if user 
 			if user.role == "admin"
-				redirect_to admin_perfil_path
+				redirect_to admin_profile_path
 			else
 				flash.now[:danger] = "Esta cuenta no es de administrador"
 				redirect_to root
