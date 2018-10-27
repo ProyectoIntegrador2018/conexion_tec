@@ -7,7 +7,7 @@ class ProjectSessionsController < ApplicationController
         # @project = User.new(params[:project])    # Not the final implementation!
 		@user = login(params[:email], params[:password])
 		if @user
-			redirect_to project_perfil_path     
+			redirect_to project_profile_path     
 			# Handle a successful save.
         else
 			flash.now[:danger] = 'Invalid credentials'

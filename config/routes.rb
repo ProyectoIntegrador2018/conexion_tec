@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :judges
   resources :professors
   resources :students
-  resources :projects, only: [:new, :create]
+  resources :projects
 
   get 'signup-proyecto', to: 'projects#new', as: :signup_project
   post 'signup-proyecto', to: 'projects#create'
@@ -25,21 +25,26 @@ Rails.application.routes.draw do
   post 'signup-juez', to: 'judges#create'
 
   namespace :judge do
-    get 'perfil', to: 'profile#show'
-    get 'perfil/editar', to: 'profile#edit'
-    post 'perfil/editar', to: 'profile#update'
+    get 'profile', to: 'profile#show'
+    resources 'judges'
   end
 
   namespace :project do
-    get 'perfil', to: 'profile#show'
-    get 'perfil/editar', to: 'profile#edit'
-    patch 'perfil/editar', to: 'profile#update'
+    get 'profile', to: 'profile#show'
+    get 'profile/edit', to: 'profile#edit'
+    patch 'profile/edit', to: 'profile#update'
   end
 
   namespace :admin do
-    get 'perfil', to: 'profile#show'
-    get 'perfil/editar', to: 'profile#edit'
-    post 'perfil/editar', to: 'profile#update'
+    get 'profile', to: 'profile#show'
+    get 'profile/edit', to: 'profile#edit'
+    patch 'profile/edit', to: 'profile#update'
+    resources 'projects'
+  end
+
+  namespace :monitor do
+	  get 'projects', to: 'evaluation#index'
+	  patch 'evaluation', to: 'evaluation#update'
   end
 
   root 'main_screen#main'

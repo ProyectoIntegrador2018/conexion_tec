@@ -17,6 +17,34 @@ first_user = User.create(
 	email:"jorge@test.com", 
 	password:"password", 
 	password_confirmation: "password", 
-	role:"admin",
-	project: Project.create(name: "Name", field: 1, kind: 1, abstract: "asd", video_url: "asd.com", client: 1, professor: first_professor)
+	role:"admin")
+
+second_user = User.create(
+	email:"jorge@test.com", 
+	password:"password", 
+	password_confirmation: "password", 
+	role:"project",
+	project: Project.create(name: "Name", field: 1, kind_id: 1, abstract: "asd", video_url: "asd.com", client: 1, professor: first_professor)
 	)
+
+
+Kind.create(name: "Agrobiotecnología")
+Kind.create(name: "Automatización de Procesos")
+Kind.create(name: "Bionegocios")
+Kind.create(name: "Diseño Industrial")
+Kind.create(name: "Electrónica-Hardware")
+Kind.create(name: "Ingeniería Civil")
+Kind.create(name: "Ingeniería de Alimentos")
+Kind.create(name: "Ingeniería Industrial")
+Kind.create(name: "Ingeniería Mecánica")
+Kind.create(name: "Ingeniería Mecatrónica")
+Kind.create(name: "Ingeniería Química")
+Kind.create(name: "Modelo Arquitectónico")
+Kind.create(name: "Modelo de Negocio")
+Kind.create(name: "Multidisciplinario")
+Kind.create(name: "Nanotecnología")
+Kind.create(name: "Proceso de producción")
+Kind.create(name: "Química-Bioquímica")
+Kind.create(name: "Sistemas Embebidos")
+Kind.create(name: "Software")
+Kind.create(name: "Otro")

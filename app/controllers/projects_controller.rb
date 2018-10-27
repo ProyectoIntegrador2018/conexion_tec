@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     if @user.save
       flash[:success] = "Proyecto creado exitosamente!"
 	  auto_login(@user)
-	  redirect_to project_perfil_path
+	  redirect_to project_profile_path
     else
       render 'new'
     end

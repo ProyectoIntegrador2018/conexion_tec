@@ -1,0 +1,84 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12 col-md6 offsert-md-3">
+			<h1>Actualiza tu información</h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12 col-md-6 offset-md-3">
+		<%= form_for @user, url: judge_judge_path do |f| %>
+			<%= f.fields_for :judge, @user.judge do |j| %>
+
+				<%= f.hidden_field :role, :value => "judge" %>
+
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<%= f.label :email %>
+					    	<%= f.email_field :email, class: "form-control" %>
+				    	</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<%= f.label :password %>
+				    		<%= f.password_field :password, class: "form-control" %>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<%= f.label :password_confirmation %>
+				    		<%= f.password_field :password_confirmation, class: "form-control" %>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<%= j.label :name %>
+				    		<%= j.text_field :name, class: "form-control" %>
+						</div>
+					</div>
+				</div>	
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<%= j.label :has_tablet, class: "form-check-label" %>
+					    	<%= j.check_box :has_tablet, class: "checkbox" %>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<%= j.label :department %>
+					    	<%= j.select :department, Judge.departments.keys.to_a, {}, class: "form-control" %>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col">
+						<%= j.label "Area de expertise" %>
+						<%= j.collection_check_boxes :expertise_area_ids, ExpertiseArea.all, :id, :area do |b| %>
+						<div class="collection-check-box">
+							<%= b.check_box %>
+							<%= b.label %>
+						</div>
+						<% end %>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<%= f.submit "Editar proyecto", class: "btn btn-primary" %>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+		</div>
+	</div>
+</div>

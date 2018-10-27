@@ -12,7 +12,7 @@ class Project::ProfileController < Project::BaseController
   def update
     if @user.update_attributes(project_params)
       flash[:success] = "Información del proyecto actualizada"
-      redirect_to project_perfil_path
+      redirect_to project_profile_path
     else
       render "edit"
     end

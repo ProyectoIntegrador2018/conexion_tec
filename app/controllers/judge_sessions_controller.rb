@@ -8,10 +8,10 @@ class JudgeSessionsController < ApplicationController
     	@user = login(params[:email], params[:password])
     	if @user 
             if @user.role == "judge"
-    		      redirect_to @user.judge
+    		      redirect_to judge_profile_path
             else
               flash[:danger] = "No tienes los permisos para entrar a esta ruta"
-              render 'new'
+              redirect_to root
             end
     	else
     		flash[:danger] = "Usuario o contraseña incorrectos"

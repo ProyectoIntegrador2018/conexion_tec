@@ -5,7 +5,7 @@ class Project < ApplicationRecord
 	validates :kind, presence: true
 	validates :client, presence: true
 	validates :abstract, presence: true
-	validates :video_url, presence: true
+	validates :video_url, presence: true, if: :video_url
 	validates :status, presence: true
 	has_many :students
 	belongs_to :kind

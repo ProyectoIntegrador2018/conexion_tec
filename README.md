@@ -25,8 +25,8 @@ Página web para el manejo del evento conexión tec.
 
 ### Environment URLS
 
-* **Production** - [TBD](TBD)
-* **Development** - [TBD](TBD)
+* **Production** - [localhost:5000](localhost:5000)
+* **Development** - [https://aqueous-beyond-94616.herokuapp.com/](https://aqueous-beyond-94616.herokuapp.com/)
 
 ### Da team
 

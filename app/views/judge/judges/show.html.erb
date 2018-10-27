@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Has tablet:</strong>
+  <%= @judge.has_tablet %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @judge.department %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @judge.user.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @judge.name %>
+</p>
+
+<%= link_to 'Edit', edit_judge_judge_path(@judge) %>
