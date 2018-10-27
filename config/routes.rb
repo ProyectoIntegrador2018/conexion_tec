@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :judge_sessions, only: [:new, :destroy, :create]
-  resources :project_sessions, only: [:new, :destroy, :create]
-  resources :administrator_sessions, only: [:new, :destroy, :create]
+  # resources :judge_sessions, only: [:new, :destroy, :create]
+  # resources :project_sessions, only: [:new, :destroy, :create]
+  # resources :administrator_sessions, only: [:new, :destroy, :create]
+  # resources :monitor_sessions, only: [:new, :destroy, :create]
+  # resources :staff_sessions, only: [:new, :destroy, :create]
 
   get 'login-proyecto', to: 'project_sessions#new', as: :login_project
   post 'login-proyecto', to: 'project_sessions#create'
@@ -10,6 +12,11 @@ Rails.application.routes.draw do
   post 'login-juez', to: 'judge_sessions#create'
   get 'login-administrador', to: 'administrator_session#new', as: :login_admin
   post 'login-administrador', to: 'administrator_session#create', as: :login_admin_create
+
+  get 'login-staff', to: 'staff_sessions#new', as: :login_staff
+  post 'login-staff', to: 'staff_sessions#create'
+  get 'login-monitor', to: 'monitor_sessions#new', as: :login_monitor
+  post 'login-monitor', to: 'monitor_sessions#create'
 
   resources :evaluations
   resources :questions
@@ -45,6 +52,11 @@ Rails.application.routes.draw do
   namespace :monitor do
 	  get 'projects', to: 'evaluation#index'
 	  patch 'evaluation', to: 'evaluation#update'
+  end
+
+  namespace :staff do
+    get 'judges', to: 'assignments#index'
+    get 'judge', to: 'assignments#show'
   end
 
   root 'main_screen#main'
