@@ -87,11 +87,11 @@ ActiveRecord::Schema.define(version: 2018_10_27_211827) do
     t.integer "user_id"
     t.integer "status", default: 0
     t.integer "professor_id"
-    t.integer "kind_id"
     t.integer "score", default: 0
-    t.string "reason"
+    t.string "reason", default: "No reason"
     t.boolean "assistance", default: false
     t.boolean "active", default: false
+    t.integer "kind_id"
     t.integer "category_id"
     t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["kind_id"], name: "index_projects_on_kind_id"
