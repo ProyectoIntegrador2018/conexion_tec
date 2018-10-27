@@ -10,6 +10,7 @@ class Project < ApplicationRecord
 	has_many :students
 	belongs_to :kind
 	belongs_to :professor
+	belongs_to :category
 	accepts_nested_attributes_for :user
 
 
