@@ -4,7 +4,5 @@ class AddTableCategories < ActiveRecord::Migration[5.2]
       t.string :name
       t.timestamps
     end
-
-    add_reference
   end
 end
