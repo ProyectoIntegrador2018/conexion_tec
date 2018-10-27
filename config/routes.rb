@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     get 'profile/edit', to: 'profile#edit'
     patch 'profile/edit', to: 'profile#update'
     resources 'projects'
+    get 'questions', to: 'questions#show'
   end
 
   namespace :monitor do

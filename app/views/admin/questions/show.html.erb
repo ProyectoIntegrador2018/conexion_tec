@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<p>
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Text</th>
+				<th>Category</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @questions.each do |question| %>
+			<tr>
+				<td><%= question.title %></td>
+				<td><%= question.text %></td>
+				<td><%= question.category.name %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</p>
