@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_27_211827) do
+ActiveRecord::Schema.define(version: 2018_10_27_215508) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -61,12 +61,6 @@ ActiveRecord::Schema.define(version: 2018_10_27_211827) do
     t.index ["user_id"], name: "index_judges_on_user_id"
   end
 
-  create_table "kinds", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "professors", force: :cascade do |t|
     t.string "enrollment"
     t.string "email"
@@ -87,14 +81,14 @@ ActiveRecord::Schema.define(version: 2018_10_27_211827) do
     t.integer "user_id"
     t.integer "status", default: 0
     t.integer "professor_id"
-    t.integer "kind_id"
     t.integer "score", default: 0
     t.string "reason"
     t.boolean "assistance", default: false
     t.boolean "active", default: false
     t.integer "category_id"
+    t.integer "expertise_area_id"
     t.index ["category_id"], name: "index_projects_on_category_id"
-    t.index ["kind_id"], name: "index_projects_on_kind_id"
+    t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
     t.index ["professor_id"], name: "index_projects_on_professor_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end

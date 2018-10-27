@@ -2,13 +2,13 @@ class Project < ApplicationRecord
 	belongs_to :user
 	validates :name, presence: true
 	validates :field, presence: true
-	validates :kind, presence: true
+	validates :expertise_area, presence: true
 	validates :client, presence: true
 	validates :abstract, presence: true
 	validates :video_url, presence: true, if: :video_url
 	validates :status, presence: true
 	has_many :students
-	belongs_to :kind
+	belongs_to :expertise_area
 	belongs_to :professor
 	belongs_to :category
 	accepts_nested_attributes_for :user

@@ -19,32 +19,31 @@ first_user = User.create(
 	password_confirmation: "password", 
 	role:"admin")
 
+ExpertiseArea.create(name: "Agrobiotecnología")
+ExpertiseArea.create(name: "Automatización de Procesos")
+ExpertiseArea.create(name: "Bionegocios")
+ExpertiseArea.create(name: "Diseño Industrial")
+ExpertiseArea.create(name: "Electrónica-Hardware")
+ExpertiseArea.create(name: "Ingeniería Civil")
+ExpertiseArea.create(name: "Ingeniería de Alimentos")
+ExpertiseArea.create(name: "Ingeniería Industrial")
+ExpertiseArea.create(name: "Ingeniería Mecánica")
+ExpertiseArea.create(name: "Ingeniería Mecatrónica")
+ExpertiseArea.create(name: "Ingeniería Química")
+ExpertiseArea.create(name: "Modelo Arquitectónico")
+ExpertiseArea.create(name: "Modelo de Negocio")
+ExpertiseArea.create(name: "Multidisciplinario")
+ExpertiseArea.create(name: "Nanotecnología")
+ExpertiseArea.create(name: "Proceso de producción")
+ExpertiseArea.create(name: "Química-Bioquímica")
+ExpertiseArea.create(name: "Sistemas Embebidos")
+ExpertiseArea.create(name: "Software")
+ExpertiseArea.create(name: "Otro")
+
 second_user = User.create(
 	email:"jorge@test.com", 
 	password:"password", 
 	password_confirmation: "password", 
 	role:"project",
-	project: Project.create(name: "Name", field: 1, kind_id: 1, abstract: "asd", video_url: "asd.com", client: 1, professor: first_professor)
+	project: Project.create(name: "Name", field: 1, expertise_area_id: 1, abstract: "asd", video_url: "asd.com", client: 1, professor: first_professor)
 	)
-
-
-Kind.create(name: "Agrobiotecnología")
-Kind.create(name: "Automatización de Procesos")
-Kind.create(name: "Bionegocios")
-Kind.create(name: "Diseño Industrial")
-Kind.create(name: "Electrónica-Hardware")
-Kind.create(name: "Ingeniería Civil")
-Kind.create(name: "Ingeniería de Alimentos")
-Kind.create(name: "Ingeniería Industrial")
-Kind.create(name: "Ingeniería Mecánica")
-Kind.create(name: "Ingeniería Mecatrónica")
-Kind.create(name: "Ingeniería Química")
-Kind.create(name: "Modelo Arquitectónico")
-Kind.create(name: "Modelo de Negocio")
-Kind.create(name: "Multidisciplinario")
-Kind.create(name: "Nanotecnología")
-Kind.create(name: "Proceso de producción")
-Kind.create(name: "Química-Bioquímica")
-Kind.create(name: "Sistemas Embebidos")
-Kind.create(name: "Software")
-Kind.create(name: "Otro")

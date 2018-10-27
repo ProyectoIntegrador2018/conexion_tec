@@ -3,7 +3,7 @@
 one:
   name: MyString
   field: 1
-  kind: 1
+  expertise_area_id: 1
   client: 1
   abstract: MyString
   video_url: MyString
@@ -12,7 +12,7 @@ one:
 project_two:
   name: MyString
   field: 1
-  kind: 1
+  expertise_area_id: 1
   client: 1
   abstract: MyString
   video_url: MyString
