@@ -3,7 +3,7 @@ FactoryBot.define do
 		user(role: "project")
 		status 0
 		client rand(0..5)
-		kind_id rand(0..19)
+		expertise_area_id rand(0..19)
 		field rand(0..8)
 		abstract Faker::Lorem.sentence(5) 
 		name Faker::Name.name
