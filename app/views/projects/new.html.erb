@@ -78,20 +78,21 @@
 		          </div>
 		        </div>
 		    </div>
+		    <div class="row">
+				<div class="col">
+					<div class="form-group">
+						<%= j.label :category_id %>
+						<%= j.select :category_id, 
+							options_for_select(Category.all.collect{ |p| [p.name, p.id] } ), 
+		                  	{}, class: "form-control" %>
+					</div>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col">
 					<div class="form-group">
 						<%= j.label :abstract %>
 						<%= j.text_area :abstract, class: "form-control" %>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col"> 
-					<div class="form-group">
-						<%= j.label :professor_id %>
-						<%= j.select :professor_id, Professor.all.collect{ |p| [ p.name, p.id ] }, {}, class: "form-control" %>
 					</div>
 				</div>
 			</div>
