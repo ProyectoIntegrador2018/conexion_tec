@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     patch 'profile/edit', to: 'profile#update'
     resources 'projects'
     get 'questions', to: 'questions#show'
+    get 'questions/new', to: 'questions#new'
+    post 'new_question', to: 'questions#create'
   end
 
   namespace :monitor do

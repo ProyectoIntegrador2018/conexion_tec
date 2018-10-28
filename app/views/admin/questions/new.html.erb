@@ -1,0 +1,29 @@
+<div class="container">
+	<h1>New Question</h1>
+
+	<%= render "errors" %>
+	<%= form_for @question, url: admin_new_question_path do |q|  %>
+
+	<div class="row">
+		<div class="col">
+			<%= q.label :title %>
+			<%= q.text_field :title, class: "form-control" %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<%= q.label :text %>
+			<%= q.text_field, :text, class: "form-control "%>
+		</div>
+	</div>
+
+	<!-- TODO(jorgevazquez): Continuar con forma para categorias -->
+	<div class="row">
+		<div clas="col">
+			<%= q.label, :category, class: %>
+		</div>
+	</div>
+
+
+</div>
