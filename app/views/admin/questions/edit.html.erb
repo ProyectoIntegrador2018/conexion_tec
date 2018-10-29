@@ -1,8 +1,12 @@
 <div class="container">
-	<h1>New Question</h1>
+	<div class="row">
+		<div class="col-12 col-md-6 offset-md-3">
+			<h1>Actualiza pregunta</h1>
+		</div>
+	</div>
 
 	<!-- <%#= render "errors" %> -->
-	<%= form_for @question, url: admin_questions_new_path do |q|  %>
+	<%= form_for @question, url: admin_question_path do |q|  %>
 
 	<div class="row">
 		<div class="col">
@@ -29,7 +33,7 @@
 
 	<div class="row">
 		<div class="col">
-			<%= q.submit "Crear pregunta", class: "btn btn-primary" %>
+			<%= q.submit "Editar pregunta", class: "btn btn-primary" %>
 		</div>
 	</div>
 	<% end %>

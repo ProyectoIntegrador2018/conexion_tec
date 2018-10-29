@@ -1,4 +1,5 @@
 class Admin::QuestionsController < Admin::BaseController
+	before_action :set_question, only: [:edit, :destroy, :update]
 
 	def show
 		@questions = Question.all
@@ -7,5 +8,36 @@ class Admin::QuestionsController < Admin::BaseController
 	def new
 		@question = Question.new
 	end
+
+	def create
+		@question = Question.new(question_params)
+		if @question.save
+			redirect_to admin_questions_path
+		else
+			render :new
+		end
+	end
+
+	def edit
+	end
+
+	def update
+		if @question.update_attributes(question_params)
+			flash[:success] = "Pregunta actualizada"
+			redirect_to admin_questions_path
+		else
+			render "edit"
+		end
+	end
+
+	private
+		def set_question
+			@question = Question.find(params[:id])
+		end
+
+
+		def question_params
+			params.require(:question).permit(:title, :text, :category_id)
+		end
 	
 end

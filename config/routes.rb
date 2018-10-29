@@ -42,7 +42,8 @@ Rails.application.routes.draw do
     resources 'projects'
     get 'questions', to: 'questions#show'
     get 'questions/new', to: 'questions#new'
-    post 'new_question', to: 'questions#create'
+    post 'questions/new', to: 'questions#create'
+    resources 'questions', only: [:edit, :update]
   end
 
   namespace :monitor do

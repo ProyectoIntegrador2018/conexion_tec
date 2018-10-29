@@ -15,6 +15,7 @@
 				<td><%= question.title %></td>
 				<td><%= question.text %></td>
 				<td><%= question.category.name %></td>
+				<td><%= link_to 'Edit', edit_admin_question_path(question.id) %></td>
 			</tr>
 			<% end %>
 		</tbody>
