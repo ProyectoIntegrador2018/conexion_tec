@@ -1,5 +1,9 @@
 class RenameColumnQuestionsToQuestion < ActiveRecord::Migration[5.2]
   def change
-  	rename_column :evaluations_questions, :questions_id, :question_id
+  	drop_table :evaluations_questions
+  	create_join_table :evaluations, :questions do |t|
+  		t.index :evaluation_id
+  		t.index :question_id
+  	end
   end
 end
