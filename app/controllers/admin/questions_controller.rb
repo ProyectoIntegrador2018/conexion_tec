@@ -21,6 +21,12 @@ class Admin::QuestionsController < Admin::BaseController
 	def edit
 	end
 
+	def destroy
+		@question.destroy
+		flash[:success] = "Pregunta eliminada"
+		redirect_to admin_questions_path
+	end
+
 	def update
 		if @question.update_attributes(question_params)
 			flash[:success] = "Pregunta actualizada"

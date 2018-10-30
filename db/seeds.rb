@@ -48,3 +48,7 @@ Kind.create(name: "Química-Bioquímica")
 Kind.create(name: "Sistemas Embebidos")
 Kind.create(name: "Software")
 Kind.create(name: "Otro")
+
+Category.create(name: "Categoria 1")
+Category.create(name: "Categoria 2")
+Category.create(name: "Categoria 3")

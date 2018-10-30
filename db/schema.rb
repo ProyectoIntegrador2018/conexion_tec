@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_27_222822) do
+ActiveRecord::Schema.define(version: 2018_10_30_003424) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(version: 2018_10_27_222822) do
 
   create_table "evaluations_questions", force: :cascade do |t|
     t.integer "evaluation_id"
-    t.integer "questions_id"
+    t.integer "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "result", default: 0
     t.index ["evaluation_id"], name: "index_evaluations_questions_on_evaluation_id"
-    t.index ["questions_id"], name: "index_evaluations_questions_on_questions_id"
+    t.index ["question_id"], name: "index_evaluations_questions_on_question_id"
   end
 
   create_table "expertise_areas", force: :cascade do |t|

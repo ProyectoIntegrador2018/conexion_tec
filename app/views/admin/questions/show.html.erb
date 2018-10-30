@@ -16,6 +16,7 @@
 				<td><%= question.text %></td>
 				<td><%= question.category.name %></td>
 				<td><%= link_to 'Edit', edit_admin_question_path(question.id) %></td>
+				<td><%= link_to 'Delete', admin_question_path(question.id), method: :delete, data: {confirm: "Seguro que deseas borrar la pregunta#{question.title}?"} %></td>
 			</tr>
 			<% end %>
 		</tbody>
