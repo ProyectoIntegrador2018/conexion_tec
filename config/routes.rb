@@ -24,12 +24,16 @@ Rails.application.routes.draw do
   resources :professors
   resources :students
   resources :projects
+  resources :staffs, only: [:new, :create, :destroy]
 
   get 'signup-proyecto', to: 'projects#new', as: :signup_project
   post 'signup-proyecto', to: 'projects#create'
 
   get 'signup-juez', to: 'judges#new', as: :signup_judge
   post 'signup-juez', to: 'judges#create'
+
+  get 'signup-staff', to: 'staffs#new'
+  post 'signup-staff', to: 'staffs#create'
 
   namespace :judge do
     get 'profile', to: 'profile#show'
