@@ -24,7 +24,7 @@
                 <%= ea.area%>
             <%end%>
         </td>
-        <td><%=  %></td>
+        <td><%= link_to 'Delete', admin_judge_path(judge.id), method: :delete, data: {confirm: "Seguro que deseas borrar el juez #{judge.name}?"}  %></td>
       </tr>
     <% end %>
   </tbody>

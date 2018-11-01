@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     patch 'profile/edit', to: 'profile#update'
     resources 'projects'
     get 'judges', to: 'judges#index'
+    resources 'judges', only: [:destroy]
   end
 
   namespace :monitor do
