@@ -12,6 +12,7 @@ class Project < ApplicationRecord
 	belongs_to :professor
 	belongs_to :category
 	accepts_nested_attributes_for :user
+	accepts_nested_attributes_for :students
 
 
 	enum client: [
