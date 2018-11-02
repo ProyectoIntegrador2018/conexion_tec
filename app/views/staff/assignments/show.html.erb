@@ -1,2 +1,93 @@
-<div class="row">
+<div class="row mt-4">
+	<div class="col">
+		<h1>
+			<%= @judge.name %>
+		</h1>
+	</div>
+</div>
+
+<div class="row mt-4">
+	<div class="col-12 col-sm-3">
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Area de Expertise</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @judge.expertise_areas.each_with_index do |e, index| %>
+					<tr>
+						<th scope="row"><%= index %></th>
+						<td><%= e.area %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-12 col-sm-9">
+		<div class="text-center">
+			<h3>Recomendaciones</h3>
+		</div>
+		<div>
+			<table class="table text-center">
+				<thead>
+					<tr>
+						<th scope="col">Nombre</th>
+						<th scope="col">Area Temática</th>
+						<th scope="col">Cliente</th>
+						<th scope="col">Profesor</th>
+						<th scope="col">Categoría</th>
+						<th scope="col">Tipo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @recommended_projects.each do |p| %>
+						<tr>
+							<th scope="row"><%= p.name %></th>
+							<td><%= p.field %></td>
+							<td><%= p.client %></td>
+							<td><%= p.professor.name %></td>
+							<td><%= p.category.name %></td>
+							<td><%= p.expertise_area.area %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div class="row mt-4">
+	<div class="col">
+		<div class="text-center">
+			<h3>Lista de Proyectos</h3>	
+		</div>
+		<div>
+			<table class="table text-center">
+				<thead>
+					<tr>
+						<th scope="col">Nombre</th>
+						<th scope="col">Area Temática</th>
+						<th scope="col">Cliente</th>
+						<th scope="col">Profesor</th>
+						<th scope="col">Categoría</th>
+						<th scope="col">Tipo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @projects.each do |p| %>
+						<tr>
+							<th scope="row"><%= p.name %></th>
+							<td><%= p.field %></td>
+							<td><%= p.client %></td>
+							<td><%= p.professor.name %></td>
+							<td><%= p.category.name %></td>
+							<td><%= p.expertise_area.area %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>

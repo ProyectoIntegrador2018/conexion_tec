@@ -59,8 +59,7 @@ Rails.application.routes.draw do
   end
 
   namespace :staff do
-    get 'judges', to: 'assignments#index'
-    get 'judge', to: 'assignments#show'
+    resources :assignments, only: [:index, :show]
   end
 
   root 'main_screen#main'

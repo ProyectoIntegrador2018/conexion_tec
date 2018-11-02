@@ -7,7 +7,7 @@ class StaffSessionsController < ApplicationController
 		user = login(params[:email], params[:password])
 		if user 
 			if user.role == "staff"
-				redirect_to staff_judges_path
+				redirect_to staff_assignments_path
 			else
 				flash.now[:danger] = "Esta cuenta no es de staff"
 				redirect_to root

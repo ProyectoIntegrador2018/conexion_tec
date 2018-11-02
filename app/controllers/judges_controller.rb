@@ -20,7 +20,7 @@ class JudgesController < ApplicationController
     @user = User.new(judge_params)
     if @user.save
       auto_login(@user)
-      redirect_to @user.judge
+      redirect_to judge_profile_path
     else
       render :new
     end
