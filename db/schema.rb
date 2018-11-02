@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_30_003424) do
+ActiveRecord::Schema.define(version: 2018_11_02_165908) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2018_10_30_003424) do
     t.boolean "active", default: false
     t.integer "kind_id"
     t.integer "category_id"
+    t.string "description"
     t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["kind_id"], name: "index_projects_on_kind_id"
     t.index ["professor_id"], name: "index_projects_on_professor_id"
