@@ -32,7 +32,7 @@
 			<h3>Recomendaciones</h3>
 		</div>
 		<div>
-			<table class="table text-center">
+			<table class="table text-center" id="recommendations">
 				<thead>
 					<tr>
 						<th scope="col">Nombre</th>
@@ -41,12 +41,12 @@
 						<th scope="col">Profesor</th>
 						<th scope="col">Categoría</th>
 						<th scope="col">Tipo</th>
-						<th scope="col"></th>
+						<th scope="col">Quitar</th>
 					</tr>
 				</thead>
 				<tbody>
-					<% @recommended_projects.each do |p| %>
-						<tr>
+					<% @recommended_projects.each_with_index do |p, index| %>
+						<tr id="project-<%= p.id %>">
 							<th scope="row"><%= p.name %></th>
 							<td><%= p.field %></td>
 							<td><%= p.client %></td>
@@ -54,8 +54,9 @@
 							<td><%= p.category.name %></td>
 							<td><%= p.expertise_area.area %></td>
 							<td>
-								<%= button_tag type: 'button', class: 'btn' do %>
-									fa_icon 'check'
+								<%= button_tag type: 'button', class: "btn btn-danger", 
+									onclick: "removeProject('#{index}')" do %>
+									<i class="fas fa-trash-alt"></i>
 							    <% end %>
 							</td>
 						</tr>
@@ -72,7 +73,7 @@
 			<h3>Lista de Proyectos</h3>	
 		</div>
 		<div>
-			<table class="table text-center">
+			<table class="table text-center" id="all_projects">
 				<thead>
 					<tr>
 						<th scope="col">Nombre</th>
@@ -81,6 +82,7 @@
 						<th scope="col">Profesor</th>
 						<th scope="col">Categoría</th>
 						<th scope="col">Tipo</th>
+						<th scope="col">Agregar</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -92,6 +94,12 @@
 							<td><%= p.professor.name %></td>
 							<td><%= p.category.name %></td>
 							<td><%= p.expertise_area.area %></td>
+							<td>
+								<%= button_tag type: 'button', class: "btn btn-success",
+									onclick: "addProject('#{p.id}')" do %>
+									<%= fa_icon 'check' %>
+							    <% end %>
+							</td>
 						</tr>
 					<% end %>
 				</tbody>
