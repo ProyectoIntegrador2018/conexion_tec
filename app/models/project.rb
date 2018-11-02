@@ -41,4 +41,12 @@ class Project < ApplicationRecord
 		"No aprobado",
 		"Aprobado"
 	]
+
+	scope :recommendations, -> (exp_areas) {
+		where(expertise_area_id: exp_areas)
+		.where(status: 4)
+		.order(:num_assignments)
+		.order(:num_evaluations)
+		.limit(5)
+	}
 end

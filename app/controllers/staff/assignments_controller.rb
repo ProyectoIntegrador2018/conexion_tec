@@ -9,7 +9,7 @@ class Staff::AssignmentsController < Staff::BaseController
 		@projects = Project.where("status = 3")
 											 .order(:num_assignments)
 											 .order(:num_evaluations)
-		@recommended_projects = @projects.limit(5)
+		@recommended_projects = Project.recommendations(@judge.expertise_areas_ids)
 	end
 
 end
