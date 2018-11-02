@@ -41,6 +41,7 @@
 						<th scope="col">Profesor</th>
 						<th scope="col">Categoría</th>
 						<th scope="col">Tipo</th>
+						<th scope="col"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -52,6 +53,11 @@
 							<td><%= p.professor.name %></td>
 							<td><%= p.category.name %></td>
 							<td><%= p.expertise_area.area %></td>
+							<td>
+								<%= button_tag type: 'button', class: 'btn' do %>
+									fa_icon 'check'
+							    <% end %>
+							</td>
 						</tr>
 					<% end %>
 				</tbody>
