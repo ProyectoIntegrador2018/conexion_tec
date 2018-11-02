@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   namespace :judge do
     get 'profile', to: 'profile#show'
     resources 'judges'
+    get 'projects', to: 'projects#index'
   end
 
   namespace :project do

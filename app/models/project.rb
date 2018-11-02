@@ -8,6 +8,7 @@ class Project < ApplicationRecord
 	validates :video_url, presence: true, if: :video_url
 	validates :status, presence: true
 	has_many :students
+	has_many :evaluations
 	belongs_to :kind
 	belongs_to :professor
 	accepts_nested_attributes_for :user
