@@ -13,6 +13,8 @@ class Project < ApplicationRecord
 	belongs_to :category
 	accepts_nested_attributes_for :user
 
+	has_many :evaluations
+	has_many :judges, through: :evaluations
 
 	enum client: [
 		"Departamento del Tec", 
@@ -45,8 +47,27 @@ class Project < ApplicationRecord
 	scope :recommendations, -> (exp_areas) {
 		where(expertise_area_id: exp_areas)
 		.where(status: 4)
-		.order(:num_assignments)
-		.order(:num_evaluations)
+		.order_projects
 		.limit(5)
+	}
+
+	scope :not_qualified, -> {
+		where(status: 0)
+	}
+
+	scope :qualified, -> {
+		where(status: 1)
+	}
+
+	scope :not_approved, -> {
+		where(status: 2)
+	}
+
+	scope :approved, -> {
+		where(status: 3)
+	}
+
+	scope :order_projects, -> {
+		order(:num_assignments, :num_evaluations)
 	}
 end
