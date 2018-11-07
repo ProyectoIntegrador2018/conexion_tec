@@ -46,7 +46,7 @@ class Project < ApplicationRecord
 
 	scope :recommendations, -> (exp_areas) {
 		where(expertise_area_id: exp_areas)
-		.where(status: 4)
+		.not_qualified
 		.order_projects
 		.limit(5)
 	}
