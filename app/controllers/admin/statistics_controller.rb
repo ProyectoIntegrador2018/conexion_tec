@@ -11,4 +11,10 @@ class Admin::StatisticsController < Admin::BaseController
 	def projects_score
 		@projects = Project.order("score DESC")
 	end
+
+	def projects_score_category
+		@categories = Project.joins(:category).group("categories.name").average(:score)
+	end
+
+
 end

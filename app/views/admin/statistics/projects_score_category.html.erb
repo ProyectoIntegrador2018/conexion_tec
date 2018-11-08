@@ -1,0 +1,20 @@
+<h1>Estadistícas del promedio de calificaciones por categoria</h1>
+
+<%= column_chart Project.joins(:category).group("categories.name").average(:score) %>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Categoría del proyecto</th>
+			<th scope="col">Calificación promedio</th>
+		</tr>
+		<tbody>
+			<% @categories.each do |name, score| %>
+			<tr scope="row">
+				<td><%= name %></td>
+				<td><%= score %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</thead>
+</table>
