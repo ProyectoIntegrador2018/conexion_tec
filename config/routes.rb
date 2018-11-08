@@ -43,6 +43,8 @@ Rails.application.routes.draw do
     resources 'projects'
     get 'judges', to: 'judges#index'
     resources 'judges', only: [:destroy]
+    get 'evaluations', to: 'evaluations#index'
+    resources 'evaluations', only: [:destroy]
   end
 
   namespace :monitor do

@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_19_222126) do
+ActiveRecord::Schema.define(version: 2018_11_08_013958) do
 
   create_table "evaluations", force: :cascade do |t|
-    t.decimal "total"
+    t.decimal "total", default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "project_id"
