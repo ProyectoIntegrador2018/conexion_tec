@@ -7,4 +7,8 @@ class Admin::StatisticsController < Admin::BaseController
 	def judges_expertise_areas
 		@judges = Judge.joins(:expertise_areas).group(:judge_id).order("expertise_areas.area")
 	end
+
+	def projects_score
+		@projects = Project.order("score DESC")
+	end
 end

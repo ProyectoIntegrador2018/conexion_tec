@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     resources 'questions', only: [:edit, :update, :destroy]
     get 'statistics/projects_category', to: 'statistics#projects_category'
     get 'statistics/judges_expertise_areas', to: 'statistics#judges_expertise_areas'
+    get 'statistics/projects_score', to: 'statistics#projects_score'
   end
 
   namespace :monitor do
