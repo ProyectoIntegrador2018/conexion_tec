@@ -10,7 +10,7 @@ class AdministratorSessionController < ApplicationController
 				redirect_to admin_profile_path
 			else
 				flash.now[:danger] = "Esta cuenta no es de administrador"
-				redirect_to root
+				redirect_to root_path
 			end
 		else
 			flash.now[:danger] = 'Invalid email/password combination'
