@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   namespace :judge do
     get 'profile', to: 'profile#show'
     resources 'judges'
+    get 'projects', to: 'projects#index'
   end
 
   namespace :project do
@@ -40,6 +41,10 @@ Rails.application.routes.draw do
     get 'profile/edit', to: 'profile#edit'
     patch 'profile/edit', to: 'profile#update'
     resources 'projects'
+    get 'judges', to: 'judges#index'
+    resources 'judges', only: [:destroy]
+    get 'evaluations', to: 'evaluations#index'
+    resources 'evaluations', only: [:destroy]
     get 'questions', to: 'questions#show'
     get 'questions/new', to: 'questions#new'
     post 'questions/new', to: 'questions#create'

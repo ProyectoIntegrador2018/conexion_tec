@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_165908) do
+ActiveRecord::Schema.define(version: 2018_11_08_013958) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_11_02_165908) do
   end
 
   create_table "evaluations", force: :cascade do |t|
-    t.decimal "total"
+    t.decimal "total", default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "project_id"
@@ -28,12 +28,9 @@ ActiveRecord::Schema.define(version: 2018_11_02_165908) do
     t.index ["project_id"], name: "index_evaluations_on_project_id"
   end
 
-  create_table "evaluations_questions", force: :cascade do |t|
-    t.integer "evaluation_id"
-    t.integer "question_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "result", default: 0
+  create_table "evaluations_questions", id: false, force: :cascade do |t|
+    t.integer "evaluation_id", null: false
+    t.integer "question_id", null: false
     t.index ["evaluation_id"], name: "index_evaluations_questions_on_evaluation_id"
     t.index ["question_id"], name: "index_evaluations_questions_on_question_id"
   end
@@ -88,10 +85,10 @@ ActiveRecord::Schema.define(version: 2018_11_02_165908) do
     t.integer "status", default: 0
     t.integer "professor_id"
     t.integer "score", default: 0
-    t.string "reason", default: "No reason"
+    t.string "reason"
+    t.integer "kind_id"
     t.boolean "assistance", default: false
     t.boolean "active", default: false
-    t.integer "kind_id"
     t.integer "category_id"
     t.string "description"
     t.index ["category_id"], name: "index_projects_on_category_id"

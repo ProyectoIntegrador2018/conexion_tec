@@ -4,6 +4,7 @@ class Judge < ApplicationRecord
 	validates :department, presence: true
 	validates :name, presence: true
 	has_and_belongs_to_many :expertise_areas
+	has_many :evaluations
 
 
 	enum department: [

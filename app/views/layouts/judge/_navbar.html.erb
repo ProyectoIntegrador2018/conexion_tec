@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <%= link_to 'Conexión Tec', '#', class: 'navbar-brand' %>
+  <%= link_to 'Conexión Tec', judge_profile_path, class: 'navbar-brand' %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMenu" aria-controls="navbarTogglerMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
         <%= link_to "Mi información", judge_judge_path(current_judge.id), class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Proyectos", '#', class: "nav-link" %>
+        <%= link_to "Proyectos", judge_projects_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to "Configuración", '#', class: "nav-link" %>
