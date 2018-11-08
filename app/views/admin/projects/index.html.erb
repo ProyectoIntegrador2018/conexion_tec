@@ -7,6 +7,8 @@
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Field</th>
+      <th scope="col">Kind</th>
+      <th scope="col">Category</th>
       <th scope="col">Cliente</th>
       <th scope="col">Abstract</th>
       <th scope="col">Video url</th>
@@ -20,7 +22,8 @@
       <tr scope="row">
         <td><%= project.name %></td>
         <td><%= project.field %></td>
-        <td><%= project.kind %></td>
+        <td><%= project.kind.name %></td>
+        <td><%= project.category.name %></td>
         <td><%= project.client %></td>
         <td><%= project.abstract %></td>
         <td><%= project.video_url %></td>
