@@ -5,15 +5,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerMenu">
-    <ul class="navbar-nav mx-auto justify-content-center">
-      <li class="nav-item">
-        <%= link_to "Información", '#', class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Jueces Asignados", '#', class: "nav-link" %>
-      </li>
-    </ul>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerMenu">
     <div class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <%= current_project.name %>
