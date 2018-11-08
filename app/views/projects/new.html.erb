@@ -106,16 +106,12 @@
 			<%= f.label :agregar_estudiante %>
 			<%= button_tag "Agregar estudiante", type: "button", id: "add_student" %>
 			<br>
-			<%= j.fields_for :students do |student|%>
-				<%= student.label :nombre %>
-				<%= student.text_field :name, class: "form-control" %>
-				<%= student.label :correo_electronico %>
-				<%= student.text_field :email, class: "form-control" %>
-				<%= student.label :mátricula %>
-				<%= student.text_field :enrollment, class: "form-control" %>
-				<%= student.label :carrera %>
-				<%= student.text_field :carrera, class: "form-control" %>
-			<% end %>
+			<div class="row">
+				<div class="col">
+					<div class="form-group", id="members_form">
+					</div>
+				</div>
+			</div>
 			<br>
 
 			<br>
