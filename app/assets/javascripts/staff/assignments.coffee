@@ -42,8 +42,7 @@ $(document).on 'turbolinks:load', ->
 	$all_table.on 'click', '.js-add', ->
 		$row = $(this).closest('tr')
 		$(this).closest('tr').hide()
-		$r_table.append($row)
-		$new_row = $r_table.find('tr:last')
+		$new_row = $row
 		$last_td = $new_row.find('td:last-child')
 		$last_td.find("button").html('<i class="fa fa-trash"></i>')
 		$last_td.find("button").addClass('js-remove btn-danger')
@@ -53,6 +52,8 @@ $(document).on 'turbolinks:load', ->
 		$prev_id = $row.attr('id')
 		$index = $prev_id.indexOf('-')
 		$new_row.attr('id', 'recommend-' + $prev_id.substring($index + 1))
+		console.log($new_row)
+		$r_table.append($new_row)
 		$new_row.show()
 		# quitar de arreglo de list y agrega al de recommended
 		$recommended_projects.push($new_row)
