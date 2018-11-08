@@ -13,8 +13,8 @@ class AdministratorSessionController < ApplicationController
 				redirect_to root
 			end
 		else
-			flash.now[:danger] = 'Invalid email/password combination'
-			render 'new'
+			flash.now[:danger] = 'Contraseña y/o email incorrecto'
+			render 'new'	
 		end
 	end
 end

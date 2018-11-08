@@ -9,10 +9,12 @@ class ProjectsController < ApplicationController
   def create
     students_params = params[:user][:project_attributes][:students]
     @students = []
-    students_params.each do |param|
-      @students << Student.new(student_params(param))
+    if students_params
+      students_params.each do |param|
+        @students << Student.new(student_params(param))
+      end
+      params[:user][:project_attributes].delete(:students)
     end
-    params[:user][:project_attributes].delete(:students)
 	  @user = User.new(project_params)
     @students.each do |student|
       student.project = @user.project
