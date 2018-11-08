@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+<p>
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Text</th>
+				<th>Category</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @questions.each do |question| %>
+			<tr>
+				<td><%= question.title %></td>
+				<td><%= question.text %></td>
+				<td><%= question.category.name %></td>
+				<td><%= link_to 'Edit', edit_admin_question_path(question.id) %></td>
+				<td><%= link_to 'Delete', admin_question_path(question.id), method: :delete, data: {confirm: "Seguro que deseas borrar la pregunta#{question.title}?"} %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= button_to "Agregar pregunta", admin_questions_new_path, class: "btn btn-primary btn-block text-white", method: :get%> 
+</p>

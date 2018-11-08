@@ -10,6 +10,13 @@ class Project::ProfileController < Project::BaseController
 
   # updates data in db
   def update
+    students_params = params[:user][:project_attributes][:students]
+    count = 0
+    students_params.each do |key, params|
+      puts("Param: #{params}")
+      @user.project.students[count].update_attributes(student_params(params))
+      count += 1
+    end
     if @user.update_attributes(project_params)
       flash[:success] = "Información del proyecto actualizada"
       redirect_to project_profile_path
@@ -28,6 +35,12 @@ class Project::ProfileController < Project::BaseController
     def project_params
       params.require(:user).permit(
         :id, :email, :password, :password_confirmation, :role, 
-        project_attributes: [:id, :name, :field, :professor_id, :kind_id, :client, :abstract, :video_url, :status])
+        project_attributes: [:id, :name, :field, :professor_id, :kind_id, 
+          :client, :abstract, :video_url, :status, :reason], 
+          students: [:id, :name, :major, :enrollment, :email ])
+    end
+
+    def student_params(s_p)
+      s_p.permit(:name, :major, :enrollment, :email)
     end
 end

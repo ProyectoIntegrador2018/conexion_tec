@@ -69,6 +69,42 @@
         </div>
       </div>
 
+      <% @current_project.students.each do |student| %>
+        <%= j.fields_for 'students[]', student do |s| %>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+          <%= s.label :name %>
+          <%= s.text_field :name, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+          <%= s.label :email %>
+          <%= s.text_field :email, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+          <%= s.label :enrollment %>
+          <%= s.text_field :enrollment, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+          <%= s.label :major %>
+          <%= s.text_field :major, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
       <% if @current_project.status == "Aprobado" %>
         <div class="row">
           <div class="col">
