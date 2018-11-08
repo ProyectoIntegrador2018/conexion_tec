@@ -7,12 +7,15 @@ class Admin::EvaluationsController < Admin::BaseController
 
     def destroy
         project=@evaluation.project
+        puts("Ver datos de proyecto")
+        puts(project)
         sum=0
         count = Evaluation.where(project_id:project.id).count
         Evaluation.where(project_id:project.id).each do |evaluation|
             sum += evaluation.total
         end
         project.score = (sum-@evaluation.total)/((count-1)||1)
+        project.score ||= 0
         project.save
         @evaluation.destroy
         flash[:success] = "Evaluacion Eliminada"
