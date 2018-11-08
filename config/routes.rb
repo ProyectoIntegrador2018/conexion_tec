@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#show'
     get 'profile/edit', to: 'profile#edit'
     patch 'profile/edit', to: 'profile#update'
+    get 'statistics/projects_category', to: 'statistics#projects_category'
     resources 'projects'
     get 'questions', to: 'questions#show'
     get 'questions/new', to: 'questions#new'

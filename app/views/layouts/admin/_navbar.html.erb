@@ -19,6 +19,12 @@
       <li class="nav-item">
         <%= link_to "Configuración", '#', class: "nav-link" %>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Estadísticas</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<%=admin_statistics_projects_category_path%>">Categorias de proyectos</a>
+          </div>
+      </li>
     </ul>
     <div class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
