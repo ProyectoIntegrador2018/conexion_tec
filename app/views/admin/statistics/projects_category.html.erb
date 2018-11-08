@@ -2,7 +2,6 @@
 
 <%= pie_chart Project.joins(:category).group('categories.name').count %>
 
-
 <table class="table">
 	<thead>
 		<tr>
