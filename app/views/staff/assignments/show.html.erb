@@ -28,8 +28,7 @@
 		</table>
 	</div>
 	<div class="col-12 col-sm-9">
-		<%= form_for :evaluation, url: staff_assignments_path, method: :create do |f| %>
-			<%= f.hidden_field 'projects' %>
+		<%= form_for @judge, url: staff_assignments_path, method: :update do |f| %>
 			<div class="row">
 				<div class="col">
 					<h3>Recomendaciones</h3>
@@ -67,6 +66,11 @@
 								    <% end %>
 								</td>
 							</tr>
+						<% end %>
+						<% @judge.projects.each do |a| %>
+							<%= f.fields_for 'project_ids[]', a do |r| %>
+								<%= r.hidden_field :id %>
+							<% end %>
 						<% end %>
 					</tbody>
 				</table>

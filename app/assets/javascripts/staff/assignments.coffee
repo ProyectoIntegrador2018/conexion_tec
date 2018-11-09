@@ -1,30 +1,17 @@
 $(document).on 'turbolinks:load', -> 
 
-	add_to_hidden = (row) ->
-		$prev_id = row.attr('id')
-		$index = $prev_id.indexOf('-')
-		$id = $prev_id.substring($index + 1) 
-		if $hidden_field.val()
-			$hidden_field.val($hidden_field.val() + ',' + $id)
-		else
-			$hidden_field.val($id)
-
-	remove_from_hidden = (row) ->
-		$prev_id = row.attr('id')
-		$index = $prev_id.indexOf('-')
-		$id = $prev_id.substring($index + 1) 
-		$hidden_array = $hidden_field.val().split(',')
-		$hidden_array = jQuery.grep $hidden_array, (p_id) ->
-			return $id != p_id
-		$hidden_field.val($hidden_array.join(','))
-
+	# <input type="hidden" value="1" name="judge[project_ids][1][id]" id="judge_project_ids_1_id">
+	
 	$r_table = $('#recommendations')
 	$all_table = $('#all_projects')
-	$hidden_field = $('#assignment_projects')
+	$form = $('.edit_judge')
 
 	$('#recommendations tbody tr').each ->
-		add_to_hidden($(this))
-
+		$prev_id = $(this).attr('id')
+		$index = $prev_id.indexOf('-')
+		$id = $prev_id.substring($index + 1)
+		$input = '<input type="hidden" value="' + $id + '" name="judge[project_ids][' + $id + '][id]" id="judge_project_ids_' + $id + '_id">'
+		$form.append($input)
 
 	$r_table.on 'click', '.js-remove', ->
 		$row = $(this).closest('tr')
@@ -36,9 +23,10 @@ $(document).on 'turbolinks:load', ->
 
 		$prev_id = $row.attr('id')
 		$index = $prev_id.indexOf('-')
-		$return_row.attr('id', 'all-' + $prev_id.substring($index + 1))
+		$id = $prev_id.substring($index + 1)
+		$input = $('#judge_project_ids_' + $id + '_id').remove()
+		$return_row.attr('id', 'all-' + $id)
 		$all_table.append($return_row)
-		remove_from_hidden($return_row)
 		$return_row.show()
 		$row.remove()
 		
@@ -52,8 +40,10 @@ $(document).on 'turbolinks:load', ->
 
 		$prev_id = $row.attr('id')
 		$index = $prev_id.indexOf('-')
-		$new_row.attr('id', 'recommend-' + $prev_id.substring($index + 1))
-		add_to_hidden($new_row)
+		$id = $prev_id.substring($index + 1)
+		$input = '<input type="hidden" value="' + $id + '" name="judge[project_ids][' + $id + '][id]" id="judge_project_ids_' + $id + '_id">'
+		$form.append($input)
+		$new_row.attr('id', 'recommend-' + $id)
 		$r_table.append($new_row)
 		$new_row.show()
 		$row.hide()

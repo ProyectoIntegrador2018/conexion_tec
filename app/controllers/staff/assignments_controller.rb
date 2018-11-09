@@ -12,24 +12,17 @@ class Staff::AssignmentsController < Staff::BaseController
 	end
 
 	def create
-		@evaluation = Evaluation.new
-		puts "PARAMSSSSSSS"
-		puts params.inspect
-		# project_ids = params[:evaluation][:projects]
-		# puts params.inspect
-		# project_ids.each do |p|
-		# 	e = Evaluation.new
-		# 	e.judge = @judge
-		# 	e.project_id = p
-		# 	if !e.save
-		# 		flash[:error] = "No se pudo agregar un proyecto a evaluar"
-		# 	else
-		# 		flash[:success] = "Proyecto a evaluar agregado!!!"
-		# 	end
-		# end
+
 	end
 
 	def update
+		project_ids = params[:judge][:project_ids]
+		puts project_ids
 	end
 
+	private 
+		def judge_params
+	      params.require(:judge).permit(
+	        project_ids: [])
+	    end
 end
