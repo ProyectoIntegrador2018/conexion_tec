@@ -13,4 +13,9 @@ class Judge < ApplicationRecord
 		"Historia",
 		"Química"
 	]
+
+	scope :with_no_projects, -> { 
+		joins("left join evaluations e on judges.id = e.judge_id")
+		.where("e.id is null")
+	}
 end

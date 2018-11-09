@@ -1,7 +1,7 @@
 class Staff::JudgesController < Staff::BaseController
 
 	def index
-		@judges = Judge.all
+		@judges = Judge.with_no_projects
 	end
 
 	def show
