@@ -59,7 +59,7 @@ Rails.application.routes.draw do
   end
 
   namespace :staff do
-    resources :assignments, only: [:index, :show]
+    resources :assignments, only: [:index, :show, :create, :update]
   end
 
   root 'main_screen#main'
