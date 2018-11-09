@@ -5,7 +5,9 @@ class Staff::AssignmentsController < Staff::BaseController
 	end
 
 	def show
+		@evaluation = Evaluation.new
 		@judge = Judge.find(params[:id])
+		@evaluation.judge = @judge
 		@recommended_projects = Project.recommendations(@judge.expertise_area_ids)
 		@projects = Project.not_qualified.order_projects
 		@projects = @projects - @recommended_projects

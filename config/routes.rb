@@ -60,6 +60,7 @@ Rails.application.routes.draw do
 
   namespace :staff do
     resources :assignments, only: [:index, :show, :create, :update]
+    resources :judges, only: [:create, :update]
   end
 
   root 'main_screen#main'

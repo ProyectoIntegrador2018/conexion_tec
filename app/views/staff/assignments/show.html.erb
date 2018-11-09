@@ -28,7 +28,7 @@
 		</table>
 	</div>
 	<div class="col-12 col-sm-9">
-		<%= form_for @judge, url: staff_assignments_path, method: :update do |f| %>
+		<%= form_for @judge, url: staff_judges_path do |f| %>
 			<div class="row">
 				<div class="col">
 					<h3>Recomendaciones</h3>
@@ -37,6 +37,7 @@
 					<%= f.submit "Guardar", class: "btn btn-primary" %>
 				</div>
 			</div>
+								
 			<div>
 				<table class="table table-hover table-sm text-center" id="recommendations">
 					<thead class="thead-dark">
@@ -52,6 +53,8 @@
 					</thead>
 					<tbody>
 						<% @recommended_projects.each_with_index do |p, index| %>
+							<%= f.hidden_field :project_ids, value: p.id, multiple: true, id: 'form-' + p.id.to_s %>
+									
 							<tr id="recommend-<%= p.id %>" >
 								<td><%= p.name %></th>
 								<td><%= p.field %></td>
@@ -66,11 +69,6 @@
 								    <% end %>
 								</td>
 							</tr>
-						<% end %>
-						<% @judge.projects.each do |a| %>
-							<%= f.fields_for 'project_ids[]', a do |r| %>
-								<%= r.hidden_field :id %>
-							<% end %>
 						<% end %>
 					</tbody>
 				</table>
