@@ -18,7 +18,7 @@
 						<td><%= j.department %></td>
 						<td><%= if j.has_tablet then "Si" else "No" end %></td>
 						<td>
-							<%= link_to "Asignar proyectos", staff_assignment_path(j), class: "btn btn-primary text-white" %>
+							<%= link_to "Asignar proyectos", staff_judge_path(j), class: "btn btn-primary text-white" %>
 						</td>	
 					</tr>
 				<% end %>
