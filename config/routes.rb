@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#show'
     resources 'judges'
     get 'projects', to: 'projects#index'
+    get 'evaluations/project/:id', to: 'evaluations#show', as: :evaluation_project
+    post 'evaluations/project/:id', to: 'evaluations#submit', as: :evaluation_project_submit
   end
 
   namespace :project do

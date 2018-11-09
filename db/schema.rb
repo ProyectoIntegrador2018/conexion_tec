@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_08_013958) do
+ActiveRecord::Schema.define(version: 2018_11_09_215240) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "evaluation_questions", force: :cascade do |t|
+    t.integer "evaluation_id"
+    t.integer "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "result", default: 0
+    t.index ["evaluation_id"], name: "index_evaluation_questions_on_evaluation_id"
+    t.index ["question_id"], name: "index_evaluation_questions_on_question_id"
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -26,13 +36,6 @@ ActiveRecord::Schema.define(version: 2018_11_08_013958) do
     t.integer "judge_id"
     t.index ["judge_id"], name: "index_evaluations_on_judge_id"
     t.index ["project_id"], name: "index_evaluations_on_project_id"
-  end
-
-  create_table "evaluations_questions", id: false, force: :cascade do |t|
-    t.integer "evaluation_id", null: false
-    t.integer "question_id", null: false
-    t.index ["evaluation_id"], name: "index_evaluations_questions_on_evaluation_id"
-    t.index ["question_id"], name: "index_evaluations_questions_on_question_id"
   end
 
   create_table "expertise_areas", force: :cascade do |t|
@@ -84,11 +87,11 @@ ActiveRecord::Schema.define(version: 2018_11_08_013958) do
     t.integer "user_id"
     t.integer "status", default: 0
     t.integer "professor_id"
-    t.integer "score", default: 0
-    t.string "reason"
-    t.integer "kind_id"
+    t.decimal "score", default: "0.0"
+    t.string "reason", default: "No reason"
     t.boolean "assistance", default: false
     t.boolean "active", default: false
+    t.integer "kind_id"
     t.integer "category_id"
     t.string "description"
     t.index ["category_id"], name: "index_projects_on_category_id"
