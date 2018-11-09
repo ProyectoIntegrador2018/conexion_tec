@@ -35,7 +35,6 @@ class Project::ProfileController < Project::BaseController
     def project_params
       params.require(:user).permit(
         :id, :email, :password, :password_confirmation, :role, 
-<<<<<<< HEAD
         project_attributes: [:id, :name, :field, :professor_id, :kind_id, 
           :client, :abstract, :video_url, :status, :reason], 
           students: [:id, :name, :major, :enrollment, :email ])
@@ -43,9 +42,5 @@ class Project::ProfileController < Project::BaseController
 
     def student_params(s_p)
       s_p.permit(:name, :major, :enrollment, :email)
-=======
-        project_attributes: [:id, :name, :field, :professor_id, :expertise_area_id, 
-          :client, :abstract, :video_url, :status, :category_id])
->>>>>>> merge-jose
     end
 end
