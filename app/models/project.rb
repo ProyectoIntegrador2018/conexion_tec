@@ -8,12 +8,7 @@ class Project < ApplicationRecord
 	validates :video_url, presence: true, if: :video_url
 	validates :status, presence: true
 	has_many :students
-<<<<<<< HEAD
-	has_many :evaluations
-	belongs_to :kind
-=======
 	belongs_to :expertise_area
->>>>>>> merge-jose
 	belongs_to :professor
 	belongs_to :category
 	accepts_nested_attributes_for :user

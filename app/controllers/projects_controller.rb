@@ -31,15 +31,11 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:user).permit(
         :id, :email, :password, :password_confirmation, :role, 
-<<<<<<< HEAD
-        project_attributes: [:id, :name, :field, :professor_id, :kind_id, :client, :abstract, :video_url, :status, :description, :category_id])
+        project_attributes: [:id, :name, :field, :professor_id, :kind_id, :client, 
+        :abstract, :video_url, :status, :description, :category_id])
     end
 
     def student_params(s_p)
       s_p.permit(:name, :major, :enrollment, :email)
-=======
-        project_attributes: [:id, :name, :field, :professor_id, :expertise_area_id, 
-          :client, :abstract, :video_url, :status, :category_id])
->>>>>>> merge-jose
     end
 end
