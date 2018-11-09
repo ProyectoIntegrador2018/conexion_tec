@@ -1,0 +1,48 @@
+<div class="container">
+
+	<h1>Registro Staff</h1>
+
+	<%= render "errors" %>
+
+	<%= form_for @user, url: staffs_path do |f| %>
+		<%= f.hidden_field :role, :value => "staff" %>
+
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<%= f.label :email %>
+					<%= f.email_field :email, class: "form-control" %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<%= f.label :password %>
+					<%= f.password_field :password, class: "form-control" %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<%= f.label :password_confirmation %>
+					<%= f.password_field :password_confirmation, class: "form-control" %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<%= f.label :name %>
+					<%= f.text_field :name, class: "form-control" %>
+				</div>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col">
+				<%= f.submit "Crear cuenta", class: "btn btn-primary" %>
+			</div>
+		</div>
+	<% end %>
+</div>

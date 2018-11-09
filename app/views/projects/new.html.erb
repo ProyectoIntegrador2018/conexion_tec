@@ -60,8 +60,15 @@
 			<div class="row">
 				<div class="col">
 					<div class="form-group">
+<<<<<<< HEAD
 						<%= j.label :descripción_del_proyecto %>
 						<%= j.text_area :description, rows: 2,class: "form-control" %>
+=======
+						<%= j.label :expertise_area_id %>
+						<%= j.select :expertise_area_id, 
+							options_for_select(ExpertiseArea.all.collect{ |p| [p.area, p.id] } ), 
+		                  	{}, class: "form-control" %>
+>>>>>>> merge-jose
 					</div>
 				</div>
 			</div>
@@ -77,6 +84,7 @@
 			<h3>Información del alumno responsable</h3>
 			<br>
 			<div class="row">
+<<<<<<< HEAD
 				<div class="col">
 					<div class="form-group">
 						<%= f.label :correo_electronico %>
@@ -89,12 +97,31 @@
 					<div class="form-group">
 						<%= f.label :contraseña %>
 						<%= f.password_field :password, class: "form-control" %>
+=======
+		        <div class="col">
+		          <div class="form-group">
+		            <%= j.label :professor_id %>
+		            <%= j.select :professor_id, 
+		                  options_for_select(Professor.all.collect{ |p| [p.name, p.id] } ), 
+		                  {}, class: "form-control" %>
+		          </div>
+		        </div>
+		    </div>
+		    <div class="row">
+				<div class="col">
+					<div class="form-group">
+						<%= j.label :category_id %>
+						<%= j.select :category_id, 
+							options_for_select(Category.all.collect{ |p| [p.name, p.id] } ), 
+		                  	{}, class: "form-control" %>
+>>>>>>> merge-jose
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col">
 					<div class="form-group">
+<<<<<<< HEAD
 						<%= f.label :confirmación_tu_contraseña %>
 						<%= f.password_field :password_confirmation, class: "form-control" %>
 					</div>
@@ -109,6 +136,10 @@
 			<div class="row">
 				<div class="col">
 					<div class="form-group", id="members_form">
+=======
+						<%= j.label :abstract %>
+						<%= j.text_area :abstract, class: "form-control" %>
+>>>>>>> merge-jose
 					</div>
 				</div>
 			</div>

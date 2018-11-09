@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_11_09_215240) do
+=======
+ActiveRecord::Schema.define(version: 2018_11_01_234213) do
+>>>>>>> merge-jose
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -61,12 +65,6 @@ ActiveRecord::Schema.define(version: 2018_11_09_215240) do
     t.index ["user_id"], name: "index_judges_on_user_id"
   end
 
-  create_table "kinds", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "professors", force: :cascade do |t|
     t.string "enrollment"
     t.string "email"
@@ -74,6 +72,7 @@ ActiveRecord::Schema.define(version: 2018_11_09_215240) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.string "course_code"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -87,15 +86,26 @@ ActiveRecord::Schema.define(version: 2018_11_09_215240) do
     t.integer "user_id"
     t.integer "status", default: 0
     t.integer "professor_id"
+<<<<<<< HEAD
     t.decimal "score", default: "0.0"
     t.string "reason", default: "No reason"
+=======
+    t.integer "score", default: 0
+    t.string "reason"
+>>>>>>> merge-jose
     t.boolean "assistance", default: false
     t.boolean "active", default: false
     t.integer "kind_id"
     t.integer "category_id"
+<<<<<<< HEAD
     t.string "description"
+=======
+    t.integer "expertise_area_id"
+    t.integer "num_evaluations", default: 0
+    t.integer "num_assignments", default: 0
+>>>>>>> merge-jose
     t.index ["category_id"], name: "index_projects_on_category_id"
-    t.index ["kind_id"], name: "index_projects_on_kind_id"
+    t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
     t.index ["professor_id"], name: "index_projects_on_professor_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end

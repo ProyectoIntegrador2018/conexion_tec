@@ -42,9 +42,9 @@
       <div class="row">
         <div class="col">
           <div class="form-group">
-            <%= j.label :kind_id %>
-            <%= j.select :kind_id, 
-              options_for_select(Kind.all.collect{ |p| [p.name, p.id] } ), 
+            <%= j.label :expertise_area_id %>
+            <%= j.select :expertise_area_id, 
+              options_for_select(ExpertiseArea.all.collect{ |p| [p.area, p.id] } ), 
                         {}, class: "form-control" %>
           </div>
         </div>

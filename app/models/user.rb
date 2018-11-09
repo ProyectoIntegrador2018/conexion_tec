@@ -26,4 +26,12 @@ class User < ApplicationRecord
     self.project.present?
   end
 
+  def is_staff?
+    self.role == 'staff'
+  end
+
+  def is_monitor?
+    self.role == 'monitor'
+  end
+
 end

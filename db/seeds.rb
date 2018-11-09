@@ -14,41 +14,43 @@ first_professor = Professor.create(
 
 
 first_user = User.create(
-	email:"jorge@test.com", 
-	password:"password", 
+	email: "jorge@test.com", 
+	password: "password", 
 	password_confirmation: "password", 
-	role:"admin")
+	role: "admin")
 
-second_user = User.create(
-	email:"jorge@test.com", 
-	password:"password", 
-	password_confirmation: "password", 
-	role:"project",
-	project: Project.create(name: "Name", field: 1, kind_id: 1, abstract: "asd", video_url: "asd.com", client: 1, professor: first_professor)
-	)
-
-
-Kind.create(name: "Agrobiotecnología")
-Kind.create(name: "Automatización de Procesos")
-Kind.create(name: "Bionegocios")
-Kind.create(name: "Diseño Industrial")
-Kind.create(name: "Electrónica-Hardware")
-Kind.create(name: "Ingeniería Civil")
-Kind.create(name: "Ingeniería de Alimentos")
-Kind.create(name: "Ingeniería Industrial")
-Kind.create(name: "Ingeniería Mecánica")
-Kind.create(name: "Ingeniería Mecatrónica")
-Kind.create(name: "Ingeniería Química")
-Kind.create(name: "Modelo Arquitectónico")
-Kind.create(name: "Modelo de Negocio")
-Kind.create(name: "Multidisciplinario")
-Kind.create(name: "Nanotecnología")
-Kind.create(name: "Proceso de producción")
-Kind.create(name: "Química-Bioquímica")
-Kind.create(name: "Sistemas Embebidos")
-Kind.create(name: "Software")
-Kind.create(name: "Otro")
+ExpertiseArea.create(area: "Agrobiotecnología")
+ExpertiseArea.create(area: "Automatización de Procesos")
+ExpertiseArea.create(area: "Bionegocios")
+ExpertiseArea.create(area: "Diseño Industrial")
+ExpertiseArea.create(area: "Electrónica-Hardware")
+ExpertiseArea.create(area: "Ingeniería Civil")
+ExpertiseArea.create(area: "Ingeniería de Alimentos")
+ExpertiseArea.create(area: "Ingeniería Industrial")
+ExpertiseArea.create(area: "Ingeniería Mecánica")
+ExpertiseArea.create(area: "Ingeniería Mecatrónica")
+ExpertiseArea.create(area: "Ingeniería Química")
+ExpertiseArea.create(area: "Modelo Arquitectónico")
+ExpertiseArea.create(area: "Modelo de Negocio")
+ExpertiseArea.create(area: "Multidisciplinario")
+ExpertiseArea.create(area: "Nanotecnología")
+ExpertiseArea.create(area: "Proceso de producción")
+ExpertiseArea.create(area: "Química-Bioquímica")
+ExpertiseArea.create(area: "Sistemas Embebidos")
+ExpertiseArea.create(area: "Software")
+ExpertiseArea.create(area: "Otro")
 
 Category.create(name: "Categoria 1")
 Category.create(name: "Categoria 2")
 Category.create(name: "Categoria 3")
+Category.create(name: "Categoria 4")
+
+second_user = User.create(
+	email: "proyecto1@proyecto.com", 
+	password: "password", 
+	password_confirmation: "password", 
+	role: "project",
+	project: Project.create(name: "Name", field: 1, expertise_area_id: 1, 
+		abstract: "asd", video_url: "asd.com", client: 1, 
+		professor: first_professor, category: Category.first)
+	)
