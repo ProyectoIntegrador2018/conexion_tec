@@ -1,5 +1,13 @@
+/* override bootstrap colors */
+
+$primary: #0eae9b;
+
+/* ends override bootstrap colors */
+
 @import "bootstrap";
 @import "font-awesome";
+
+$dark-section-black: #333;
 
 body {
 	min-height: 400px;
@@ -14,5 +22,62 @@ body {
 }
 
 .bottom-padding {
-	margin-botttom: 300px;
+	margin-bottom: 300px;
 }
+
+/* MAIN SCREEN CSS */
+.banner {
+	height: 80vh;
+	display: flex;
+	align-items: center;
+	background-image: image-url('promo1.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 0.7;
+	h1 {
+		color: $dark-section-black;
+		font-weight: 800;
+		opacity: 1.0;
+		font-size: 10vh;
+	}
+}
+
+.h-column {
+	text-transform: uppercase;
+	font-size: 40px;
+	line-height: 1;
+	font-weight: 500;
+	position: relative;
+	padding-bottom: 45px;
+
+	color: $dark-section-black;
+	letter-spacing: 2px;
+}
+
+.h-column::after {
+	content: "";
+    display: inline-block;
+    width: 70px;
+    height: 10px;
+    background: $primary;
+    position: absolute;
+    left: 50%;
+	bottom: 0;
+	margin-left: -35px;
+}
+
+.h-column-alternative::after {
+	width: 290px;
+	left: 40%;
+}
+
+.h-resize {
+	font-size: 25px;
+}
+
+.dark-section {
+	color: white;
+	background-color: $dark-section-black;
+}
+
+/* ENDS MAIN SCREEN CSS */
