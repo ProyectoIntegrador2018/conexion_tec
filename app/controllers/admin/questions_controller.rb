@@ -14,6 +14,7 @@ class Admin::QuestionsController < Admin::BaseController
 		if @question.save
 			redirect_to admin_questions_path
 		else
+			puts("Errors: #{@question.errors.full_messages}")
 			render :new
 		end
 	end

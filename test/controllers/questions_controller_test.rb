@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class QuestionsControllerTest < ActionDispatch::IntegrationTest
+
   setup do
+    @category = Category.create
     @question = questions(:one)
+    @question.category = @category
+    @question.save
   end
 
   test "should get index" do
@@ -16,8 +20,10 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create question" do
+    login_admin(users(:admin), login-admin_url)
+    @category_create = Category.create
     assert_difference('Question.count') do
-      post questions_url, params: { question: { name: @question.name, scale: @question.scale, text: @question.text } }
+      post admin_questions_new_path, params: { question: { title: @question.title, text: @question.text, category: @category_create } }
     end
 
     assert_redirected_to question_url(Question.last)
@@ -34,7 +40,8 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update question" do
-    patch question_url(@question), params: { question: { name: @question.name, scale: @question.scale, text: @question.text } }
+    @category = Category.create
+    patch question_url(@question), params: { question: { title: @question.title, text: @question.text, category: Category.create } }
     assert_redirected_to question_url(@question)
   end
 
@@ -42,7 +49,6 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Question.count', -1) do
       delete question_url(@question)
     end
-
     assert_redirected_to questions_url
   end
 end

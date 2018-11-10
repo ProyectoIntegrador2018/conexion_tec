@@ -11,6 +11,7 @@ judge:
   role: 'judge'
 
 project:
+  name: 'project'
   email: project@project.com
   salt: CjfU58N5fhsib9NyX6Z3
   crypted_password: '$2a$10$8uCZ9wCTsFoqa0aIfpssne4qtchcpqhepdU5WylZwh4GBAkgFWEYe'
