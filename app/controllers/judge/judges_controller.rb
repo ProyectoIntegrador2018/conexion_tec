@@ -30,6 +30,6 @@ class Judge::JudgesController < Judge::BaseController
 		def judge_params
 			params.require(:user).permit(
 				:id, :email, :password, :password_confirmation, :role, 
-				judge_attributes: [:id, :name, :department, :has_tablet,expertise_area_ids: []])
+				judge_attributes: [:id, :name, :department, :has_tablet, expertise_area_ids: []])
 		end
 end

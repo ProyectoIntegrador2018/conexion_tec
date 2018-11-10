@@ -11,7 +11,7 @@ class JudgeSessionsController < ApplicationController
     		      redirect_to judge_profile_path
             else
               flash[:danger] = "No tienes los permisos para entrar a esta ruta"
-              redirect_to root
+              redirect_to root_path
             end
     	else
     		flash[:danger] = "Usuario o contraseña incorrectos"

@@ -1,0 +1,119 @@
+<% provide(:title, 'Asignar proyectos') %>
+
+<div class="row mt-4">
+	<div class="col">
+		<h1>
+			<%= @judge.name %>
+		</h1>
+	</div>
+</div>
+
+<div class="row mt-4">
+	<div class="col-12 col-sm-3">
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Area de Expertise</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @judge.expertise_areas.each_with_index do |e, index| %>
+					<tr>
+						<th scope="row"><%= index %></th>
+						<td><%= e.area %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-12 col-sm-9">
+		<%= form_for [:staff, @judge] do |f| %>
+			<div class="row">
+				<div class="col">
+					<h3>Recomendaciones</h3>
+				</div>
+				<div class="col text-right">
+					<%= f.submit "Guardar", class: "btn btn-primary" %>
+				</div>
+			</div>
+								
+			<div>
+				<table class="table table-hover table-sm text-center" id="recommendations">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">Nombre</th>
+							<th scope="col">Area Temática</th>
+							<th scope="col">Cliente</th>
+							<th scope="col">Profesor</th>
+							<th scope="col">Categoría</th>
+							<th scope="col">Tipo</th>
+							<th scope="col">Quitar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @recommended_projects.each_with_index do |p, index| %>
+							<%= f.hidden_field :project_ids, value: p.id, multiple: true, id: 'form-' + p.id.to_s %>
+									
+							<tr id="recommend-<%= p.id %>" >
+								<td><%= p.name %></th>
+								<td><%= p.field %></td>
+								<td><%= p.client %></td>
+								<td><%= p.professor.name %></td>
+								<td><%= p.category.name %></td>
+								<td><%= p.expertise_area.area %></td>
+								<td>
+									<%= button_tag type: 'button', 
+										class: "btn btn-danger js-remove" do %>
+										<i class="fa fa-trash"></i>
+								    <% end %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<div class="row mt-4">
+	<div class="col">
+		<div class="text-center">
+			<h3>Lista de Proyectos</h3>	
+		</div>
+		<div>
+			<table class="table table-hover text-center" id="all_projects">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Nombre</th>
+						<th scope="col">Area Temática</th>
+						<th scope="col">Cliente</th>
+						<th scope="col">Profesor</th>
+						<th scope="col">Categoría</th>
+						<th scope="col">Tipo</th>
+						<th scope="col">Agregar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @projects.each do |p| %>
+						<tr id="all-<%= p.id %>">
+							<td><%= p.name %></th>
+							<td><%= p.field %></td>
+							<td><%= p.client %></td>
+							<td><%= p.professor.name %></td>
+							<td><%= p.category.name %></td>
+							<td><%= p.expertise_area.area %></td>
+							<td>
+								<%= button_tag type: 'button', 
+									class: "btn btn-success js-add" do %>
+									<%= fa_icon 'check' %>
+							    <% end %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

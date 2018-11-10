@@ -1,0 +1,25 @@
+<h1>Estadistícas de las áreas de expertise de los jueces</h1>
+
+<%= pie_chart Judge.joins(:expertise_areas).group("expertise_areas.area").count %>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Nombre del juez</th>
+			<th scope="col">Áreas de expertise</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @judges.each do |judge| %>
+		<tr scope="row">
+			<td><%= judge.name %></td>
+			<td>
+			<% judge.expertise_areas.each do |expertise_area| %>
+				<%= expertise_area.area %>
+				<br>
+			<% end %>
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -35,6 +35,12 @@ gem 'sorcery', '~> 0.12.0'
 # user authorization 
 gem 'cancancan', '~> 2.0'
 
+# Graphics
+gem "chartkick"
+
+# font-awesome
+gem 'font-awesome-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -49,6 +55,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem "factory_bot_rails"
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'  
+  gem "rails-erd"
 end
 
 group :test do

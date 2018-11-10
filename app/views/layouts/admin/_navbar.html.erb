@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <%= link_to 'Conexión Tec', root_path, class: 'navbar-brand' %>
+  <%= link_to 'Conexión Tec', admin_profile_path, class: 'navbar-brand' %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMenu" aria-controls="navbarTogglerMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,13 +11,25 @@
         <%= link_to "Proyectos", admin_projects_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Jueces", '#', class: "nav-link" %>
+        <%= link_to "Jueces", admin_judges_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Evaluaciones", admin_evaluations_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to "Questions", admin_questions_path, class:"nav-link"%>
       </li>
       <li class="nav-item">
         <%= link_to "Configuración", '#', class: "nav-link" %>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Estadísticas</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<%=admin_statistics_projects_category_path%>">Categorias de proyectos</a>
+            <a class="dropdown-item" href="<%=admin_statistics_judges_expertise_areas_path %>">Áreas de expertise de jueces</a>
+            <a class="dropdown-item" href="<%= admin_statistics_projects_score_path%>">Calificaciones de los proyectos</a>
+            <a class="dropdown-item" href="<%= admin_statistics_projects_score_category_path%>">Calificaciones por categoría</a>
+          </div>
       </li>
     </ul>
     <div class="nav-item dropdown">

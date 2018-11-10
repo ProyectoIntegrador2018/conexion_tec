@@ -1,0 +1,30 @@
+<% provide(:title, 'Jueces sin proyectos') %>
+
+<div class="row">
+	<div class="col">
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Departamento</th>
+					<th scope="col">Tableta?</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @judges.each_with_index do |j, index| %>
+					<tr>
+						<th scope="row"><%= index %></th>
+						<td><%= j.name %></td>
+						<td><%= j.department %></td>
+						<td><%= if j.has_tablet then "Si" else "No" end %></td>
+						<td>
+							<%= link_to "Asignar proyectos", staff_judge_path(j), class: "btn btn-primary text-white" %>
+						</td>	
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Judges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Department</th>
+      <th>Has Tablet</th>
+      <th>Expertise Area</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @judges.each do |judge| %>   
+      <tr>
+        <td><%= judge.name %></td>
+        <td><%= judge.department %></td>
+        <td><%= judge.has_tablet %></td>
+        <td>
+            <% judge.expertise_areas.each do | ea | %>
+                <%= ea.area%>
+            <%end%>
+        </td>
+        <td><%= link_to 'Delete', admin_judge_path(judge.id), method: :delete, data: {confirm: "Seguro que deseas borrar el juez #{judge.name}?"}  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

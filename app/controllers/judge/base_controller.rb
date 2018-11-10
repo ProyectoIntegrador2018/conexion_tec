@@ -7,7 +7,7 @@ class Judge::BaseController < ActionController::Base
 	helper_method :current_judge
 
 	def current_judge
-		@judge ||= current_user.judge
+		@current_judge ||= current_user.judge
 	end
 
 	def require_judge
