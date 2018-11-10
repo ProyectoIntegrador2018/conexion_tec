@@ -57,6 +57,7 @@ group :development do
   gem 'sqlite3'
   gem "factory_bot_rails"
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'  
+  gem "rails-erd"
 end
 
 group :test do
