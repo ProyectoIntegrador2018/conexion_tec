@@ -2,7 +2,7 @@ class Judge::ProjectsController < Judge::BaseController
     before_action :get_projects, only: [:index]
 
     def index
-        @projects = Project.all
+        @projects = current_judge.projects
     end
 
     private
