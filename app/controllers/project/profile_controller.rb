@@ -12,10 +12,13 @@ class Project::ProfileController < Project::BaseController
   def update
     students_params = params[:user][:project_attributes][:students]
     count = 0
-    students_params.each do |key, params|
-      puts("Param: #{params}")
-      @user.project.students[count].update_attributes(student_params(params))
-      count += 1
+    if students_params
+      students_params.each do |key, params|
+        puts("Param: #{params}")
+        @user.project.students[count].update_attributes(student_params(params))
+        count += 1
+      end
+      params[:user][:project_attributes][:students].delete(:students)
     end
     if @user.update_attributes(project_params)
       flash[:success] = "Información del proyecto actualizada"
