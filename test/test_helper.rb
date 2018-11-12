@@ -4,8 +4,7 @@ require 'rails/test_help'
 require 'capybara/rails'
 
 class ActiveSupport::TestCase
-	include Sorcery::TestHelpers::Rails::Integration
-	include Sorcery::Controller
+  include Sorcery::TestHelpers::Rails
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
   # Add more helper methods to be used by all tests here...
