@@ -2,7 +2,6 @@ class Judge::JudgesController < Judge::BaseController
 	before_action :set_judge, only: [:show, :edit, :update, :destroy]
 
 	def show
-		print("Show en judges_controller")
 		@judge = Judge.find(params[:id])
 	end
 

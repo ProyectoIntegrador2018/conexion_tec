@@ -16,7 +16,7 @@
   <tbody>
     <% @evaluations.each do |evaluation| %>   
       <tr>
-        <td><%= evaluation.project.kind.name %></td>
+        <td><%= evaluation.project.expertise_area.area %></td>
         <td><%= evaluation.project.name %></td>
         <td><%= evaluation.judge.name %></td>
         <td><%= evaluation.total %> </td>

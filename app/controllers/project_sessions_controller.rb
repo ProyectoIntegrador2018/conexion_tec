@@ -10,7 +10,7 @@ class ProjectSessionsController < ApplicationController
 			redirect_to project_profile_path     
 			# Handle a successful save.
         else
-			flash.now[:danger] = 'Invalid credentials'
+			flash.now[:danger] = 'Contraseña y/o email incorrecto'
             render 'new'
         end
     end
