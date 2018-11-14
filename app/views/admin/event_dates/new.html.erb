@@ -1,0 +1,15 @@
+<div class="container">	
+	<%= form_for @date, url: "#" do |f| %>
+		<div class="row">
+			<div class="col">
+				<%= f.label :event %>
+				<%= f.text_field :event, placeholder: "DD/MM/YYYY", :data => {:provide => 'datepicker', 'date-format': 'dd-mm-yyyy'}%>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<%= f.submit "Crear fecha", class: "btn btn-primary" %>
+			</div>
+		</div>
+	<% end %>
+</div>

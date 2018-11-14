@@ -38,6 +38,9 @@ gem 'cancancan', '~> 2.0'
 # Graphics
 gem "chartkick"
 
+# Datepicker
+gem 'bootstrap-datepicker-rails'
+
 # font-awesome
 gem 'font-awesome-rails'
 

@@ -66,6 +66,10 @@ Rails.application.routes.draw do
     get 'statistics/judges_expertise_areas', to: 'statistics#judges_expertise_areas'
     get 'statistics/projects_score', to: 'statistics#projects_score'
     get 'statistics/projects_score_category', to: 'statistics#projects_score_category'
+    get 'event_dates', to: 'event_dates#index'
+    get 'event_dates/new', to: "event_dates#new"
+    post 'event_dates/new', to: "event_dates#create"
+    delete 'event_dates/:id', to: "event_dates#destroy", as: :event_dates_destroy
   end
 
   namespace :monitor do
