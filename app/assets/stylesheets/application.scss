@@ -1,15 +1,7 @@
-/* override bootstrap colors */
 
-$danger: #c94645;
-$primary: #0eae9b;
-
-/* ends override bootstrap colors */
-
-$dark-section-black: #333;
-
+@import "colors";
 @import "bootstrap";
 @import "font-awesome";
-@import "main_screen";
 
 body {
 	min-height: 400px;
@@ -26,4 +18,11 @@ body {
 .bottom-padding {
 	margin-bottom: 300px;
 }
+
+.navbar {
+	box-shadow: 5px 2px 8px #888888;
+}
+
+@import "main_screen";
+@import "project/*";
 

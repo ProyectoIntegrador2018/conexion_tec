@@ -1,26 +1,116 @@
-<h1>Mi proyecto</h1>
+<% provide(:title, "Mi Proyecto") %>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th scope="col">Nombre del proyecto</th>
-			<th scope="col">Tipo del proyecto</th>
-			<th scope="col">Area del proyecto</th>
-			<th scope="col">Categoría del proyecto</th>
-			<th scope="col">Descripción</th>
-			<th scope="col">Abstract</th>
-			<th scope="3"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr scope="row">
-			<td><%= @project.name %></td>
-			<td><%= @project.expertise_area.area %></td>
-			<td><%= @project.field %></td>
-			<td><%= @project.category.name %></td>
-			<td><%= @project.description %></td>
-			<td><%= @project.abstract %></td>
-			<td><%= link_to 'Edit', project_profile_edit_path(@project)%></td>
-		</tr>
-	</tbody>
-</table>
+<div class="row lower-border my-4">
+	<div class="col">
+		<h1><%= @project.name %></h1>
+	</div>
+	<div class="col text-right">
+		<%= link_to 'Edit', project_profile_edit_path(@project), class: "btn btn-primary" %>
+	</div>
+</div>
+
+<%= form_for @project, url: project_profile_path do |f| %>	
+<div class="row">
+	<div class="col col-sm-12 col-md-6">	
+		<div>
+			<h3>Información general</h3>
+		</div>	
+		<div class="row">
+	        <div class="col">
+	            <div class="form-group">
+	                <%= f.label :status %>
+	                <%= f.text_field :status, class: "form-control", readonly: true %>
+	            </div>
+	        </div>
+        </div>      
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<%= f.label :category_id, "Categoría del proyecto" %>
+					<%= f.select :category_id, options_for_select(Category.all.collect{ |p| [p.name, p.id] } ), {}, class: "form-control", disabled: true %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<%= f.label :field, "Área temática" %>
+					<%= f.select :field, Project.fields.keys.to_a, {}, class: "form-control", 
+						disabled: true %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<%= f.label :expertise_area_id, "Tipo de proyecto" %>
+					<%= f.select :expertise_area_id, 
+						options_for_select(ExpertiseArea.all.collect{ |p| [p.area, p.id] } ), 
+	                  	{}, class: "form-control", disabled: true %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<%= f.label :client, "Cliente" %>
+					<%= f.select :client, Project.clients.keys.to_a, {}, class: "form-control", 
+						disabled: true %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<%= f.label :description, "Descripción del proyecto" %>
+					<%= f.text_area :description, rows: 2,class: "form-control", disabled: true %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<%= f.label :abstract,"Abstract" %>
+					<%= f.text_area :abstract, rows: 4,class: "form-control", disabled: true %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col col-sm-12 col-md-6">
+		<div class="row">
+			<div class="col">
+				<div>
+					<h3>Información del equipo</h3>
+				</div>
+				<% f.fields_for :students, @project.students do |j|  %>
+					<div class="form-group">
+						<%= j.label :name, "Nombre" %>
+						<%= j.text_field :name, class: "form-control", disabled: true %>
+						<%= j.label :enrollment, "Matrícula" %>
+						<%= j.email_field :enrollment, class: "form-control", disabled: true %>
+						<%= j.label :email, "Correo electrónico" %>
+						<%= j.email_field :email, class: "form-control", disabled: true %>
+						<%= j.label :major, "Carrera" %>
+						<%= j.email_field :major, class: "form-control", disabled: true %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+		<div class="row">
+	        <div class="col">
+	        	<div>
+	        		<h3>Información del profesor coordinador</h3>
+	        	</div>
+		        <div class="form-group">
+		          <%= f.label :professor_id, "Profesor" %>
+		          <%= f.select :professor_id, 
+		                options_for_select(Professor.all.collect{ |p| [p.name, p.id] } ), 
+		                {}, class: "form-control", disabled: true %>
+		        </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+<% end %>
+
+
