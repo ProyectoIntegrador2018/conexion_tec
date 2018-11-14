@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
       student.project = @user.project
       student.save
     end
+    @user.project.event_date = EventDate.first
     if @user.save
       flash[:success] = "Proyecto creado exitosamente!"
 	  auto_login(@user)

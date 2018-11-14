@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_144743) do
+ActiveRecord::Schema.define(version: 2018_11_14_215919) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -42,8 +42,6 @@ ActiveRecord::Schema.define(version: 2018_11_13_144743) do
     t.date "event"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "project_id"
-    t.index ["project_id"], name: "index_event_dates_on_project_id"
   end
 
   create_table "expertise_areas", force: :cascade do |t|
@@ -99,7 +97,9 @@ ActiveRecord::Schema.define(version: 2018_11_13_144743) do
     t.integer "expertise_area_id"
     t.integer "num_evaluations", default: 0
     t.integer "num_assignments", default: 0
+    t.integer "event_date_id"
     t.index ["category_id"], name: "index_projects_on_category_id"
+    t.index ["event_date_id"], name: "index_projects_on_event_date_id"
     t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
     t.index ["professor_id"], name: "index_projects_on_professor_id"
     t.index ["user_id"], name: "index_projects_on_user_id"

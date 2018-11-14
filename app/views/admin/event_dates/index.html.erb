@@ -11,8 +11,10 @@
 		<tbody>
 			<% @dates.each do |date| %>
 				<tr scope="row">
+					<% if date.event %>
 					<td><%= date.event.strftime("%B %d, %Y") %></td>
 					<td><%= link_to "Borrar fecha", admin_event_dates_destroy_path(date.id), method: :delete, data: { confirm: 'Estas seguro que deseas borrar la fecha?'} %></td> 
+					<% end %>
 				</tr>
 			<% end %>
 		</tbody>

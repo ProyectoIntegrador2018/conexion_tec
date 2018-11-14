@@ -9,6 +9,7 @@
 			<th scope="col">Categoría del proyecto</th>
 			<th scope="col">Descripción</th>
 			<th scope="col">Abstract</th>
+			<th scope="col">Fecha</th>
 			<th scope="3"></th>
 		</tr>
 	</thead>
@@ -20,6 +21,13 @@
 			<td><%= @project.category.name %></td>
 			<td><%= @project.description %></td>
 			<td><%= @project.abstract %></td>
+        	<td>
+          	<% if !@project.event_date.event %>
+            	<p> Sin fecha asignada </p>
+          	<% else %>
+            	<%= @project.event_date.event %>
+          	<% end %>
+        	</td>
 			<td><%= link_to 'Edit', project_profile_edit_path(@project)%></td>
 		</tr>
 	</tbody>

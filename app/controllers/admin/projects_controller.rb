@@ -46,7 +46,7 @@ class Admin::ProjectsController < Admin::BaseController
 		def project_params
 			params.require(:user).permit(
 				:id, :email, :password, :password_confirmation, :role, 
-				project_attributes: [:id, :name, :field, :professor_id, :expertise_area_id, :client, :abstract, :video_url, :status, :score, :reason])
+				project_attributes: [:id, :name, :field, :professor_id, :expertise_area_id, :client, :abstract, :video_url, :status, :score, :reason, :event_date_id])
 		end
 
 end
