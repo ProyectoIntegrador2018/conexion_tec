@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="form-group">
-						<%= j.label :nombre_del_proyecto %>
+						<%= j.label :name, "Nombre del proyecto" %>
 						<%= j.text_field :name, class: "form-control" %>
 					</div>
 				</div>
@@ -51,7 +51,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="form-group">
-						<%= j.label :cliente_del_proyecto %>
+						<%= j.label :client, "Cliente" %>
 						<%= j.select :client, Project.clients.keys.to_a, {}, class: "form-control" %>
 					</div>
 				</div>
@@ -59,7 +59,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="form-group">
-						<%= j.label :descripción_del_proyecto %>
+						<%= j.label :description, "Descripción" %>
 						<%= j.text_area :description, rows: 2,class: "form-control" %>
 					</div>
 				</div>
@@ -67,7 +67,7 @@
 			<div class="row">
 				<div class="col">
 					<div class="form-group">
-						<%= j.label :abstract %>
+						<%= j.label :abstract, "Abstract" %>
 						<%= j.text_area :abstract, rows: 4,class: "form-control" %>
 					</div>
 				</div>
@@ -102,7 +102,7 @@
 
 			<br>
 			<h3>Información del equipo</h3>
-			<%= f.label :agregar_estudiante %>
+			<%= f.label :add_student %>
 			<%= button_tag "Agregar estudiante", type: "button", id: "add_student" %>
 			<div class="row">
 				<div class="col">
