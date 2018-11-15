@@ -5,6 +5,11 @@ class Admin::StatisticsController < Admin::BaseController
 	end
 
 	def judges_expertise_areas
+		@initial = Judge.joins(:expertise_areas).group(:judge_id).count
+		@judges = []
+		@initial.each do |id,v|
+			@judges << { judge: Judge.find(id), count: v }
+		end
 		@judges = Judge.joins(:expertise_areas).group(:judge_id).order("expertise_areas.area")
 	end
 
