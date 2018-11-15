@@ -11,7 +11,7 @@ class Project < ApplicationRecord
 	belongs_to :expertise_area
 	has_one :professor
 	belongs_to :category
-	has_one :event_date
+	belongs_to :event_date
 	accepts_nested_attributes_for :user
 	accepts_nested_attributes_for :students
 	accepts_nested_attributes_for :professor
