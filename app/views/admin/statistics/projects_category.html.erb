@@ -2,7 +2,7 @@
 
 <%= pie_chart Project.joins(:category).group('categories.name').count %>
 
-<table class="table">
+<table class="table table-responsive">
 	<thead>
 		<tr>
 			<th scope="col">Nombre del proyecto</th>

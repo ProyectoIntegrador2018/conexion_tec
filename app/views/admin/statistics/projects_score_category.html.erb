@@ -2,7 +2,7 @@
 
 <%= column_chart Project.joins(:category).group("categories.name").average(:score) %>
 
-<table class="table">
+<table class="table table-responsive">
 	<thead>
 		<tr>
 			<th scope="col">Categoría del proyecto</th>

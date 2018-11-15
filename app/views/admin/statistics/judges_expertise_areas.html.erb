@@ -2,7 +2,7 @@
 
 <%= pie_chart Judge.joins(:expertise_areas).group("expertise_areas.area").count %>
 
-<table class="table">
+<table class="table table-responsive">
 	<thead>
 		<tr>
 			<th scope="col">Nombre del juez</th>
