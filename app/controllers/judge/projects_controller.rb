@@ -2,7 +2,7 @@ class Judge::ProjectsController < Judge::BaseController
     before_action :get_projects, only: [:index]
 
     def index
-        @projects = current_judge.projects.group(:project_id)
+        @projects = current_judge.projects.distinct
     end
 
     private
