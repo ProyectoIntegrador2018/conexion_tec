@@ -38,6 +38,7 @@ class ProjectsController < ApplicationController
         :id, :email, :password, :password_confirmation, :role, 
         project_attributes: [:id, :name, :field, :expertise_area_id, :client, 
         :abstract, :video_url, :status, :description, :category_id,
+        students: [:name, :major, :enrollment, :email], 
         professor_attributes: [:id, :name, :department, :course_code]])
     end
 end
