@@ -13,6 +13,7 @@
  *= require_self
  *= require bootstrap-datepicker
  */
+
 /* override bootstrap colors */
 
 $danger: #c94645;
@@ -44,43 +45,6 @@ body {
 	box-shadow: 5px 2px 8px #888888;
 }
 
-.h-column {
-	text-transform: uppercase;
-	font-size: 40px;
-	line-height: 1;
-	font-weight: 500;
-	position: relative;
-	padding-bottom: 45px;
-
-	color: $dark-section-black;
-	letter-spacing: 2px;
-}
-
-.h-column::after {
-	content: "";
-    display: inline-block;
-    width: 70px;
-    height: 10px;
-    background: $primary;
-    position: absolute;
-    left: 50%;
-	bottom: 0;
-	margin-left: -35px;
-}
-
-.h-column-alternative::after {
-	width: 290px;
-	left: 40%;
-}
-
-.h-resize {
-	font-size: 25px;
-}
-
-.dark-section {
-	color: white;
-	background-color: $dark-section-black;
-}
 /* ENDS MAIN SCREEN CSS */
 @import "main_screen";
 @import "project/*";
