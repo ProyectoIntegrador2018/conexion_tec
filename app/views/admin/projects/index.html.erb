@@ -14,6 +14,7 @@
       <th scope="col">Video URL</th>
       <th scope="col">Estatus</th>
       <th scope="col">Fecha</th>
+      <th scope="col">Stand</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -34,6 +35,13 @@
             <p> Sin fecha asignada </p>
           <% else %>
             <%= project.event_date.event %>
+          <% end %>
+        </td>
+        <td>
+          <% if !project.stand %>
+            <p> Sin stand asignado </p>
+          <% else %>
+            <%= project.stand %>
           <% end %>
         </td>
         <td><%= link_to 'Edit', edit_admin_project_path(project) %></td>

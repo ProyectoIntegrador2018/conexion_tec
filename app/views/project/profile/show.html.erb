@@ -82,8 +82,20 @@
 					<% if !@project.event_date.event %>
 						<%= f.text_field :event_date, value: "Sin fecha asignada", class: "form-control", disabled: true %>
           			<% else %>
-          				<%= f.text_field :event_date, class: "form-control", disable:true %>
+          				<%= f.text_field :event_date, value: @project.event_date.event, class: "form-control", disabled:true %>
           			<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<%= f.label :stand %>
+					<% if !@project.stand %>
+            			<%= f.text_field :stand, value: "Sin stand asignado", class: "form-control", disabled:true %>
+          			<% else %>
+            			<%= f.text_field :stand, class: "form-control", disabled:true %>
+          		<% end %>
 				</div>
 			</div>
 		</div>

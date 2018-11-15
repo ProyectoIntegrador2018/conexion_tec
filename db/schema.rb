@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_14_225028) do
+ActiveRecord::Schema.define(version: 2018_11_15_061939) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2018_11_14_225028) do
     t.integer "num_evaluations", default: 0
     t.integer "num_assignments", default: 0
     t.integer "event_date_id"
+    t.string "stand"
     t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["event_date_id"], name: "index_projects_on_event_date_id"
     t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
