@@ -41,4 +41,8 @@ class ProjectsController < ApplicationController
         students: [:name, :major, :enrollment, :email], 
         professor_attributes: [:id, :name, :department, :course_code]])
     end
+
+    def student_params(s_p)
+      s_p.permit(:name, :major, :enrollment, :email)
+    end
 end
