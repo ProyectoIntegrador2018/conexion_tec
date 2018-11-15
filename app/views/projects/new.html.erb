@@ -1,3 +1,5 @@
+<% provide(:title, "Registro de Proyecto") %>
+
 <div class="container">
 
 	<br>
@@ -118,16 +120,32 @@
 			<h3>Información del profesor coordinador</h3>
 			<br>
 
-			<div class="row">
-		        <div class="col">
-		          <div class="form-group">
-		            <%= j.label :professor_id, "Profesor" %>
-		            <%= j.select :professor_id, 
-		                  options_for_select(Professor.all.collect{ |p| [p.name, p.id] } ), 
-		                  {}, class: "form-control" %>
-		          </div>
-		        </div>
-		    </div>
+			<%= j.fields_for :professor, @user.project.build_professor do |p| %>
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<%= p.label :name, "Nombre del profesor" %>
+							<%= p.text_field :name, class: 'form-control' %> 
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<%= p.label :department, "Departamento" %>
+							<%= p.select :department, Professor.departments.keys.to_a, {}, class: 'form-control' %> 
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="form-group">
+							<%= p.label :course_code, "Clave de Materia" %>
+							<%= p.text_field :course_code, class: 'form-control' %> 
+						</div>
+					</div>
+				</div>
+			<% end %>
 			<div class="row">
 				<div class="col">
 					<%= f.submit "Crear proyecto", class: "btn btn-primary" %>
