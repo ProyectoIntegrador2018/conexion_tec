@@ -94,17 +94,51 @@
 				<div>
 					<h3>Información del equipo</h3>
 				</div>
-				<% f.fields_for :students, @project.students do |j|  %>
-					<div class="form-group">
-						<%= j.label :name, "Nombre" %>
-						<%= j.text_field :name, class: "form-control", disabled: true %>
-						<%= j.label :enrollment, "Matrícula" %>
-						<%= j.email_field :enrollment, class: "form-control", disabled: true %>
-						<%= j.label :email, "Correo electrónico" %>
-						<%= j.email_field :email, class: "form-control", disabled: true %>
-						<%= j.label :major, "Carrera" %>
-						<%= j.email_field :major, class: "form-control", disabled: true %>
-					</div>
+				<% @project.students.each_with_index do |student, index| %>
+					<%= f.fields_for 'students[]', student do |s| %>
+						<% if index < @project.students.count - 1 %>
+							<div class="lower-border pb-4 my-4">
+						<% else %>
+							<div>
+						<% end %>
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<%= s.label :name, "Nombre" %>
+									<%= s.text_field :name, class: "form-control",
+									disabled: true %>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<%= s.label :email, "Correo" %>
+									<%= s.text_field :email, class: "form-control",
+									disabled: true %>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<%= s.label :enrollment, "Matrícula" %>
+									<%= s.text_field :enrollment, class: "form-control",
+									disabled: true %>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<%= s.label :major, "Carrera" %>
+									<%= s.text_field :major, class: "form-control",
+									disabled: true %>
+								</div>
+							</div>
+						</div>
+						</div>
+					<% end %>
 				<% end %>
 			</div>
 		</div>
@@ -113,12 +147,35 @@
 	        	<div>
 	        		<h3>Información del profesor coordinador</h3>
 	        	</div>
-		        <div class="form-group">
-		          <%= f.label :professor_id, "Profesor" %>
-		          <%= f.select :professor_id, 
-		                options_for_select(Professor.all.collect{ |p| [p.name, p.id] } ), 
-		                {}, class: "form-control", disabled: true %>
-		        </div>
+		        <%= f.fields_for :professor, @project.professor do |p| %>
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<%= p.label :name, "Nombre del profesor" %>
+								<%= p.text_field :name, class: 'form-control', 
+									disabled: true %> 
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<%= p.label :department, "Departamento" %>
+								<%= p.select :department, Professor.departments.keys.to_a, 
+									{}, class: 'form-control', disabled: true %> 
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<%= p.label :course_code, "Clave de Materia" %>
+								<%= p.text_field :course_code, class: 'form-control',
+									disabled: true %> 
+							</div>
+						</div>
+					</div>
+				<% end %>
 	        </div>
 	    </div>
 	</div>
