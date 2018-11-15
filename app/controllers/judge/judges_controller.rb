@@ -13,7 +13,7 @@ class Judge::JudgesController < Judge::BaseController
 			if @user.save
 				print("User information updated")
 				flash[:success] = "Información del juez actualizada"
-				redirect_to judge_profile_path
+				redirect_to judge_judge_path(@user.judge.id)
 			else
 				render "edit"
 			end
