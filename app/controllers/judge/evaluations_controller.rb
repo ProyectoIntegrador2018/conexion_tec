@@ -51,6 +51,7 @@ class Judge::EvaluationsController < Judge::BaseController
 		@evaluation.save
 		@project.save
 		flash[:success] = "Evaluación del proyecto realizada"
+		redirect_to judge_projects_path
 	end
 
 end
