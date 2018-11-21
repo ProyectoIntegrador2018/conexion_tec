@@ -45,12 +45,4 @@ Category.create(name: "Categoria 2")
 Category.create(name: "Categoria 3")
 Category.create(name: "Categoria 4")
 
-second_user = User.create(
-	email: "proyecto1@proyecto.com", 
-	password: "password", 
-	password_confirmation: "password", 
-	role: "project",
-	project: Project.create(name: "Name", field: 1, expertise_area_id: 1, 
-		abstract: "asd", video_url: "asd.com", client: 1, 
-		professor: first_professor, category: Category.first)
-	)
+EventDate.create(event: nil)

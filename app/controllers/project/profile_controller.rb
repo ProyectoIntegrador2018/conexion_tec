@@ -38,9 +38,9 @@ class Project::ProfileController < Project::BaseController
     def project_params
       params.require(:user).permit(
         :id, :email, :password, :password_confirmation, :role, 
-        project_attributes: [:id, :name, :field, :professor_id, :expertise_area_id, 
-          :client, :abstract, :video_url, :status, :reason], 
-          students: [:id, :name, :major, :enrollment, :email ])
+        project_attributes: [:id, :name, :field, :expertise_area_id, :client, 
+        :abstract, :video_url, :status, :reason, :description, :category_id,
+        professor_attributes: [:id, :name, :department, :course_code]])
     end
 
     def student_params(s_p)

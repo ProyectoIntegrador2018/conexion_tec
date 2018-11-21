@@ -1,25 +1,31 @@
-<p id="notice"><%= notice %></p>
-<p>
-	<table>
-		<thead>
-			<tr>
-				<th>Title</th>
-				<th>Text</th>
-				<th>Category</th>
-			</tr>
-		</thead>
+<% provide(:title, "Preguntas") %>
 
-		<tbody>
-			<% @questions.each do |question| %>
-			<tr>
-				<td><%= question.title %></td>
-				<td><%= question.text %></td>
-				<td><%= question.category.name %></td>
-				<td><%= link_to 'Edit', edit_admin_question_path(question.id) %></td>
-				<td><%= link_to 'Delete', admin_question_path(question.id), method: :delete, data: {confirm: "Seguro que deseas borrar la pregunta#{question.title}?"} %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
-	<%= button_to "Agregar pregunta", admin_questions_new_path, class: "btn btn-primary btn-block text-white", method: :get%> 
-</p>
+<% @questions.each_with_index do |question, index| %>
+  <%= form_for question, url: questions_path do |q| %>
+    <div class="mt-4">
+      <h4>Pregunta #<%= index + 1 %></h4>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <div class="form-group">
+          <%= q.label :title, "Pregunta" %>
+          <%= q.text_field :title, class: "form-control", disabled: true %>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="form-group">
+          <%= q.label :text, "Descripción" %>
+          <%= q.text_field :text, class: "form-control", disabled: true %>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="form-group">
+          <%= q.label :category_id, "Categoría" %>
+          <%= q.text_field :category_id, value: question.category.name, class: "form-control", disabled: true %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>	
+
+<%= button_to "Agregar pregunta", admin_questions_new_path, class: "btn btn-primary btn-block text-white", method: :get%> 

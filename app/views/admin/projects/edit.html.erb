@@ -65,27 +65,6 @@
           </div>
         </div>
       </div>
-
-      <% if @user.project.status == "Aprobado" %>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <%= j.label :video_url %>
-              <%= j.text_field :video_url, class: "form-control" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <%= j.label :professor %>
-            <%= j.select :professor_id, 
-                  options_for_select(Professor.all.collect{ |p| [p.name, p.id] } ), 
-                  {}, class: "form-control" %>
-          </div>
-        </div>
-      </div>
         <div class="row">
           <div class="col">
             <div class="form-group">
@@ -94,7 +73,6 @@
             </div>
           </div>
         </div>
-
         <div id="scoreDiv" style="display:none">
           <div class="row">
             <div class="col">
@@ -106,12 +84,26 @@
           </div>
         </div>
 
-        <div id="rejectedDiv" style="display:none">
-          <div class="row">
-            <div class="col">
-              <%= j.label :reason, class: "score-field"%>
-              <%= j.text_field :reason, class: "score-field"%>
+      <div id="rejectedDiv" style="display:none">
+        <div class="row">
+          <div class="col">
+            <%= j.label :reason, class: "score-field"%>
+            <%= j.text_field :reason, class: "score-field"%>
+          </div>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <%= j.label :event_date %>
+              <%= j.select :event_date_id, options_for_select(EventDate.all.collect { |p| [p.event, p.id] }, :selected =>  @user.project.event_date_id ), {}, class: "form-control" %>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <%= j.label :stand, class: "score-field"%>
+            <%= j.text_field :stand, class: "score-field" %>
           </div>
         </div>
           <div class="mt-3">

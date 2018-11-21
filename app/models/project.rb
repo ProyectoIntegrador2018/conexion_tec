@@ -9,10 +9,12 @@ class Project < ApplicationRecord
 	validates :status, presence: true
 	has_many :students
 	belongs_to :expertise_area
-	belongs_to :professor
+	has_one :professor
 	belongs_to :category
+	belongs_to :event_date
 	accepts_nested_attributes_for :user
 	accepts_nested_attributes_for :students
+	accepts_nested_attributes_for :professor
 
 	has_many :evaluations
 	has_many :judges, through: :evaluations

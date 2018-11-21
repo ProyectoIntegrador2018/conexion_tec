@@ -1,38 +1,43 @@
-<div class="container">
-	<h1>New Question</h1>
-
-	<!-- <%#= render "errors" %> -->
+	<% provide(:title, "Crear una pregunta") %>
+  
+  <div class="row">
+    <div class="col">
+      <h1>Nueva Pregunta</h1>
+    </div>
+  </div>
 	<%= form_for @question, url: admin_questions_new_path do |q|  %>
 
-	<div class="row">
-		<div class="col">
-			<%= q.label :title %>
-			<%= q.text_field :title, class: "form-control" %>
-		</div>
-	</div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <%= q.label :title, "Pregunta" %>
+          <%= q.text_field :title, class: "form-control" %>
+        </div>
+      </div>
+    </div>
 
-	<div class="row">
-		<div class="col">
-			<%= q.label :text %>
-			<%= q.text_field :text, class: "form-control" %>
-		</div>
-	</div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <%= q.label :text, "Descripción" %>
+          <%= q.text_field :text, class: "form-control" %>
+        </div>
+      </div>
+    </div>
 
-	<div class="row">
-		<div clas="col">
-			<div class="form-group">
-				<%= q.label :category_id %>
-				<%= q.select :category_id, options_for_select(Category.all.collect { |p| [p.name, p.id]}), {}, class: "form-control" %>
-			</div>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col">
-			<%= q.submit "Crear pregunta", class: "btn btn-primary" %>
-		</div>
-	</div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <%= q.label :category_id, "Categoría" %>
+          <%= q.select :category_id, 
+              options_for_select(Category.all.collect { |p| [p.name, p.id]}), 
+              {}, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="row text-right">
+      <div class="col">
+        <%= q.submit "Crear pregunta", class: "btn btn-primary" %>
+      </div>
+    </div>
 	<% end %>
-
-
-</div>

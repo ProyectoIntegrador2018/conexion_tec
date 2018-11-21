@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_09_215240) do
+ActiveRecord::Schema.define(version: 2018_11_15_194623) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -18,11 +18,9 @@ ActiveRecord::Schema.define(version: 2018_11_09_215240) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "evaluation_questions", force: :cascade do |t|
-    t.integer "evaluation_id"
-    t.integer "question_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "evaluation_questions", id: false, force: :cascade do |t|
+    t.integer "evaluation_id", null: false
+    t.integer "question_id", null: false
     t.integer "result", default: 0
     t.index ["evaluation_id"], name: "index_evaluation_questions_on_evaluation_id"
     t.index ["question_id"], name: "index_evaluation_questions_on_question_id"
@@ -36,6 +34,12 @@ ActiveRecord::Schema.define(version: 2018_11_09_215240) do
     t.integer "judge_id"
     t.index ["judge_id"], name: "index_evaluations_on_judge_id"
     t.index ["project_id"], name: "index_evaluations_on_project_id"
+  end
+
+  create_table "event_dates", force: :cascade do |t|
+    t.date "event"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "expertise_areas", force: :cascade do |t|
@@ -69,6 +73,9 @@ ActiveRecord::Schema.define(version: 2018_11_09_215240) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "course_code"
+    t.boolean "semestre_i", default: false
+    t.integer "project_id"
+    t.index ["project_id"], name: "index_professors_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -81,19 +88,20 @@ ActiveRecord::Schema.define(version: 2018_11_09_215240) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "status", default: 0
-    t.integer "professor_id"
     t.decimal "score", default: "0.0"
-    t.string "reason", default: "No reason"
+    t.string "reason"
     t.boolean "assistance", default: false
     t.boolean "active", default: false
     t.integer "category_id"
-    t.string "description"
     t.integer "expertise_area_id"
     t.integer "num_evaluations", default: 0
     t.integer "num_assignments", default: 0
+    t.string "description"
+    t.integer "event_date_id"
+    t.string "stand"
     t.index ["category_id"], name: "index_projects_on_category_id"
+    t.index ["event_date_id"], name: "index_projects_on_event_date_id"
     t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
-    t.index ["professor_id"], name: "index_projects_on_professor_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 

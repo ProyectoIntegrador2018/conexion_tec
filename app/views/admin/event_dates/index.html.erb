@@ -1,0 +1,21 @@
+<h1>Fechas del evento</h1>
+
+<table class="table table-responsive">
+		<thead>
+			<tr>
+				<th scope="col">Fechas del evento</th>
+				<th scope="col" colspan="3"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @dates.each do |date| %>
+				<tr scope="row">
+					<% if date.event %>
+					<td><%= date.event.strftime("%B %d, %Y") %></td>
+					<td><%= link_to "Borrar fecha", admin_event_dates_destroy_path(date.id), method: :delete, data: { confirm: 'Estas seguro que deseas borrar la fecha?'} %></td> 
+					<% end %>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= button_to "Agregar fecha", admin_event_dates_new_path, class:"btn btn-primary btn-block text-white", method: :get %>
