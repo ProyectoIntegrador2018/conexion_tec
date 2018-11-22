@@ -5,7 +5,7 @@ Pasos para realizar el despliege
 ### Requisitos
 
 1. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-2. [Heroku CLI](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+2. [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 
 ## Descargar el repositorio
 
