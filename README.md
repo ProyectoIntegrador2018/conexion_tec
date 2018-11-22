@@ -44,7 +44,7 @@ You should ask for access to this tools if you don't have it already:
 
 * [Github repo](https://github.com/ProyectoIntegrador2018/conexion_tec)
 * [Backlog](https://github.com/ProyectoIntegrador2018/conexion_tec/projects/1) - Check Project inside this repository.
-* [Heroku](TBD) 
+* [Heroku](https://aqueous-beyond-94616.herokuapp.com) 
 * [Documentation](https://goo.gl/EyBjWj)
 
 ## Development
@@ -95,26 +95,11 @@ This means the project is up and running.
 
 In order to stop the project just hit Ctrl-C on the terminal where rails server is running.
 
-
-### Debugging
-
-Use raill default gem `debugger`. You just need to put the literal word `debugger` inside the any *.rb file.
-
-
 ### Running tests
 
 To run all tests, you can do:
 
 ```
-$ rails t 
+$ rspec 
 ```
-
-Or for a specific file:
-
-```
-$ rails t test/<view, controller,etc.>/<filename>
-```
-
-### Checking code for potential issues
-
-To format ruby code, the gem `rubocop` will be used. Check usage on their repository - [Rubocop](https://github.com/rubocop-hq/rubocop). 
+Currently we have 27 test ranging from unit test to integration test. We would like to increase the test coverate in the app as we believe that testing should be done automatically instead of doing it by hand.
