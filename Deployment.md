@@ -53,10 +53,18 @@ Dentro de tu terminal escribes el siguiente comando:
 ```
 $ heroku git:remote -a aqueous-beyond-94616
 ```
+Si te apareció el siguiente mensaje:
+```
+Error: You do not have access to the app aqueous-beyond-94616.
+```
+asegurate de solicitarnos acceso antes de continuar.
+
 Cuando estemos listo para realizar un nuevo deploy ejecutamos el comando:
 ```
 $ git push heroku
 ```
+
+
 Veremos el proceso de instalación automático de la aplicación en Heroku
 ```
 Counting objects: 816, done.
