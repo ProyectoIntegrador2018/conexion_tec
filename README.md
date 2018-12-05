@@ -1,5 +1,7 @@
 # Conexión Tec
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/48ba91edbd5eabbf4912/maintainability)](https://codeclimate.com/github/ProyectoIntegrador2018/conexion_tec/maintainability)
+
 Página web para el manejo del evento conexión tec.
 
 ## Table of contents
