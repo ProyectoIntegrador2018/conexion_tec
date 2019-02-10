@@ -30,7 +30,9 @@ Página web para el manejo del evento conexión tec.
 * **Production** - [localhost:5000](localhost:5000)
 * **Development** - [https://aqueous-beyond-94616.herokuapp.com/](https://aqueous-beyond-94616.herokuapp.com/)
 
-### Da team
+### Equipos de desarrollo
+
+**Gucci Gang - AGO - DIC 2018**
 
 | Name           				| Email             		| Role        |
 | ---------------------------- 	| ------------------------- | ----------- |
@@ -39,6 +41,16 @@ Página web para el manejo del evento conexión tec.
 | Jorge Andrés González Borboa 	| sixofswords3@gmail.com 	| Development |
 | Andrés Sosa Silva			  	| andressosasilva@gmail.com | Development |
 | Jorge Armando Vázquez Ortiz 	| jorgevzqz6@gmail.com 		| Development |
+
+**Codebusters - ENE - MAY 2019**
+
+| Name           				| Email             		| Role        |
+| ---------------------------- 	| ------------------------- | ----------- |
+| Abril Marina González Ramírez | abril.gonzalezr@gmail.com | Development |
+| Juan Luis Flores Garza | jluisfgarza@gmail.com 	| Development |
+| José Humberto Guevara Martínez | j.humberto95@gmail.com | Development |
+| Luis Alfonso Arriaga Quezada	| luisaq95nin@gmail.com | Development |
+| Santiago Sandoval Treviño | santiago_st_95@hotmail.com | Development |
 
 ### Management tools
 
