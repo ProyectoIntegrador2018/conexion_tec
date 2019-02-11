@@ -13,7 +13,7 @@ about: Crear una tarea independiente de cualquier user story (Req. funcional)
 ## Conversación
 < Detalles adicionales >
 
-## Criterios de terminación
+## Criterios de aceptación
 - [ ] < Criterios a completar para asegurar que la tarea esta terminada >
 
 ## OPCIONAL - Relaciones
