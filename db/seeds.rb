@@ -7,10 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 first_professor = Professor.create(
-	email: "prof1@test.com", 
-	enrollment: "L01282893", 
-	department: 1, 
-	name: "Profesor 1")
+	department_id: 1)
 
 
 first_user = User.create(
@@ -44,5 +41,3 @@ Category.create(name: "Categoria 1")
 Category.create(name: "Categoria 2")
 Category.create(name: "Categoria 3")
 Category.create(name: "Categoria 4")
-
-EventDate.create(event: nil)
