@@ -6,15 +6,78 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-first_professor = Professor.create(
+Professor.create(
 	department_id: 1)
 
 
-first_user = User.create(
-	email: "jorge@test.com", 
-	password: "password", 
-	password_confirmation: "password", 
+User.create(
+	email: "abril@test.com", 
+	password: "abril", 
+	password_confirmation: "abril", 
 	role: "admin")
+
+User.create(
+	email: "pepe@test.com", 
+	password: "pepe", 
+	password_confirmation: "pepe", 
+	role: "admin")
+
+User.create(
+	email: "poncho@test.com", 
+	password: "poncho", 
+	password_confirmation: "poncho", 
+	role: "admin")
+
+User.create(
+	email: "juan@test.com", 
+	password: "juan", 
+	password_confirmation: "juan", 
+	role: "admin")
+
+User.create(
+	email: "santiago@test.com", 
+	password: "santiago", 
+	password_confirmation: "santiago", 
+	role: "admin")
+
+Major.create(name: "ITC")
+Major.create(name: "INT")
+Major.create(name: "ISD")
+Major.create(name: "IFI")
+Major.create(name: "LAD")
+Major.create(name: "IMI")
+Major.create(name: "LAF")
+Major.create(name: "LSP")
+Major.create(name: "IQA")
+Major.create(name: "LIN")
+Major.create(name: "IQP")
+
+Department.create(name: "Matemáticas")
+Department.create(name: "Química")
+Department.create(name: "Derecho")
+Department.create(name: "Otro")
+
+Client.create(client: "Deparamento del Tec")
+Client.create(client: "Desarrollo propio")
+Client.create(client: "Gobierno")
+Client.create(client: "Industria Privada")
+Client.create(client: "Organización Social")
+Client.create(client: "Profesor de la clase")
+
+Field.create(name: "Biotecnología y alimentos")
+Field.create(name: "Energía")
+Field.create(name: "Nanotecnología")
+Field.create(name: "Ingeniería")
+Field.create(name: "Tecnologías de información")
+Field.create(name: "Comunicación y eletrónica")
+Field.create(name: "Sostenibilidad")
+Field.create(name: "Emprendimiento de base tecnológica")
+Field.create(name: "Otra")
+
+Status.create(status: "No calificado")
+Status.create(status: "Calificado")
+Status.create(status: "No aprobado")
+Status.create(status: "Aprobado")
 
 ExpertiseArea.create(area: "Agrobiotecnología")
 ExpertiseArea.create(area: "Automatización de Procesos")

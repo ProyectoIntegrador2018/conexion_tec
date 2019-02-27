@@ -18,35 +18,6 @@ class Project < ApplicationRecord
 	has_many :assignments
 	has_many :members
 
-
-	# enum client: [
-	# 	"Departamento del Tec", 
-	# 	"Desarrollo propio",
-	# 	"Gobierno",
-	# 	"Industria Privada",
-	# 	"Organización Social",
-	# 	"Profesor de la clase"
-	# ]
-
-	# enum field: [
-	# 	"Biotecnología y alimentos",
-	# 	"Energía",
-	# 	"Nanotecnología",
-	# 	"Ingeniería",
-	# 	"Tecnologías de información",
-	# 	"Comunicación y eletrónica",
-	# 	"Sostenibilidad",
-	# 	"Emprendimiento de base tecnológica",
-	# 	"Otra"
-	# ]
-
-	# enum status: [
-	# 	"No calificado",
-	# 	"Calificado",
-	# 	"No aprobado",
-	# 	"Aprobado"
-	# ]
-
 	# scope :recommendations, -> (exp_areas) {
 	# 	where(expertise_area_id: exp_areas)
 	# 	.not_qualified
