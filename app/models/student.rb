@@ -1,3 +1,4 @@
 class Student < ApplicationRecord
-	belongs_to :project
+	has_many :projects
+	belongs_to :major
 end

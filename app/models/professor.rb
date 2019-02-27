@@ -1,10 +1,12 @@
 class Professor < ApplicationRecord
-	belongs_to :project
+	has_many :projects
+	belongs_to :department
 
-	enum department: [
-		"Matemáticas",
-		"Química",
-		"Derecho",
-		"Otro"
-	]
+
+	# enum department: [
+	# 	"Matemáticas",
+	# 	"Química",
+	# 	"Derecho",
+	# 	"Otro"
+	# ]
 end
