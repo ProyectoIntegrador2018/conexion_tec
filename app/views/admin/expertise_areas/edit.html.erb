@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12 col-md-6 offset-md-3">
+			<h1>Actualiza área</h1>
+		</div>
+	</div>
+
+	<%= form_for @expertise_area, url: admin_expertise_area_path do |f|  %>
+		<div class="row">
+			<div class="col">
+				<%= f.label :Área %>
+				<%= f.text_field :area, class: "form-control" %>
+			</div>
+		</div><br />
+
+		<div class="row">
+			<div class="col">
+				<%= f.submit "Guardar", class: "btn btn-primary", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+			</div>
+		</div>
+	<% end %>
+</div>
