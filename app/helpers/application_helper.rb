@@ -14,5 +14,5 @@ module ApplicationHelper
 		cipher.key = @@key
 		s = [string].pack("H*").unpack("C*").pack("c*")
 		cipher.update(s) + cipher.final
-  end
+  	end
 end

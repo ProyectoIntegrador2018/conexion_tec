@@ -1,0 +1,16 @@
+<h1>Tipos de cliente</h1>
+
+<%= link_to "Agregar tipo de cliente", new_admin_client_path, class: "btn btn-primary btn-block text-white"%>
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Tipos de clientes</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @clients %>
+  </tbody>
+</table>
+
+<br>
