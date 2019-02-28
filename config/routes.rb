@@ -70,6 +70,7 @@ Rails.application.routes.draw do
     get 'event_dates/new', to: "event_dates#new"
     post 'event_dates/new', to: "event_dates#create"
     delete 'event_dates/:id', to: "event_dates#destroy", as: :event_dates_destroy
+    resources :expertise_areas
   end
 
   namespace :monitor do

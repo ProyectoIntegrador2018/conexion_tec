@@ -1,0 +1,17 @@
+<h1>Áreas de Expertise</h1>
+
+<%= link_to "Agregar área", new_admin_expertise_area_path, class: "btn btn-primary btn-block text-white"%>
+
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Área</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @expertise_areas %>
+  </tbody>
+</table>
+
+<br>
