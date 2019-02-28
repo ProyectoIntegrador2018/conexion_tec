@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post 'login-juez', to: 'judge_sessions#create'
   get 'login-administrador', to: 'administrator_session#new', as: :login_admin
   post 'login-administrador', to: 'administrator_session#create', as: :login_admin_create
+  post 'logout-administrador', to: 'administrator_session#destroy', as: :logout_admin
 
   get 'login-staff', to: 'staff_sessions#new', as: :login_staff
   post 'login-staff', to: 'staff_sessions#create'

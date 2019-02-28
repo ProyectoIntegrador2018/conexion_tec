@@ -37,6 +37,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catálogos</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="<%= admin_expertise_areas_path%>">Áreas de Expertise</a>
+            <a class="dropdown-item" href="<%= admin_clients_path %>">Clientes</a>
           </div>
       </li>
     </ul>
@@ -47,7 +48,7 @@
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <%= link_to "Mi Perfil", '#', class: 'dropdown-item' %>
         <div class="dropdown-divider"></div>
-        <%= link_to "Cerrar Sesión", '#', class: 'dropdown-item' %>
+        <%= link_to "Cerrar Sesión", logout_admin_path, method: :post, class: 'dropdown-item' %>
       </div>
     </div>
   </div>
