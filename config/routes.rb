@@ -74,6 +74,7 @@ Rails.application.routes.draw do
     resources :expertise_areas
     resources :clients
     resources :majors
+    resources :fields
   end
 
   namespace :monitor do
