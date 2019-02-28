@@ -9,6 +9,34 @@
 Professor.create(
 	department_id: 1)
 
+Professor.create(
+	department_id: 2
+)
+
+Professor.create(
+	department_id: 3
+)
+
+Professor.create(
+	department_id: 4
+)
+
+Student.create(
+	major_id: 1
+)
+
+Student.create(
+	major_id: 2
+)
+
+Student.create(
+	major_id: 3
+)
+
+Student.create(
+	major_id: 4
+)
+
 
 User.create(
 	email: "abril@test.com", 
@@ -104,3 +132,45 @@ Category.create(name: "Categoria 1")
 Category.create(name: "Categoria 2")
 Category.create(name: "Categoria 3")
 Category.create(name: "Categoria 4")
+
+Edition.create(
+	number: 2019,
+	registry_open: "2019-01-01",
+	registry_limit: "2020-01-01",
+	video_open: "2019-01-01",
+	video_limit: "2020-01-01"
+)
+
+Evaluation.create(
+	result:8.5,
+	assignment_id: 1
+)
+
+Assignment.create(
+	judge_id:1,
+	project_id:1
+)
+
+Judge.create(
+	has_tablet:true,
+	department_id: 1
+)
+
+
+Project.create(
+	name:"test",
+	abstract: "test",
+	video_url: "http:google.com",
+	category_id: 1,
+	expertise_area_id: 1,
+	description: "test",
+	selection_score: 10.0,
+	evaluation_score: 8.5,
+	professor_id: 1,
+	student_id: 1,
+	field_id: 1,
+	client_id: 1,
+	status_id: 1,
+	edition_id: 1,
+)
+

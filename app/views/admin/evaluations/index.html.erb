@@ -7,10 +7,9 @@
 <table class="table table-responsive">
   <thead>
     <tr>
-      <th>Departamento</th>
-      <th>Proyecto</th>
-      <th>Juez</th>
-      <th>Calificacion</th>
+      <th>ID</th>
+      <th>Result</th>
+      <th>Assignment ID</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,10 +17,9 @@
   <tbody>
     <% @evaluations.each do |evaluation| %>   
       <tr>
-        <td><%= evaluation.project.expertise_area.area %></td>
-        <td><%= evaluation.project.name %></td>
-        <td><%= evaluation.judge.name %></td>
-        <td><%= evaluation.total %> </td>
+        <td><%= evaluation.id %></td>
+        <td><%= evaluation.result%></td>
+        <td><%= evaluation.assignment_id %></td>
         <td><%= link_to 'Delete', admin_evaluation_path(evaluation.id), method: :delete, data: {confirm: "Seguro que deseas borrar el Evaluacion #{evaluation.id}?"}  %></td>
       </tr>
     <% end %>
