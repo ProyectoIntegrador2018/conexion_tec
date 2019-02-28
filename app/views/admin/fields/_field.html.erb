@@ -1,0 +1,8 @@
+<tr>
+	<td><%= link_to field.name, edit_admin_field_path(field) %></td>
+	<td>
+		<%= link_to admin_field_path(field), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar el área temática?'} do %>
+			<span style="color: red"><i class="fa fa-trash"></i> Eliminar</span>
+		<% end %>
+	</td>
+</tr>

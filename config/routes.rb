@@ -73,6 +73,7 @@ Rails.application.routes.draw do
     delete 'event_dates/:id', to: "event_dates#destroy", as: :event_dates_destroy
     resources :expertise_areas
     resources :clients
+    resources :fields
   end
 
   namespace :monitor do
