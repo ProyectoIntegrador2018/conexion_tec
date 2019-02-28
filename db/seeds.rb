@@ -12,26 +12,26 @@ Professor.create(
 
 User.create(
 	email: "abril@test.com", 
-	password: "abril", 
-	password_confirmation: "abril", 
+	password: "password", 
+	password_confirmation: "password", 
 	role: "admin")
 
 User.create(
 	email: "pepe@test.com", 
-	password: "pepe", 
-	password_confirmation: "pepe", 
+	password: "password", 
+	password_confirmation: "password", 
 	role: "admin")
 
 User.create(
 	email: "poncho@test.com", 
-	password: "poncho", 
-	password_confirmation: "poncho", 
+	password: "password", 
+	password_confirmation: "password", 
 	role: "admin")
 
 User.create(
 	email: "juan@test.com", 
-	password: "juan", 
-	password_confirmation: "juan", 
+	password: "password", 
+	password_confirmation: "password", 
 	role: "admin")
 
 User.create(
