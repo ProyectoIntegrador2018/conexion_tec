@@ -46,7 +46,7 @@ Página web para el manejo del evento conexión tec.
 
 | Name           				| Email             		| Role        |
 | ---------------------------- 	| ------------------------- | ----------- |
-| Abril Marina González Ramírez | abril.gonzalezr@gmail.com | Development |
+| Abril González Ramírez | abril.gonzalezr@gmail.com | Development |
 | Juan Luis Flores Garza | jluisfgarza@gmail.com 	| Development |
 | José Humberto Guevara Martínez | j.humberto95@gmail.com | Development |
 | Luis Alfonso Arriaga Quezada	| luisaq95nin@gmail.com | Development |
