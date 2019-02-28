@@ -76,6 +76,7 @@ Rails.application.routes.draw do
     resources :majors
     resources :fields
     resources :departments
+    resources :editions
   end
 
   namespace :monitor do
