@@ -1,0 +1,15 @@
+<%= form_for @department, url: @url do |f| %>
+<div class="row">
+  <div class="col">
+    <%= f.label :Departamento %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+</div><br />
+
+<div class="row">
+  <div class="col">
+    <%= link_to "Cancelar", admin_departments_path, {class: "btn btn-default"} %>
+    <%= f.submit "Guardar", class: "btn btn-primary", data: {confirm: '¿Estás seguro que deseas guardar los cambios?'} %>
+  </div>
+</div>
+<% end %>
