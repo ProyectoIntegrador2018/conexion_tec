@@ -1,3 +1,8 @@
 <tr>
 	<td><%= link_to department.name, edit_admin_department_path(department) %></td>
+	<td>
+		<%= link_to admin_department_path(department), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar el departmento'} do %>
+			<span style="color: red"><i class="fa fa-trash"></i> Eliminar</span>
+		<% end %>
+	</td>
 </tr>
