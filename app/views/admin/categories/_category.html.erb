@@ -1,0 +1,8 @@
+<tr>
+	<td><%= link_to category.name, edit_admin_category_path(category) %></td>
+	<td>
+		<%= link_to admin_category_path(category), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar esta categoría?'} do %>
+			<span style="color: red"><i class="fa fa-trash"></i> Eliminar</span>
+		<% end %>
+	</td>
+</tr>

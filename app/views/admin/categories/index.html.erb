@@ -1,0 +1,16 @@
+<h1>Categoría</h1>
+
+<%= link_to "Agregar categoría", new_admin_category_path, class: "btn btn-primary btn-block text-white"%>
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Categoría</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @categories %>
+  </tbody>
+</table>
+
+<br>
