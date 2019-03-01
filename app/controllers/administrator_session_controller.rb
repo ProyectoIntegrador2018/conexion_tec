@@ -6,11 +6,12 @@ class AdministratorSessionController < ApplicationController
 	def create
 		user = login(params[:email], params[:password])
 		if user 
-			if user.role == "admin"
+			if user.admin?
 				redirect_to admin_projects_path
 			else
+				logout
 				flash.now[:danger] = "Esta cuenta no es de administrador"
-				redirect_to root_path
+				render 'new'
 			end
 		else
 			flash.now[:danger] = 'Contraseña y/o email incorrecto'
