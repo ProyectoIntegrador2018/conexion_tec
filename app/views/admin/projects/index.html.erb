@@ -23,22 +23,22 @@
     <% @projects.each do |project| %>
       <tr scope="row">
         <td><%= project.name %></td>
-        <td><%= project.field %></td>
-        <td><%= project.category.name %></td>
-        <td><%= project.expertise_area.area %></td>
-        <td><%= project.client %></td>
+        <td><%= project.field_id %></td>
+        <td><%= project.category_id %></td>
+        <td><%= project.expertise_area_id %></td>
+        <td><%= project.client_id %></td>
         <td><%= project.abstract %></td>
         <td><%= project.video_url %></td>
-        <td><%= project.status %></td>
+        <td><%= project.status_id %></td>
         <td>
-          <% if !project.event_date.event %>
+          <% if true %>
             <p> Sin fecha asignada </p>
           <% else %>
             <%= project.event_date.event %>
           <% end %>
         </td>
         <td>
-          <% if !project.stand %>
+          <% if true %>
             <p> Sin stand asignado </p>
           <% else %>
             <%= project.stand %>
