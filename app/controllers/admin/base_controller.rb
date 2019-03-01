@@ -11,6 +11,6 @@ class Admin::BaseController < ActionController::Base
 	end
 
 	def require_admin
-		redirect_to login_admin_path unless current_user.is_admin?
+		redirect_to login_admin_path unless current_user.admin?
 	end
 end
