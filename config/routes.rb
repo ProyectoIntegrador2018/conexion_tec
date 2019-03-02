@@ -78,6 +78,7 @@ Rails.application.routes.draw do
     resources :departments
     resources :editions
     resources :categories
+    resources :users
   end
 
   namespace :monitor do

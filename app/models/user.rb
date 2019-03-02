@@ -32,4 +32,12 @@ class User < ApplicationRecord
     self.userable_type == "Professor"
   end
 
+  def committee?
+    self.userable_type == "Committee"
+  end
+
+  def operative?
+    self.userable_type == "Operative"
+  end
+
 end
