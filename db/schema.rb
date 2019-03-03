@@ -10,12 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_194623) do
+ActiveRecord::Schema.define(version: 2019_03_01_212938) do
+
+  create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  end
+
+  create_table "assignments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "judge_id"
+    t.integer "project_id"
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "client"
+  end
+
+  create_table "committees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  end
+
+  create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "editions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "number"
+    t.date "registry_open"
+    t.date "registry_limit"
+    t.date "video_open"
+    t.date "video_limit"
   end
 
   create_table "evaluation_questions", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -27,19 +54,10 @@ ActiveRecord::Schema.define(version: 2018_11_15_194623) do
   end
 
   create_table "evaluations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "total", precision: 10, default: "0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "project_id"
-    t.bigint "judge_id"
-    t.index ["judge_id"], name: "index_evaluations_on_judge_id"
-    t.index ["project_id"], name: "index_evaluations_on_project_id"
-  end
-
-  create_table "event_dates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.date "event"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.float "result"
+    t.integer "assignment_id"
   end
 
   create_table "expertise_areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,53 +73,56 @@ ActiveRecord::Schema.define(version: 2018_11_15_194623) do
     t.index ["judge_id"], name: "index_expertise_areas_judges_on_judge_id"
   end
 
+  create_table "fields", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "judges", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.boolean "has_tablet"
-    t.integer "department"
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_judges_on_user_id"
+    t.integer "department_id"
+  end
+
+  create_table "majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email"
+    t.string "name"
+    t.integer "major_id"
+    t.integer "project_id"
+  end
+
+  create_table "operatives", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
 
   create_table "professors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "enrollment"
-    t.string "email"
-    t.integer "department"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "course_code"
-    t.bigint "project_id"
-    t.index ["project_id"], name: "index_professors_on_project_id"
+    t.integer "department_id"
   end
 
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.integer "field"
-    t.integer "client"
     t.string "abstract"
     t.string "video_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.integer "status", default: 0
-    t.decimal "score", precision: 10, default: "0"
-    t.boolean "assistance", default: false
-    t.boolean "active", default: false
-    t.string "reason"
     t.bigint "category_id"
     t.bigint "expertise_area_id"
-    t.integer "num_evaluations", default: 0
-    t.integer "num_assignments", default: 0
     t.string "description"
-    t.bigint "event_date_id"
-    t.string "stand"
+    t.float "selection_score"
+    t.float "evaluation_score"
+    t.integer "professor_id"
+    t.integer "student_id"
+    t.integer "field_id"
+    t.integer "client_id"
+    t.integer "status_id"
+    t.integer "edition_id"
     t.index ["category_id"], name: "index_projects_on_category_id"
-    t.index ["event_date_id"], name: "index_projects_on_event_date_id"
     t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
-    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -114,25 +135,25 @@ ActiveRecord::Schema.define(version: 2018_11_15_194623) do
     t.index ["category_id"], name: "index_questions_on_category_id"
   end
 
+  create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "status"
+  end
+
   create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "enrollment"
-    t.string "major"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "project_id"
-    t.index ["project_id"], name: "index_students_on_project_id"
+    t.integer "major_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
     t.string "salt"
-    t.string "role", null: false
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "userable_type"
+    t.integer "userable_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

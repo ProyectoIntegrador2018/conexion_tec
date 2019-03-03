@@ -31,7 +31,21 @@
           </div>
       </li>
       <li class="nav-item">
-        <%= link_to "Fechas del evento", admin_event_dates_path, class:"nav-link" %> 
+        <%= link_to "Ediciones", admin_editions_path, class:"nav-link" %> 
+      </li>
+      <li class="nav-item">
+        <%= link_to "Usuarios", admin_users_path, class:"nav-link" %> 
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catálogos</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<%= admin_expertise_areas_path%>">Áreas de Expertise</a>
+            <a class="dropdown-item" href="<%= admin_clients_path %>">Clientes</a>
+            <a class="dropdown-item" href="<%= admin_fields_path %>">Áreas Temáticas</a>
+            <a class="dropdown-item" href="<%= admin_departments_path %>">Departamentos</a>
+            <a class="dropdown-item" href="<%= admin_majors_path %>">Carreras</a>
+            <a class="dropdown-item" href="<%= admin_categories_path %>">Categorías</a>
+          </div>
       </li>
     </ul>
     <div class="nav-item dropdown">
@@ -41,7 +55,7 @@
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <%= link_to "Mi Perfil", '#', class: 'dropdown-item' %>
         <div class="dropdown-divider"></div>
-        <%= link_to "Cerrar Sesión", '#', class: 'dropdown-item' %>
+        <%= link_to "Cerrar Sesión", logout_admin_path, method: :post, class: 'dropdown-item' %>
       </div>
     </div>
   </div>

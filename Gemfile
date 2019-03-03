@@ -29,7 +29,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Gems necessary for bootstrap 4
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.3'
-gem 'bootstrap', '~> 4.1.3'
+gem "bootstrap", ">= 4.3.1"
 
 # user authentication library
 gem 'sorcery', '~> 0.12.0'
@@ -79,3 +79,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#Gems added because of vulnerability issues.
+gem "nokogiri", ">= 1.8.5"
+gem "rack", ">= 2.0.6"
+gem "loofah", ">= 2.2.3"

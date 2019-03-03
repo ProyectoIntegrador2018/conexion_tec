@@ -33,3 +33,5 @@
 # Vim auto-generated files
 *.swp
 *.swo
+
+/config/local_env.yml

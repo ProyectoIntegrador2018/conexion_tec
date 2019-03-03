@@ -84,7 +84,10 @@ $ git clone https://github.com/ProyectoIntegrador2018/conexion_tec.git
 
 2. Setup the database:
 ```
+$ rails db:drop
+$ rails db:create
 $ rails db:migrate
+$ rails db:seed
 ```
 
 3. Start the application:

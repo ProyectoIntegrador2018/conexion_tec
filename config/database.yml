@@ -7,7 +7,7 @@ development:
   <<: *default
   host: localhost
   username: root
-  password: root
+  password: <%= ENV['DB_PASSWORD'] %>
   database: conexion_tec
 
 # Warning: The database defined as "test" will be erased and
@@ -17,7 +17,7 @@ test:
   <<: *default
   host: localhost
   username: root
-  password: root
+  password: <%= ENV['DB_PASSWORD'] %>
   database: conexion_tec_test
 
 production:

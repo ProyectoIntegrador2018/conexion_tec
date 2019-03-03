@@ -1,0 +1,41 @@
+<%= form_for @edition, url: @url do |f|  %>
+    <div class="row">
+        <div class="col-md-2">
+            <%= f.label :número %>
+            <%= f.number_field :number, class: 'form-control' %>
+        </div>
+        <div class="col-md-4">
+            <%= f.label :fechas_de_registro %>
+            <div class="input-daterange input-group" id="datepicker">
+                <input type="text" class="input-sm form-control" name="edition[registry_open]" value="<%= @edition.registry_open.strftime("%d/%m/%Y") if @edition.registry_open.present? %>" />
+                <span class="input-group-addon"></span>
+                <input type="text" class="input-sm form-control" name="edition[registry_limit]" value="<%= @edition.registry_limit.strftime("%d/%m/%Y") if @edition.registry_limit.present? %>" />
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <%= f.label :fechas_de_video %>
+            <div class="input-daterange input-group" id="datepicker">
+                <input type="text" class="input-sm form-control" name="edition[video_open]" value="<%= @edition.video_open.strftime("%d/%m/%Y") if @edition.video_open.present? %>" />
+                <span class="input-group-addon"></span>
+                <input type="text" class="input-sm form-control" name="edition[video_limit]" value="<%= @edition.video_limit.strftime("%d/%m/%Y") if @edition.video_limit.present? %>" />
+            </div>
+        </div>
+    </div><br />
+
+    <div class="row">
+        <div class="col">
+            <%= link_to "Cancelar", admin_editions_path, { class: "btn btn-default" } %>
+            <%= f.submit "Guardar", class: "btn btn-primary", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+        </div>
+    </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+        $('.input-daterange').datepicker({
+        autoclose: true,
+        format: 'dd/mm/yyyy'
+    });
+  });
+</script>

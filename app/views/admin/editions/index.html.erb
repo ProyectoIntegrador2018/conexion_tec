@@ -1,0 +1,17 @@
+<h1>Edición</h1>
+
+<%= link_to "Crear edición", new_admin_edition_path, class: "btn btn-primary btn-block text-white"%>
+
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Número</th>
+      <th scope="col">Fechas de registro</th>
+      <th scope="col">Fechas para subir video</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @editions %>
+  </tbody>
+</table>
