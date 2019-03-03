@@ -33,7 +33,7 @@ class Admin::UsersController < Admin::BaseController
 			else
 				operative.delete
 			end
-
+			@user = User.new(user_params)
 			@url = admin_users_path
 			flash.now[:danger] = "Error al crear el usuario"
 			render 'new'
