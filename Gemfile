@@ -88,3 +88,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "nokogiri", ">= 1.8.5"
 gem "rack", ">= 2.0.6"
 gem "loofah", ">= 2.2.3"
+gem "railties", ">= 5.2.2.1"
+gem "actionview", ">= 5.2.2.1"
