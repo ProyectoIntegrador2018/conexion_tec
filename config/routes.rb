@@ -6,13 +6,16 @@ Rails.application.routes.draw do
   # resources :monitor_sessions, only: [:new, :destroy, :create]
   # resources :staff_sessions, only: [:new, :destroy, :create]
 
-  get 'login-proyecto', to: 'project_sessions#new', as: :login_project
-  post 'login-proyecto', to: 'project_sessions#create'
   get 'login-juez', to: 'judge_sessions#new', as: :login_judge
   post 'login-juez', to: 'judge_sessions#create'
   get 'login-administrador', to: 'administrator_session#new', as: :login_admin
   post 'login-administrador', to: 'administrator_session#create', as: :login_admin_create
   post 'logout-administrador', to: 'administrator_session#destroy', as: :logout_admin
+
+  # Student session
+  get 'login-estudiante', to: 'student_sessions#new', as: :login_student
+  get 'authorize-student', to: 'student_sessions#create'
+  post 'logout-estudiante', to: 'student_sessions#destroy', as: :logout_student
 
   get 'login-staff', to: 'staff_sessions#new', as: :login_staff
   post 'login-staff', to: 'staff_sessions#create'
@@ -44,10 +47,10 @@ Rails.application.routes.draw do
     post 'evaluations/project/:id', to: 'evaluations#submit', as: :evaluation_project_submit
   end
 
-  namespace :project do
-    get 'profile', to: 'profile#show'
-    get 'profile/edit', to: 'profile#edit'
-    patch 'profile/edit', to: 'profile#update'
+  namespace :student do
+    get 'profile', to: 'profile#index'
+    get 'edit', to: 'profile#edit'
+    patch 'update', to: 'profile#update'
   end
 
   namespace :admin do
