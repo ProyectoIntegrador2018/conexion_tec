@@ -97,6 +97,14 @@ rails db:create
 rails db:migrate
 rails db:seed
 ```
+> You can also use the rubyDBfun script that does the above steps:
+```
+chmod +x rubyDBfun.rb
+```
+> Then just run:
+```
+./rubyDBfun.rb
+```
 
 3. Start the application:
 
