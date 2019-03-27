@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12 col-md-6 offset-md-3">
+			<h1>Actualiza tus datos</h1>
+		</div>
+	</div>
+
+	<%= form_for @professor, url: @url do |f|  %>
+	    <div class="row">
+	        <div class="col">
+	            <%= f.label :departamento %>
+	            <%= f.select :department_id, 
+	              options_for_select(Department.all.collect{|m| [m.name, m.id]}, @professor.department_id,), 
+	                        {}, class: "form-control" %>
+	        </div>
+	    </div><br />
+
+	    <div class="row">
+	        <div class="col">
+	        	<%= link_to "Cancelar", professor_profile_path, { class: "btn btn-default" } %>
+	            <%= f.submit "Guardar", class: "btn btn-primary", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+	        </div>
+	    </div>
+	<% end %>
+</div>

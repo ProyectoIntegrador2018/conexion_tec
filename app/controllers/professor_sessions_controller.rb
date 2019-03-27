@@ -1,16 +1,16 @@
-class OperativeSessionsController < ApplicationController
-    include AuthHelper
+class ProfessorSessionsController < ApplicationController
+	include AuthHelper
 
     def new
-        if current_user && current_user.operative?
-            redirect_to operative_profile_path
+        if current_user && current_user.professor?
+            redirect_to professor_profile_path
         else
-            @login_url = get_login_url(authorize_operative_url)
+            @login_url = get_login_url(authorize_professor_url)
         end
     end
-    
+
     def create
-        token = get_token_from_code(params[:code], authorize_operative_url)
+        token = get_token_from_code(params[:code], authorize_professor_url)
         raw_information = token.get('https://graph.microsoft.com/v1.0/me').parsed
 
         mail = raw_information["mail"] || raw_information["userPrincipalName"]
@@ -20,25 +20,25 @@ class OperativeSessionsController < ApplicationController
 
         if user
             auto_login(user)
-            redirect_to operative_profile_path
+            redirect_to professor_profile_path
         else
             # Create the user and login
-            operative = Operative.create()
+            professor = Professor.create(department_id: 1) # Temporal department
             password = SecureRandom.base64(10) # Generates random password
             user = User.create(email: mail,
                                 name: full_name,
-                                userable_type: 'Operative',
-                                userable_id: operative.id,
+                                userable_type: 'Professor',
+                                userable_id: professor.id,
                                 password: password,
                                 password_confirmation: password)
 
             auto_login(user)
-            redirect_to operative_profile_path
+            redirect_to professor_edit_path
         end
     end
 
     def destroy
         logout
-        redirect_to login_operative_path
+        redirect_to login_professor_path
     end
 end

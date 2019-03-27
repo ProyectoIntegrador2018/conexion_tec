@@ -22,7 +22,7 @@ class StudentSessionsController < ApplicationController
             auto_login(user)
             redirect_to student_profile_path
         else
-            # Create the user and login (delete password from model)
+            # Create the user and login
             student = Student.create(major_id: 1) # Temporal major
             password = SecureRandom.base64(10) # Generates random password
             user = User.create(email: mail,
