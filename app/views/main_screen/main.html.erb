@@ -2,20 +2,26 @@
 
 <header class="">
 	<div class="banner justify-content-center">
-		<h1 class="h-column">Conexión Tec</h1>
+		<img id="heroImg" src="heroImg.jpg" alt="logo2" class="text-center img-fluid"/>
+		<video autoplay muted loop id="myVideo" >
+			<source src="conexionTecPromo.mov">
+			<source src="conexionTecPromo.ogv">
+			<source src="conexionTecPromo.webm">
+		</video>
 	</div>
 </header>
 
-<section class="my-3 py-5">
+<section class="faq">
 	<div class="container">
-		<div class="row">
+		<div class="row mulFaq">
 			<div class="col-12 col-md-6">
 				<div class="text-center">
 					<h2 class="h-column">¿Que és?</h2>
 				</div>
 				<div>
 					<p>
-						Conexión Tec es un evento que se realiza al final de cada semestre académico donde se exponen proyectos estudiantiles que atienden problemas de ingeniería relevantes de la industria y de la sociedad.
+						Conexión Tec es un evento que se realiza al final de cada semestre académico donde se exponen proyectos
+						estudiantiles que atienden problemas de ingeniería relevantes de la industria y de la sociedad.
 					</p>
 				</div>
 			</div>
@@ -24,25 +30,26 @@
 					<h2 class="h-column">Objetivos</h2>
 				</div>
 				<div>
-					<ul>
-						<li>
-							Acercar a alumnos y profesores con líderes de la industria, en un ambiente de innovación y emprendimiento, para fortalecer la vinculación de la Escuela de Ingeniería y Ciencias con la industria. 
-						</li>
-						<li>
-							Promover el interés y la participación de alumnos y profesores en realizar proyectos retadores que atiendan necesidades específicas aplicando las competencias de su área profesional.
-						</li>
-					</ul>
+					<p>
+						Acercar a alumnos y profesores con líderes de la industria, en un ambiente de innovación y emprendimiento,
+						para fortalecer la vinculación de la Escuela de Ingeniería y Ciencias con la industria.
+					</p><br/>
+					<p>
+						Promover el interés y la participación de alumnos y profesores en realizar proyectos retadores que
+						atiendan necesidades específicas aplicando las competencias de su área profesional.
+					</p>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
-<section class="my-3 py-5 dark-section">
+<%# <section class="my-3 py-5 dark-section"> %>
+<section class="my-3 py-5">
 	<div class="container">
 		<div class="row text-center mb-4">
 			<div class="col">
-				<h3 class="h-column text-white">Registro</h3>
+				<h3 class="h-column text-dark">Registro</h3>
 			</div>
 		</div>
 		<div class="row">
@@ -54,7 +61,7 @@
 			<div class="col-12 col-md-4 text-center">
 				<div class="my-2">
 					<%= button_to "Login administrador", login_admin_path, class: "btn btn-danger btn-block text-white", method: :get %>
-				</div>		
+				</div>
 			</div>
 			<div class="col-12 col-md-4">
 				<div class="my-2">
@@ -64,22 +71,24 @@
 					<%= button_to "Registro Juez", signup_judge_path, class: "btn btn-success btn-block text-white", method: :get %>
 				</div>
 			</div>
-		</div> 
+		</div>
 	</div>
 </section>
 
 
-<section class="my-3 py-5">
+<section class="my-3 py-5 bg-primary text-white">
 	<div class="container">
 		<div class="row text-center mb-5">
 			<div class="col">
-				<h3 class="h-column h-column-alternative">¿Quiénes pueden participar?</h3>
+				<h3 class="h-column2 h-column-alternative text-white">¿Quiénes pueden participar?</h3>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-6 text-center">
 				<div class="row">
-					<div class="col text-center"><h5 class="h-column h-resize">Como juez</h5></div>
+					<div class="col text-center">
+						<h5 class="h-resize text-white">Como juez</h5>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col">
@@ -90,12 +99,14 @@
 			</div>
 			<div class="col-12 col-md-6 text-center">
 				<div class="row">
-					<div class="col text-center"><h5 class="h-column h-resize">Como proyecto</h5></div>
+					<div class="col text-center">
+						<h5 class="h-resize text-white">Como proyecto</h5>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col">
 						<div class="mt-4"><%= fa_icon 'gavel 5x' %></div>
-						<div class="mt-5">Profesores del Tec y personas externas aprobadas por la administración del evento.</div>					
+						<div class="mt-5">Profesores del Tec y personas externas aprobadas por la administración del evento.</div>
 					</div>
 				</div>
 			</div>
@@ -103,6 +114,6 @@
 	</div>
 </section>
 
-<footer class="footer">
-	
+<footer class="footer text-center">
+	<img alt="logo" src="conexionTexLogo.png" width="40" height="40">
 </footer>

@@ -17,24 +17,32 @@
 /* override bootstrap colors */
 
 $danger: #c94645;
-$primary: #0eae9b;
+$primary: #2980b9;
 
 /* ends override bootstrap colors */
 
-@import "colors";
+$logo: image-url('conexionTexLogo.png');
+$heroImg: image-url('heroImg.jpg');
+$heroVIdeo: image-url('conexionTecPromo.mp4');
+
+$dark-section-black: #333;
+$light-grey: #d3d3d3;
+
 @import "bootstrap";
 @import "font-awesome";
 
+
 body {
 	min-height: 400px;
-   	margin-bottom: 100px;
-   	clear: both;
+	margin-bottom: 100px;
+	clear: both;
 }
+
 .footer {
-	position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+	width: 100%;
+	height: 50px;
+	padding-top: 5px;
+	background-color: #fff;
 }
 
 .bottom-padding {
@@ -42,7 +50,7 @@ body {
 }
 
 .navbar {
-	box-shadow: 5px 2px 8px #888888;
+	// box-shadow: 5px 2px 8px #888888;
 }
 
 /* ENDS MAIN SCREEN CSS */
