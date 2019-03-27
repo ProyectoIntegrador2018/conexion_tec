@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_213500) do
+ActiveRecord::Schema.define(version: 2019_03_14_215146) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -147,11 +147,14 @@ ActiveRecord::Schema.define(version: 2019_03_14_213500) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", null: false
+    t.string "crypted_password"
+    t.string "salt"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "userable_type"
     t.integer "userable_id"
+    t.boolean "authorized", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
