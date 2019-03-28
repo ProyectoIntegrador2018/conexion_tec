@@ -50,7 +50,16 @@ body {
 }
 
 .navbar {
-	// box-shadow: 5px 2px 8px #888888;
+	background-color: rgba($color: #000000, $alpha: 0.0);
+	position: fixed;
+	right: 0;
+	z-index: 999;
+	width: 100%;
+
+	.navbar-toggler {
+		border: solid 2px white;
+		color: white;
+	}
 }
 
 /* ENDS MAIN SCREEN CSS */
