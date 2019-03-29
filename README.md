@@ -83,11 +83,19 @@ $ git clone https://github.com/ProyectoIntegrador2018/conexion_tec.git
 ```
 
 2. Setup the database:
+> You may need to run the following comands
 ```
-$ rails db:drop
-$ rails db:create
-$ rails db:migrate
-$ rails db:seed
+sudo service mysql status
+sudo service mysql start
+```
+> If using rbenv run:
+  `rbenv local 2.4.2`
+
+```
+rails db:drop
+rails db:create
+rails db:migrate
+rails db:seed
 ```
 
 3. Start the application:

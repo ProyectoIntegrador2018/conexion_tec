@@ -38,6 +38,14 @@
 # 	password_confirmation: "santiago", 
 # 	role: "admin")
 
+admin = Administrator.create()
+user = User.create(
+    	email: "admin@test.com", 
+    	password: "password", 
+    	password_confirmation: "password", 
+        userable_type: "Administrator",
+        userable_id: admin.id)
+        
 Major.create(name: "ITC")
 Major.create(name: "INT")
 Major.create(name: "ISD")
