@@ -17,6 +17,16 @@ Rails.application.routes.draw do
   get 'authorize-student', to: 'student_sessions#create'
   post 'logout-estudiante', to: 'student_sessions#destroy', as: :logout_student
 
+  # Operative session
+  get 'login-operativo', to: 'operative_sessions#new', as: :login_operative
+  get 'authorize-operative', to: 'operative_sessions#create'
+  post 'logout-operativo', to: 'operative_sessions#destroy', as: :logout_operative
+
+  # Professor session
+  get 'login-profesor', to: 'professor_sessions#new', as: :login_professor
+  get 'authorize-professor', to: 'professor_sessions#create'
+  post 'logout-profesor', to: 'professor_sessions#destroy', as: :logout_professor
+
   get 'login-staff', to: 'staff_sessions#new', as: :login_staff
   post 'login-staff', to: 'staff_sessions#create'
   get 'login-monitor', to: 'monitor_sessions#new', as: :login_monitor
@@ -48,6 +58,16 @@ Rails.application.routes.draw do
   end
 
   namespace :student do
+    get 'profile', to: 'profile#index'
+    get 'edit', to: 'profile#edit'
+    patch 'update', to: 'profile#update'
+  end
+
+  namespace :operative do
+    get 'profile', to: 'profile#index'
+  end
+
+  namespace :professor do
     get 'profile', to: 'profile#index'
     get 'edit', to: 'profile#edit'
     patch 'update', to: 'profile#update'

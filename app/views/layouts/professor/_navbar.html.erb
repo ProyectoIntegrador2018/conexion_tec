@@ -1,0 +1,19 @@
+<nav class="navbar navbar-primary text-dark"">
+  <%= link_to 'Conexión Tec', professor_profile_path, class: 'navbar-brand' %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMenu" aria-controls="navbarTogglerMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerMenu">
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= current_user.name %>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <%= link_to "Editar perfil", professor_edit_path(current_user.id), class: 'dropdown-item' %>
+        <%= link_to "Cerrar Sesión", logout_professor_path, method: :post, class: 'dropdown-item' %>
+      </div>
+    </div>
+  </div>
+</nav>

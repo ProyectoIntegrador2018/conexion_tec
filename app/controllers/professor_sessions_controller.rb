@@ -1,16 +1,16 @@
-class StudentSessionsController < ApplicationController
-    include AuthHelper
+class ProfessorSessionsController < ApplicationController
+	include AuthHelper
 
     def new
-        if current_user && current_user.student?
-            redirect_to student_profile_path
+        if current_user && current_user.professor?
+            redirect_to professor_profile_path
         else
-            @login_url = get_login_url(authorize_student_url)
+            @login_url = get_login_url(authorize_professor_url)
         end
     end
-    
+
     def create
-        token = get_token_from_code(params[:code], authorize_student_url)
+        token = get_token_from_code(params[:code], authorize_professor_url)
         raw_information = token.get('https://graph.microsoft.com/v1.0/me').parsed
 
         mail = raw_information["mail"] || raw_information["userPrincipalName"]
@@ -20,25 +20,25 @@ class StudentSessionsController < ApplicationController
 
         if user
             auto_login(user)
-            redirect_to student_profile_path
+            redirect_to professor_profile_path
         else
             # Create the user and login
-            student = Student.create(major_id: 1) # Temporal major
+            professor = Professor.create(department_id: 1) # Temporal department
             password = SecureRandom.base64(10) # Generates random password
             user = User.create(email: mail,
                                 name: full_name,
-                                userable_type: 'Student',
-                                userable_id: student.id,
+                                userable_type: 'Professor',
+                                userable_id: professor.id,
                                 password: password,
                                 password_confirmation: password)
 
             auto_login(user)
-            redirect_to student_edit_path
+            redirect_to professor_edit_path
         end
     end
 
     def destroy
         logout
-        redirect_to login_student_path
+        redirect_to login_professor_path
     end
 end
