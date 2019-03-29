@@ -7,6 +7,7 @@
     <tr>
       <th>Nombre</th>
       <th>Departamento</th>
+      <th>Procedencia</th>
       <th>Tiene Tableta?</th>
       <th>Áreas de expertise</th>
       <th colspan="3"></th>
@@ -14,19 +15,7 @@
   </thead>
 
   <tbody>
-    <% @judges.each do |judge| %>   
-      <tr>
-        <td><%= judge.id %></td>
-        <td><%= judge.department_id %></td>
-        <td><%= judge.has_tablet %></td>
-        <td>
-            <% judge.expertise_areas.each do | ea | %>
-                <%= ea.area%>
-            <%end%>
-        </td>
-        <td><%= link_to 'Delete', admin_judge_path(judge.id), method: :delete, data: {confirm: "Seguro que deseas borrar el juez #{judge.id}?"}  %></td>
-      </tr>
-    <% end %>
+  <%= render @judges %>
   </tbody>
 </table>
 
