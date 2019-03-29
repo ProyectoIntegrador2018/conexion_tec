@@ -4,13 +4,11 @@
 	<td><%= user.userable_type %></td>
 	<td>
 		<%= link_to admin_user_path(user), method: :put do %>
-			<span id="authorize" style="color: green"><i class="fa fa-check"></i> Autorizar</span>
-		<% end %>
-	</td>
-	
-	<td>
-		<%= link_to admin_user_path(user), method: :put do %>
-			<span id="authorize" style="color: green"><i class="fa fa-check"></i> Autorizar</span>
+			<% if user.authorized == true %>
+				<span id="authorize" style="color: black"> --</span>
+			<% else %>
+				<span id="authorize" style="color: green"><i class="fa fa-check"></i> Autorizar</span>
+			<% end %>
 		<% end %>
 	</td>
 	
