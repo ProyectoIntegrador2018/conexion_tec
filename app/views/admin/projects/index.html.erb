@@ -1,22 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Proyectos</h1>
+<div class="row">
+  <div class="col-md-4">
+    <h1>Proyectos</h1>
+  </div>
 
-<%= link_to "Agregar proyecto", new_admin_project_path, class: "btn btn-primary btn-block text-white"%>
+  <div class="col-md-6"></div>
+
+  <div class="float-right">
+    <%= link_to "Nuevo proyecto", new_admin_project_path, class: "btn btn-primary btn-block text-white"%>
+  </div>
+</div><br />
 
 <table class="table table-responsive">
   <thead>
     <tr>
       <th scope="col">Nombre</th>
       <th scope="col">Área</th>
-      <th scope="col">Tipo</th>
-      <th scope="col">Categoría</th>
-      <th scope="col">Cliente</th>
       <th scope="col">Video URL</th>
       <th scope="col">Estatus</th>
-      <th scope="col">Fecha</th>
-      <th scope="col">Stand</th>
       <th scope="col">Calif de selección</th>
+      <th scope="col">Aprobar o rechazar</th>
+      <th colspan="3"></th>
       <th colspan="3"></th>
     </tr>
   </thead>

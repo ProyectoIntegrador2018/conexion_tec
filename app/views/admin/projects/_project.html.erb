@@ -1,28 +1,32 @@
 <tr>
       <tr scope="row">
         <td><%= project.name %></td>
-        <td><%= project.field.name %></td>
-        <td><%= project.category.name %></td>
-        <td><%= project.expertise_area.area %></td>
-        <td><%= project.client.client %></td>
-        <td><%= project.video_url %></td>
+        <td>
+          <%= project.field.name %><br />
+          <small><%= "Tipo de proyecto: #{project.expertise_area.area}" %></small><br />
+          <small><%= "Categoría: #{project.category.name}" %></small>
+        </td>
+        <td><%= project.video_url.present? ? project.video_url : "Pendiente"%></td>
         <td><%= project.status.status %></td>
+        <td><%= project.selection_score.present? ? project.selection_score : "Pendiente de calificar" %></td>
         <td>
-          <% if true %>
-            <p> Sin fecha asignada </p>
-          <% else %>
-            <%= project.event_date.event %>
+        <% if project.selection_score.present? %>
+         <%= link_to admin_approve_project_path(project), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar este proyecto?'} do %>
+            <span style="color: green"><i class="fa fa-check"></i> Aprobar</span>
+		      <% end %><br />
+          <%= link_to admin_reject_project_path(project), method: :reject, data: { confirm: '¿Estás seguro que deseas rechazar este proyecto?'} do %>
+            <span style="color: red"><i class="fa fa-times"></i> Rechazar</span>
           <% end %>
-        </td>
+        <% else %>
+          <small>-</small>
+        <% end %>
+	      </td>
         <td>
-          <% if true %>
-            <p> Sin stand asignado </p>
-          <% else %>
-            <%= project.stand %>
-          <% end %>
-        </td>
-        <td><%= project.selection_score %></td>
-        <td><%= link_to 'Edit', edit_admin_project_path(project) %></td>
+          <%= link_to 'Editar', edit_admin_project_path(project) %><br />
+          <%= link_to admin_project_path(project), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este proyecto?'} do %>
+            <span style="color: red"><i class="fa fa-trash"></i>Eliminar</span>
+		      <% end %>
+	      </td>
       </tr>
 
 </tr>
