@@ -46,6 +46,10 @@ gem 'bootstrap-datepicker-rails'
 # font-awesome
 gem 'font-awesome-rails'
 
+# Outlook
+gem 'oauth2'
+gem 'activerecord-session_store'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -84,3 +88,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "nokogiri", ">= 1.8.5"
 gem "rack", ">= 2.0.6"
 gem "loofah", ">= 2.2.3"
+gem "railties", ">= 5.2.2.1"
+gem "actionview", ">= 5.2.2.1"
