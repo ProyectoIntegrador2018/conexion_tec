@@ -1,15 +1,16 @@
 class Admin::ProjectsController < Admin::BaseController
-	before_action :set_project, only: [:show, :edit, :update, :destroy]
+	before_action :set_project, only: [:new, :show, :edit, :update, :destroy]
 
 	def show
 	end
 
 	def index
 		@projects = Project.all
+
 	end
 
 	def new
-		@project = Project.new
+		@url = admin_projects_path
 	end
 
 	def create
@@ -22,9 +23,9 @@ class Admin::ProjectsController < Admin::BaseController
 	end
 
 	def edit
+		@url = admin_project_path
 	end
 
-	# TODO: Arreglar; error al actualizar datos del proyecto
 	def update
 		if @project.update_attributes(project_params)
 			flash[:success] = "Información del proyecto actualizada"
@@ -37,7 +38,7 @@ class Admin::ProjectsController < Admin::BaseController
 
 	private
 		def set_project
-			@project = Project.find(params[:id])
+			@project = params[:id].present? ? Project.find(params[:id]) : Project.new
 		end
 
 		def project_params

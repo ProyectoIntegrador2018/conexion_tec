@@ -2,6 +2,8 @@
 
 <h1>Proyectos</h1>
 
+<%= link_to "Agregar proyecto", new_admin_project_path, class: "btn btn-primary btn-block text-white"%>
+
 <table class="table table-responsive">
   <thead>
     <tr>
@@ -20,33 +22,7 @@
   </thead>
 
   <tbody>
-    <% @projects.each do |project| %>
-      <tr scope="row">
-        <td><%= project.name %></td>
-        <td><%= project.field.name %></td>
-        <td><%= project.category.name %></td>
-        <td><%= project.expertise_area.area %></td>
-        <td><%= project.client.client %></td>
-        <td><%= project.video_url %></td>
-        <td><%= project.status.status %></td>
-        <td>
-          <% if true %>
-            <p> Sin fecha asignada </p>
-          <% else %>
-            <%= project.event_date.event %>
-          <% end %>
-        </td>
-        <td>
-          <% if true %>
-            <p> Sin stand asignado </p>
-          <% else %>
-            <%= project.stand %>
-          <% end %>
-        </td>
-        <td><%= project.selection_score %></td>
-        <td><%= link_to 'Edit', edit_admin_project_path(project) %></td>
-      </tr>
-    <% end %>
+  <%= render @projects %>
   </tbody>
 </table>
 
