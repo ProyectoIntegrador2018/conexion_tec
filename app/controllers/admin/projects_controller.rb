@@ -2,7 +2,6 @@ class Admin::ProjectsController < Admin::BaseController
 	before_action :set_project, only: [:show, :edit, :update, :destroy]
 
 	def show
-		@project = Project.find(params[:id])
 	end
 
 	def index
@@ -43,7 +42,7 @@ class Admin::ProjectsController < Admin::BaseController
 
 		def project_params
 			params.require(:project).permit(
-				:id, :name, :field_id, :client_id, :category_id, :expertise_area_id, :abstract, :video_url,
+				:name, :field_id, :client_id, :category_id, :expertise_area_id, :abstract, :video_url,
 				:description, :status_id, :selection_score)
 		end
 
