@@ -17,32 +17,99 @@
 /* override bootstrap colors */
 
 $danger: #c94645;
-$primary: #0eae9b;
+$primary: #2980b9;
 
 /* ends override bootstrap colors */
 
-@import "colors";
+$logo: image-url('conexionTexLogo.png');
+$heroImg: image-url('heroImg.jpg');
+$heroVIdeo: image-url('conexionTecPromo.mp4');
+
+$dark-section-black: #333;
+$light-grey: #d3d3d3;
+
 @import "bootstrap";
 @import "font-awesome";
 
+
 body {
 	min-height: 400px;
-   	margin-bottom: 100px;
-   	clear: both;
+	// margin-bottom: 100px;
+	clear: both;
+	overflow-x: hidden;
 }
+
 .footer {
-	position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+	width: 100%;
+	height: 50px;
+	padding-top: 5px;
+	background-color: #fff;
 }
 
 .bottom-padding {
 	margin-bottom: 300px;
 }
 
-.navbar {
-	box-shadow: 5px 2px 8px #888888;
+#Landing-Nav {
+	background-color: rgba($color: #000000, $alpha: 0.0);
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 999;
+	width: 100%;
+
+	.navbar-toggler {
+		border: solid 2px white;
+		color: white;
+	}
+}
+
+.login_page {
+	padding: 100px;
+	// background-color: $primary;
+	width: 100%;
+	height: 100%;
+}
+
+#sidebar-wrapper {
+	min-height: calc(100vh - 50px);
+	margin-left: -15rem;
+	-webkit-transition: margin .25s ease-out;
+	-moz-transition: margin .25s ease-out;
+	-o-transition: margin .25s ease-out;
+	transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+	padding: 0.875rem 1.25rem;
+	font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+	width: 15rem;
+}
+
+#page-content-wrapper {
+	min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+	margin-left: 0;
+}
+
+@media (min-width: 768px) {
+	#sidebar-wrapper {
+		margin-left: 0;
+	}
+
+	#page-content-wrapper {
+		min-width: 0;
+		width: 100%;
+	}
+
+	#wrapper.toggled #sidebar-wrapper {
+		margin-left: -15rem;
+	}
 }
 
 /* ENDS MAIN SCREEN CSS */
