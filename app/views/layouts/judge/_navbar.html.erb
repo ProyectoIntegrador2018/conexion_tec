@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarTogglerMenu">
     <ul class="navbar-nav mx-auto justify-content-center">
       <li class="nav-item">
-        <%= link_to "Mi información", judge_judge_path(current_judge.id), class: "nav-link" %>
+        <%= link_to "Mi información", judge_judge_path(current_user.id), class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to "Proyectos", judge_projects_path, class: "nav-link" %>
@@ -16,12 +16,11 @@
     </ul>
     <div class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= current_judge.name %>
+        <%= current_user.name %>
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <%= link_to "Mi Perfil", '#', class: 'dropdown-item' %>
-        <div class="dropdown-divider"></div>
-        <%= link_to "Cerrar Sesión", '#', class: 'dropdown-item' %>
+        <%= link_to "Editar perfil", judge_edit_path(current_user.id), class: 'dropdown-item' %>
+        <%= link_to "Cerrar Sesión", logout_judge_path, method: :post, clasns: 'dropdown-item' %>
       </div>
     </div>
   </div>

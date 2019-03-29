@@ -9,9 +9,7 @@ module AuthHelper
   # Scopes required by the app
   SCOPES = ['openid',
             'profile',
-            'offline_access',
-            'User.Read',
-            'Mail.Read' ]
+            'User.Read']
 
   # Generates the student login URL
   def get_login_url(url)
