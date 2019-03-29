@@ -23,7 +23,15 @@
         <div class="col">
           <div class="form-group">
             <%= f.label :student_id, 'Estudiante responsable: '%>
-            <%= @project.student_id %>
+            <%= @project.student.user.name %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <%= f.label :professor_id, 'Profesor responsable: '%>
+            <%= @project.professor.user.name %>
           </div>
         </div>
       </div>
@@ -32,7 +40,6 @@
           <div class="form-group">
             <%= f.label :field, 'Área temática'%>
             <%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name, @project.field_id) %>
-
           </div>
         </div>
       </div>
