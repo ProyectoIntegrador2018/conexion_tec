@@ -2,7 +2,6 @@ class Admin::ProjectsController < Admin::BaseController
 	before_action :set_project, only: [:show, :edit, :update, :destroy]
 
 	def show
-		@project = Project.find(params[:id])
 	end
 
 	def index
@@ -10,16 +9,13 @@ class Admin::ProjectsController < Admin::BaseController
 	end
 
 	def new
-		@user = User.new
-		@user.build_project
+		@project = Project.new
 	end
 
 	def create
-		@user = User.new(project_params)
-		if @user.save
+		@project = Project.new(project_params)
+		if @project.save
 			flash[:success] = "Proyecto creado exitosamente!"
-		auto_login(@user)
-		redirect_to @user.project
 		else
 			render 'new'
 		end
@@ -28,11 +24,13 @@ class Admin::ProjectsController < Admin::BaseController
 	def edit
 	end
 
+	# TODO: Arreglar; error al actualizar datos del proyecto
 	def update
-		if @user.update_attributes(project_params)
+		if @project.update_attributes(project_params)
 			flash[:success] = "Información del proyecto actualizada"
 			redirect_to edit_admin_project_path(@project)
 		else
+			flash[:error] = "Error"
 			render "edit"
 		end
 	end
@@ -40,13 +38,12 @@ class Admin::ProjectsController < Admin::BaseController
 	private
 		def set_project
 			@project = Project.find(params[:id])
-			@user = @project.user
 		end
 
 		def project_params
-			params.require(:user).permit(
-				:id, :email, :password, :password_confirmation, :role, 
-				project_attributes: [:id, :name, :field, :professor_id, :expertise_area_id, :client, :abstract, :video_url, :status, :score, :reason, :event_date_id, :stand])
+			params.require(:project).permit(
+				:name, :field_id, :client_id, :category_id, :expertise_area_id, :abstract, :video_url,
+				:description, :status_id, :selection_score)
 		end
 
 end
