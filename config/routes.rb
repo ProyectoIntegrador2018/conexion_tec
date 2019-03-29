@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   # resources :monitor_sessions, only: [:new, :destroy, :create]
   # resources :staff_sessions, only: [:new, :destroy, :create]
 
-  get 'login-juez', to: 'judge_sessions#new', as: :login_judge
-  post 'login-juez', to: 'judge_sessions#create'
   get 'login-administrador', to: 'administrator_session#new', as: :login_admin
   post 'login-administrador', to: 'administrator_session#create', as: :login_admin_create
   post 'logout-administrador', to: 'administrator_session#destroy', as: :logout_admin
@@ -26,6 +24,11 @@ Rails.application.routes.draw do
   get 'login-profesor', to: 'professor_sessions#new', as: :login_professor
   get 'authorize-professor', to: 'professor_sessions#create'
   post 'logout-profesor', to: 'professor_sessions#destroy', as: :logout_professor
+
+  # Judge session
+  get 'login-juez', to: 'judge_sessions#new', as: :login_judge
+  get 'authorize-judge', to: 'judge_sessions#create'
+  post 'logout-juez', to: 'judge_sessions#destroy', as: :logout_judge
 
   get 'login-staff', to: 'staff_sessions#new', as: :login_staff
   post 'login-staff', to: 'staff_sessions#create'
@@ -50,7 +53,9 @@ Rails.application.routes.draw do
   post 'signup-staff', to: 'staffs#create'
 
   namespace :judge do
-    get 'profile', to: 'profile#show'
+    get 'profile', to: 'profile#index'
+    get 'edit', to: 'profile#edit'
+    patch 'update', to: 'profile#update'
     resources 'judges'
     get 'projects', to: 'projects#index'
     get 'evaluations/project/:id', to: 'evaluations#show', as: :evaluation_project
