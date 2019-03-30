@@ -5,13 +5,12 @@ class Student::ProjectsController < Student::BaseController
 	end
 
     def new
-		@project = Project.new
+		@url = student_projects_path
 	end
 
     def create
-        byebug
         # Como crear el proyecto con el current user id?? 
-		student = User.find_by(email: project_params["student_id"])
+        student = User.find_by(email: project_params["student_id"])
 		professor = User.find_by(email: project_params["professor_id"])
 
 		if professor.nil?
@@ -20,8 +19,8 @@ class Student::ProjectsController < Student::BaseController
                                 userable_type: 'Professor',
                                 userable_id: prof_instance.id)
 		end
-		@project = Project.new(project_params.except(:student_id, :professor_id))
-		@project.student_id = student.userable_id
+        @project = Project.new(project_params.except(:student_id, :professor_id))
+        @project.student_id = student.userable_id
 		@project.professor_id = professor.userable_id
 		@project.edition_id = Edition.last.id
 		@project.status_id = Status.first.id
@@ -51,7 +50,8 @@ class Student::ProjectsController < Student::BaseController
 				:abstract, 
 				:video_url,
 				:description,
-				:selection_score,
+                :selection_score,
+                :student_id,
 				:professor_id)
 		end
 
