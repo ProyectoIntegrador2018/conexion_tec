@@ -117,5 +117,10 @@ Rails.application.routes.draw do
     resources :judges, only: [:index, :show, :create, :update]
   end
 
+  namespace :student do
+    resources 'projects'
+  end
+
+
   root 'main_screen#main'
 end
