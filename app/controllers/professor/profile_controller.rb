@@ -2,7 +2,7 @@ class Professor::ProfileController < Professor::BaseController
 
   def index
     @user = User.find(current_user.id)
-    @projects = Project.where(professor_id: current_user.id)
+    @projects = Project.where(professor_id: current_user.userable_id)
   end
 
   def edit
