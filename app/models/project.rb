@@ -1,8 +1,9 @@
 class Project < ApplicationRecord
 	# belongs_to :user
+	before_save :set_selection_score
+
 	validates :name, presence: true
 	validates :abstract, presence: true
-	validates :video_url, presence: true, if: :video_url
 	validates :field_id, presence: true
 	validates :expertise_area_id, presence: true
 	validates :client_id, presence: true
@@ -17,7 +18,16 @@ class Project < ApplicationRecord
 	belongs_to :edition
 	has_many :assignments
 	has_many :members
-
+	
+	def set_selection_score
+		if self.selection_score.present? && self.status_id != 4 && self.status_id != 3
+			self.status_id = 2
+		elsif !self.selection_score.present? && (self.status_id == 4 || self.status_id == 3)
+			self.status_id = 1
+		elsif self.status_id != 4 && self.status_id != 3
+			self.status_id = 1
+		end 
+	end
 	# scope :recommendations, -> (exp_areas) {
 	# 	where(expertise_area_id: exp_areas)
 	# 	.not_qualified

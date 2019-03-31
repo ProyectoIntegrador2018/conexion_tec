@@ -41,6 +41,10 @@ class Admin::UsersController < Admin::BaseController
 	end
 
 	def update
+		@user.authorized = true
+		@user.save
+		flash[:success] = "Usuario autorizado"
+		redirect_to admin_users_path
 	end
 
 	def destroy

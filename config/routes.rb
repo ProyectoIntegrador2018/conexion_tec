@@ -17,6 +17,16 @@ Rails.application.routes.draw do
   get 'authorize-student', to: 'student_sessions#create'
   post 'logout-estudiante', to: 'student_sessions#destroy', as: :logout_student
 
+  # Operative session
+  get 'login-operativo', to: 'operative_sessions#new', as: :login_operative
+  get 'authorize-operative', to: 'operative_sessions#create'
+  post 'logout-operativo', to: 'operative_sessions#destroy', as: :logout_operative
+
+  # Professor session
+  get 'login-profesor', to: 'professor_sessions#new', as: :login_professor
+  get 'authorize-professor', to: 'professor_sessions#create'
+  post 'logout-profesor', to: 'professor_sessions#destroy', as: :logout_professor
+
   get 'login-staff', to: 'staff_sessions#new', as: :login_staff
   post 'login-staff', to: 'staff_sessions#create'
   get 'login-monitor', to: 'monitor_sessions#new', as: :login_monitor
@@ -53,6 +63,16 @@ Rails.application.routes.draw do
     patch 'update', to: 'profile#update'
   end
 
+  namespace :operative do
+    get 'profile', to: 'profile#index'
+  end
+
+  namespace :professor do
+    get 'profile', to: 'profile#index'
+    get 'edit', to: 'profile#edit'
+    patch 'update', to: 'profile#update'
+  end
+
   namespace :admin do
     get 'profile', to: 'profile#show'
     get 'profile/edit', to: 'profile#edit'
@@ -74,6 +94,10 @@ Rails.application.routes.draw do
     get 'event_dates/new', to: "event_dates#new"
     post 'event_dates/new', to: "event_dates#create"
     delete 'event_dates/:id', to: "event_dates#destroy", as: :event_dates_destroy
+    post '/projects/approve/:id', to: "projects#approve", as: :approve_project
+    post '/projects/reject/:id', to: "projects#reject", as: :reject_project
+    post '/judges/approve/:id', to: "judges#approve", as: :approve_judge
+    post '/judges/reject/:id', to: "judges#reject", as: :reject_judge
     resources :expertise_areas
     resources :clients
     resources :majors
@@ -92,6 +116,11 @@ Rails.application.routes.draw do
   namespace :staff do
     resources :judges, only: [:index, :show, :create, :update]
   end
+
+  namespace :student do
+    resources 'projects'
+  end
+
 
   root 'main_screen#main'
 end

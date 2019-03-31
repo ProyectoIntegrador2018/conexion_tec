@@ -1,3 +1,22 @@
-<%= "Usuario actual: #{current_user.name}" %><br />
-<%= "Correo: #{current_user.email}" %><br />
-<%= "Carrera: #{current_user.userable.major.name}" %>
+<div class="row">
+  <div class="col-md-6">
+    <%= "Estudiante actual: #{current_user.name}" %>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <%= "Correo: #{current_user.email}" %>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <%= "Carrera: #{current_user.userable.major.name}" %>
+    </div>
+</div>
+<br />
+<br />
+<div class="row">
+  <div class="col-md-6">
+    <%= link_to "Registrar proyecto", new_student_project_path	, class: "btn btn-primary btn-block text-white"%>
+    </div>
+</div>
