@@ -1,0 +1,73 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12 col-md-6 offset-md-3">
+			<h1>Actualiza tus datos</h1>
+		</div>
+	</div>
+	<% if current_user.userable.external %>
+	  <%= form_for @judge, url: @url do |f|  %>
+	    <div class="row">
+	        <div class="col">
+	            <%= f.label :departemento %>
+	            <%= f.select :department_id, 
+	              options_for_select(Department.all.collect{|d| [d.name, d.id]}, @judge.department_id,), 
+	                        {}, class: "form-control" %>
+	        </div>
+			<div class="col">
+	            <%= f.label :¿Cuenta_con_laptop_o_tableta? %>
+	            <%= f.select :has_tablet, 
+	              options_for_select({"Si" => 1, "No" => 0}, @judge.has_tablet), 
+	                        {}, class: "form-control" %>
+	        </div>
+	    </div><br />
+		<div class="row">
+			<div class="col">
+	            <%= f.label :Nombre_de_la_empresa_u_organizacion_donde_tabaja %>
+	            <%= f.text_field :ex_nombreEmpresaExterna, class: "form-control" %>
+	        </div>
+		</div><br />
+		<div class="row">
+			<div class="col">
+	            <%= f.label :Nombre_del_contacto_en_el_Tec %>
+	            <%= f.text_field :ex_contactName, class: "form-control" %>
+	        </div>
+			<div class="col">
+	            <%= f.label :Email_del_contacto_en_el_Tec %>
+	            <%= f.email_field :ex_contactEmail, class: "form-control" %>
+	        </div>
+	    </div><br />
+
+	    <div class="row">
+	        <div class="col">
+	        	<%= link_to "Cancelar", judge_profile_path, { class: "btn btn-default" } %>
+	            <%= f.submit "Guardar", class: "btn btn-primary", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+	        </div>
+	    </div>
+	<% end %>
+	<% else %>
+	  <%= form_for @judge, url: @url do |f|  %>
+	    <div class="row">
+	        <div class="col">
+	            <%= f.label :departemento %>
+	            <%= f.select :department_id, 
+	              options_for_select(Department.all.collect{|d| [d.name, d.id]}, @judge.department_id,), 
+	                        {}, class: "form-control" %>
+	        </div>
+			<div class="col">
+	            <%= f.label :¿Cuenta_con_laptop_o_tableta? %>
+	            <%= f.select :has_tablet, 
+	              options_for_select({"Si" => 1, "No" => 0}, @judge.has_tablet), 
+	                        {}, class: "form-control" %>
+	        </div>
+	    </div><br />
+		
+	    <div class="row">
+	        <div class="col">
+	        	<%= link_to "Cancelar", judge_profile_path, { class: "btn btn-default" } %>
+	            <%= f.submit "Guardar", class: "btn btn-primary", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+	        </div>
+	    </div>
+	<% end %>
+	<% end %>
+
+</div>
