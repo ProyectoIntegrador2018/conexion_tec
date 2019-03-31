@@ -2,7 +2,11 @@ class Student::ProjectsController < Student::BaseController
 	before_action :set_project, only: [:new, :show, :edit, :update]
 
 	def show
-	end
+    end
+    
+    def index
+        @projects = Project.where(student_id: current_user.userable_id)
+    end
 
     def new
 		@url = student_projects_path
@@ -18,7 +22,8 @@ class Student::ProjectsController < Student::BaseController
 			professor = User.create(email: project_params["professor_id"],
                                 userable_type: 'Professor',
                                 userable_id: prof_instance.id)
-		end
+        end
+        
         @project = Project.new(project_params.except(:student_id, :professor_id))
         @project.student_id = student.userable_id
 		@project.professor_id = professor.userable_id
@@ -31,6 +36,20 @@ class Student::ProjectsController < Student::BaseController
 		else
 			flash[:error] = "Error al crear el proyecto"
 			render 'new'
+		end
+    end
+
+    def edit
+		@url = student_project_path
+    end
+    
+    def update
+		if @project.update_attributes(project_params)
+			flash[:success] = "Información del proyecto actualizada"
+			redirect_to action: 'index'
+		else
+			flash[:error] = "Error"
+			render "edit"
 		end
 	end
 
