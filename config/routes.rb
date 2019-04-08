@@ -96,6 +96,8 @@ Rails.application.routes.draw do
     delete 'event_dates/:id', to: "event_dates#destroy", as: :event_dates_destroy
     post '/projects/approve/:id', to: "projects#approve", as: :approve_project
     post '/projects/reject/:id', to: "projects#reject", as: :reject_project
+    get '/assignments', to: "assignments#index", as: :assignments
+    post '/assignments', to: "assignments#create", as: :create_assignment
     resources :expertise_areas
     resources :clients
     resources :majors

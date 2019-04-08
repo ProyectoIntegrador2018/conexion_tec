@@ -110,3 +110,31 @@ Category.create(name: "Categoria 1")
 Category.create(name: "Categoria 2")
 Category.create(name: "Categoria 3")
 Category.create(name: "Categoria 4")
+
+Edition.create(number: 1, registry_open: Date.today, registry_limit: Date.today + 30)
+
+10.times do |i|
+	professor = Professor.create(department_id: rand(1..4))
+	User.create(
+    	email: "professor#{i}@test.com", 
+    	password: "password", 
+    	password_confirmation: "password", 
+        userable_type: "Professor",
+        userable_id: professor.id)
+
+	student = Student.create(major_id: rand(1..11))
+	User.create(
+    	email: "student#{i}@test.com", 
+    	password: "password", 
+    	password_confirmation: "password", 
+        userable_type: "Student",
+        userable_id: student.id)
+
+	judge = Judge.create(department_id: rand(1..4), has_tablet: rand(0..1))
+	User.create(
+    	email: "judge#{i}@test.com", 
+    	password: "password", 
+    	password_confirmation: "password", 
+        userable_type: "Judge",
+        userable_id: judge.id)
+end

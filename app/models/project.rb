@@ -28,6 +28,16 @@ class Project < ApplicationRecord
 			self.status_id = 1
 		end 
 	end
+
+	def evaluations
+		evaluations = 0
+		assignments = self.assignments
+
+		assignments.each do |assignment|
+			evaluations += assignments.evaluations.count
+		end
+		evaluations
+	end
 	# scope :recommendations, -> (exp_areas) {
 	# 	where(expertise_area_id: exp_areas)
 	# 	.not_qualified

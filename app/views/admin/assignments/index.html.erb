@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1 style="text-align: center;">Asignación de proyectos</h1><br />
+
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Área</th>
+      <th scope="col">Evaluaciones</th>
+      <th scope="col">Asignaciones</th>
+      <th scope="col">Asignar a juez</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <%= render 'project', project: project %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

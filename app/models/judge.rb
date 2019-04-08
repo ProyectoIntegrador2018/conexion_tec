@@ -5,4 +5,8 @@ class Judge < ApplicationRecord
 	has_many :projects, through: :assignments
 	belongs_to :department
 	has_one :user, as: :userable
+
+	def name
+		self.user.name
+	end
 end
