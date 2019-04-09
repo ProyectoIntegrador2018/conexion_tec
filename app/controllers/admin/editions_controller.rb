@@ -5,7 +5,7 @@ class Admin::EditionsController < Admin::BaseController
 	def index
 		@editions = Edition.all
 	end
-	
+
 	def new
 		@url = admin_editions_path
 	end
@@ -15,39 +15,41 @@ class Admin::EditionsController < Admin::BaseController
 	end
 
 	def create
-		# Set params
-		@edition.number = edition_params['number']
-		@edition.registry_open = Date.parse(edition_params['registry_open']) if edition_params['registry_open'].present?
-		@edition.registry_limit = Date.parse(edition_params['registry_limit']) if edition_params['registry_limit'].present?
-		@edition.video_open = Date.parse(edition_params['video_open']) if edition_params['video_open'].present?
-		@edition.video_limit = Date.parse(edition_params['video_limit']) if edition_params['video_limit'].present?
-
+		set_params
 		if @edition.save
-			flash[:success] = "Edición creada"
+			flash[:success] = 'Edición creada'
 			redirect_to admin_editions_path
 		else
 			@url = admin_editions_path
-			flash.now[:danger] = "Error al crear edición"
+			flash.now[:danger] = 'Error al crear edición'
 			render 'new'
 		end
 	end
 
 	def update
-		# Set params
-		@edition.number = edition_params['number']
-		@edition.registry_open = edition_params['registry_open'].present? ? Date.parse(edition_params['registry_open']) : nil
-		@edition.registry_limit = edition_params['registry_limit'].present? ? Date.parse(edition_params['registry_limit']) : nil
-		@edition.video_open = edition_params['video_open'].present? ? Date.parse(edition_params['video_open']) : nil
-		@edition.video_limit = edition_params['video_limit'].present? ? Date.parse(edition_params['video_limit']) : nil
-
+		set_params
 		if @edition.save
-			flash[:success] = "Edición editada correctamente"
+			flash[:success] = 'Edición editada correctamente'
 			redirect_to admin_editions_path
 		else
 			@url = admin_edition_path
-			flash.now[:danger] = "Error al editar edición"
+			flash.now[:danger] = 'Error al editar edición'
 			render 'edit'
 		end
+	end
+
+	# Set params
+	def set_params
+		registry_open = edition_params['registry_open']
+		registry_limit = edition_params['registry_limit']
+		video_open = edition_params['video_open']
+		video_limit = edition_params['video_limit']
+
+		@edition.number = edition_params['number']
+		@edition.registry_open = registry_open.present? ? Date.parse(registry_open) : nil
+		@edition.registry_limit = registry_limit.present? ? Date.parse(registry_limit) : nil
+		@edition.video_open = video_open.present? ? Date.parse(video_open) : nil
+		@edition.video_limit = video_limit.present? ? Date.parse(video_limit) : nil
 	end
 
 	def set_edition
@@ -58,9 +60,9 @@ class Admin::EditionsController < Admin::BaseController
 
 		def edition_params
 			params.require(:edition).permit(:number,
-				:registry_open,
-				:registry_limit,
-				:video_open,
-				:video_limit)
+											:registry_open,
+											:registry_limit,
+											:video_open,
+											:video_limit)
 		end
 end
