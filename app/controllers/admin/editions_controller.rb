@@ -5,7 +5,7 @@ class Admin::EditionsController < Admin::BaseController
 	def index
 		@editions = Edition.all
 	end
-
+	
 	def new
 		@url = admin_editions_path
 	end
