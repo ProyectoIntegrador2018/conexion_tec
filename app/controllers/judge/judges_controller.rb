@@ -22,13 +22,15 @@ class Judge::JudgesController < Judge::BaseController
 
 	private
 		def set_judge
-			@judge = Judge.find(params[:id])
-			@user = @judge.user
+			@user = User.find(current_user.id)
+			@judge = current_user.userable
 		end
 
 		def judge_params
-			params.require(:user).permit(
-				:id, :email, :password, :password_confirmation, :role, 
-				judge_attributes: [:id, :name, :department, :has_tablet, expertise_area_ids: []])
+			params.require(:judge).permit(:has_tablet,
+				:department_id,
+				:ex_nombreEmpresaExterna,
+				:ex_contactName,
+				:ex_contactEmail)
 		end
 end
