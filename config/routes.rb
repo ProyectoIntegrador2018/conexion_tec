@@ -126,6 +126,11 @@ Rails.application.routes.draw do
     resources 'projects'
   end
 
+  namespace :common do
+    get '/assignments', to: 'assignments#index', as: :assignments
+    post '/assignments', to: 'assignments#create', as: :create_assignment
+  end
+
 
   root 'main_screen#main'
 end
