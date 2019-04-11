@@ -101,8 +101,6 @@ Rails.application.routes.draw do
     delete 'event_dates/:id', to: "event_dates#destroy", as: :event_dates_destroy
     post '/projects/approve/:id', to: "projects#approve", as: :approve_project
     post '/projects/reject/:id', to: "projects#reject", as: :reject_project
-    get '/assignments', to: "assignments#index", as: :assignments
-    post '/assignments', to: "assignments#create", as: :create_assignment
     post '/judges/approve/:id', to: "judges#approve", as: :approve_judge
     post '/judges/reject/:id', to: "judges#reject", as: :reject_judge
     resources :expertise_areas
@@ -126,6 +124,11 @@ Rails.application.routes.draw do
 
   namespace :student do
     resources 'projects'
+  end
+
+  namespace :common do
+    get '/assignments', to: 'assignments#index', as: :assignments
+    post '/assignments', to: 'assignments#create', as: :create_assignment
   end
 
 
