@@ -7,7 +7,7 @@ class Admin::EvaluationsController < Admin::BaseController
 
     def destroy
         @evaluation.destroy
-        flash[:success] = "Evaluacion Eliminada"
+        flash[:success] = "Evaluacion eliminada"
         redirect_to admin_evaluations_path
     end
 
