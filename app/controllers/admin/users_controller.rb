@@ -14,30 +14,13 @@ class Admin::UsersController < Admin::BaseController
 	end
 
 	def create
-		if user_params["userable_type"] == "Committee"
-			committee = Committee.create()
-			user = User.new(user_params)
-			user.userable_id = committee.id
+		userable_type = user_params["userable_type"]
+		if userable_type == "Committee"
+			createCommittee
 		else
-			operative = Operative.create()
-			user = User.new(user_params)
-			user.userable_id = operative.id
+			createOperative
 		end
 
-		if user.save
-			flash[:success] = "Usuario creado"
-			redirect_to admin_users_path
-		else
-			if committee
-				committee.delete
-			else
-				operative.delete
-			end
-			@user = User.new(user_params)
-			@url = admin_users_path
-			flash.now[:danger] = "Error al crear el usuario"
-			render 'new'
-		end
 	end
 
 	def update
@@ -45,6 +28,39 @@ class Admin::UsersController < Admin::BaseController
 		@user.save
 		flash[:success] = "Usuario autorizado"
 		redirect_to admin_users_path
+	end
+
+	def createCommittee
+		committee = Committee.create()
+		user = User.new(user_params)
+		user.userable_id = committee.id
+		if user.save
+			flash[:success] = "Usuario creado"
+			redirect_to admin_users_path
+		else
+			committee.delete
+			@user = User.new(user_params)
+			@url = admin_users_path
+			flash.now[:danger] = "Error al crear el usuario"
+			render 'new'
+		end
+	end
+
+	def createOperative
+		operative = Operative.create()
+		user = User.new(user_params)
+		user.userable_id = operative.id
+		
+		if user.save
+			flash[:success] = "Usuario creado"
+			redirect_to admin_users_path
+		else
+			operative.delete
+			@user = User.new(user_params)
+			@url = admin_users_path
+			flash.now[:danger] = "Error al crear el usuario"
+			render 'new'
+		end
 	end
 
 	def destroy
