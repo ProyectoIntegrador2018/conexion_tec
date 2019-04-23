@@ -6,71 +6,70 @@ Página web para el manejo del evento conexión tec.
 
 ## Table of contents
 
-* [Client Details](#client-details)
-* [Environment URLS](#environment-urls)
-* [The Team](#team)
-* [Management resources](#management-resources)
-* [Development](#development)
-* [Setup the project for development](#setup-the-project-for-development)
-* [Stop the project](#stop-the-project)
-* [Debugging](#debugging)
-* [Running tests](#running-tests)
-* [Checking code for potential issues](#checking-code-for-potential-issues)
-
+- [Client Details](#client-details)
+- [Environment URLS](#environment-urls)
+- [The Team](#team)
+- [Management resources](#management-resources)
+- [Development](#development)
+- [Setup the project for development](#setup-the-project-for-development)
+- [Stop the project](#stop-the-project)
+- [Debugging](#debugging)
+- [Running tests](#running-tests)
+- [Checking code for potential issues](#checking-code-for-potential-issues)
 
 ### Client Details
 
-| Name               	    | Email             | Role                |
-| ------------------------- | ----------------- | ------------------  |
-| Juan M. Hinojosa Olivares | juhinojo@itesm.mx | Profesor de planta  |
-
+| Name                      | Email             | Role               |
+| ------------------------- | ----------------- | ------------------ |
+| Juan M. Hinojosa Olivares | juhinojo@itesm.mx | Profesor de planta |
 
 ### Environment URLS
 
-* **Production** - [localhost:5000](localhost:5000)
-* **Development** - [https://aqueous-beyond-94616.herokuapp.com/](https://aqueous-beyond-94616.herokuapp.com/)
+- **Production** - [localhost:5000](localhost:5000)
+- **Development** - [https://aqueous-beyond-94616.herokuapp.com/](https://aqueous-beyond-94616.herokuapp.com/)
 
 ### Equipos de desarrollo
 
 **Gucci Gang - AGO - DIC 2018**
 
-| Name           				| Email             		| Role        |
-| ---------------------------- 	| ------------------------- | ----------- |
-| José Luis Carvajal Carbajal 	| josecarcar1@gmail.com 	| Development |
-| Daniel González González 		| dano.gonzalez0@gmail.com 	| Development |
-| Jorge Andrés González Borboa 	| sixofswords3@gmail.com 	| Development |
-| Andrés Sosa Silva			  	| andressosasilva@gmail.com | Development |
-| Jorge Armando Vázquez Ortiz 	| jorgevzqz6@gmail.com 		| Development |
+| Name                         | Email                     | Role        |
+| ---------------------------- | ------------------------- | ----------- |
+| José Luis Carvajal Carbajal  | josecarcar1@gmail.com     | Development |
+| Daniel González González     | dano.gonzalez0@gmail.com  | Development |
+| Jorge Andrés González Borboa | sixofswords3@gmail.com    | Development |
+| Andrés Sosa Silva            | andressosasilva@gmail.com | Development |
+| Jorge Armando Vázquez Ortiz  | jorgevzqz6@gmail.com      | Development |
 
 **Codebusters - ENE - MAY 2019**
 
-| Name           				| Email             		| Role        |
-| ---------------------------- 	| ------------------------- | ----------- |
-| Abril Marina González Ramírez | abril.gonzalezr@gmail.com | Development |
-| Juan Luis Flores Garza | jluisfgarza@gmail.com 	| Development |
-| José Humberto Guevara Martínez | j.humberto95@gmail.com | Development |
-| Luis Alfonso Arriaga Quezada	| luisaq95nin@gmail.com | Development |
-| Santiago Sandoval Treviño | santiago_st_95@hotmail.com | Development |
+| Name                           | Email                      | Role        |
+| ------------------------------ | -------------------------- | ----------- |
+| Abril Marina González Ramírez  | abril.gonzalezr@gmail.com  | Development |
+| Juan Luis Flores Garza         | jluisfgarza@gmail.com      | Development |
+| José Humberto Guevara Martínez | j.humberto95@gmail.com     | Development |
+| Luis Alfonso Arriaga Quezada   | luisaq95nin@gmail.com      | Development |
+| Santiago Sandoval Treviño      | santiago_st_95@hotmail.com | Development |
 
 ### Management tools
 
 You should ask for access to this tools if you don't have it already:
 
-* [Github repo](https://github.com/ProyectoIntegrador2018/conexion_tec)
-* [Backlog](https://github.com/ProyectoIntegrador2018/conexion_tec/projects/1) - Check Project inside this repository.
-* [Heroku](https://aqueous-beyond-94616.herokuapp.com) 
-* [Documentation](https://goo.gl/EyBjWj)
+- [Github repo](https://github.com/ProyectoIntegrador2018/conexion_tec)
+- [Backlog](https://github.com/ProyectoIntegrador2018/conexion_tec/projects/1) - Check Project inside this repository.
+- [Heroku](https://aqueous-beyond-94616.herokuapp.com)
+- [Documentation](https://goo.gl/EyBjWj)
 
 ## Development
-* RVM
-\
-`$ curl -sSL https://get.rvm.io | bash -s stable`
-* Ruby – Version 2.4.2
-\
-`$ rvm use ruby-2.4.2 --default`
-* Rails – Version 5.2.1
-\
-`$ gem install rails -v 5.2.1`
+
+- RVM
+  \
+  `$ curl -sSL https://get.rvm.io | bash -s stable`
+- Ruby – Version 2.4.2
+  \
+  `$ rvm use ruby-2.4.2 --default`
+- Rails – Version 5.2.1
+  \
+  `$ gem install rails -v 5.2.1`
 
 ### Setup the project for development
 
@@ -83,13 +82,15 @@ $ git clone https://github.com/ProyectoIntegrador2018/conexion_tec.git
 ```
 
 2. Setup the database:
-> You may need to run the following comands
+   > You may need to run the following comands
+
 ```
 sudo service mysql status
 sudo service mysql start
 ```
+
 > If using rbenv run:
-  `rbenv local 2.4.2`
+> `rbenv local 2.4.2`
 
 ```
 rails db:drop
@@ -125,6 +126,11 @@ In order to stop the project just hit Ctrl-C on the terminal where rails server 
 To run all tests, you can do:
 
 ```
-$ rspec 
+$ rspec
 ```
+
 Currently we have 27 test ranging from unit test to integration test. We would like to increase the test coverate in the app as we believe that testing should be done automatically instead of doing it by hand.
+
+### Deployment
+
+The project is currently deployed on Heroku. To make a deployment push your changes to `master` branch. Deployments are configured to be don automatically when changes are detected on the branch.
