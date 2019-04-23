@@ -25,9 +25,9 @@ class JudgeSessionsController < ApplicationController
         else # The user is not on the database
             url = judge_edit_path
             if mail.match(ITESM_MAIL) # Check if it is from the ITESM
-                user = internal_judge(mail)
+                user = internal_judge(mail,full_name)
             else #Judge is EXTERNAL
-                user = external_judge(mail)
+                user = external_judge(mail,full_name)
             end
         end
         login_redirect(user, url)
@@ -40,7 +40,7 @@ class JudgeSessionsController < ApplicationController
     end
 
     # Handle internal judge
-    def internal_judge(mail)
+    def internal_judge(mail,full_name)
         # Create the user and login
         judge = Judge.create(has_tablet: 0, department_id: 1) # Temporal data
         password = generates_password
@@ -55,7 +55,7 @@ class JudgeSessionsController < ApplicationController
     end
 
     # Handle external judge
-    def external_judge(mail)
+    def external_judge(mail,full_name)
         # Create the user and login
         judge = Judge.create(has_tablet: 0, department_id: 1, external: true) # Temporal data
         password = generates_password
