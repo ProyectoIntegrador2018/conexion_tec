@@ -1,33 +1,78 @@
-<tr>
-      <tr scope="row">
-        <td><%= project.name %></td>
-        <td>
-          <%= project.field.name %><br />
-          <small><%= "Tipo de proyecto: #{project.expertise_area.area}" %></small><br />
-          <small><%= "Categoría: #{project.category.name}" %></small>
-        </td>
-        <td><%= project.video_url.present? ? project.video_url : "Pendiente"%></td>
-        <td><%= project.status.status %></td>
-        <td><%= project.selection_score.present? ? project.selection_score : "Pendiente de calificar" %></td>
-        <td>
-        <% if project.selection_score.present? %>
-         <%= link_to admin_approve_project_path(project), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar este proyecto?'} do %>
-            <span style="color: green"><i class="fa fa-check"></i> Aprobar</span>
-		      <% end %><br />
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				<%= project.name %>
+			</h3>
+			<div class="row">
+				<div class="col-md-4">
+					<small> <strong>ID: </strong> <%= project.id%> </small>
+				</div>
+				<div class="col-md-4">
+					<small> <strong>Día: </strong> <%= project.id%> </small>
+				</div>
+				<div class="col-md-4">
+					<small> <strong>Stand: </strong> <%= project.id%> </small> 
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-4">
+					<strong>Profesor: </strong> <%= project.professor.user.name %><br>
+				</div>
+				<div class="col-md-4">
+					<strong> <%= project.expertise_area.area %> </strong>
+				</div>
+				<div class="col-md-4">
+					<%= project.client.client%>
+				</div>
+			</div>
+      <p>
+        <%= project.abstract %> 
+			</p>
+			<div class="row">
+				<div class="col-md-4">
+					<%= project.student.user.name %>
+				</div>
+				<div class="col-md-4">
+					<%= project.student.user.email %> 
+				</div>
+				<div class="col-md-4">
+					<strong>Status: </strong> <%= project.status.status%> 
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-8">
+					<small><strong>Calificación: </strong></small>
+          <% if project.selection_score.present? %>
+          <%= project.selection_score %> <br>
+          <%= link_to admin_approve_project_path(project), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar este proyecto?'} do %>
+            <span style="color: green; margin-right: 25px;"><i class="fa fa-check"></i> Aprobar</span>
+		      <% end %>
           <%= link_to admin_reject_project_path(project), method: :reject, data: { confirm: '¿Estás seguro que deseas rechazar este proyecto?'} do %>
             <span style="color: red"><i class="fa fa-times"></i> Rechazar</span>
           <% end %>
         <% else %>
-          <small>-</small>
+          <small> Pendiente </small>
         <% end %>
-	      </td>
-        <td>
-          <%= link_to 'Editar', edit_admin_project_path(project) %><br />
-          <%= link_to admin_project_path(project), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este proyecto?'} do %>
-            <span style="color: red"><i class="fa fa-trash"></i>Eliminar</span>
-		      <% end %>
-	      </td>
-      </tr>
-
-</tr>
-
+				</div>
+				<div class="col-md-4">
+					<div class="dropdown">
+						<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+							Acciones
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+               <a class="dropdown-item"><%= link_to 'Editar/Ver detalle', edit_admin_project_path(project) %></a>
+               <a class="dropdown-item">
+               <%= link_to admin_project_path(project), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este proyecto?'} do %>
+                <span style="color: red"><i class="fa fa-trash"></i>Eliminar</span>
+		            <% end %>
+                </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<hr>
