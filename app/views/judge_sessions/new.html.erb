@@ -1,5 +1,34 @@
-<div class="container login_page">
-  <h1>Inicia sesión con tu cuenta del Tec ó con tu cuenta de Hotmail</h1>
-  <a class="btn btn-lg btn-primary" href="<%= @login_url %>" role="button" id="connect-button">Iniciar sesión con Outlook</a>
+<div class="banner justify-content-center">
+  <div class="text-center img-fluid" style="
+      background-color: white;
+      border-radius: 20px;
+      opacity: 1;
+      position: absolute;
+      z-index: 9;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+      padding: 40px;
+    ">
+    <h1>Inicia sesión con tu cuenta del Tec <br> ó con tu cuenta de Hotmail</h1>
+    <a class="btn btn-lg btn-primary" href="<%= @login_url %>" role="button" id="connect-button">Iniciar sesión con Outlook</a>
+  </div>
+    <video autoplay muted loop style="
+      position: relative;
+      right: 0;
+      top: 0;
+      min-width: 100%;
+      min-height: 100vh;
+      opacity: 0.5;
+      object-fit: fill;
+      margin-left: auto;
+      margin-right: auto;
+      display: block
+    ">
+			<source src="conexionTecPromo.mp4">
+			<source src="conexionTecPromo.ogv">
+			<source src="conexionTecPromo.webm">
+		</video>
 </div>
-<%= render 'layouts/student/footer' %>
+<%# <%= render 'layouts/judge/footer' %>

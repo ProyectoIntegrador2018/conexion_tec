@@ -50,8 +50,8 @@
           Mi Cuenta
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Mi Perfil", '#', class: 'dropdown-item' %>
-          <div class="dropdown-divider"></div>
+          <%# <%= link_to "Mi Perfil", '#', class: 'dropdown-item' %>
+          <%# <div class="dropdown-divider"></div> %>
           <%= link_to "Cerrar Sesión", logout_admin_path, method: :post, class: 'dropdown-item' %>
         </div>
         </li>
@@ -70,7 +70,7 @@
           </div>
         </div>
       </div>
-      <div class="container bottom-padding">
+      <div class="container">
         <%= yield %>
       </div>
     </div>
