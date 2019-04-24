@@ -31,10 +31,11 @@ Rails.application.routes.draw do
   get 'authorize-judge', to: 'judge_sessions#create'
   post 'logout-juez', to: 'judge_sessions#destroy', as: :logout_judge
 
-  get 'login-staff', to: 'staff_sessions#new', as: :login_staff
-  post 'login-staff', to: 'staff_sessions#create'
-  get 'login-monitor', to: 'monitor_sessions#new', as: :login_monitor
-  post 'login-monitor', to: 'monitor_sessions#create'
+  # Committee session
+  get 'login-comite', to: 'committee_sessions#new', as: :login_committee
+  get 'authorize-committee', to: 'committee_sessions#create'
+  post 'logout-comite', to: 'committee_sessions#destroy', as: :logout_committee
+
 
   resources :evaluations
   resources :questions
