@@ -17,7 +17,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.name %></td>
-        <td><%= project.field %></td>
+        <td><%= project.field.name %></td>
         <td><%= project.expertise_area.area %></td>
         <td><%= project.abstract %></td>
         <td><%= link_to 'Evaluar', judge_evaluation_project_path(project.id) %></td>
