@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <%= render 'layouts/main_navbar'%>
+    <%= render 'layouts/main_navbar' if current_page?('/')%>
     <div class="container">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %>
