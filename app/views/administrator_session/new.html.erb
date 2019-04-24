@@ -1,19 +1,47 @@
+<div class="banner justify-content-center">
+  <div class=" img-fluid" style="
+      background-color: white;
+      border-radius: 20px;
+      opacity: 1;
+      position: absolute;
+      z-index: 9;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+      padding: 40px;
+    ">
+      <%= form_tag login_admin_path, method: :post do %>
+      <h1>Inicia Sesión - Administrador</h1>
+        <div class="form-group">
+          <%= label_tag :email %>
+          <%= email_field_tag :email, nil, class: 'form-control', required: true %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :password %>
+          <%= password_field_tag :password, nil, class: 'form-control', required: true %>
+        </div>
 
-<div class="container login_page" style="min-height: 100vh; display: flex; justify-content: center; align-items: center;">
-  <%= form_tag login_admin_path, method: :post do %>
-  <h1>Inicia Sesión - Administrador</h1>
-    <div class="form-group">
-      <%= label_tag :email %>
-      <%= email_field_tag :email, nil, class: 'form-control', required: true %>
-    </div>
-    <div class="form-group">
-      <%= label_tag :password %>
-      <%= password_field_tag :password, nil, class: 'form-control', required: true %>
-    </div>
-
-    <div class="form-group text-right">
-      <%= button_tag "Inicia sesion", class:"btn btn-primary" %>
-    </div>
-  <% end %>
+        <div class="form-group text-right">
+          <%= button_tag "Inicia sesion", class:"btn btn-primary" %>
+        </div>
+      <% end %>
+  </div>
+    <video autoplay muted loop style="
+      position: relative;
+      right: 0;
+      top: 0;
+      min-width: 100%;
+      min-height: 100vh;
+      opacity: 0.5;
+      object-fit: fill;
+      margin-left: auto;
+      margin-right: auto;
+      display: block
+    ">
+			<source src="conexionTecPromo.mp4">
+			<source src="conexionTecPromo.ogv">
+			<source src="conexionTecPromo.webm">
+		</video>
 </div>
-<%= render 'layouts/admin/footer' %>
+<%# <%= render 'layouts/admin/footer' %>
