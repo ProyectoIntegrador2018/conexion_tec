@@ -37,11 +37,7 @@ Rails.application.routes.draw do
 
   resources :evaluations
   resources :questions
-  resources :judges
-  resources :professors
-  resources :students
   resources :projects
-  resources :staffs, only: [:new, :create, :destroy]
 
   get 'signup-proyecto', to: 'projects#new', as: :signup_project
   post 'signup-proyecto', to: 'projects#create'
@@ -118,10 +114,6 @@ Rails.application.routes.draw do
 	  patch 'evaluation', to: 'evaluation#update'
   end
 
-  namespace :staff do
-    resources :judges, only: [:index, :show, :create, :update]
-  end
-
   namespace :student do
     resources 'projects'
   end
@@ -130,7 +122,6 @@ Rails.application.routes.draw do
     get '/assignments', to: 'assignments#index', as: :assignments
     post '/assignments', to: 'assignments#create', as: :create_assignment
   end
-
 
   root 'main_screen#main'
 end
