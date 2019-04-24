@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   # resources :administrator_sessions, only: [:new, :destroy, :create]
   # resources :monitor_sessions, only: [:new, :destroy, :create]
   # resources :staff_sessions, only: [:new, :destroy, :create]
-
+  
+  # Admin session
   get 'login-administrador', to: 'administrator_session#new', as: :login_admin
-  post 'login-administrador', to: 'administrator_session#create', as: :login_admin_create
+  get 'authorize-admin', to: 'administrator_session#create'
   post 'logout-administrador', to: 'administrator_session#destroy', as: :logout_admin
 
   # Student session

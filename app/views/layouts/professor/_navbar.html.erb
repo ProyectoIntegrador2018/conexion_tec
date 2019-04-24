@@ -1,19 +1,56 @@
-<nav class="navbar navbar-primary text-dark"">
-  <%= link_to 'Conexión Tec', professor_profile_path, class: 'navbar-brand' %>
+<div class="d-flex" id="wrapper">
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerMenu" aria-controls="navbarTogglerMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <!-- Sidebar -->
+  <div class="border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading bg-primary text-white">
+      <h2>Profesor</h2>
+    </div>
+    <div class="list-group list-group-flush">
+      <%# <%= link_to 'Perfil', student_profile_path, class: 'nav-link' %> 
+    </div>
+  </div>
 
-  <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerMenu">
-    <div class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= current_user.name %>
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <%= link_to "Editar perfil", professor_edit_path(current_user.id), class: 'dropdown-item' %>
-        <%= link_to "Cerrar Sesión", logout_professor_path, method: :post, class: 'dropdown-item' %>
+<!-- Page Content -->
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <button class="btn btn-primary" id="menu-toggle"><span class="navbar-toggler-icon"></span></button>
+      <div class="dropdown ml-auto mt-2 mt-lg-0 dropleft">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <%= current_user.name %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        
+          <%= link_to "Editar perfil", professor_edit_path(current_user.id), class: 'dropdown-item' %>
+          <div class="dropdown-divider"></div>
+          <%= link_to "Cerrar Sesión", logout_professor_path, method: :post, class: 'dropdown-item' %>
+        </div>
+        </li>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="container mx-auto">
+        <div class="row mt-3">
+          <div class="col">
+            <% flash.each do |message_type, message| %>
+            <div class="alert alert-<%= message_type %>">
+              <%= message %>
+              <button class="close" data-dismiss="alert">×</button>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <%= yield %>
       </div>
     </div>
   </div>
-</nav>
+</div>
+
+<script>
+  $("#menu-toggle").click(function (e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+</script>
