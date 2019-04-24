@@ -1,5 +1,5 @@
 <div class="banner justify-content-center">
-  <div class=" img-fluid" style="
+  <div class="text-center img-fluid" style="
       background-color: white;
       border-radius: 20px;
       opacity: 1;
@@ -11,21 +11,8 @@
       transform: translate(-50%, -50%);
       padding: 40px;
     ">
-      <%= form_tag login_admin_path, method: :post do %>
-      <h1>Inicia Sesión - Administrador</h1>
-        <div class="form-group">
-          <%= label_tag :email %>
-          <%= email_field_tag :email, nil, class: 'form-control', required: true %>
-        </div>
-        <div class="form-group">
-          <%= label_tag :password %>
-          <%= password_field_tag :password, nil, class: 'form-control', required: true %>
-        </div>
-
-        <div class="form-group text-right">
-          <%= button_tag "Inicia sesion", class:"btn btn-primary" %>
-        </div>
-      <% end %>
+      <h1>Inicia sesión con tu cuenta del Tec</h1>
+      <a class="btn btn-lg btn-primary" href="<%= @login_url %>" role="button" id="connect-button">Conectar con Outlook</a>
   </div>
     <video autoplay muted loop style="
       position: relative;
