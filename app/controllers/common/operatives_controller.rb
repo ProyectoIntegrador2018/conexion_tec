@@ -1,34 +1,34 @@
-class Admin::UsersController < Admin::BaseController
+class Common::OperativesController < Common::AdminCommitteeBaseController
 	before_action :set_user, except: [:index, :create]
 
 	def index
-		@users = User.where(userable_type: "Committee")
+		@users = User.where(userable_type: 'Operative')
 	end
 
 	def new
-		@url = admin_users_path
+		@url = common_operatives_path
 	end
 
 	def edit
-		@url = admin_user_path
+		@url = common_operative_path
 	end
 
 	def create
-		committee = Committee.create()
+		operative = Operative.create()
 		password = SecureRandom.base64(10) # Generates random password
 		user = User.new(user_params)
 		user.password = password
-		user.userable_type = "Committee"
+		user.userable_type = "Operative"
 		user.password_confirmation = password
-		user.userable_id = committee.id
+		user.userable_id = operative.id
 		
 		if user.save
 			flash[:success] = "Usuario creado"
-			redirect_to admin_users_path
+			redirect_to common_operatives_path
 		else
-			committee.delete
+			operative.delete
 			@user = User.new(user_params)
-			@url = admin_users_path
+			@url = common_operatives_path
 			flash.now[:danger] = "Error al crear el usuario"
 			render 'new'
 		end
@@ -45,15 +45,15 @@ class Admin::UsersController < Admin::BaseController
 			@user.save
 			flash[:success] = "Usuario autorizado"
 		end
-		redirect_to admin_users_path
+		redirect_to common_operatives_path
 	end
 
 	def destroy
-		committee = Committee.find(@user.userable_id)
-		committee.delete
+		operative = Operative.find(@user.userable_id)
+		operative.delete
 		@user.delete
 		flash[:success] = "Usuario eliminado"
-		redirect_to admin_users_path
+		redirect_to common_operatives_path
 	end
 
 	def set_user
@@ -63,7 +63,8 @@ class Admin::UsersController < Admin::BaseController
 	private
 
 		def user_params
-			params.require(:user).permit(:name,
+			params.require(:user).permit(
+				:name,
 				:email,
 				:password,
 				:password_confirmation,
