@@ -5,65 +5,65 @@
       <h1>Actualizar proyecto</h1>
     </div>
   </div>
-
-
 <%= form_for @project, url: admin_project_path do |f| %>
-<%= f.fields_for :user, @user.project do |u| %>
 	<div class="row">
 		<div class="col-md-12">
     <h3> Datos del proyecto </h3>
 			<div class="row">
 				<div class="col-md-4">
-        ID
+          <strong><%= f.label :id, 'ID del Proyecto: ' %></strong>
+          <%= @project.id %> 
 				</div>
 				<div class="col-md-4">
-        STAND
+          <strong><%= f.label :id, 'Stand asignado: ' %></strong>
+          <%= @project.id %>
 				</div>
 				<div class="col-md-4">
-        DIA
+          <strong><%= f.label :id, 'Día asignado: ' %></strong>
+          <%= @project.id %>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-        <%= f.label :name, 'Nombre del Proyecto' %>
+        <strong><%= f.label :name, 'Nombre del Proyecto: ' %></strong>
         <%= f.text_field :name, class: "form-control" %>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6">
-        <%= f.label :category, 'Categoría del Proyecto'%>
+        <strong><%= f.label :category, 'Categoría del Proyecto: '%></strong>
         <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @project.category_id) %>
 				</div>
 				<div class="col-md-6">
-        <%= f.label :field, 'Área temática'%>
+        <strong><%= f.label :field, 'Área temática: '%></strong>
         <%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name, @project.field_id) %>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6">
-        <%= f.label :expertise_area, 'Tipo de proyecto'%>
+        <strong><%= f.label :expertise_area, 'Tipo de proyecto: '%></strong>
         <%= f.select :expertise_area_id, options_from_collection_for_select(ExpertiseArea.all, :id, :area, @project.expertise_area_id) %>  
 				</div>
 				<div class="col-md-6">
-        <%= f.label :client, 'Cliente del proyecto'%>
+        <strong><%= f.label :client, 'Cliente del proyecto: '%></strong>
         <%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :client, @project.client_id) %>  
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-        <%= f.label :description, 'Objetivo'%>
+        <strong><%= f.label :description, 'Objetivo: '%></strong>
         <%= f.text_area :description, :rows => 3, class: "form-control" %>  
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-        <%= f.label :abstract, 'Abstract'%>
+        <strong><%= f.label :abstract, 'Abstract: '%></strong>
         <%= f.text_area :abstract, :rows => 10, class: "form-control" %> 
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-        <%= f.label :video_url, 'Video de Youtube'%>
+        <strong><%= f.label :video_url, 'Video de Youtube: '%></strong>
         <%= f.text_field :video_url, class: "form-control" %> 
 				</div>
 			</div>
@@ -72,62 +72,61 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div><br>
 	<div class="row">
     <h3> Datos del alumno responsable </h3>
 		<div class="col-md-12">
       <div class="row">
-        <div class="cold-md-6">
-        <%= u.label :name, 'Nombre: '%>
-        <%= u.text_field :name, class: "form-control" %>
-        </div>
-        <div class="cold-md-4">
-         <%= u.label :email, 'E-mail: '%>
-          <%= u.text_field :email, class: "form-control"%>
-        </div>
-        <div class="cold-md-2">
-        <%= u.label :major, 'Carrera'%>
-        <%= u.select :major, Student.majors.keys.to_a, {}, class: 'form-control'%>
-        </div>
-      </div>
+				<div class="col-md-6">
+          <strong><%= f.label :student_id, 'Nombre: '%> </strong>
+          <%= @project.student.user.name %>
+				</div>
+				<div class="col-md-4">
+          <strong><%= f.label :student_id, 'E-mail: '%> </strong>
+            <%= @project.student.user.email%>
+				</div>
+				<div class="col-md-2">
+          <strong><%= f.label :major, 'Carrera: '%> </strong>
+            <%= @project.student.major.name %> 
+				</div>
+			</div>
+      <%# <div class="row">
+        <button type="button" class="btn btn-link btn-sm">
+        Editar datos del alumno
+        </button>
+      </div> %>
 		</div>
-	</div>
+	</div><br>
 	<div class="row">
     <h3> Datos del profesor coordinador </h3>
-    <%= f.fields_for :professor, @user.project.build_professor do |p|%>
 		<div class="col-md-12">
       <div class="row">
-          <div class="cold-md-6">
-          <%= p.label :name, 'Nombre: '%>
-          <%= p.text_field :name, class: "form-control" %>
-          </div>
-          <div class="cold-md-4">
-          <%= p.label :email, 'E-mail: '%>
-            <%= p.email :project, class: "form-control"%>
-          </div>
-          <div class="cold-md-2">
-          <%= p.label :department, 'Departamento'%>
-          <%= p.select :department, Professor.departments.keys.to_a, {}, class: 'form-control'  %>  
-          </div>
-      </div>
-      <div class="row">
-					<div class="col">
-						<div class="form-group">
-							<%= p.label :course_code, "Clave de Materia" %>
-							<%= p.text_field :course_code, class: 'form-control' %> 
-						</div>
-					</div>
+				<div class="col-md-4">
+          <strong><%= f.label :professor_id, 'Nombre: '%> </strong>
+              <%= @project.professor.user.name %>
 				</div>
+				<div class="col-md-4">
+          <strong><%= f.label :professor_id, 'E-mail: '%> </strong>
+          <%= @project.professor.user.email %>
+				</div>
+				<div class="col-md-4">
+          <strong><%= f.label :department, 'Departamento: '%></strong>
+              <%= @project.professor.department.name %>
+				</div>
+			</div>
+      <%# <div class="row">
+        <button type="button" class="btn btn-link btn-sm">
+        Editar datos del profesor
+        </button>
+      </div> %>
 		</div>
-    <% end %>
-	</div>
+	</div><br>
   <div class="row">
     <div class="col-md-6">
       <%= f.submit "Guardar cambios", class: "btn btn-primary"%>
     </div>
   </div>
   <% end %>
-<% end %>
 </div>
 
 
