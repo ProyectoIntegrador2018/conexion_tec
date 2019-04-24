@@ -16,7 +16,6 @@ class AdministratorSessionController < ApplicationController
         mail = raw_information["mail"] || raw_information["userPrincipalName"]
 
         user = User.find_by(email: mail)
-        byebug
 
         if user && user.admin?
             auto_login(user)
