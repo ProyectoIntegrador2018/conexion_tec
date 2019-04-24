@@ -30,7 +30,7 @@
             <%= f.label :juez, 'Juez' %><br>
               <%= f.select :judge_id, options_from_collection_for_select(Judge.all, :id, :name) %>
           </div><br />
-          <%= f.submit "Crear proyecto", class: "btn btn-primary"%>
+          <%= f.submit "Asignar juez", class: "btn btn-primary"%>
         <% end %>
       </div>
       <div class="modal-footer">

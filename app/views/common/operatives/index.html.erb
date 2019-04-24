@@ -1,6 +1,6 @@
-<h1>Usuarios - Comité</h1>
+<h1>Usuarios - Operativo</h1>
 
-<%= link_to "Agregar usuario", new_admin_user_path, class: "btn btn-primary btn-block text-white"%>
+<%= link_to "Agregar usuario", new_common_operative_path, class: "btn btn-primary btn-block text-white"%>
 <table class="table table-responsive">
   <thead>
     <tr>
@@ -12,6 +12,8 @@
   </thead>
 
   <tbody>
-    <%= render @users %>
+   <% @users.each do |user| %>
+      <%= render 'user', user: user %>
+    <% end %>
   </tbody>
 </table>
