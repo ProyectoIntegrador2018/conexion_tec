@@ -103,7 +103,8 @@ Rails.application.routes.draw do
   end
 
   namespace :committee do
-
+    get 'profile', to: 'profile#index'
+    resources :committees
   end
 
   namespace :student do

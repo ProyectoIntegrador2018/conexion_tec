@@ -1,5 +1,5 @@
 class Committee::BaseController < ActionController::Base
-	layout 'committe'
+	layout 'committee'
 
 	before_action :require_login
 	before_action :require_committee
@@ -11,6 +11,6 @@ class Committee::BaseController < ActionController::Base
 	end
 
 	def require_committee
-		redirect_to login_admin_path unless current_user.admin?
+		redirect_to login_committee_path unless current_user.committee?
 	end
 end

@@ -18,24 +18,26 @@ class CommitteeSessionsController < ApplicationController
 
         mail = raw_information['mail'] || raw_information['userPrincipalName']
         full_name = raw_information['displayName']
+        url = committee_profile_path
 
-        user = User.find_by(email: mail)
-        if user # The user exists, login to the system
-            url = committee_profile_path
-        else # The user is not on the database
-            url = committee_edit_path
-            if mail.match(ITESM_MAIL) # Check if it is from the ITESM
+        if mail.match(ITESM_MAIL)
+            user = User.find_by(email: mail)
+            if user # The user exists, login to the system
+                login_redirect(user, url)
+            else # The user is not on the database
                 user = create_committee(mail,full_name)
-            else #committee mail is not from ITESM 
-                flash.now[:danger] = 'Correo invalido: favor de utilizar correo del ITESM.'
-                render 'new'
+                login_redirect(user, url)
             end
+        else
+            flash.now[:danger] = 'Correo invalido: favor de utilizar correo del ITESM.'
+            render 'new'
         end
-        login_redirect(user, url)
+        
     end
 
     # Login user and redirect page to another path
     def login_redirect(user, url)
+        byebug
         auto_login(user)
         redirect_to url
     end
