@@ -103,37 +103,7 @@ Rails.application.routes.draw do
   end
 
   namespace :committee do
-    get 'profile', to: 'profile#show'
-    get 'profile/edit', to: 'profile#edit'
-    patch 'profile/edit', to: 'profile#update'
-    resources 'projects'
-    get 'judges', to: 'judges#index'
-    resources 'judges', only: [:destroy]
-    get 'evaluations', to: 'evaluations#index'
-    resources 'evaluations', only: [:destroy]
-    get 'questions', to: 'questions#show'
-    get 'questions/new', to: 'questions#new'
-    post 'questions/new', to: 'questions#create'
-    resources 'questions', only: [:edit, :update, :destroy]
-    get 'statistics/projects_category', to: 'statistics#projects_category'
-    get 'statistics/judges_expertise_areas', to: 'statistics#judges_expertise_areas'
-    get 'statistics/projects_score', to: 'statistics#projects_score'
-    get 'statistics/projects_score_category', to: 'statistics#projects_score_category'
-    get 'event_dates', to: 'event_dates#index'
-    get 'event_dates/new', to: "event_dates#new"
-    post 'event_dates/new', to: "event_dates#create"
-    delete 'event_dates/:id', to: "event_dates#destroy", as: :event_dates_destroy
-    post '/projects/approve/:id', to: "projects#approve", as: :approve_project
-    post '/projects/reject/:id', to: "projects#reject", as: :reject_project
-    post '/judges/approve/:id', to: "judges#approve", as: :approve_judge
-    post '/judges/reject/:id', to: "judges#reject", as: :reject_judge
-    resources :expertise_areas
-    resources :clients
-    resources :majors
-    resources :fields
-    resources :departments
-    resources :editions
-    resources :categories
+
   end
 
   namespace :student do
@@ -144,6 +114,7 @@ Rails.application.routes.draw do
     get '/assignments', to: 'assignments#index', as: :assignments
     post '/assignments', to: 'assignments#create', as: :create_assignment
     resources :operatives
+    put 'operative/authorize/:id', to: 'operatives#authorize', as: :authorize_user
   end
 
   root 'main_screen#main'
