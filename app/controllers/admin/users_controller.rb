@@ -36,6 +36,17 @@ class Admin::UsersController < Admin::BaseController
 	end
 
 	def update
+		if @user.update_attributes(user_params)
+			flash[:success] = 'Datos del usuario actualizado'
+			redirect_to admin_users_path
+		else
+			flash[:danger] = 'Error al actualizar datos'
+			@url = admin_user_path
+			render 'edit'
+		end
+	end
+
+	def authorize
 		if @user.authorized
 			@user.authorized = false
 			@user.save
@@ -65,8 +76,6 @@ class Admin::UsersController < Admin::BaseController
 		def user_params
 			params.require(:user).permit(:name,
 				:email,
-				:password,
-				:password_confirmation,
 				:userable_type)
 		end
 end

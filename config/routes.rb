@@ -92,6 +92,7 @@ Rails.application.routes.draw do
     post '/projects/reject/:id', to: "projects#reject", as: :reject_project
     post '/judges/approve/:id', to: "judges#approve", as: :approve_judge
     post '/judges/reject/:id', to: "judges#reject", as: :reject_judge
+    put 'user/authorize/:id', to: 'users#authorize', as: :authorize_user
     resources :expertise_areas
     resources :clients
     resources :majors
