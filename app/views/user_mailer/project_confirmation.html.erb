@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+
+  <body>
+    <p>
+      <%= @user.name %>,<br />
+      Por este medio les confirmamos el registro del proyecto <%= "#{@project.name}" %> en la categoria <%= "#{@project.category.name}" %> para el evento Conexion Tec de este semestre.<br />
+      Si deseas revisar o modificar los datos del mismo, podras hacerlo mediante la pagina de registro y utilizando tu correo electronico.
+
+      Atentamente,<br />
+      Comite Organizador<br />
+      Evento Conexion Tec
+    </p>
+  </body>
+</html>
