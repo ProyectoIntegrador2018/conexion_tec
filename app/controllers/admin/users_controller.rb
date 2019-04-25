@@ -1,4 +1,5 @@
 class Admin::UsersController < Admin::BaseController
+	include AuthorizeHelper
 	before_action :set_user, except: [:index, :create]
 
 	def index
@@ -47,14 +48,10 @@ class Admin::UsersController < Admin::BaseController
 	end
 
 	def authorize
-		if @user.authorized
-			@user.authorized = false
-			@user.save
-			flash[:success] = "Usuario desautorizado"
+		if authorize_user(@user)
+			flash[:success] = 'Usuario autorizado'
 		else
-			@user.authorized = true
-			@user.save
-			flash[:success] = "Usuario autorizado"
+			flash[:success] = 'Usuario desautorizado'
 		end
 		redirect_to admin_users_path
 	end

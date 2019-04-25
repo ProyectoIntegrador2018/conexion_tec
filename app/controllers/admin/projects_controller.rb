@@ -14,6 +14,12 @@ class Admin::ProjectsController < Admin::BaseController
 	end
 
 	def create
+		if project_params["professor_id"].nil? || project_params["student_id"].nil?
+			flash[:success] = "Favor de ingresar la información correspondiente en todos los campos."
+			render 'new'
+		end
+	
+
 		student = User.find_by(email: project_params["student_id"])
 		professor = User.find_by(email: project_params["professor_id"])
 
