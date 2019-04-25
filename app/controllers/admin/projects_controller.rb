@@ -14,26 +14,34 @@ class Admin::ProjectsController < Admin::BaseController
 	end
 
 	def create
-		student = User.find_by(email: project_params["student_id"])
-		professor = User.find_by(email: project_params["professor_id"])
 
-		if professor.nil?
-			prof_instance = Professor.create(department_id: 4)
-			professor = User.create(email: project_params["professor_id"],
-                                userable_type: 'Professor',
-                                userable_id: prof_instance.id)
-		end
-		@project = Project.new(project_params.except(:student_id, :professor_id))
-		@project.student_id = student.userable_id
-		@project.professor_id = professor.userable_id
-		@project.edition_id = Edition.last.id
-		@project.status_id = Status.first.id
+		if project_params["student_id"].present? && project_params["professor_id"].present?
+			student = User.find_by(email: project_params["student_id"])
+			professor = User.find_by(email: project_params["professor_id"])
 
-		if @project.save
-			flash[:success] = "Proyecto creado exitosamente!"
-			redirect_to action: 'index'
+			if professor.nil?
+				prof_instance = Professor.create(department_id: 4)
+				professor = User.create(email: project_params["professor_id"],
+									userable_type: 'Professor',
+									userable_id: prof_instance.id)
+			end
+			@project = Project.new(project_params.except(:student_id, :professor_id))
+			@project.student_id = student.userable_id
+			@project.professor_id = professor.userable_id
+			@project.edition_id = Edition.last.id
+			@project.status_id = Status.first.id
+
+			if @project.save
+				flash[:success] = "Proyecto creado exitosamente!"
+				redirect_to action: 'index'
+			else
+				flash[:error] = "Error al crear el proyecto"
+				render 'new'
+			end
 		else
-			flash[:error] = "Error al crear el proyecto"
+			flash[:danger] = "Porfavor complete los campos de correo"
+			@url = admin_projects_path
+			set_project
 			render 'new'
 		end
 	end
