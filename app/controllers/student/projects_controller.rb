@@ -13,19 +13,26 @@ class Student::ProjectsController < Student::BaseController
 	end
 
     def create
-        # Como crear el proyecto con el current user id?? 
-        student = User.find_by(email: project_params["student_id"])
-		professor = User.find_by(email: project_params["professor_id"])
+    	professor_email = project_params["email_professor"]
+		professor = User.find_by(email: professor_email)
 
 		if professor.nil?
-			prof_instance = Professor.create(department_id: 4)
-			professor = User.create(email: project_params["professor_id"],
+			department_id = project_params["department_professor"]
+			professor_name = project_params["name_professor"]
+			password = SecureRandom.base64(10) # Generates random password
+
+			prof_instance = Professor.create(department_id: department_id)
+			professor = User.create(email: professor_email,
                                 userable_type: 'Professor',
-                                userable_id: prof_instance.id)
+                                userable_id: prof_instance.id,
+                                name: professor_name,
+                                password: password,
+                                password_confirmation: password)
+			byebug
         end
         
-        @project = Project.new(project_params.except(:student_id, :professor_id))
-        @project.student_id = student.userable_id
+        @project = Project.new(project_params.except(:email_professor, :department_professor, :name_professor))
+        @project.student_id = current_user.userable_id
 		@project.professor_id = professor.userable_id
 		@project.edition_id = Edition.last.id
 		@project.status_id = Status.first.id
@@ -36,6 +43,7 @@ class Student::ProjectsController < Student::BaseController
 			redirect_to action: 'index'
 		else
 			flash[:error] = "Error al crear el proyecto"
+			@url = student_project_path
 			render 'new'
 		end
     end
@@ -70,9 +78,9 @@ class Student::ProjectsController < Student::BaseController
 				:abstract, 
 				:video_url,
 				:description,
-                :selection_score,
-                :student_id,
-				:professor_id)
+				:email_professor,
+				:name_professor,
+				:department_professor)
 		end
 
 end
