@@ -7,44 +7,50 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-
-# User.create(
-# 	email: "abril@test.com", 
-# 	password: "password", 
-# 	password_confirmation: "password", 
-# 	role: "admin")
-
-# User.create(
-# 	email: "pepe@test.com", 
-# 	password: "password", 
-# 	password_confirmation: "password", 
-# 	role: "admin")
-
-# User.create(
-# 	email: "poncho@test.com", 
-# 	password: "password", 
-# 	password_confirmation: "password", 
-# 	role: "admin")
-
-# User.create(
-# 	email: "juan@test.com", 
-# 	password: "password", 
-# 	password_confirmation: "password", 
-# 	role: "admin")
-
-# User.create(
-# 	email: "santiago@test.com", 
-# 	password: "santiago", 
-# 	password_confirmation: "santiago", 
-# 	role: "admin")
+admin = Administrator.create()
+User.create(
+    name: "Steve Rogers",
+    email: "A00816927@itesm.mx", 
+    password: "password", 
+    password_confirmation: "password", 
+    userable_type: "Administrator",
+    userable_id: admin.id)
 
 admin = Administrator.create()
-user = User.create(
-    	email: "admin@test.com", 
-    	password: "password", 
-    	password_confirmation: "password", 
-        userable_type: "Administrator",
-        userable_id: admin.id)
+User.create(
+    name: "Anthony Edward Stark",
+    email: "A01280767@itesm.mx", 
+    password: "password", 
+    password_confirmation: "password", 
+    userable_type: "Administrator",
+    userable_id: admin.id)
+
+admin = Administrator.create()
+User.create(
+    name: "Natalia Alianovna Romanova",
+    email: "A01280904@itesm.mx", 
+    password: "password", 
+    password_confirmation: "password", 
+    userable_type: "Administrator",
+    userable_id: admin.id)
+
+admin = Administrator.create()
+User.create(
+    name: "Bruce Banner",
+    email: "A01280642@itesm.mx", 
+    password: "password", 
+    password_confirmation: "password", 
+    userable_type: "Administrator",
+    userable_id: admin.id)
+
+admin = Administrator.create()
+User.create(
+    name: "Nicholas Joseph Fury",
+    email: "A01039195@itesm.mx", 
+    password: "password", 
+    password_confirmation: "password", 
+    userable_type: "Administrator",
+    userable_id: admin.id)
         
 Major.create(name: "ITC")
 Major.create(name: "INT")
@@ -116,6 +122,7 @@ Edition.create(number: 1, registry_open: Date.today, registry_limit: Date.today 
 10.times do |i|
 	professor = Professor.create(department_id: rand(1..4))
 	User.create(
+        name: "Profesor #{i}",
     	email: "professor#{i}@test.com", 
     	password: "password", 
     	password_confirmation: "password", 
@@ -124,6 +131,7 @@ Edition.create(number: 1, registry_open: Date.today, registry_limit: Date.today 
 
 	student = Student.create(major_id: rand(1..11))
 	User.create(
+        name: "Estudiante #{i}",
     	email: "student#{i}@test.com", 
     	password: "password", 
     	password_confirmation: "password", 
@@ -132,6 +140,7 @@ Edition.create(number: 1, registry_open: Date.today, registry_limit: Date.today 
 
 	judge = Judge.create(department_id: rand(1..4), has_tablet: rand(0..1))
 	User.create(
+        name: "Juez #{i}",
     	email: "judge#{i}@test.com", 
     	password: "password", 
     	password_confirmation: "password", 

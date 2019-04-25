@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   # resources :administrator_sessions, only: [:new, :destroy, :create]
   # resources :monitor_sessions, only: [:new, :destroy, :create]
   # resources :staff_sessions, only: [:new, :destroy, :create]
-
+  
+  # Admin session
   get 'login-administrador', to: 'administrator_session#new', as: :login_admin
-  post 'login-administrador', to: 'administrator_session#create', as: :login_admin_create
+  get 'authorize-admin', to: 'administrator_session#create'
   post 'logout-administrador', to: 'administrator_session#destroy', as: :logout_admin
 
   # Student session
@@ -99,6 +100,7 @@ Rails.application.routes.draw do
     post '/projects/reject/:id', to: "projects#reject", as: :reject_project
     post '/judges/approve/:id', to: "judges#approve", as: :approve_judge
     post '/judges/reject/:id', to: "judges#reject", as: :reject_judge
+    put 'user/authorize/:id', to: 'users#authorize', as: :authorize_user
     resources :expertise_areas
     resources :clients
     resources :majors
