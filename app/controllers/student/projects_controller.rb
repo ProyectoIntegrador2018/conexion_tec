@@ -31,6 +31,7 @@ class Student::ProjectsController < Student::BaseController
 		@project.status_id = Status.first.id
 
 		if @project.save
+			ApplicationMailer.with(user: current_user, project: @project).project_confirmation.deliver_now
 			flash[:success] = "Proyecto creado exitosamente!"
 			redirect_to action: 'index'
 		else
