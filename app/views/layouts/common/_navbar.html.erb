@@ -1,5 +1,5 @@
 <% if current_user.admin? %>
 	<%= render 'layouts/admin/navbar' %>
-<% elsif current_user.operative? %>
-	<%= render 'layouts/operative/navbar' %>
+<% elsif current_user.committee? %>
+	<%= render 'layouts/committee/navbar' %>
 <% end %>

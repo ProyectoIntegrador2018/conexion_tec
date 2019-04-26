@@ -1,0 +1,36 @@
+<tr>
+      <tr scope="row">
+        <td><%= judge.user.name %></td>
+        <td><%= judge.department.name %></td>
+        <td><% if judge.has_tablet %>
+            Sí
+          <% else %>
+            No
+          <% end %>
+        </td>
+        <td>
+            <% judge.expertise_areas.each do | ea | %>
+                <%= ea.area%><br />
+            <%end%>
+        </td>
+        <td>
+          <% if judge.user.authorized %>
+            Aprobado
+          <% else %>
+            Rechazado
+          <% end %>
+        </td>
+        <td>
+         <%= link_to common_approve_judge_path(judge), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar a este juez?'} do %>
+            <span style="color: green"><i class="fa fa-check"></i> Aprobar</span>
+		      <% end %><br />
+          <%= link_to common_reject_judge_path(judge), method: :reject, data: { confirm: '¿Estás seguro que deseas rechazar a este juez?'} do %>
+            <span style="color: red"><i class="fa fa-times"></i> Rechazar</span>
+          <% end %>
+        <td>
+          <%= link_to common_judge_path(judge), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este juez?'} do %>
+            <span style="color: red"><i class="fa fa-trash"></i>Eliminar</span>
+		      <% end %>
+	      </td>
+      </tr>
+</tr>

@@ -37,7 +37,6 @@ class CommitteeSessionsController < ApplicationController
 
     # Login user and redirect page to another path
     def login_redirect(user, url)
-        byebug
         auto_login(user)
         redirect_to url
     end
