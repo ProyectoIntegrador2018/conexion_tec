@@ -55,8 +55,7 @@ Rails.application.routes.draw do
     patch 'update', to: 'profile#update'
     resources 'judges'
     get 'projects', to: 'projects#index'
-    get 'evaluations/project/:id', to: 'evaluations#show', as: :evaluation_project
-    post 'evaluations/project/:id', to: 'evaluations#submit', as: :evaluation_project_submit
+    resources :evaluations, onyl: [:new, :create]
   end
 
   namespace :student do

@@ -1,0 +1,8 @@
+<h1>Evaluación de <%= @project.name%></h1><br />
+
+<%= form_for @evaluation, url: @url do |f| %>
+	<%= render @questions %>
+	
+	<%= link_to "Cancelar", judge_projects_path, { class: "btn btn-default" } %>
+	<%= f.submit "Subir evaluación", class: "btn btn-primary" %>
+<% end %>
