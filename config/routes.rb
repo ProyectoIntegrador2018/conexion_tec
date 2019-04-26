@@ -117,6 +117,7 @@ Rails.application.routes.draw do
     resources :departments
     resources :editions
     resources :categories
+    resources :stands
   end
 
   root 'main_screen#main'
