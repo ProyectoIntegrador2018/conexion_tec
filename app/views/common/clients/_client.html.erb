@@ -1,0 +1,8 @@
+<tr>
+	<td><%= link_to client.client, edit_common_client_path(client) %></td>
+	<td>
+		<%= link_to common_client_path(client), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este tipo de cliente?'} do %>
+			<span style="color: red"><i class="fa fa-trash"></i> Eliminar</span>
+		<% end %>
+	</td>
+</tr>

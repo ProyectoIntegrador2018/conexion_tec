@@ -37,9 +37,9 @@ Rails.application.routes.draw do
   post 'logout-comite', to: 'committee_sessions#destroy', as: :logout_committee
 
 
-  resources :evaluations
-  resources :questions
-  resources :projects
+  # resources :evaluations
+  # resources :questions
+  # resources :projects
 
   namespace :judge do
     get 'profile', to: 'profile#index'
@@ -70,6 +70,25 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#show'
     get 'profile/edit', to: 'profile#edit'
     patch 'profile/edit', to: 'profile#update'
+    put 'user/authorize/:id', to: 'users#authorize', as: :authorize_user
+    resources :users
+  end
+
+  namespace :committee do
+    get 'profile', to: 'profile#index'
+    resources :committees
+  end
+
+  namespace :student do
+    resources 'projects'
+  end
+
+  namespace :common do
+    get '/assignments', to: 'assignments#index', as: :assignments
+    post '/assignments', to: 'assignments#create', as: :create_assignment
+    resources :operatives
+    put 'operative/authorize/:id', to: 'operatives#authorize', as: :authorize_user
+    
     resources 'projects'
     get 'judges', to: 'judges#index'
     resources 'judges', only: [:destroy]
@@ -91,7 +110,6 @@ Rails.application.routes.draw do
     post '/projects/reject/:id', to: "projects#reject", as: :reject_project
     post '/judges/approve/:id', to: "judges#approve", as: :approve_judge
     post '/judges/reject/:id', to: "judges#reject", as: :reject_judge
-    put 'user/authorize/:id', to: 'users#authorize', as: :authorize_user
     resources :expertise_areas
     resources :clients
     resources :majors
@@ -99,23 +117,6 @@ Rails.application.routes.draw do
     resources :departments
     resources :editions
     resources :categories
-    resources :users
-  end
-
-  namespace :committee do
-    get 'profile', to: 'profile#index'
-    resources :committees
-  end
-
-  namespace :student do
-    resources 'projects'
-  end
-
-  namespace :common do
-    get '/assignments', to: 'assignments#index', as: :assignments
-    post '/assignments', to: 'assignments#create', as: :create_assignment
-    resources :operatives
-    put 'operative/authorize/:id', to: 'operatives#authorize', as: :authorize_user
   end
 
   root 'main_screen#main'

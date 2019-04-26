@@ -1,0 +1,17 @@
+<h1>Áreas Temáticas</h1>
+
+<%= link_to "Agregar área temática", new_common_field_path, class: "btn btn-primary btn-block text-white"%>
+
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Área</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @fields %>
+  </tbody>
+</table>
+
+<br>
