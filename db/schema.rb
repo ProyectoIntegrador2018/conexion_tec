@@ -86,10 +86,7 @@ ActiveRecord::Schema.define(version: 2019_03_29_214643) do
     t.string "ex_nombreEmpresaExterna"
     t.string "ex_contactName"
     t.string "ex_contactEmail"
-<<<<<<< HEAD
     t.boolean "attended", default: false
-=======
->>>>>>> Implemented Admin-Committee common controller for user management
   end
 
   create_table "majors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -131,8 +128,12 @@ ActiveRecord::Schema.define(version: 2019_03_29_214643) do
     t.integer "edition_id"
 <<<<<<< HEAD
     t.boolean "attended", default: false
+<<<<<<< HEAD
 =======
 >>>>>>> Implemented Admin-Committee common controller for user management
+=======
+    t.string "stand"
+>>>>>>> Created stand db migrations
     t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
   end
@@ -145,6 +146,10 @@ ActiveRecord::Schema.define(version: 2019_03_29_214643) do
     t.bigint "category_id"
     t.string "title"
     t.index ["category_id"], name: "index_questions_on_category_id"
+  end
+
+  create_table "stands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "number"
   end
 
   create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
