@@ -13,39 +13,37 @@ class Student::ProjectsController < Student::BaseController
 	end
 
     def create
-    	professor_email = project_params["email_professor"]
-		professor = User.find_by(email: professor_email)
+				# Como crear el proyecto con el current user id?? 
+			if project_params["student_id"].present? && project_params["professor_id"].present?
+				student = User.find_by(email: project_params["student_id"])
+				professor = User.find_by(email: project_params["professor_id"])
 
-		if professor.nil?
-			department_id = project_params["department_professor"]
-			professor_name = project_params["name_professor"]
-			password = SecureRandom.base64(10) # Generates random password
+				if professor.nil?
+					prof_instance = Professor.create(department_id: 4)
+					professor = User.create(email: project_params["professor_id"],
+																		userable_type: 'Professor',
+																		userable_id: prof_instance.id)
+						end
+						
+				@project = Project.new(project_params.except(:student_id, :professor_id))
+				@project.student_id = student.userable_id
+				@project.professor_id = professor.userable_id
+				@project.edition_id = Edition.last.id
+				@project.status_id = Status.first.id
 
-			prof_instance = Professor.create(department_id: department_id)
-			professor = User.create(email: professor_email,
-                                userable_type: 'Professor',
-                                userable_id: prof_instance.id,
-                                name: professor_name,
-                                password: password,
-                                password_confirmation: password)
-			byebug
-        end
-        
-        @project = Project.new(project_params.except(:email_professor, :department_professor, :name_professor))
-        @project.student_id = current_user.userable_id
-		@project.professor_id = professor.userable_id
-		@project.edition_id = Edition.last.id
-		@project.status_id = Status.first.id
-
-		if @project.save
-			UserMailer.with(user: current_user, project: @project).project_confirmation.deliver_now
-			flash[:success] = "Proyecto creado exitosamente!"
-			redirect_to action: 'index'
-		else
-			flash[:error] = "Error al crear el proyecto"
-			@url = student_project_path
-			render 'new'
-		end
+				if @project.save
+					flash[:success] = "Proyecto creado exitosamente!"
+					redirect_to action: 'index'
+				else
+					flash[:error] = "Error al crear el proyecto"
+					render 'new'
+				end
+			else
+				flash[:danger] = "Porfavor complete los campos de correo"
+				@url = admin_projects_path
+				set_project
+				render 'new'
+			end
     end
 
     def edit
