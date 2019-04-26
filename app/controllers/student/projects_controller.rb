@@ -76,9 +76,9 @@ class Student::ProjectsController < Student::BaseController
 				:abstract, 
 				:video_url,
 				:description,
-                :selection_score,
-                :student_id,
-				:professor_id)
+				:email_professor,
+				:name_professor,
+				:department_professor)
 		end
 
 end

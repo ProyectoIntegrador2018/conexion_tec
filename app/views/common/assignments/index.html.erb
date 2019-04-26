@@ -21,3 +21,11 @@
 </table>
 
 <br>
+
+
+<script>
+  $('#exampleModal').on('show.bs.modal', function (e) {
+    var project = $(e.relatedTarget).attr('data-id');
+    $(this).find('#project-id').val(project);
+  });
+</script>

@@ -32,7 +32,7 @@ class Project < ApplicationRecord
 		assignments = self.assignments
 
 		assignments.each do |assignment|
-			evaluations += assignments.evaluations.count
+			evaluations += assignment.evaluations.count
 		end
 		evaluations
 	end
