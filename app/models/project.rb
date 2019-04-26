@@ -18,6 +18,7 @@ class Project < ApplicationRecord
 	belongs_to :edition
 	has_many :assignments
 	has_many :members
+	has_many :stands
 	
 	def set_selection_score
 		if self.selection_score.present? && self.status_id == 1

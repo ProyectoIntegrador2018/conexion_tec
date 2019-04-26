@@ -1,0 +1,17 @@
+<h1>Stands</h1>
+
+<%= link_to "Agregar stand", new_common_stand_path, class: "btn btn-primary btn-block text-white"%>
+
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Stand</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @stands%>
+  </tbody>
+</table>
+
+<br>
