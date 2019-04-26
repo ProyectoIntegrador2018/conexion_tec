@@ -7,11 +7,10 @@ class Judge::ProjectsController < Judge::BaseController
     private
         def get_projects
             judge = current_user.userable
-            assignment = Assignment.where(judge_id:judge.id)
-            evaluations = Evaluation.where(assignment:assignment)
+            assignments = judge.assignments
             @projects = []
-            evaluations.each do |eval|
-                @projects.push(eval.assignment.project)
+            assignments.each do |assignment|
+                @projects << assignment.project
             end
         end
 end
