@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Projects</h1>
+<h1>Asignaciones</h1>
 
 <table class="table table-responsive">
   <thead>
@@ -14,14 +12,6 @@
   </thead>
 
   <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= project.field.name %></td>
-        <td><%= project.expertise_area.area %></td>
-        <td><%= project.abstract %></td>
-        <td><%= link_to 'Evaluar', judge_evaluation_project_path(project.id) %></td>
-      </tr>
-    <% end %>
+    <%= render @projects %>
   </tbody>
 </table>
