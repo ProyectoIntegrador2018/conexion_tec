@@ -1,0 +1,15 @@
+<%= form_for @stand, url: @url do |f|  %>
+<div class="row">
+	<div class="col">
+		<%= f.label :numero_de_stand %>
+		<%= f.text_field :number, class: "form-control" %>
+	</div>
+</div><br />
+
+<div class="row">
+	<div class="col">
+		<%= link_to "Cancelar", common_stands_path, { class: "btn btn-default" } %>
+		<%= f.submit "Guardar", class: "btn btn-primary", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+	</div>
+</div>
+<% end %>

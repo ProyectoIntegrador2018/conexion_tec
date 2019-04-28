@@ -1,0 +1,24 @@
+<tr>
+      <tr scope="row">
+        <td><%= judge.user.name %></td>
+        <td><%= judge.department.name %></td>
+        <td><% if judge.has_tablet %>
+            Sí
+          <% else %>
+            No
+          <% end %>
+        </td>
+        <td>
+          <% if judge.attended %>
+            <%= link_to common_project_mark_assistance_path(judge), method: :mark_assistance, data: { confirm: 'Se quitara la asistencia al juez ¿Estás seguro que deseas realizar esta acción?'} do %>
+            <span><i class="fa fa-user-times" style="color: orange"></i></i> Retirar asistencia</span>
+		        <% end %>
+          <% else %>
+            <%= link_to common_project_mark_assistance_path(judge), method: :mark_assistance, data: { confirm: '¿Estás seguro que deseas confirmar la asistencia de este juez?'} do %>
+            <span><i class="fa fa-user-plus" style="color: green"></i></i> Marcar asistencia</span>
+		        <% end %>
+          <% end %>
+          
+	      </td>
+      </tr>
+</tr>
