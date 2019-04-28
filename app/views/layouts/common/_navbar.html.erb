@@ -2,4 +2,6 @@
 	<%= render 'layouts/admin/navbar' %>
 <% elsif current_user.committee? %>
 	<%= render 'layouts/committee/navbar' %>
+<% elsif current_user.operative? %>
+	<%= render 'layouts/operative/navbar' %>
 <% end %>

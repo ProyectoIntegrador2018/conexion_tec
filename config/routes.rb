@@ -90,7 +90,7 @@ Rails.application.routes.draw do
     resources :operatives
     put 'operative/authorize/:id', to: 'operatives#authorize', as: :authorize_user
     
-    resources 'projects'
+    resources :projects
     get 'judges', to: 'judges#index'
     resources 'judges', only: [:destroy]
     get 'evaluations', to: 'evaluations#index'
