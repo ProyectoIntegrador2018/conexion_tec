@@ -126,14 +126,9 @@ ActiveRecord::Schema.define(version: 2019_03_29_214643) do
     t.integer "client_id"
     t.integer "status_id"
     t.integer "edition_id"
-<<<<<<< HEAD
     t.boolean "attended", default: false
-<<<<<<< HEAD
-=======
->>>>>>> Implemented Admin-Committee common controller for user management
-=======
     t.string "stand"
->>>>>>> Created stand db migrations
+    t.integer "stand_id"
     t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
   end

@@ -6,7 +6,6 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 
 	def index
 		@projects = Project.all
-
 	end
 
 	def new
@@ -30,7 +29,6 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 			@project.professor_id = professor.userable_id
 			@project.edition_id = Edition.last.id
 			@project.status_id = Status.first.id
-
 			if @project.save
 				flash[:success] = "Proyecto creado exitosamente!"
 				redirect_to action: 'index'
@@ -40,7 +38,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 			end
 		else
 			flash[:danger] = "Porfavor complete los campos de correo"
-			@url = admin_projects_path
+			@url = common_projects_path
 			set_project
 			render 'new'
 		end
