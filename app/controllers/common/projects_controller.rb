@@ -13,7 +13,6 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 	end
 
 	def create
-
 		if project_params["student_id"].present? && project_params["professor_id"].present?
 			student = User.find_by(email: project_params["student_id"])
 			professor = User.find_by(email: project_params["professor_id"])
