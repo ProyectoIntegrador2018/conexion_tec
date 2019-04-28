@@ -1,0 +1,8 @@
+<tr>
+	<td><%= link_to stand.number, edit_common_stand_path(stand) %></td>
+	<td>
+		<%= link_to common_stand_path(stand), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar el stand?'} do %>
+			<span style="color: red"><i class="fa fa-trash"></i> Eliminar</span>
+		<% end %>
+	</td>
+</tr>

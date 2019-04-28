@@ -18,6 +18,7 @@ class Project < ApplicationRecord
 	belongs_to :edition
 	has_many :assignments
 	has_many :members
+	belongs_to :stand, optional: true
 	
 	def set_selection_score
 		if self.selection_score.present? && self.status_id == 1
@@ -32,7 +33,7 @@ class Project < ApplicationRecord
 		assignments = self.assignments
 
 		assignments.each do |assignment|
-			evaluations += assignments.evaluations.count
+			evaluations += assignment.evaluations.count
 		end
 		evaluations
 	end

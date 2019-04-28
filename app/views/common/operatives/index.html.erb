@@ -1,0 +1,19 @@
+<h1>Usuarios - Operativo</h1>
+
+<%= link_to "Agregar usuario", new_common_operative_path, class: "btn btn-primary btn-block text-white"%>
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
+      <th scope="col">Tipo de usuario</th>
+      <th scope="col">Autorizado</th>
+    </tr>
+  </thead>
+
+  <tbody>
+   <% @users.each do |user| %>
+      <%= render 'user', user: user %>
+    <% end %>
+  </tbody>
+</table>

@@ -31,23 +31,15 @@ Rails.application.routes.draw do
   get 'authorize-judge', to: 'judge_sessions#create'
   post 'logout-juez', to: 'judge_sessions#destroy', as: :logout_judge
 
-  get 'login-staff', to: 'staff_sessions#new', as: :login_staff
-  post 'login-staff', to: 'staff_sessions#create'
-  get 'login-monitor', to: 'monitor_sessions#new', as: :login_monitor
-  post 'login-monitor', to: 'monitor_sessions#create'
+  # Committee session
+  get 'login-comite', to: 'committee_sessions#new', as: :login_committee
+  get 'authorize-committee', to: 'committee_sessions#create'
+  post 'logout-comite', to: 'committee_sessions#destroy', as: :logout_committee
 
-  resources :evaluations
-  resources :questions
-  resources :projects
 
-  get 'signup-proyecto', to: 'projects#new', as: :signup_project
-  post 'signup-proyecto', to: 'projects#create'
-
-  get 'signup-juez', to: 'judges#new', as: :signup_judge
-  post 'signup-juez', to: 'judges#create'
-
-  get 'signup-staff', to: 'staffs#new'
-  post 'signup-staff', to: 'staffs#create'
+  # resources :evaluations
+  # resources :questions
+  # resources :projects
 
   namespace :judge do
     get 'profile', to: 'profile#index'
@@ -55,8 +47,7 @@ Rails.application.routes.draw do
     patch 'update', to: 'profile#update'
     resources 'judges'
     get 'projects', to: 'projects#index'
-    get 'evaluations/project/:id', to: 'evaluations#show', as: :evaluation_project
-    post 'evaluations/project/:id', to: 'evaluations#submit', as: :evaluation_project_submit
+    resources :evaluations, onyl: [:new, :create]
   end
 
   namespace :student do
@@ -79,7 +70,26 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#show'
     get 'profile/edit', to: 'profile#edit'
     patch 'profile/edit', to: 'profile#update'
+    put 'user/authorize/:id', to: 'users#authorize', as: :authorize_user
+    resources :users
+  end
+
+  namespace :committee do
+    get 'profile', to: 'profile#index'
+    resources :committees
+  end
+
+  namespace :student do
     resources 'projects'
+  end
+
+  namespace :common do
+    get '/assignments', to: 'assignments#index', as: :assignments
+    post '/assignments', to: 'assignments#create', as: :create_assignment
+    resources :operatives
+    put 'operative/authorize/:id', to: 'operatives#authorize', as: :authorize_user
+    
+    resources :projects
     get 'judges', to: 'judges#index'
     resources 'judges', only: [:destroy]
     get 'evaluations', to: 'evaluations#index'
@@ -100,7 +110,10 @@ Rails.application.routes.draw do
     post '/projects/reject/:id', to: "projects#reject", as: :reject_project
     post '/judges/approve/:id', to: "judges#approve", as: :approve_judge
     post '/judges/reject/:id', to: "judges#reject", as: :reject_judge
-    put 'user/authorize/:id', to: 'users#authorize', as: :authorize_user
+    get '/projects_assistance', to: 'projects_assistance#index', as: :projects_assistance
+    patch '/projects_assistance/mark_assistance', to: 'projects_assistance#mark_assistance', as: :mark_assistance
+    get '/judges_assistance', to: 'judges_assistance#index', as: :judges_assistance
+    post '/judges_assistance/mark_assistance:id', to: 'judges_assistance#mark_assistance', as: :project_mark_assistance
     resources :expertise_areas
     resources :clients
     resources :majors
@@ -108,21 +121,7 @@ Rails.application.routes.draw do
     resources :departments
     resources :editions
     resources :categories
-    resources :users
-  end
-
-  namespace :monitor do
-	  get 'projects', to: 'evaluation#index'
-	  patch 'evaluation', to: 'evaluation#update'
-  end
-
-  namespace :student do
-    resources 'projects'
-  end
-
-  namespace :common do
-    get '/assignments', to: 'assignments#index', as: :assignments
-    post '/assignments', to: 'assignments#create', as: :create_assignment
+    resources :stands
   end
 
   root 'main_screen#main'

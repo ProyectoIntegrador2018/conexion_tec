@@ -21,8 +21,8 @@ class AdministratorSessionController < ApplicationController
             auto_login(user)
             redirect_to admin_profile_path
         else
-        	flash.now[:danger] = 'Esta cuenta no es de administrador'
-        	render 'new'
+        	flash[:danger] = 'Esta cuenta no es de administrador'
+        	redirect_to action: 'new'
         end
 	end
 

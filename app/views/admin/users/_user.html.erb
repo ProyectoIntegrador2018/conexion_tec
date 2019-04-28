@@ -4,11 +4,17 @@
 	<td><%= user.userable_type %></td>
 	<td>
 			<% if user.authorized == true %>
-				Autorizado
+				<span id="authorize" style="color: green"> Autorizado</span><br>
+				<span>
+					<%= link_to admin_authorize_user_path(user), method: :put do %>
+					<span id="deauthorize" style="color: black"><i class="fa fa-hand-paper-o" style="color: orange"></i> Desautorizar</span>
+					<% end %>
+				</span>
 			<% else %>
-				<%= link_to admin_authorize_user_path(user), method: :put do %> <span id="authorize" style="color: green"><i class="fa fa-check"></i> Autorizar</span>
+				<%= link_to admin_authorize_user_path(user), method: :put do %>
+					<span id="authorize" style="color: black"><i class="fa fa-check" style="color: green"></i> Autorizar</span>
+				<% end %>
 			<% end %>
-		<% end %>
 	</td>
 	<td>
 		<%= link_to 'Editar', edit_admin_user_path(user), metod: :put %>

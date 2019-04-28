@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-4">
+    <h1>Proyectos</h1>
+  </div>
+
+  <div class="col-md-6"></div>
+
+  <div class="float-right">
+    <%= link_to "Nuevo proyecto", new_common_project_path, class: "btn btn-primary btn-block text-white"%>
+  </div>
+</div><br />
+
+<div class="container-fluid">
+	<%= render @projects %>
+</div>
+
+<br>
