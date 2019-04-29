@@ -1,14 +1,10 @@
 <div class="container">
-	<div class="row">
-		<div class="col-12 col-md-6 offset-md-3">
-			<h1>Actualiza tus datos</h1>
-		</div>
-	</div>
+	<h1 style="text-align: center;">Actualiza tus datos</h1><br />
 	<% if current_user.userable.external %>
 	  <%= form_for @judge, url: @url do |f|  %>
 	    <div class="row">
 	        <div class="col">
-	            <%= f.label :departemento %>
+	            <%= f.label :departamento %>
 	            <%= f.select :department_id, 
 	              options_for_select(Department.all.collect{|d| [d.name, d.id]}, @judge.department_id,), 
 	                        {}, class: "form-control" %>
@@ -47,27 +43,60 @@
 	<% else %>
 	  <%= form_for @judge, url: @url do |f|  %>
 	    <div class="row">
-	        <div class="col">
-	            <%= f.label :departemento %>
+	        <div class="col-md-4">
+	            <%= f.label :departamento %>
 	            <%= f.select :department_id, 
-	              options_for_select(Department.all.collect{|d| [d.name, d.id]}, @judge.department_id,), 
+	              options_for_select(Department.all.collect{|d| [d.name, d.id]}, @judge.department_id), 
 	                        {}, class: "form-control" %>
 	        </div>
-			<div class="col">
+			<div class="col-md-4">
 	            <%= f.label :¿Cuenta_con_laptop_o_tableta? %>
 	            <%= f.select :has_tablet, 
-	              options_for_select({"Si" => 1, "No" => 0}, @judge.has_tablet), 
+	              options_for_select([['Sí', true], ['No', false]], @judge.has_tablet), 
 	                        {}, class: "form-control" %>
+	        </div>
+	        <div class="col-md-4">
+	        	<div class="form-group">
+                    <label class="font-noraml">Áreas de expertise</label>
+                    <div class="input-group">
+                        <select data-placeholder="Elige tus áreas de expertis" class="chosen-select" multiple style="width:350px;" tabindex="4" name="judge[expertise_areas][]">
+                        	<% ExpertiseArea.all.each do |area| %>
+                        		<option value="<%= area.id %>" <%= "selected" if @areas_ids.include?(area.id) %>><%= area.area %></option>
+                        	<% end %>
+                        </select>
+                    </div>
+                </div>
 	        </div>
 	    </div><br />
 		
 	    <div class="row">
-	        <div class="col">
-	        	<%= link_to "Cancelar", judge_profile_path, { class: "btn btn-default" } %>
-	            <%= f.submit "Guardar", class: "btn btn-primary", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+	        <div class="col-md-6">
+	        	<%= link_to "Cancelar", judge_profile_path, { class: "btn btn-default", style: "width: 100%; border-color: #DCDCDC;" } %>
+	        </div>
+	        <div class="col-md-6">
+	            <%= f.submit "Guardar", class: "btn btn-primary", style: "width: 100%;", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+	        </div>
 	        </div>
 	    </div>
 	<% end %>
 	<% end %>
-
 </div>
+
+<script type="text/javascript">
+
+
+$(function() {
+    var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
+});
+
+</script>

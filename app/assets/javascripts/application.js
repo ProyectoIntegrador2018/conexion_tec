@@ -19,3 +19,4 @@
 //= require Chart.bundle
 //= require chartkick
 //= require bootstrap-datepicker
+//= require chosen/chosen.jquery.js
