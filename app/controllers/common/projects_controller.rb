@@ -13,16 +13,23 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 	end
 
 	def create
-		if project_params["student_id"].present? && project_params["professor_id"].present?
+		
+		if project_params["student_id"].present? && project_params["professor_id"].present? && project_params["name"].present? && project_params["description"].present? && project_params["abstract"].present?
 			student = User.find_by(email: project_params["student_id"])
 			professor = User.find_by(email: project_params["professor_id"])
-
 			if professor.nil?
 				prof_instance = Professor.create(department_id: 4)
 				professor = User.create(email: project_params["professor_id"],
 									userable_type: 'Professor',
 									userable_id: prof_instance.id)
 			end
+			if student.nil?
+				stud_instance = Student.create(major_id:1)
+				student = User.create(email: project_params["student_id"],
+									userable_type: 'Student',
+									userable_id: stud_instance.id)
+			end
+
 			@project = Project.new(project_params.except(:student_id, :professor_id))
 			@project.student_id = student.userable_id
 			@project.professor_id = professor.userable_id
@@ -36,7 +43,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 				render 'new'
 			end
 		else
-			flash[:danger] = "Porfavor complete los campos de correo"
+			flash[:danger] = "Porfavor complete todos los campos"
 			@url = common_projects_path
 			set_project
 			render 'new'
