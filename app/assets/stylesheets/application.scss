@@ -115,3 +115,8 @@ body {
 /* ENDS MAIN SCREEN CSS */
 @import "main_screen";
 @import "project/*";
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
