@@ -21,7 +21,7 @@
           <%= current_user.name %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Editar perfil", judge_edit_path(current_user.id), class: 'dropdown-item' %>
+          <%= link_to "Editar perfil", judge_edit_path, class: 'dropdown-item' %>
           <div class="dropdown-divider"></div>
           <%= link_to "Cerrar Sesión", logout_judge_path, method: :post, class: 'dropdown-item' %>
         </div>
