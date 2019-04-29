@@ -19,11 +19,12 @@ class Student::ProjectsController < Student::BaseController
 				professor = User.find_by(email: project_params["email_professor"])
 
 				if professor.nil?
-					prof_instance = Professor.create(department_id: 4)
+					prof_instance = Professor.create(department_id: project_params["department_professor"])
 					professor = User.create(email: project_params["email_professor"],
 																		userable_type: 'Professor',
-																		userable_id: prof_instance.id)
-						end
+																		userable_id: prof_instance.id,
+																		name: project_params["name_professor"])
+				end
 				@project = Project.new(project_params.except(:email_professor,:name_professor, :department_professor))
 				@project.student_id = current_user.userable_id
 				@project.professor_id = professor.userable_id

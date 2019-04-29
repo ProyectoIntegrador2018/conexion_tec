@@ -50,9 +50,17 @@
             <%= f.label :student_id, 'Correo del estudiante responsable' %>
             <%= f.email_field :student_id, class: "form-control" %>
         </div>
+        <div class="col-md-4">
+            <%= f.label :name_student, 'Nombre del estudiante: '%>
+            <input type="text"  id="name_student" name="project[name_student]" class="form-control">
+        </div>
 		<div class="col-md-6">
             <%= f.label :professor_id, 'Correo del profesor responsable' %>
             <%= f.email_field :professor_id, class: "form-control" %>
+        </div>
+        <div class="col-md-4">
+            <%= f.label :name_professor, 'Nombre del profesor: '%>
+            <input type="text"  id="name_professor" name="project[name_professor]" class="form-control">
         </div>
 	</div>
     <div class="mt-3">
