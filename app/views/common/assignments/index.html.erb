@@ -2,30 +2,42 @@
 
 <h1 style="text-align: center;">Asignación de proyectos</h1><br />
 
-<table class="table table-responsive">
-  <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Área</th>
-      <th scope="col">Evaluaciones</th>
-      <th scope="col">Asignaciones</th>
-      <th scope="col">Asignar a juez</th>
-    </tr>
-  </thead>
+<form>
+  <div class="row">
+    <div class="col-md-4 col-centered">
+      <div class="form-group">
+        <label for="judge_id">Selección de jueces</label>
+        <%= select_tag :judge_id, options_from_collection_for_select(Judge.all, :id, :name, params[:judge_id]), class: 'form-control'  %>
+      </div> <br />
 
-  <tbody>
-    <% @projects.each do |project| %>
-      <%= render 'project', project: project %>
-    <% end %>
-  </tbody>
-</table>
+      <button style="width: 100%;" class="btn btn-primary" type="submit">
+        Seleccionar juez
+      </button>
+    </div>
+  </div>
+</form><br /><br />
 
-<br>
+<% if params[:judge_id].present? %>
+  <h4 style="text-align: center;">Proyectos disponibles</h4><br />
+  <div class="row">
+    <div class="col-centered">
+      <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col"># Stand</th>
+          <th scope="col">Profesor responsable</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
 
+      <tbody>
+        <% @projects.each do |project| %>
+          <%= render 'project', project: project %>
+        <% end %>
+      </tbody>
+    </table>
 
-<script>
-  $('#exampleModal').on('show.bs.modal', function (e) {
-    var project = $(e.relatedTarget).attr('data-id');
-    $(this).find('#project-id').val(project);
-  });
-</script>
+    </div>
+  </div>
+<% end %>

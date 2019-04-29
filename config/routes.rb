@@ -84,8 +84,7 @@ Rails.application.routes.draw do
   end
 
   namespace :common do
-    get '/assignments', to: 'assignments#index', as: :assignments
-    post '/assignments', to: 'assignments#create', as: :create_assignment
+    resources :assignments
     resources :operatives
     put 'operative/authorize/:id', to: 'operatives#authorize', as: :authorize_user
     
