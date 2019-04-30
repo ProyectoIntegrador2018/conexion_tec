@@ -1,8 +1,21 @@
 <% if @assignment.evaluation.nil? %>
-	<h1 style="text-align: center;">Evaluación de <%= @project.name%></h1><br />
+	<div class="row">
+		<div class="col-md-12 col-centered">
+			<div class="card" style="width: 100%;">
+			  <div class="card-body">
+			    <h4 class="card-title"><%= "Nombre: #{@project.name}" %></h4>
+			    <hr>
+			    <h5 class="card-subtitle mb-2 text-muted"><%= "Stand: #{@project.stand.number}" %></h5>
+			    <p class="card-text"><%= "Categoría: #{@project.category.name}<br />Área de expertise: #{@project.expertise_area.area}".html_safe %></p>
+			    <hr>
+			    <p class="card-text"><%= "Objetivo: #{@project.description}"%></p>
+			  </div>
+			</div>
+		</div>
+	</div><br />
 
 	<div class="row">
-		<div class="col-md-4 col-centered">
+		<div class="col-md-12 col-centered">
 	<%= form_for @evaluation, url: @url do |f| %>
 		<%= render @questions %>
 
