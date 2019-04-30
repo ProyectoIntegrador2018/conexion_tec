@@ -1,8 +1,24 @@
-<h1>Evaluación de <%= @project.name%></h1><br />
+<% if @assignment.evaluation.nil? %>
+	<h1 style="text-align: center;">Evaluación de <%= @project.name%></h1><br />
 
-<%= form_for @evaluation, url: @url do |f| %>
-	<%= render @questions %>
-	
-	<%= link_to "Cancelar", judge_projects_path, { class: "btn btn-default" } %>
-	<%= f.submit "Subir evaluación", class: "btn btn-primary" %>
+	<div class="row">
+		<div class="col-md-4 col-centered">
+	<%= form_for @evaluation, url: @url do |f| %>
+		<%= render @questions %>
+
+		<div class="row">
+			<div class="col-md-6">
+				<%= link_to "Cancelar", judge_projects_path, { class: "btn btn-default", style: "border-color: #DCDCDC; width: 100%;" } %>
+			</div>
+
+			<div class="col-md-6">
+				<%= f.submit "Subir evaluación", class: "btn btn-primary", style: "width: 100%;" %>
+			</div>
+		</div>
+		</div>
+	<% end %>
+		</div>
+	</div>
+<% else %>
+	<h1 style="text-align: center;">El proyecto seleccionado ya fue evaluado</h1>
 <% end %>

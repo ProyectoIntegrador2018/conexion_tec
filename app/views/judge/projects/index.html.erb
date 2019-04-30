@@ -1,17 +1,19 @@
-<h1>Asignaciones</h1>
+<h1 style="text-align: center;">Asignaciones</h1><br />
 
-<table class="table table-responsive">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Área</th>
-      <th>Tipo</th>
-      <th>Abstract</th>
-      <th colspan="3"></th>
-    </tr> 
-  </thead>
+<div class="row">
+  <div class="col-md-4 col-centered">
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col"># Stand</th>
+          <th scope="col"></th>
+        </tr> 
+      </thead>
 
-  <tbody>
-    <%= render @projects %>
-  </tbody>
-</table>
+      <tbody>
+        <%= render @assignments %>
+      </tbody>
+    </table>
+  </div>
+</div>

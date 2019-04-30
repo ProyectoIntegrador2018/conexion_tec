@@ -1,16 +1,12 @@
 class Judge::ProjectsController < Judge::BaseController
-    before_action :get_projects, only: [:index]
+    before_action :get_assignments, only: [:index]
 
     def index
     end
 
     private
-        def get_projects
+        def get_assignments
             judge = current_user.userable
-            assignments = judge.assignments
-            @projects = []
-            assignments.each do |assignment|
-                @projects << assignment.project
-            end
+            @assignments = judge.assignments
         end
 end
