@@ -9,10 +9,14 @@ class Common::AssignmentsController < Common::BaseController
 
 	# Set the avaiable projects for that judge
 	def available_projects(judge)
-		projects = []
 		assignments = judge.assignments
 		projects_assigned = assignments.map(&:project_id) # All the projects assigned to that judge
-		Project.where.not(id: projects_assigned)
+		areas = judge.expertise_areas.map(&:id)
+		projects = Project.where.not(id: projects_assigned)
+		projects = projects.where(status_id: 4) # Approved projects
+						   .where(attended: 1) # Present projects in the contest
+						   .where(expertise_area_id: areas) # Project related to the field
+		projects
 	end
 
 	def create

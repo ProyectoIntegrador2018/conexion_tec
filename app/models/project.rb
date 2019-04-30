@@ -30,12 +30,12 @@ class Project < ApplicationRecord
 
 	def evaluations
 		evaluations = 0
-		assignments = self.assignments
-
+		assignments = self.assignments # All the assignments
 		assignments.each do |assignment|
-			evaluations += assignment.evaluations.count
+			if !assignment.evaluation.nil?
+				evaluations += 1
+			end
 		end
 		evaluations
 	end
-	
 end
