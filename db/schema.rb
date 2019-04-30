@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_29_211437) do
+ActiveRecord::Schema.define(version: 2019_04_30_002305) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -126,8 +126,9 @@ ActiveRecord::Schema.define(version: 2019_04_29_211437) do
     t.integer "client_id"
     t.integer "status_id"
     t.integer "edition_id"
-    t.boolean "attended", default: false
+    t.integer "attended", default: 0
     t.integer "stand_id"
+    t.float "partial_score", default: 0.0
     t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
   end

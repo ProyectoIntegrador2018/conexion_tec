@@ -1,41 +1,10 @@
 <tr scope="row">
   <td><%= project.name %></td>
+  <td><%= !project.stand.nil? ? project.stand.number : 'Stand no asignado'%></td>
+  <td><%= !project.professor.nil? ? project.professor.user.name : 'Profesor no asignado' %></td>
   <td>
-    <%= project.field.name %><br />
-    <small><%= "Tipo de proyecto: #{project.expertise_area.area}" %></small><br />
-    <small><%= "Categoría: #{project.category.name}" %></small>
-  </td>
-  <td><%= project.evaluations %></td>
-  <td><%= project.assignments.count %></td>
-  <td>
-    <button id="project" type="button" class="open-modal btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-id="<%= project.id %>">
-      Asignar
-    </button>
+    <%= link_to common_assignments_path(judge_id: params[:judge_id], project_id: project.id), method: :create, data: { confirm: "¿Estás seguro que deseas asignar este proyecto a #{Judge.find(params[:judge_id]).user.name}?"} do %>
+      <span style="color: green"><i class="fa fa-angle-double-right"></i> Asignar</span>
+    <% end %><br />
   </td>
 </tr>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Asignar juez</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= form_for Assignment.new, url: common_create_assignment_path do |f|  %>
-          <div class="form-group">
-            <%= f.label :juez, 'Juez' %><br>
-              <%= f.select :judge_id, options_from_collection_for_select(Judge.all, :id, :name) %>
-          </div><br />
-          <%= f.submit "Asignar juez", class: "btn btn-primary"%>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      </div>
-    </div>
-  </div>
-</div>
