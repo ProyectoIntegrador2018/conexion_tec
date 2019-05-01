@@ -29,39 +29,20 @@
         <div class="col-md-4">
 					<strong>Alumno responsable: </strong> <%= project.student.user.name %><br>
 				</div>
-		  </div>
-            
-      <p><%= project.description %></p>
-      
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-<%=project.id%>">
-      Marcar asistencia
-      </button>
+		  </div><br>
+                  
+      <% if project.attended %>
+        <%= link_to common_project_mark_assistance_path(project), method: :mark_assistance, data: { confirm: 'Se quitara la asistencia al proyecto ¿Estás seguro que deseas realizar esta acción?'} do %>
+          <span><i class="fa fa-user-times" style="color: orange"></i></i> Retirar asistencia</span>
+		    <% end %>
+      <% else %>
+        <%= link_to common_project_mark_assistance_path(project), method: :mark_assistance, data: { confirm: '¿Estás seguro que deseas confirmar la asistencia de este proyecto?'} do %>
+          <span><i class="fa fa-user-plus" style="color: green"></i></i> Marcar asistencia</span>
+		    <% end %>
+      <% end %>
+    
 	</div>
 </div>
 <hr>
 
-<!-- Modal -->
-<div class="modal fade" id="modal-<%=project.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"> <strong> Asignación de stand </strong> </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= form_for project, url: common_mark_assistance_path do |f|  %>
-          <div class="form-group">
-            <%= f.label :stand, 'Stand' %><br>
-              <%= f.select :stand_id, options_from_collection_for_select(Stand.all, :id, :number) %>
-          </div><br/>
-          <%= f.submit "Asignar stand", class: "btn btn-primary", data: { confirm: 'Se asignara el stand seleccionado y se marcará asistencia al proyecto, ¿Estás seguro que deseas guardar estos cambios?' }%>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      </div>
-    </div>
-  </div>
 </div>

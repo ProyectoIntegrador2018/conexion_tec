@@ -110,9 +110,9 @@ Rails.application.routes.draw do
     post '/judges/approve/:id', to: "judges#approve", as: :approve_judge
     post '/judges/reject/:id', to: "judges#reject", as: :reject_judge
     get '/projects_assistance', to: 'projects_assistance#index', as: :projects_assistance
-    patch '/projects_assistance/mark_assistance', to: 'projects_assistance#mark_assistance', as: :mark_assistance
+    post '/projects_assistance/mark_assistance:id', to: 'projects_assistance#mark_assistance', as: :project_mark_assistance
     get '/judges_assistance', to: 'judges_assistance#index', as: :judges_assistance
-    post '/judges_assistance/mark_assistance:id', to: 'judges_assistance#mark_assistance', as: :project_mark_assistance
+    post '/judges_assistance/mark_assistance:id', to: 'judges_assistance#mark_assistance', as: :judge_mark_assistance
     resources :expertise_areas
     resources :clients
     resources :majors
