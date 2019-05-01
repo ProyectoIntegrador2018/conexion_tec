@@ -29,8 +29,8 @@ class CommitteeSessionsController < ApplicationController
                 login_redirect(user, url)
             end
         else
-            flash.now[:danger] = 'Correo invalido: favor de utilizar correo del ITESM.'
-            redirect_to login_committee_path
+            flash[:danger] = 'Correo invalido: favor de utilizar correo del ITESM.'
+            redirect_to action: 'new'
         end
         
     end
