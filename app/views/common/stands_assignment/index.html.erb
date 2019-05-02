@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <h1>Asignación de stands</h1>
+</div><br />
+
+<div class="container-fluid">
+	<% @projects.each do |project| %>
+      <%= render 'project', project: project %>
+  <% end %>
+</div>
+
+<br>

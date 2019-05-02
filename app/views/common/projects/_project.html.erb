@@ -12,7 +12,7 @@
 					<small> <strong>Día: </strong> <%= rand(1..2) %> </small>
 				</div>
 				<div class="col-md-4">
-					<small> <strong>Stand: </strong> <%= project.stand.nil? ? 'No asignado' : project.stand.number %> </small> 
+					<small> <strong>Stand: </strong> <%= project.stand.nil? ? 'No asignado' : project.stand.number %> </small>
 				</div>
 			</div>
 			
@@ -67,7 +67,7 @@
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<%= link_to 'Editar/Ver detalle/Calificar', edit_common_project_path(project), class: 'dropdown-item' %>
 							<%= link_to common_project_path(project), class: 'dropdown-item', method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este proyecto?'} do %>
-								<i class="fa fa-trash"></i> Eliminar
+							<i class="fa fa-trash"></i> Eliminar
 							<% end %>
 						</div>
 					</div>
