@@ -2,10 +2,6 @@ class Judge::ProfileController < Judge::BaseController
 
 	def index
 		@user = User.find(current_user.id)
-		if current_user.userable.expertise_areas.nil?
-			flash[:warning] = "Recuerda actualizar tu perfil" 
-		end
-		byebug
 	end
 
 	def edit

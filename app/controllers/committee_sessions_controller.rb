@@ -24,7 +24,7 @@ class CommitteeSessionsController < ApplicationController
 
         if user
             auto_login(user)
-            redirect_to(user, url)
+            login_redirect(user, url)
         else
             if mail.match(ITESM_MAIL)
                 user = create_committee(mail,full_name)

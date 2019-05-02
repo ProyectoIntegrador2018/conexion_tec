@@ -151,17 +151,6 @@ Category.create(name: "Productos o Servicios para Emprendimiento de Base Tecnol√
 
 Edition.create(number: 1, registry_open: Date.today, registry_limit: Date.today + 30)
 
-10.times do |i|
-	judge = Judge.create(department_id: rand(1..4), has_tablet: rand(0..1))
-	User.create(
-        name: "Juez #{i}",
-    	email: "judge#{i}@test.com", 
-    	password: "password", 
-    	password_confirmation: "password", 
-        userable_type: "Judge",
-        userable_id: judge.id)
-end
-
 student = Student.create(major_id: 25)
 User.create(
         name: "Paul Enrique Vazquez Badillo",
