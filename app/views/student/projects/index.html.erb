@@ -1,3 +1,5 @@
+<% provide(:title, 'Mis proyectos') %>
+
 <p id="notice"><%= notice %></p>
 
 <div class="row">
@@ -5,24 +7,42 @@
     <h1>Proyectos</h1>
   </div>
 
-  <div class="col-md-6"></div>
+  <div class="col-md-8">
+    <%= link_to new_student_project_path, class: "btn btn-primary btn-block text-white float-right", style: "width: 180px;" do %>
+      <i class="fa fa-plus"></i> Agregar proyecto
+    <% end %>
+  </div>
 
 </div><br />
 
-<table class="table table-responsive">
-  <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Área</th>
-      <th scope="col">Video URL</th>
-      <th scope="col">Estatus</th>
-      <th scope="col">Calif de selección</th>
-    </tr>
-  </thead>
+<% if @projects.length > 0 %>
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Área</th>
+        <th scope="col">Video URL</th>
+        <th scope="col">Estatus</th>
+        <th scope="col">Calif de selección</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
 
-  <tbody>
-  <%= render @projects %>
-  </tbody>
-</table>
-
-<br>
+    <tbody>
+    <%= render @projects %>
+    </tbody>
+  </table>
+  <br /> <br />
+<% else %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card border-dark mb-3">
+        <div class="card-header">Aviso</div>
+        <div class="card-body text-dark">
+          <h5 class="card-title">No tienes proyectos registrados</h5>
+          <p class="card-text">Por el momento no cuentas con proyectos dados de alta, si deseas registrar nuevos proyectos, favor de dar click en "Agregar proyecto".</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

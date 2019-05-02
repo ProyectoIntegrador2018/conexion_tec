@@ -4,6 +4,7 @@ class Project < ApplicationRecord
 
 	validates :name, presence: true
 	validates :abstract, presence: true
+	validates :description, presence: true
 	validates :field_id, presence: true
 	validates :expertise_area_id, presence: true
 	validates :client_id, presence: true

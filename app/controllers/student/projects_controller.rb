@@ -1,6 +1,8 @@
 class Student::ProjectsController < Student::BaseController
 	before_action :set_project, only: [:new, :show, :edit, :update]
 
+	ITESM_MAIL = /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(itesm|tec)\.mx$/
+
 	def show
     end
     
@@ -12,39 +14,32 @@ class Student::ProjectsController < Student::BaseController
 		@url = student_projects_path
 	end
 
-	ITESM_MAIL = /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(itesm|tec)\.mx$/
-
     def create
-				# Como crear el proyecto con el current user id?? 
-			if project_params["email_professor"].present? && project_params["name"].present? && project_params["description"].present? && project_params["abstract"].present? && project_params["email_professor"].match(ITESM_MAIL)
-				student = User.find_by(email: current_user["email"])
-				professor = User.find_by(email: project_params["email_professor"])
+		if project_params["email_professor"].present?
+			email_professor = project_params["email_professor"]
+			professor = User.find_by(email: email_professor)
 
-				if professor.nil?
-					prof_instance = Professor.create(department_id: project_params["department_professor"])
-					professor = User.create(email: project_params["email_professor"],
-																		userable_type: 'Professor',
-																		userable_id: prof_instance.id,
-																		name: project_params["name_professor"])
-				end
-				@project = Project.new(project_params.except(:email_professor,:name_professor, :department_professor))
-				@project.student_id = current_user.userable_id
-				@project.professor_id = professor.userable_id
-				@project.edition_id = Edition.last.id
-				@project.status_id = Status.first.id
-				if @project.save
-					flash[:success] = "Proyecto creado exitosamente!"
-					redirect_to action: 'index'
+			if professor.nil?
+				if email_professor.match(ITESM_MAIL)
+					professor = create_professor(email_professor)
+					project = create_project(professor)
+					save_project(project)
 				else
-					flash[:error] = "Error al crear el proyecto"
+					flash.now[:danger] = "Favor de ingresar un correo de profesor del TEC"
+					@url = student_projects_path
+					set_project
 					render 'new'
-				end
+				end	
 			else
-				flash[:danger] = "Por favor llene todos los campos y asegurese de utilizar correos del tec."
-				@url = student_projects_path
-				set_project
-				render 'new'
+				project = create_project(professor)
+				save_project(project)
 			end
+		else
+			flash.now[:danger] = "Favor de ingresar el correo del profesor"
+			@url = student_projects_path
+			set_project
+			render 'new'
+		end
     end
 
     def edit
@@ -58,6 +53,39 @@ class Student::ProjectsController < Student::BaseController
 		else
 			flash[:error] = "Error"
 			render "edit"
+		end
+	end
+
+	def create_project(professor)
+		project = Project.new(project_params.except(:email_professor,:name_professor, :department_professor))
+		project.student_id = current_user.userable_id
+		project.professor_id = professor.userable_id
+		project.edition_id = Edition.last.id
+		project.status_id = Status.first.id
+		project
+	end
+
+	def create_professor(email_professor)
+		password = SecureRandom.base64(10) # Generates random password
+		prof_instance = Professor.create(department_id: project_params["department_professor"])
+		professor = User.create(email: email_professor,
+								userable_type: 'Professor',
+								userable_id: prof_instance.id,
+								name: project_params["name_professor"],
+								password: password,
+                                password_confirmation: password)
+		professor
+	end
+
+	def save_project(project)
+		if project.save
+			flash[:success] = "¡Proyecto creado exitosamente!"
+			redirect_to action: 'index'
+		else
+			flash.now[:danger] = "Error al crear el proyecto"
+			@url = student_projects_path
+			set_project
+			render 'new'
 		end
 	end
 
