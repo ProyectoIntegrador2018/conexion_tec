@@ -17,9 +17,21 @@
 	        </div>
 	    </div><br />
 		<div class="row">
-			<div class="col">
+			<div class="col-md-6">
 	            <%= f.label :Nombre_de_la_empresa_u_organizacion_donde_tabaja %>
 	            <%= f.text_field :ex_nombreEmpresaExterna, class: "form-control" %>
+	        </div>
+	        <div class="col-md-6">
+	        	<div class="form-group">
+                    <label class="font-noraml">Áreas de expertise</label>
+                    <div class="input-group">
+                        <select data-placeholder="Elige tus áreas de expertis" class="chosen-select" multiple style="width:100%;" tabindex="4" name="judge[expertise_areas][]">
+                        	<% ExpertiseArea.all.each do |area| %>
+                        		<option value="<%= area.id %>" <%= "selected" if @areas_ids.include?(area.id) %>><%= area.area %></option>
+                        	<% end %>
+                        </select>
+                    </div>
+                </div>
 	        </div>
 		</div><br />
 		<div class="row">
@@ -34,9 +46,12 @@
 	    </div><br />
 
 	    <div class="row">
-	        <div class="col">
-	        	<%= link_to "Cancelar", judge_profile_path, { class: "btn btn-default" } %>
-	            <%= f.submit "Guardar", class: "btn btn-primary", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+	        <div class="col-md-6">
+	        	<%= link_to "Cancelar", judge_profile_path, { class: "btn btn-default", style: "width: 100%; border-color: #DCDCDC;" } %>
+	        </div>
+	        <div class="col-md-6">
+	            <%= f.submit "Guardar", class: "btn btn-primary", style: "width: 100%;", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+	        </div>
 	        </div>
 	    </div>
 	<% end %>
