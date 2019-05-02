@@ -7,12 +7,15 @@ class Common::EvaluationsController < Common::AdminCommitteeBaseController
 
     def destroy
         @evaluation.destroy
+        @assignment.destroy
         flash[:success] = "Evaluacion eliminada"
-        redirect_to admin_evaluations_path
+        redirect_to common_evaluations_path
     end
 
     private
         def set_evaluation
             @evaluation = Evaluation.find(params[:id])
+            byebug
+            @assignment = Assignment.find(@evaluation.assignment_id)
         end
 end
