@@ -1,3 +1,16 @@
-<%= "Juez actual: #{current_user.name}" %><br />
-<%= "Correo: #{current_user.email}" %><br />
-<%= "Departamento: #{current_user.userable.department.name}"%>
+<% provide(:title, 'Mi perfil') %>
+
+<h1 style="text-align: center;">Perfil</h1><br />
+
+<div class="row">
+	<div class="col-md-12 col-centered">
+		<div class="card" style="width: 100%;">
+			<div class="card-body">
+				<h4 class="card-title"><%= "Juez actual: #{current_user.name}" %></h4>
+				<hr>
+				<h5 class="card-subtitle mb-2 text-muted"><%= "Departamento: #{current_user.userable.department.name}"%></h5>
+				<p class="card-text"><%= "Correo: #{current_user.email}" %></p>
+			</div>
+		</div>
+	</div>
+</div>

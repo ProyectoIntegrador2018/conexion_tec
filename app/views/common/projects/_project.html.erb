@@ -9,14 +9,10 @@
 					<small> <strong>ID: </strong> <%= project.id%> </small>
 				</div>
 				<div class="col-md-4">
-					<small> <strong>Día: </strong> <%= project.id%> </small>
+					<small> <strong>Día: </strong> <%= rand(1..2) %> </small>
 				</div>
 				<div class="col-md-4">
-					<% if project.stand_id.nil? %>
-		        <small> <strong>Stand: </strong> Pendiente de asignación </small> 
-		      <% else %>
-		          <small> <strong>Stand: </strong> <%= project.stand.number%> </small>
-		      <% end %>
+					<small> <strong>Stand: </strong> <%= project.stand.nil? ? 'No asignado' : project.stand.number %> </small>
 				</div>
 			</div>
 			
@@ -31,12 +27,12 @@
 					<%= project.client.client%>
 				</div>
 			</div>
-      <p>
-        <%= project.description %>
+			<p>
+				<%= project.description %>
 			</p>
-      <button type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modal-<%=project.id%>">
-      Ver abstract
-      </button>
+			<button type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target="#modal-<%=project.id%>">
+				Ver abstract
+			</button>
 			<div class="row">
 				<div class="col-md-4">
 					<%= project.student.user.name %>
@@ -47,21 +43,21 @@
 				<div class="col-md-4">
 					<strong>Status: </strong> <%= project.status.status%> 
 				</div>
-			</div>
+			</div><br />
 			<div class="row">
 				<div class="col-md-8">
 					<small><strong>Calificación: </strong></small>
-          <% if project.selection_score.present? %>
-            <%= project.selection_score %> <br>
-            <%= link_to common_approve_project_path(project), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar este proyecto?'} do %>
-            <span style="color: green; margin-right: 25px;"><i class="fa fa-check"></i> Aprobar</span>
-		      <% end %>
-          <%= link_to common_reject_project_path(project), method: :reject, data: { confirm: '¿Estás seguro que deseas rechazar este proyecto?'} do %>
-            <span style="color: red"><i class="fa fa-times"></i> Rechazar</span>
-          <% end %>
-        <% else %>
-          <small> Pendiente </small>
-        <% end %>
+					<% if project.selection_score.present? %>
+					<%= project.selection_score %> <br>
+					<%= link_to common_approve_project_path(project), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar este proyecto?'} do %>
+					<span style="color: green; margin-right: 25px;"><i class="fa fa-check"></i> Aprobar</span>
+					<% end %>
+					<%= link_to common_reject_project_path(project), method: :reject, data: { confirm: '¿Estás seguro que deseas rechazar este proyecto?'} do %>
+					<span style="color: red"><i class="fa fa-times"></i> Rechazar</span>
+					<% end %>
+					<% else %>
+					<small> Pendiente </small>
+					<% end %>
 				</div>
 				<div class="col-md-4">
 					<div class="dropdown">
@@ -69,12 +65,10 @@
 							Acciones
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-               <a class="dropdown-item"><%= link_to 'Editar/Ver detalle/Calificar', edit_common_project_path(project) %></a>
-               <a class="dropdown-item">
-               <%= link_to common_project_path(project), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este proyecto?'} do %>
-                <span style="color: red"><i class="fa fa-trash"></i>Eliminar</span>
-		            <% end %>
-                </a>
+							<%= link_to 'Editar/Ver detalle/Calificar', edit_common_project_path(project), class: 'dropdown-item' %>
+							<%= link_to common_project_path(project), class: 'dropdown-item', method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este proyecto?'} do %>
+							<i class="fa fa-trash"></i> Eliminar
+							<% end %>
 						</div>
 					</div>
 				</div>
@@ -86,20 +80,20 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modal-<%=project.id%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Abstract: <%=project.name%></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= project.abstract %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Abstract: <%=project.name%></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<%= project.abstract %>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+			</div>
+		</div>
+	</div>
 </div>

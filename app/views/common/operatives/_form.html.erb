@@ -1,19 +1,21 @@
 <%= form_for @user, url: @url do |f|  %>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <%= f.label :nombre %>
             <%= f.text_field :name, class: "form-control" %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <%= f.label :email %>
             <%= f.email_field :email, class: "form-control" %>
         </div>
     </div><br />
 
     <div class="row">
-        <div class="col">
-            <%= link_to "Cancelar", common_operatives_path, { class: "btn btn-default" } %>
-            <%= f.submit "Guardar", class: "btn btn-primary", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+        <div class="col-md-6">
+            <%= link_to "Cancelar", common_operatives_path, { class: "btn btn-default", style: "width: 100%; border-color: #DCDCDC;" } %>
+        </div>
+        <div class="col-md-6">
+            <%= f.submit "Guardar", class: "btn btn-primary", style: "width: 100%;", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
         </div>
     </div>
 <% end %>

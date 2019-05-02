@@ -1,43 +1,9 @@
-	<% provide(:title, "Crear una pregunta") %>
-  
-  <div class="row">
-    <div class="col">
-      <h1>Nueva Pregunta</h1>
-    </div>
+<% provide(:title, "Nueva pregunta") %>
+
+<div class="row">
+  <div class="col">
+    <h1>Nueva Pregunta</h1>
   </div>
-	<%= form_for @question, url: common_questions_new_path do |q|  %>
+</div>
 
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <%= q.label :title, "Pregunta" %>
-          <%= q.text_field :title, class: "form-control" %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <%= q.label :text, "Descripción" %>
-          <%= q.text_field :text, class: "form-control" %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <%= q.label :category_id, "Categoría" %>
-          <%= q.select :category_id, 
-              options_for_select(Category.all.collect { |p| [p.name, p.id]}), 
-              {}, class: "form-control" %>
-        </div>
-      </div>
-    </div>
-    <div class="row text-right">
-      <div class="col">
-        <%= q.submit "Crear pregunta", class: "btn btn-primary" %>
-      </div>
-    </div>
-	<% end %>
+<%= render 'form' %>

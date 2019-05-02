@@ -20,19 +20,20 @@ class CommitteeSessionsController < ApplicationController
         full_name = raw_information['displayName']
         url = committee_profile_path
 
-        if mail.match(ITESM_MAIL)
-            user = User.find_by(email: mail)
-            if user # The user exists, login to the system
-                login_redirect(user, url)
-            else # The user is not on the database
+        user = User.find_by(email: mail)
+
+        if user
+            auto_login(user)
+            redirect_to(user, url)
+        else
+            if mail.match(ITESM_MAIL)
                 user = create_committee(mail,full_name)
                 login_redirect(user, url)
+            else
+                flash[:danger] = 'Correo invalido: favor de utilizar correo del ITESM.'
+                redirect_to action: 'new'
             end
-        else
-            flash[:danger] = 'Correo invalido: favor de utilizar correo del ITESM.'
-            redirect_to action: 'new'
         end
-        
     end
 
     # Login user and redirect page to another path

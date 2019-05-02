@@ -31,9 +31,13 @@
 
             <%= form_for project, url: common_assign_stand_path(project.id) do |f|  %>
 							<div class="form-group">
-								<%= f.label :stand_id, 'No._de_stand' %><br>
-									<%= f.select :stand_id, options_from_collection_for_select(Stand.all, :id, :number) %>
-									<%= f.submit "Asignar stand", class: "btn btn-primary", data: { confirm: 'Se asignara el stand seleccionado, ¿Estás seguro que deseas guardar estos cambios?' }%>
+								<div class="row">
+									<div class="col-md-1">
+										<%= f.label :stand_id, 'No._de_stand' %><br>
+										<%= f.select :stand_id, options_from_collection_for_select(Stand.all, :id, :number), {}, class: 'form-control' %>
+									</div>
+								</div><br />
+								<%= f.submit "Asignar stand", class: "btn btn-primary", data: { confirm: 'Se asignara el stand seleccionado, ¿Estás seguro que deseas guardar estos cambios?' }%>
 							</div><br/>
 	          
 	        	<% end %>

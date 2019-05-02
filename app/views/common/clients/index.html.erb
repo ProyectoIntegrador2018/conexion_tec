@@ -1,10 +1,23 @@
-<h1>Tipos de cliente</h1>
+<% provide(:title, 'Clientes') %>
 
-<%= link_to "Agregar tipo de cliente", new_common_client_path, class: "btn btn-primary btn-block text-white"%>
+<div class="row">
+  <div class="col-md-4">
+    <h1>Tipos de clientes</h1>
+  </div>
+
+  <div class="col-md-8">
+    <div class="float-right">
+	    <%= link_to "Agregar tipo de cliente", new_common_client_path, class: "btn btn-primary btn-block text-white"%>
+	  </div>
+  </div>
+
+</div><br />
+
 <table class="table table-responsive">
   <thead>
     <tr>
-      <th scope="col">Tipos de clientes</th>
+      <th scope="col">Tipo de cliente</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -12,3 +25,5 @@
     <%= render @clients %>
   </tbody>
 </table>
+
+<br>

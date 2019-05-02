@@ -4,7 +4,7 @@
             <%= f.label :número %>
             <%= f.number_field :number, class: 'form-control' %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <%= f.label :fechas_de_registro %>
             <div class="input-daterange input-group" id="datepicker">
                 <input type="text" class="input-sm form-control" name="edition[registry_open]" value="<%= @edition.registry_open.strftime("%d/%m/%Y") if @edition.registry_open.present? %>" />
@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-5">
             <%= f.label :fechas_de_video %>
             <div class="input-daterange input-group" id="datepicker">
                 <input type="text" class="input-sm form-control" name="edition[video_open]" value="<%= @edition.video_open.strftime("%d/%m/%Y") if @edition.video_open.present? %>" />
@@ -24,9 +24,11 @@
     </div><br />
 
     <div class="row">
+        <div class="col-md-6">
+            <%= link_to "Cancelar", common_editions_path, { class: "btn btn-default", style: "width: 100%; border-color: #DCDCDC;" } %>
+        </div>
         <div class="col">
-            <%= link_to "Cancelar", common_editions_path, { class: "btn btn-default" } %>
-            <%= f.submit "Guardar", class: "btn btn-primary", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+            <%= f.submit "Guardar", class: "btn btn-primary", style: "width: 100%;", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
         </div>
     </div>
 <% end %>

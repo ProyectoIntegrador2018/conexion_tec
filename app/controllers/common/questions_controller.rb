@@ -1,12 +1,13 @@
 class Common::QuestionsController < Common::AdminCommitteeBaseController
 	before_action :set_question, only: [:edit, :destroy, :update]
 
-	def show
+	def index
 		@questions = Question.all
 	end
 
 	def new
 		@question = Question.new
+		@url = common_questions_new_path
 	end
 
 	def create
@@ -14,12 +15,13 @@ class Common::QuestionsController < Common::AdminCommitteeBaseController
 		if @question.save
 			redirect_to common_questions_path
 		else
-			puts("Errors: #{@question.errors.full_messages}")
+			flash[:danger] = "Error al crear pregunta"
 			render :new
 		end
 	end
 
 	def edit
+		@url = common_question_path
 	end
 
 	def destroy
@@ -33,6 +35,7 @@ class Common::QuestionsController < Common::AdminCommitteeBaseController
 			flash[:success] = "Pregunta actualizada"
 			redirect_to common_questions_path
 		else
+			flash[:danger] = "Error al editar pregunta"
 			render "edit"
 		end
 	end

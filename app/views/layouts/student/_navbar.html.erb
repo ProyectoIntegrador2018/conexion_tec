@@ -6,8 +6,7 @@
       <h2>Alumno</h2>
     </div>
     <div class="list-group list-group-flush">
-      <%= link_to 'Perfil', student_profile_path, class: 'nav-link' %>
-      <%= link_to 'Mis Proyectos', student_projects_path, class: 'nav-link' %>
+      <%= link_to 'Proyectos', student_projects_path, class: 'nav-link' %>
     </div>
   </div>
 
@@ -18,11 +17,12 @@
       <div class="dropdown ml-auto mt-2 mt-lg-0 dropleft">
         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">
-          <%= current_user.name %>
+          <i class="fa fa-chevron-down" aria-hidden="true"></i> <%= current_user.name %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%# <%= link_to "Editar perfil", student_edit_path(current_user.id), class: 'dropdown-item' %>
-          <%# <div class="dropdown-divider"></div> %>
+          <%= link_to "Mi perfil", student_profile_path, class: 'dropdown-item' %>
+          <%= link_to "Editar perfil", student_edit_path, class: 'dropdown-item' %>
+          <div class="dropdown-divider"></div>
           <%= link_to "Cerrar Sesión", logout_student_path, method: :post, class: 'dropdown-item' %>
         </div>
         </li>

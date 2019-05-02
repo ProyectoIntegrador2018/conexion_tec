@@ -1,94 +1,10 @@
 <% provide(:title, 'Editar proyecto') %>
 
 <div class="container">
-
   <div class="row">
     <div class="col-12 col-md-6 offset-md-3">
-      <h1>Actualizar proyecto</h1>
+      <h1 style="text-align: center;">Editar proyecto</h1>
     </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-12 col-md-6 offset-md-3">
-      <%= form_for @project, url: student_project_path do |f| %>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <%= f.label :name, 'Nombre del Proyecto' %>
-            <%= f.text_field :name, class: "form-control" %>
-          </div>
-        </div>
-      </div>  
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <%= f.label :professor_id, 'Profesor responsable: '%>
-            <%= @project.professor.user.name %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <%= f.label :field, 'Área temática'%>
-            <%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name, @project.field_id) %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <%= f.label :client, 'Cliente'%>
-            <%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :client, @project.client_id) %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <%= f.label :category, 'Categoría'%>
-            <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @project.category_id) %>
-
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <%= f.label :expertise_area, 'Tipo de proyecto'%>
-            <%= f.select :expertise_area_id, options_from_collection_for_select(ExpertiseArea.all, :id, :area, @project.expertise_area_id) %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <%= f.label :abstract, 'Abstract'%>
-            <%= f.text_field :abstract, class: "form-control" %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <%= f.label :video_url, 'Video de Youtube'%>
-            <%= f.text_field :video_url, class: "form-control" %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <%= f.label :description, 'Descripción'%>
-            <%= f.text_field :description, class: "form-control" %>
-          </div>
-        </div>
-      </div>
-      <div class="mt-3">
-          <%= f.submit "Guardar cambios", class: "btn btn-primary"%>
-      </div>
-      <% end %>
     </div>
-  </div>
+    <%= render 'form' %>
 </div>
-
