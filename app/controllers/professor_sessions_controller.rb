@@ -1,5 +1,7 @@
 class ProfessorSessionsController < ApplicationController
-	include AuthHelper
+    include AuthHelper
+    
+    ITESM_MAIL = /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(itesm|tec)\.mx$/
 
     def new
         if current_user && current_user.professor?
@@ -16,24 +18,28 @@ class ProfessorSessionsController < ApplicationController
         mail = raw_information["mail"] || raw_information["userPrincipalName"]
         full_name = raw_information["displayName"]
 
-        user = User.find_by(email: mail)
+        if mail.match(ITESM_MAIL)
+            user = User.find_by(email: mail)
+            if user
+                auto_login(user)
+                redirect_to professor_profile_path
+            else
+                # Create the user and login
+                professor = Professor.create(department_id: 1) # Temporal department
+                password = SecureRandom.base64(10) # Generates random password
+                user = User.create(email: mail,
+                                    name: full_name,
+                                    userable_type: 'Professor',
+                                    userable_id: professor.id,
+                                    password: password,
+                                    password_confirmation: password)
 
-        if user
-            auto_login(user)
-            redirect_to professor_profile_path
+                auto_login(user)
+                redirect_to professor_edit_path
+            end
         else
-            # Create the user and login
-            professor = Professor.create(department_id: 1) # Temporal department
-            password = SecureRandom.base64(10) # Generates random password
-            user = User.create(email: mail,
-                                name: full_name,
-                                userable_type: 'Professor',
-                                userable_id: professor.id,
-                                password: password,
-                                password_confirmation: password)
-
-            auto_login(user)
-            redirect_to professor_edit_path
+            flash[:danger] = 'Correo invalido: favor de utilizar correo del ITESM.'
+            redirect_to action: 'new'
         end
     end
 
