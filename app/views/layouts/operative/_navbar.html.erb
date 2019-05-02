@@ -6,9 +6,17 @@
       <h2>Operativo</h2>
     </div>
     <div class="list-group list-group-flush">
+       <div class="dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Registro de asistencia
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<%= common_projects_assistance_path%>">Proyectos</a>
+          <a class="dropdown-item" href="<%= common_judges_assistance_path%>">Jueces</a>
+        </div>
+      </div> 
       <%= link_to "Asignar juez", common_assignments_path, class: "nav-link" %>
-      <%= link_to "Asistencia de proyectos", common_projects_assistance_path, class: "nav-link" %>
-      <%= link_to "Asistencia de Jueces", common_judges_assistance_path, class: "nav-link" %>
     </div>
   </div>
   
