@@ -33,7 +33,8 @@ class StudentSessionsController < ApplicationController
                                     userable_type: 'Student',
                                     userable_id: student.id,
                                     password: password,
-                                    password_confirmation: password)
+                                    password_confirmation: password,
+                                    authorized: 1)
 
                 auto_login(user)
                 redirect_to student_edit_path

@@ -14,7 +14,8 @@ User.create(
     password: "password", 
     password_confirmation: "password", 
     userable_type: "Administrator",
-    userable_id: admin.id)
+    userable_id: admin.id,
+    authorized: 1)
 
 admin = Administrator.create()
 User.create(
@@ -23,7 +24,8 @@ User.create(
     password: "password", 
     password_confirmation: "password", 
     userable_type: "Administrator",
-    userable_id: admin.id)
+    userable_id: admin.id,
+    authorized: 1)
 
 admin = Administrator.create()
 User.create(
@@ -32,7 +34,8 @@ User.create(
     password: "password", 
     password_confirmation: "password", 
     userable_type: "Administrator",
-    userable_id: admin.id)
+    userable_id: admin.id,
+    authorized: 1)
 
 admin = Administrator.create()
 User.create(
@@ -41,7 +44,8 @@ User.create(
     password: "password", 
     password_confirmation: "password", 
     userable_type: "Administrator",
-    userable_id: admin.id)
+    userable_id: admin.id,
+    authorized: 1)
 
 admin = Administrator.create()
 User.create(
@@ -50,7 +54,8 @@ User.create(
     password: "password", 
     password_confirmation: "password", 
     userable_type: "Administrator",
-    userable_id: admin.id)
+    userable_id: admin.id,
+    authorized: 1)
         
 Major.create(name: "ARQ")
 Major.create(name: "IA")
@@ -154,7 +159,8 @@ Edition.create(number: 1, registry_open: Date.today, registry_limit: Date.today 
     	password: "password", 
     	password_confirmation: "password", 
         userable_type: "Professor",
-        userable_id: professor.id)
+        userable_id: professor.id,
+        authorized: 1)
 
 	student = Student.create(major_id: rand(1..11))
 	User.create(
@@ -163,7 +169,8 @@ Edition.create(number: 1, registry_open: Date.today, registry_limit: Date.today 
     	password: "password", 
     	password_confirmation: "password", 
         userable_type: "Student",
-        userable_id: student.id)
+        userable_id: student.id,
+        authorized: 1)
 
 	judge = Judge.create(department_id: rand(1..4), has_tablet: rand(0..1))
 	User.create(

@@ -5,6 +5,7 @@ class Common::AssignmentsController < Common::BaseController
 			judge = Judge.find(params[:judge_id])
 			@projects = available_projects(judge)
 		end
+		@judges = Judge.available_judges
 	end
 
 	# Set the avaiable projects for that judge

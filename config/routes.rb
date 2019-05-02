@@ -93,7 +93,7 @@ Rails.application.routes.draw do
     resources 'judges', only: [:destroy]
     get 'evaluations', to: 'evaluations#index'
     resources 'evaluations', only: [:destroy]
-    get 'questions', to: 'questions#show'
+    get 'questions', to: 'questions#index'
     get 'questions/new', to: 'questions#new'
     post 'questions/new', to: 'questions#create'
     resources 'questions', only: [:edit, :update, :destroy]

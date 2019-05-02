@@ -73,7 +73,8 @@ class Student::ProjectsController < Student::BaseController
 								userable_id: prof_instance.id,
 								name: project_params["name_professor"],
 								password: password,
-                                password_confirmation: password)
+                                password_confirmation: password,
+                                authorized: 1)
 		professor
 	end
 

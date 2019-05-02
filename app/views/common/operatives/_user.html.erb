@@ -1,27 +1,26 @@
 <tr>
 	<td><%= user.name %></td>
 	<td><%= user.email %></td>
-	<td><%= user.userable_type %></td>
 	<td>
-			<% if user.authorized == true %>
-				<span id="authorize" style="color: green"> Autorizado</span><br>
-				<span>
-					<%= link_to common_authorize_user_path(user), method: :put do %>
-						<span id="deauthorize" style="color: black"><i class="fa fa-hand-paper-o" style="color: orange"></i> Desautorizar</span>
-					<% end %>
-				</span>
-			<% else %>
-				<%= link_to common_authorize_user_path(user), method: :put do %>
-					<span id="authorize" style="color: black"><i class="fa fa-check" style="color: green"></i> Autorizar</span>
-				<% end %>
+		<% if user.authorized == true %>
+		<span id="authorize" style="color: green"> Autorizado</span><br>
+		<span>
+			<%= link_to common_authorize_user_path(user), method: :put do %>
+			<span id="deauthorize" style="color: black"><i class="fa fa-hand-paper-o" style="color: orange"></i> Desautorizar</span>
 			<% end %>
+		</span>
+		<% else %>
+		<%= link_to common_authorize_user_path(user), method: :put do %>
+		<span id="authorize" style="color: black"><i class="fa fa-check" style="color: green"></i> Autorizar</span>
+		<% end %>
+		<% end %>
 	</td>
 	<td>
 		<%= link_to 'Editar', edit_common_operative_path(user), metod: :put %>
 	</td>
 	<td>
 		<%= link_to common_operative_path(user), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este usuario?'} do %>
-			<span style="color: red"><i class="fa fa-trash"></i> Eliminar</span>
+		<span style="color: red"><i class="fa fa-trash"></i> Eliminar</span>
 		<% end %>
 	</td>
 </tr>

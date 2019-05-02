@@ -1,11 +1,23 @@
-<h1>Áreas de Expertise</h1>
+<% provide(:title, 'Áreas de Expertise') %>
 
-<%= link_to "Agregar área", new_common_expertise_area_path, class: "btn btn-primary btn-block text-white"%>
+<div class="row">
+  <div class="col-md-4">
+    <h1>Áreas de Expertise</h1>
+  </div>
+
+  <div class="col-md-8">
+    <div class="float-right">
+	    <%= link_to "Agregar área de expertise", new_common_expertise_area_path, class: "btn btn-primary btn-block text-white"%>
+	  </div>
+  </div>
+
+</div><br />
 
 <table class="table table-responsive">
   <thead>
     <tr>
       <th scope="col">Área</th>
+      <th></th>
     </tr>
   </thead>
 

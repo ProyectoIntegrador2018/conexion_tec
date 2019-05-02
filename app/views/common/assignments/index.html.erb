@@ -7,7 +7,7 @@
     <div class="col-md-4 col-centered">
       <div class="form-group">
         <label for="judge_id">Selección de jueces</label>
-        <%= select_tag :judge_id, options_from_collection_for_select(Judge.all, :id, :name, params[:judge_id]), class: 'form-control'  %>
+        <%= select_tag :judge_id, options_from_collection_for_select(@judges, :id, :name, params[:judge_id]), class: 'form-control', include_blank: 'Selecciona un juez de la lista'  %>
       </div> <br />
 
       <button style="width: 100%;" class="btn btn-primary" type="submit">
@@ -18,26 +18,40 @@
 </form><br /><br />
 
 <% if params[:judge_id].present? %>
-  <h4 style="text-align: center;">Proyectos disponibles</h4><br />
-  <div class="row">
-    <div class="col-centered">
-      <table class="table table-responsive">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col"># Stand</th>
-          <th scope="col">Profesor responsable</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
+  <% if @projects.length > 0 %>
+    <h4 style="text-align: center;">Proyectos disponibles</h4><br />
+    <div class="row">
+      <div class="col-centered">
+        <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col"># Stand</th>
+            <th scope="col">Profesor responsable</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <% @projects.each do |project| %>
-          <%= render 'project', project: project %>
-        <% end %>
-      </tbody>
-    </table>
+        <tbody>
+          <% @projects.each do |project| %>
+            <%= render 'project', project: project %>
+          <% end %>
+        </tbody>
+      </table>
 
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card border-dark mb-3">
+          <div class="card-header">Aviso</div>
+          <div class="card-body text-dark">
+            <h5 class="card-title">No hay proyectos disponibles</h5>
+            <p class="card-text">Por el momento el juez actual no cuenta con proyectos disponibles para su evaluación.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>
