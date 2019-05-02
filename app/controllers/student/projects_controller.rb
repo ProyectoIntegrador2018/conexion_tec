@@ -12,9 +12,11 @@ class Student::ProjectsController < Student::BaseController
 		@url = student_projects_path
 	end
 
+	ITESM_MAIL = /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(itesm|tec)\.mx$/
+
     def create
 				# Como crear el proyecto con el current user id?? 
-			if project_params["email_professor"].present? && project_params["name"].present? && project_params["description"].present? && project_params["abstract"].present?
+			if project_params["email_professor"].present? && project_params["name"].present? && project_params["description"].present? && project_params["abstract"].present? && project_params["email_professor"].match(ITESM_MAIL)
 				student = User.find_by(email: current_user["email"])
 				professor = User.find_by(email: project_params["email_professor"])
 
@@ -38,7 +40,7 @@ class Student::ProjectsController < Student::BaseController
 					render 'new'
 				end
 			else
-				flash[:danger] = "Por favor llene todos los campos."
+				flash[:danger] = "Por favor llene todos los campos y asegurese de utilizar correos del tec."
 				@url = student_projects_path
 				set_project
 				render 'new'
