@@ -8,7 +8,7 @@ class Common::JudgesAssistanceController < Common::BaseController
     end
     
     def mark_assistance
-        if attendance(@judge)
+        if judgeAttendance(@judge)
             flash[:success] = "Asistencia registrada"
         else
             flash[:success] = "Asistencia retirada"

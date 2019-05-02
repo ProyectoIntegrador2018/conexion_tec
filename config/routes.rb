@@ -111,6 +111,7 @@ Rails.application.routes.draw do
     post '/judges/reject/:id', to: "judges#reject", as: :reject_judge
     get '/projects_assistance', to: 'projects_assistance#index', as: :projects_assistance
     post '/projects_assistance/mark_assistance:id', to: 'projects_assistance#mark_assistance', as: :project_mark_assistance
+    post '/projects_assistance/block:id', to: 'projects_assistance#block', as: :project_block
     get '/judges_assistance', to: 'judges_assistance#index', as: :judges_assistance
     post '/judges_assistance/mark_assistance:id', to: 'judges_assistance#mark_assistance', as: :judge_mark_assistance
     resources :expertise_areas
