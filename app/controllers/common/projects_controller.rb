@@ -12,9 +12,10 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 		@url = common_projects_path
 	end
 
+	ITESM_MAIL = /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(itesm|tec)\.mx$/
+
 	def create
-		
-		if project_params["student_id"].present? && project_params["professor_id"].present? && project_params["name"].present? && project_params["description"].present? && project_params["abstract"].present?
+		if project_params["student_id"].present? && project_params["professor_id"].present? && project_params["name"].present? && project_params["description"].present? && project_params["abstract"].present? && project_params["student_id"].match(ITESM_MAIL) && project_params["professor_id"].match(ITESM_MAIL)
 			student = User.find_by(email: project_params["student_id"])
 			professor = User.find_by(email: project_params["professor_id"])
 			if professor.nil?
@@ -45,7 +46,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 				render 'new'
 			end
 		else
-			flash[:danger] = "Porfavor complete todos los campos"
+			flash[:danger] = "Por favor complete todos los campos y asegurese de utilizar correos del tec."
 			@url = common_projects_path
 			set_project
 			render 'new'
