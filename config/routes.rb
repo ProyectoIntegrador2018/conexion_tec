@@ -114,6 +114,8 @@ Rails.application.routes.draw do
     post '/projects_assistance/block:id', to: 'projects_assistance#block', as: :project_block
     get '/judges_assistance', to: 'judges_assistance#index', as: :judges_assistance
     post '/judges_assistance/mark_assistance:id', to: 'judges_assistance#mark_assistance', as: :judge_mark_assistance
+    get '/stands_assignment', to: 'stands_assignment#index', as: :stands_assignment
+    patch '/stands_assignment/assignStand:id', to: 'stands_assignment#assignStand', as: :assign_stand
     resources :expertise_areas
     resources :clients
     resources :majors

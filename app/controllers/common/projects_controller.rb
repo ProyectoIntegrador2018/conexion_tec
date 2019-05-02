@@ -114,7 +114,8 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 				:student_id,
 				:name_student,
 				:professor_id,
-				:name_professor)
+				:name_professor,
+				:stand_id)
 		end
 
 end

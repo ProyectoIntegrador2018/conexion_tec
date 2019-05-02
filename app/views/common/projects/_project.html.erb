@@ -12,7 +12,11 @@
 					<small> <strong>Día: </strong> <%= project.id%> </small>
 				</div>
 				<div class="col-md-4">
-					<small> <strong>Stand: </strong> <%= project.id%> </small> 
+					<% if project.stand_id.nil? %>
+		        <small> <strong>Stand: </strong> Pendiente de asignación </small> 
+		      <% else %>
+		          <small> <strong>Stand: </strong> <%= project.stand.number%> </small>
+		      <% end %>
 				</div>
 			</div>
 			
