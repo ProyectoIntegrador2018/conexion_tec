@@ -6,9 +6,10 @@ class Common::EvaluationsController < Common::AdminCommitteeBaseController
     end
 
     def destroy
+        evaluation_questions = EvaluationQuestion.where(evaluation_id: @evaluation.id).destroy_all
         @evaluation.destroy
         flash[:success] = "Evaluacion eliminada"
-        redirect_to admin_evaluations_path
+        redirect_to common_evaluations_path
     end
 
     private

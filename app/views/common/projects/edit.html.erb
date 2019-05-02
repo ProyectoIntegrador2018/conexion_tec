@@ -1,134 +1,24 @@
 <% provide(:title, 'Editar proyecto') %>
+
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>Actualizar proyecto</h1>
-    </div>
-  </div>
-<%= form_for @project, url: common_project_path do |f| %>
 	<div class="row">
 		<div class="col-md-12">
-    <h3> Datos del proyecto </h3>
-			<div class="row">
-				<div class="col-md-4">
-          <strong><%= f.label :id, 'ID del Proyecto: ' %></strong>
-          <%= @project.id %> 
-				</div>
-				<div class="col-md-4">
-          <strong><%= f.label :id, 'Stand asignado: ' %></strong>
-          <%= @project.id %>
-				</div>
-				<div class="col-md-4">
-          <strong><%= f.label :id, 'Día asignado: ' %></strong>
-          <%= @project.id %>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-        <strong><%= f.label :name, 'Nombre del Proyecto: ' %></strong>
-        <%= f.text_field :name, class: "form-control" %>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-        <strong><%= f.label :category, 'Categoría del Proyecto: '%></strong>
-        <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @project.category_id) %>
-				</div>
-				<div class="col-md-6">
-        <strong><%= f.label :field, 'Área temática: '%></strong>
-        <%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name, @project.field_id) %>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-        <strong><%= f.label :expertise_area, 'Tipo de proyecto: '%></strong>
-        <%= f.select :expertise_area_id, options_from_collection_for_select(ExpertiseArea.all, :id, :area, @project.expertise_area_id) %>  
-				</div>
-				<div class="col-md-6">
-        <strong><%= f.label :client, 'Cliente del proyecto: '%></strong>
-        <%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :client, @project.client_id) %>  
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-        <strong><%= f.label :description, 'Objetivo: '%></strong>
-        <%= f.text_area :description, :rows => 3, class: "form-control" %>  
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-        <strong><%= f.label :abstract, 'Abstract: '%></strong>
-        <%= f.text_area :abstract, :rows => 10, class: "form-control" %> 
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-        <strong><%= f.label :video_url, 'Video de Youtube: '%></strong>
-        <%= f.text_field :video_url, class: "form-control" %> 
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-          <strong><%= f.label :selection_score, 'Calificación de selección: '%></strong>
-          <%= f.text_field :selection_score, class: "form-control" %> 
-				</div>
-			</div>
+			<h1 style="text-align: center;">Editar proyecto</h1>
 		</div>
-	</div><br>
+	</div>
 	<div class="row">
-    <h3> Datos del alumno responsable </h3>
-		<div class="col-md-12">
-      <div class="row">
-				<div class="col-md-6">
-          <strong><%= f.label :student_id, 'Nombre: '%> </strong>
-          <%= @project.student.user.name %>
-				</div>
-				<div class="col-md-4">
-          <strong><%= f.label :student_id, 'e-mail: '%> </strong>
-            <%= @project.student.user.email%>
-				</div>
-				<div class="col-md-2">
-          <strong><%= f.label :major, 'Carrera: '%> </strong>
-            <%= @project.student.major.name %> 
-				</div>
-			</div>
-      <%# <div class="row">
-        <button type="button" class="btn btn-link btn-sm">
-        Editar datos del alumno
-        </button>
-      </div> %>
+		<div class="col-md-4">
+			<strong><label>ID del Proyecto: </label></strong>
+			<%= @project.id %> 
 		</div>
-	</div><br>
-	<div class="row">
-    <h3> Datos del profesor coordinador </h3>
-		<div class="col-md-12">
-      <div class="row">
-				<div class="col-md-4">
-          <strong><%= f.label :professor_id, 'Nombre: '%> </strong>
-              <%= @project.professor.user.name %>
-				</div>
-				<div class="col-md-4">
-          <strong><%= f.label :professor_id, 'e-mail: '%> </strong>
-          <%= @project.professor.user.email %>
-				</div>
-				<div class="col-md-4">
-          <strong><%= f.label :department, 'Departamento: '%></strong>
-              <%= @project.professor.department.name %>
-				</div>
-			</div>
-      <%# <div class="row">
-        <button type="button" class="btn btn-link btn-sm">
-        Editar datos del profesor
-        </button>
-      </div> %>
+		<div class="col-md-4">
+			<strong><label>Stand asignado: </label></strong>
+			<%= @project.stand.nil? ? 'No asignado' : @project.stand.number %>
 		</div>
-	</div><br>
-  <div class="row">
-    <div class="col-md-6">
-      <%= f.submit "Guardar cambios", class: "btn btn-primary"%>
-    </div>
-  </div>
-  <% end %>
+		<div class="col-md-4">
+			<strong><label>Día asignado</label></strong>
+			<%= rand(1..2) %>
+		</div>
+	</div>
+	<%= render 'form' %>
 </div>
-
-

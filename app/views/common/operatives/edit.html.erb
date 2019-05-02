@@ -1,32 +1,10 @@
 <% provide(:title, 'Editar usuario') %>
-<div class="container-fluid">
+
+<div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h1>Actualizar información de usuario</h1>
+    <div class="col-12 col-md-6 offset-md-3">
+      <h1>Editar usuario</h1>
     </div>
   </div>
-<%= form_for @user, url: @url do |f| %>
-	<div class="row">
-    <h3> Datos del usuario </h3>
-		<div class="col-md-12">
-      <div class="row">
-				<div class="col-md-6">
-                    <strong><%= f.label :name, 'Nombre: '%> </strong>
-                    <%= f.text_field :name, class: "form-control" %>
-				</div>
-				<div class="col-md-4">
-                    <strong><%= f.label :email, 'e-mail: '%> </strong>
-                    <%= f.text_field :email, class: "form-control" %>
-				</div>
-			</div>
-		</div>
-	</div><br>
-  <div class="row">
-    <div class="col-md-6">
-      <%= f.submit "Guardar cambios", class: "btn btn-primary"%>
-    </div>
-  </div>
-  <% end %>
+    <%= render 'form' %>
 </div>
-
-

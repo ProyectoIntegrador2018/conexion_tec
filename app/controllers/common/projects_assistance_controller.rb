@@ -1,27 +1,33 @@
 class Common::ProjectsAssistanceController < Common::BaseController
-    before_action :set_project, only: [:mark_assistance]
+    include AttendanceHelper
+
+    before_action :set_project, only: [:mark_assistance, :block]
 
     def index
         @projects = Project.all
     end
     
     def mark_assistance
-        # @project.sta
-        # byebug
-        if @project.update_attributes(project_params)
-            flash[:success] = "Información del proyecto actualizada"
-            redirect_to action: 'index'
+        if projectAttendance(@project)
+            flash[:success] = "Asistencia del proyecto registrada"
         else
-            # byebug
-            flash[:error] = "Error: No se pudo asignar el stand seleccionado, intentelo nuevamente"
-            redirect_to action: 'index'
+            flash[:success] = "Asistencia del proyecto retirada"
         end
+        redirect_to common_projects_assistance_path
+    end
+
+    def block
+        if blockProject(@project)
+            flash[:success] = "Proyecto bloquedo"
+        else
+            flash[:success] = "Proyecto desbloqueado"
+        end
+        redirect_to common_projects_assistance_path
     end
 
     private
 		def set_project
             @project = params[:id].present? ? Project.find(params[:id]) : Project.new
-            byebug
 		end
 
 		def project_params

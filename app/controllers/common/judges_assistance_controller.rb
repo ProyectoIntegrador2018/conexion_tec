@@ -1,4 +1,6 @@
 class Common::JudgesAssistanceController < Common::BaseController
+    include AttendanceHelper
+
     before_action :set_judge, only: [:mark_assistance]
 
     def index
@@ -6,19 +8,12 @@ class Common::JudgesAssistanceController < Common::BaseController
     end
     
     def mark_assistance
-        if @judge.attended
-            @judge.attended = false
-        else
-            @judge.attended = true
-        end
-
-        if @judge.save
+        if judgeAttendance(@judge)
             flash[:success] = "Asistencia registrada"
-            redirect_to action: 'index'
         else
-            flash[:error] = "Error: No se pudo registrar asistencia"
-            redirect_to action: 'index'
+            flash[:success] = "Asistencia retirada"
         end
+        redirect_to common_judges_assistance_path
     end
 
     private

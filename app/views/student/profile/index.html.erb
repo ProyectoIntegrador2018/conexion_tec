@@ -1,28 +1,16 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-md-6 offset-md-3">
-			<h1>Perfil</h1>
-		</div>
-    <div class="col-12 col-md-6 offset-md-3">
-      <%= "Estudiante actual: #{current_user.name}" %>
+<% provide(:title, 'Mi perfil') %>
+
+<h1 style="text-align: center;">Perfil</h1><br />
+
+<div class="row">
+  <div class="col-md-12 col-centered">
+    <div class="card" style="width: 100%;">
+      <div class="card-body">
+        <h4 class="card-title"><%= "Estudiante actual: #{current_user.name}" %></h4>
+        <hr>
+        <h5 class="card-subtitle mb-2 text-muted"><%= "Carrera: #{current_user.userable.major.name}"%></h5>
+        <p class="card-text"><%= "Correo: #{current_user.email}" %></p>
       </div>
+    </div>
   </div>
-  <div class="row">
-    <div class="col-12 col-md-6 offset-md-3">
-      <%= "Correo: #{current_user.email}" %>
-      </div>
-  </div>
-  <div class="row">
-    <div class="col-12 col-md-6 offset-md-3">
-      <%= "Carrera: #{current_user.userable.major.name}" %>
-      </div>
-  </div>
-  <br />
-  <br />
-  <div class="row">
-    <div class="col-12 col-md-6 offset-md-3">
-      <%= link_to "Registrar proyecto", new_student_project_path	, class: "btn btn-primary btn-block text-white"%>
-      <%= link_to "Editar perfil", student_edit_path(current_user.id), class: 'btn btn-primary btn-block text-white' %>
-      </div>
-  </div>
-</div>
+</div><br />

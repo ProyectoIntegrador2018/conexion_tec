@@ -1,0 +1,11 @@
+<tr>
+	<td><%= assignment.project.name %></td>
+    <td><%= assignment.project.stand.number %></td>
+    <td>
+    	<% if assignment.evaluation.nil? %>
+    		<%= link_to 'Evaluar', new_judge_evaluation_path(id: assignment.project.id) %>
+    	<% else %>
+    		<p style="color: green;">Evaluado</p>
+    	<% end %>
+   	</td>
+</tr>

@@ -1,17 +1,35 @@
-<h1>Asignaciones</h1>
+<% provide(:title, 'Asignaciones') %>
 
-<table class="table table-responsive">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Área</th>
-      <th>Tipo</th>
-      <th>Abstract</th>
-      <th colspan="3"></th>
-    </tr> 
-  </thead>
+<h1 style="text-align: center;">Asignaciones</h1><br />
 
-  <tbody>
-    <%= render @projects %>
-  </tbody>
-</table>
+<% if @assignments.length > 0 %>
+  <div class="row">
+    <div class="col-md-4 col-centered">
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col"># Stand</th>
+            <th scope="col"></th>
+          </tr> 
+        </thead>
+
+        <tbody>
+          <%= render @assignments %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card border-dark mb-3">
+        <div class="card-header">Aviso</div>
+        <div class="card-body text-dark">
+          <h5 class="card-title">No tienes asignaciones</h5>
+          <p class="card-text">Por el momento no cuentas con proyectos asignados para evaluar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

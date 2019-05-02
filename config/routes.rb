@@ -64,6 +64,7 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#index'
     get 'edit', to: 'profile#edit'
     patch 'update', to: 'profile#update'
+    resources 'projects'
   end
 
   namespace :admin do
@@ -84,8 +85,7 @@ Rails.application.routes.draw do
   end
 
   namespace :common do
-    get '/assignments', to: 'assignments#index', as: :assignments
-    post '/assignments', to: 'assignments#create', as: :create_assignment
+    resources :assignments
     resources :operatives
     put 'operative/authorize/:id', to: 'operatives#authorize', as: :authorize_user
     
@@ -94,7 +94,7 @@ Rails.application.routes.draw do
     resources 'judges', only: [:destroy]
     get 'evaluations', to: 'evaluations#index'
     resources 'evaluations', only: [:destroy]
-    get 'questions', to: 'questions#show'
+    get 'questions', to: 'questions#index'
     get 'questions/new', to: 'questions#new'
     post 'questions/new', to: 'questions#create'
     resources 'questions', only: [:edit, :update, :destroy]
@@ -111,9 +111,12 @@ Rails.application.routes.draw do
     post '/judges/approve/:id', to: "judges#approve", as: :approve_judge
     post '/judges/reject/:id', to: "judges#reject", as: :reject_judge
     get '/projects_assistance', to: 'projects_assistance#index', as: :projects_assistance
-    patch '/projects_assistance/mark_assistance', to: 'projects_assistance#mark_assistance', as: :mark_assistance
+    post '/projects_assistance/mark_assistance:id', to: 'projects_assistance#mark_assistance', as: :project_mark_assistance
+    post '/projects_assistance/block:id', to: 'projects_assistance#block', as: :project_block
     get '/judges_assistance', to: 'judges_assistance#index', as: :judges_assistance
-    post '/judges_assistance/mark_assistance:id', to: 'judges_assistance#mark_assistance', as: :project_mark_assistance
+    post '/judges_assistance/mark_assistance:id', to: 'judges_assistance#mark_assistance', as: :judge_mark_assistance
+    get '/stands_assignment', to: 'stands_assignment#index', as: :stands_assignment
+    patch '/stands_assignment/assignStand:id', to: 'stands_assignment#assignStand', as: :assign_stand
     resources :expertise_areas
     resources :clients
     resources :majors

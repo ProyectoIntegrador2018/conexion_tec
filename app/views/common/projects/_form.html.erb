@@ -1,63 +1,125 @@
-<%= form_for @project, url: common_projects_path do |f|  %>
+<%= form_for @project, url: @url do |f|  %>
     <div class="row">
-		<div class="col">
-			<div class="form-group">
-				<%= f.label :name, 'Nombre' %>
-                <%= f.text_field :name, class: "form-control" %>
-			</div>
+		<div class="col-md-6">
+			<strong><%= f.label :name, 'Nombre' %></strong>
+            <%= f.text_field :name, class: "form-control" %>
 		</div>
-	</div>
-    <div class="row">
-		<div class="col">
-			<div class="form-group">
-				<%= f.label :abstract, 'Abstract' %>
-                <%= f.text_area :abstract, class: "form-control" %>
-			</div>
-		</div>
-	</div>
-    <div class="row">
-		<div class="col">
-			<div class="form-group">
-				<%= f.label :description, 'Descripción' %>
-                <%= f.text_area :description, class: "form-control" %>
-			</div>
-		</div>
-	</div>
-    <div class="row">
-		<div class="col">
-			<div class="form-group">
-				<%= f.label :category_id, 'Categoría' %><br>
-                <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name) %>
-			</div>
-		</div>
-        <div class="col-md-4">
-            <%= f.label :expertise_area_id, 'Tipo de proyecto' %>
-            <%= f.select :expertise_area_id, options_from_collection_for_select(ExpertiseArea.all, :id, :area) %>
-        </div>
-        <div class="col-md-4">
-            <%= f.label :client_id, 'Tipo de cliente' %>
-            <%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :client) %>
-        </div>
-	</div>
-    <div class="row">
-        <div class="col-md-4">
-            <%= f.label :field_id, 'Área temática' %>
-            <%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name) %>
+        <div class="col-md-6">
+            <strong><%= f.label :category, 'Categoría'%></strong>
+            <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @project.category_id),{}, class: 'form-control'  %>
         </div>
 	</div><br />
-	 <div class="row">
+
+    <div class="row">
         <div class="col-md-6">
-            <%= f.label :student_id, 'Correo del estudiante responsable' %>
-            <%= f.email_field :student_id, class: "form-control" %>
+            <strong><%= f.label :field, 'Área temática'%></strong>
+            <%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name, @project.field_id), {}, class: 'form-control' %>
         </div>
-		<div class="col-md-6">
-            <%= f.label :professor_id, 'Correo del profesor responsable' %>
-            <%= f.email_field :professor_id, class: "form-control" %>
+        <div class="col-md-6">
+            <strong><%= f.label :expertise_area, 'Tipo de proyecto'%></strong>
+            <%= f.select :expertise_area_id, options_from_collection_for_select(ExpertiseArea.all, :id, :area, @project.expertise_area_id), {}, class: 'form-control' %>  
         </div>
-	</div>
-    <div class="mt-3">
-          <%= f.submit "Crear proyecto", class: "btn btn-primary"%>
-      </div>
+    </div><br />
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong><%= f.label :client, 'Tipo de cliente'%></strong>
+            <%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :client, @project.client_id), {}, class: 'form-control'%>  
+        </div>
+        <div class="col-md-6">
+            <strong><%= f.label :video_url, 'Video de Youtube'%></strong>
+            <%= f.text_field :video_url, class: "form-control" %> 
+        </div>
+    </div><br />
+
+    <div class="row">
+        <div class="col-md-12">
+            <strong><%= f.label :description, 'Objetivo'%></strong>
+            <%= f.text_area :description, :rows => 3, class: "form-control" %>  
+        </div>
+    </div><br />
+
+    <div class="row">
+		<div class="col-md-12">
+			<strong><%= f.label :abstract, 'Abstract' %></strong>
+            <%= f.text_area :abstract, :rows => 10, class: "form-control" %>
+		</div>
+	</div><br />
+
+    <% if @url == common_projects_path %> <!-- New -->
+        <h3 style="text-align: center;">Datos de estudiante y profesor</h3>
+    	 <div class="row">
+            <div class="col-md-6">
+                <strong><%= f.label :student_id, 'Correo del estudiante responsable' %></strong>
+                <%= f.email_field :student_id, class: "form-control" %>
+            </div>
+            <div class="col-md-6">
+                <strong><%= f.label :name_student, 'Nombre del estudiante'%></strong>
+                <input type="text"  id="name_student" name="project[name_student]" class="form-control">
+            </div>
+        </div><br />
+
+        <div class="row">
+    		<div class="col-md-6">
+                <strong><%= f.label :professor_id, 'Correo del profesor responsable' %></strong>
+                <%= f.email_field :professor_id, class: "form-control" %>
+            </div>
+            <div class="col-md-6">
+                <strong><%= f.label :name_professor, 'Nombre del profesor'%></strong>
+                <input type="text"  id="name_professor" name="project[name_professor]" class="form-control">
+            </div>
+    	</div><br />
+    <% else %>
+
+    <div class="row">
+        <div class="col-md-4">
+            <strong><%= f.label :selection_score, 'Calificación de selección'%></strong>
+            <%= f.text_field :selection_score, class: "form-control" %> 
+        </div>
+    </div><br />
+
+    <h3 style="text-align: center;">Datos del alumno responsable</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <strong><%= f.label :student_id, 'Nombre'%> </strong>
+            <input type="text" disabled="true" value="<%= @project.student.user.name %>" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <strong><%= f.label :student_id, 'Mail'%> </strong>
+            <input type="text" disabled="true" value="<%= @project.student.user.email %>" class="form-control">
+        </div>
+        <div class="col-md-2">
+            <strong><%= f.label :major, 'Carrera'%> </strong>
+            <input type="text" disabled="true" value="<%= @project.student.major.name %>" class="form-control">
+        </div>
+    </div><br />
+
+    <h3 style="text-align: center;">Datos del profesor coordinador</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <strong><%= f.label :professor_id, 'Nombre'%> </strong>
+            <input type="text" disabled="true" value="<%= @project.professor.user.name %>" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <strong><%= f.label :professor_id, 'Mail'%> </strong>
+            <input type="text" disabled="true" value="<%= @project.professor.user.email %>" class="form-control">
+        </div>
+        <div class="col-md-2">
+            <strong><%= f.label :major, 'Departamento'%> </strong>
+            <input type="text" disabled="true" value="<%= @project.professor.department.name %>" class="form-control">
+        </div>
+    </div><br />
+
+    <% end %> 
+    
+    <div class="row">
+        <div class="col-md-6">
+            <%= link_to "Cancelar", common_projects_path, { class: "btn btn-default", style: "width: 100%; border-color: #DCDCDC;" } %>
+        </div>
+        <div class="col-md-6">
+            <%= f.submit "Guardar", class: "btn btn-primary", style: "width: 100%;", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+        </div>
+    </div><br /><br />
 <% end %>
 
 

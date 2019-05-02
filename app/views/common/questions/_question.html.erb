@@ -1,0 +1,13 @@
+<tr scope="row">
+    <td><%= question.title %></td>
+    <td><%= question.text %></td>
+    <td><%= question.category.name %></td>
+    <td>
+        <%=link_to 'Editar', edit_common_question_path(question) %>
+    </td>
+    <td style="width: 100px;">
+        <%= link_to common_question_path(question), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar esta pregunta?'} do %>
+            <span style="color: red"><i class="fa fa-trash"></i>Eliminar</span>
+        <% end %>
+    </td>
+</tr>
