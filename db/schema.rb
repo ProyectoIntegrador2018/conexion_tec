@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 2019_04_30_002305) do
     t.integer "client_id"
     t.integer "status_id"
     t.integer "edition_id"
-    t.integer "attended", default: 0
+    t.boolean "attended", default: false
     t.integer "stand_id"
     t.float "partial_score", default: 0.0
     t.index ["category_id"], name: "index_projects_on_category_id"
