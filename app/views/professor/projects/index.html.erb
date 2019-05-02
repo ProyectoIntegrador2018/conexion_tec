@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-4">
+    <h1>Proyectos</h1>
+  </div>
+
+  <div class="col-md-6"></div>
+
+</div><br />
+
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Área</th>
+      <th scope="col">Video URL</th>
+      <th scope="col">Estatus</th>
+      <th scope="col">Calif de selección</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <%= render @projects %>
+  </tbody>
+</table>
+
+<br>

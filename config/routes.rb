@@ -64,6 +64,7 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#index'
     get 'edit', to: 'profile#edit'
     patch 'update', to: 'profile#update'
+    resources 'projects'
   end
 
   namespace :admin do
