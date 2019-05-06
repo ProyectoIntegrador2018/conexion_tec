@@ -19,7 +19,7 @@ class AdministratorSessionController < ApplicationController
 
         if user && user.admin?
             auto_login(user)
-            redirect_to admin_profile_path
+            redirect_to common_projects_path
         else
         	flash[:danger] = 'Esta cuenta no es de administrador'
         	redirect_to action: 'new'

@@ -82,7 +82,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 	end
 
 	def approve
-		@project.status_id = 4
+		@project.status_id = Status.last.id
 		if @project.save
 			flash[:success] = "Proyecto aprobado"
 			redirect_to common_projects_path
@@ -93,7 +93,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 	end
 
 	def reject
-		@project.status_id = 3
+		@project.status_id = Status.third.id
 		if @project.save
 			flash[:success] = "Proyecto rechazado"
 			redirect_to common_projects_path
