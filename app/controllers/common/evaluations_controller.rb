@@ -6,8 +6,21 @@ class Common::EvaluationsController < Common::AdminCommitteeBaseController
     end
 
     def destroy
-        evaluation_questions = EvaluationQuestion.where(evaluation_id: @evaluation.id).destroy_all
+        EvaluationQuestion.where(evaluation_id: @evaluation.id).destroy_all # Destroy de questions
+        result = @evaluation.result
+        project = @evaluation.assignment.project
         @evaluation.destroy
+
+        project.partial_score -= result
+
+        if project.evaluations == 0
+            project.evaluation_score = nil
+        else
+            project.evaluation_score = project.partial_score / project.evaluations
+        end
+
+        project.save
+
         flash[:success] = "Evaluacion eliminada"
         redirect_to common_evaluations_path
     end

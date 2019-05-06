@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_002305) do
+ActiveRecord::Schema.define(version: 2019_05_06_230849) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2019_04_30_002305) do
     t.date "video_limit"
   end
 
-  create_table "evaluation_questions", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "evaluation_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "evaluation_id", null: false
     t.bigint "question_id", null: false
     t.integer "result", default: 0

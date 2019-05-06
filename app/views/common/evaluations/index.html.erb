@@ -21,7 +21,11 @@
           <td><%= evaluation.result %></td>
           <td><%= evaluation.assignment.project.name %></td>
           <td><%= evaluation.assignment.judge.user.name %></td>
-          <td><%= link_to 'Delete', common_evaluation_path(evaluation.id), method: :delete, data: {confirm: "Seguro que deseas borrar el Evaluacion #{evaluation.id}?"}  %></td>
+          <td>
+            <%= link_to common_evaluation_path(evaluation.id), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar esta evaluación?'} do %>
+              <span style="color: red"><i class="fa fa-trash"></i>Eliminar</span>
+            <% end %>
+          </td>
       </tr>
       <% end %>
     </tbody>

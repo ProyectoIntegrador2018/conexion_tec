@@ -3,7 +3,7 @@ class AdministratorSessionController < ApplicationController
 
 	def new
         if current_user && current_user.admin?
-            redirect_to admin_profile_path
+            redirect_to common_projects_path
         else
             @login_url = get_login_url(authorize_admin_url)
         end
