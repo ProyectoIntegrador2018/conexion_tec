@@ -26,7 +26,7 @@ class StudentSessionsController < ApplicationController
         else
             if mail.match(ITESM_MAIL) # Check if it is from the ITESM
                 # Create the user and login
-                student = Student.create(major_id: 1) # Temporal major
+                student = Student.create(major_id: Major.first.id) # Temporal major
                 password = SecureRandom.base64(10) # Generates random password
                 user = User.create(email: mail,
                                     name: full_name,

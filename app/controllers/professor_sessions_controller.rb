@@ -25,7 +25,7 @@ class ProfessorSessionsController < ApplicationController
                 redirect_to professor_profile_path
             else
                 # Create the user and login
-                professor = Professor.create(department_id: 1) # Temporal department
+                professor = Professor.create(department_id: Department.first.id) # Temporal department
                 password = SecureRandom.base64(10) # Generates random password
                 user = User.create(email: mail,
                                     name: full_name,

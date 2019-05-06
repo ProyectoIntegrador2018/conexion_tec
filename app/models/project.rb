@@ -22,10 +22,10 @@ class Project < ApplicationRecord
 	belongs_to :stand, optional: true
 	
 	def set_selection_score
-		if self.selection_score.present? && self.status_id == 1
-			self.status_id = 2
+		if self.selection_score.present? && self.status_id == Status.first.id
+			self.status_id = Status.second.id
 		elsif !self.selection_score.present?
-			self.status_id = 1
+			self.status_id = Status.first.id
 		end 
 	end
 

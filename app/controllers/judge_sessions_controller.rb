@@ -42,7 +42,7 @@ class JudgeSessionsController < ApplicationController
     # Handle internal judge
     def internal_judge(mail,full_name)
         # Create the user and login
-        judge = Judge.create(has_tablet: 0, department_id: 1) # Temporal data
+        judge = Judge.create(has_tablet: 0, department_id: Department.first.id) # Temporal data
         password = generates_password
         user = User.create(email: mail,
                             name: full_name,
@@ -57,7 +57,7 @@ class JudgeSessionsController < ApplicationController
     # Handle external judge
     def external_judge(mail,full_name)
         # Create the user and login
-        judge = Judge.create(has_tablet: 0, department_id: 1, external: true) # Temporal data
+        judge = Judge.create(has_tablet: 0, department_id: Department.first.id, external: true) # Temporal data
         password = generates_password
         user = User.create(email: mail,
                             name: full_name,

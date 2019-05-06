@@ -113,7 +113,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 	end
 
 	def create_student(password, mail)
-		stud_instance = Student.create(major_id: 1)
+		stud_instance = Student.create(major_id: Major.first.id)
 		student = User.create(email: mail,
 							  userable_type: 'Student',
 							  userable_id: stud_instance.id,
@@ -125,7 +125,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 	end
 
 	def create_professor(password, mail)
-		prof_instance = Professor.create(department_id: 4)
+		prof_instance = Professor.create(department_id: Department.first.id)
 		professor = User.create(email: mail,
 								userable_type: 'Professor',
 								userable_id: prof_instance.id,
