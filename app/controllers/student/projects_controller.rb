@@ -80,7 +80,7 @@ class Student::ProjectsController < Student::BaseController
 
 	def save_project(project)
 		if project.save
-			UserMailer.with(user: current_user, project: @project).project_confirmation.deliver_now
+			UserMailer.with(user: current_user, project: project).project_confirmation.deliver_now
 			flash[:success] = "¡Proyecto creado exitosamente!"
 			redirect_to action: 'index'
 		else
