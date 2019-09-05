@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  db:
+    image: mysql
+    volumes:
+      - .:/app
+    ports:
+      - "13306:3306"
+    environment: &app_environment
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+
+  web:
+    image: proyecto_integrador/conexion_tec:development
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: dev-entrypoint
+    volumes:
+      - .:/app
+    command: rails server -p 3000 -b 0.0.0.0
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    links:
+      - db
+    ports:
+      - "3000:3000"
+    environment:
+      RAILS_ENV: "development"
