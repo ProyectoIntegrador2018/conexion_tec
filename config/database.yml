@@ -5,20 +5,12 @@ default: &default
 
 development:
   <<: *default
-  host: localhost
-  username: root
-  password: <%= ENV['DB_PASSWORD'] %>
-  database: conexion_tec
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  host: localhost
-  username: root
-  password: <%= ENV['DB_PASSWORD'] %>
-  database: conexion_tec_test
 
 production:
   url: mysql2://baa969126dcedd:b1fd2892@us-cdbr-iron-east-03.cleardb.net/heroku_4a7ab8f6d526ba7
