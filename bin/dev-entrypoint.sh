@@ -34,7 +34,7 @@ then
   # 6: Check if the gem dependencies are met, or install
   bundle check || bundle install
 
-  rails db:create db:migrate
+  bundle exec ${APP_PATH}/bin/checkdb || rails db:create db:migrate
 
   # 9: 'Unlock' the setup process:
   unlock_setup
