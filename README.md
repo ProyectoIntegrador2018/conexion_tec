@@ -4,6 +4,7 @@
 
 Página web para el manejo del evento conexión tec.
 
+
 ## Table of contents
 
 - [Client Details](#client-details)
@@ -17,16 +18,19 @@ Página web para el manejo del evento conexión tec.
 - [Running tests](#running-tests)
 - [Checking code for potential issues](#checking-code-for-potential-issues)
 
+
 ### Client Details
 
 | Name                      | Email             | Role               |
 | ------------------------- | ----------------- | ------------------ |
 | Juan M. Hinojosa Olivares | juhinojo@itesm.mx | Profesor de planta |
 
+
 ### Environment URLS
 
 - **Production** - [localhost:5000](localhost:5000)
 - **Development** - [https://aqueous-beyond-94616.herokuapp.com/](https://aqueous-beyond-94616.herokuapp.com/)
+
 
 ### Equipos de desarrollo
 
@@ -50,6 +54,16 @@ Página web para el manejo del evento conexión tec.
 | Luis Alfonso Arriaga Quezada   | luisaq95nin@gmail.com      | Development |
 | Santiago Sandoval Treviño      | santiago_st_95@hotmail.com | Development |
 
+**Ruby O's - AGO - DIC 2019**
+
+| Name                           | Email                       | Role        |
+| ------------------------------ | --------------------------- | ----------- |
+| José Eduardo Sánchez Yépiz		 | gallo.sanchez23@gmail.com   | Development |
+| Javier De la Garza Solís       | javierdelagarza96@gmail.com | Development |
+| Jose Antonio Domene Reyes			 | domene96@gmail.com 				 | Development |
+| Juan Carlos Gonzalez Petrocchi | juancarlosgzz23@gmail.com   | Development |
+
+
 ### Management tools
 
 You should ask for access to this tools if you don't have it already:
@@ -59,78 +73,147 @@ You should ask for access to this tools if you don't have it already:
 - [Heroku](https://aqueous-beyond-94616.herokuapp.com)
 - [Documentation](https://goo.gl/EyBjWj)
 
+
 ## Development
 
-- RVM
-  \
-  `$ curl -sSL https://get.rvm.io | bash -s stable`
-- Ruby – Version 2.4.2
-  \
-  `$ rvm use ruby-2.4.2 --default`
-- Rails – Version 5.2.1
-  \
-  `$ gem install rails -v 5.2.1`
 
-### Setup the project for development
+### Setup
 
-We will usedthe basic tools that come with rails. (rails server, test, and coonsole).
+Before setting up the project, you sould have installed the following development tools:
 
-1. Clone this repository into your local machine
+* [Git](https://git-scm.com/downloads)
+* [Docker](https://runnable.com/docker/getting-started/)
+* [Docker Compose](https://docs.docker.com/compose/install/)
+* [Plis](https://github.com/IcaliaLabs/plis) (optional, but highly recommended)
+
+Once you have installed the required third-party software, you can follow this steps:
+
+1. Clone the project repository on your local machine
+
+	SSH:
+
+	```bash
+	$ git clone git@github.com:ProyectoIntegrador2018/conexion_tec.git
+	```
+
+	or HTTPS:
+	```bash
+	$ git clone https://github.com/ProyectoIntegrador2018/conexion_tec.git
+	```
+
+2. Create the Docker image:
+
+	`plis`:
+
+	```bash
+	$ plis build
+	```
+
+	`docker-compose`:
+
+	```bash
+	$ docker-compose build
+	```
+
+
+### Running the stack for development
+
+In yout termina, run:
+
+`plis`
 
 ```bash
-$ git clone https://github.com/ProyectoIntegrador2018/conexion_tec.git
+$ plis start web
 ```
 
-2. Setup the database:
-   > You may need to run the following comands
+`docker-compose`
 
-```
-sudo service mysql status
-sudo service mysql start
+```bash
+$ docker-compose up
 ```
 
-> If using rbenv run:
-> `rbenv local 2.4.2`
+If the service is already running, you can run the command `plis attach frontend-web` to attach current service's logs.
 
-```
-rails db:drop
-rails db:create
-rails db:migrate
-rails db:seed
-```
+***NOTE: You can allways run `plis run frontend-web bash` or `docker-compose run frontend-web bash` commands to enter the container's console.***
 
-3. Start the application:
+***NOTE: If you have trouble with the connection between the rails application and the database, try turning up the database container and the web container in different terminal window: `plis start db` or `docker-compose up db`, and `plis start web` or `docker-compose up web`.***
 
-```
-$ rails s
-```
 
-Once you see an output like this:
+### Stopping services
 
-```
-web_1   | => Booting Puma
-web_1   | => Rails 5.1.3 application starting in development on http://0.0.0.0:3000
-web_1   | => Run `rails server -h` for more startup options
-web_1   | => Ctrl-C to shutdown server
-web_1   | Listening on 0.0.0.0:3000, CTRL+C to stop
+In order to stop `web` entirely you can run:
+
+`plis`:
+
+```bash
+$ plis stop
 ```
 
-This means the project is up and running.
+`docker-compose`:
 
-### Stop the project
-
-In order to stop the project just hit Ctrl-C on the terminal where rails server is running.
-
-### Running tests
-
-To run all tests, you can do:
-
+```bash
+$ docker-compose stop
 ```
-$ rspec
+
+If you want to stop the services and remove the containers:
+
+`plis`:
+
+```bash
+$ plis down
+```
+
+`docker-compose`:
+
+```bash
+$ docker-compose down
+```
+
+If you only want to stop one service in particular, you can specify it with the following command:
+
+`plis`:
+
+```bash
+$ plis stop [service_name]
+```
+
+`docker-compose`:
+
+```bash
+$ docker-compose stop [service_name]
+```
+
+### Running specs
+
+To run specs, you can do:
+
+`plis`:
+
+```bash
+$ plis run test rspec
+```
+
+`docker-compose`:
+```
+$ docker-compose run test rspec
+```
+
+Or for a specific file:
+
+`plis`:
+
+```bash
+$ plis run test rspec spec/models/user_spec.rb
+```
+
+`docker-compose`:
+
+```bash
+$ docker-compose run test rspec spec/models/user_spec.rb
 ```
 
 Currently we have 27 test ranging from unit test to integration test. We would like to increase the test coverate in the app as we believe that testing should be done automatically instead of doing it by hand.
 
 ### Deployment
 
-The project is currently deployed on Heroku. To make a deployment push your changes to `master` branch. Deployments are configured to be don automatically when changes are detected on the branch.
+The project is currently deployed on Heroku. To make a deployment push your changes to `master` branch. Deployments are configured to be done automatically when changes are detected on the branch.
