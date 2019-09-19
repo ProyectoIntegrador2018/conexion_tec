@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_230849) do
+ActiveRecord::Schema.define(version: 2019_09_19_201800) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 2019_05_06_230849) do
     t.integer "attended", default: 0
     t.integer "stand_id"
     t.float "partial_score", default: 0.0
+    t.boolean "semestrei"
     t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
   end
