@@ -65,6 +65,11 @@
 							Acciones
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <% if project.project_grade==nil %>
+              <%= link_to "Crear calificacion Proyecto", new_common_project_project_grade_path(project), class: "btn btn-primary btn-block text-white"%>
+            <% else %>
+              <%= link_to "Editar calificacion Proyecto", new_common_project_path, class: "btn btn-primary btn-block text-white"%>
+            <% end %>
 							<%= link_to 'Editar/Ver detalle/Calificar', edit_common_project_path(project), class: 'dropdown-item' %>
 							<%= link_to common_project_path(project), class: 'dropdown-item', method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este proyecto?'} do %>
 							<i class="fa fa-trash"></i> Eliminar

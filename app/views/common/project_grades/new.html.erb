@@ -1,0 +1,102 @@
+<%= form_for @project_grade, url: @url do |f|  %>
+  <div class="row">
+    <div class="col-md-6">
+      <strong>Nombre</strong>
+      <input type="text" disabled="true" value="<%= @project.name %>" class="form-control">
+    </div>
+    <div class="col-md-6">
+      <strong>Categoría</strong>
+      <input type="text" disabled="true" value="<%= @project.category.name%>" class="form-control">
+    </div>
+  </div><br />
+
+  <div class="row">
+    <div class="col-md-6">
+      <strong>Área temática</strong>
+      <input type="text" disabled="true" value="<%= @project.field.name%>" class="form-control">
+    </div>
+    <div class="col-md-6">
+      <strong>Tipo de proyecto</strong>
+      <input type="text" disabled="true" value="<%= @project.expertise_area.area%>" class="form-control">  
+    </div>
+  </div><br />
+
+  <div class="row">
+      <div class="col-md-6">
+          <strong>Tipo de cliente</strong>
+          <input type="text" disabled="true" value="<%= @project.client.client %>" class="form-control"> 
+      </div>
+      <div class="col-md-6">
+          <strong>Video de Youtube</strong>
+          <input type="text" disabled="true" value="<%= @project.video_url %>" class="form-control"> 
+      </div>
+  </div><br />
+
+  <div class="row">
+      <div class="col-md-12">
+          <strong>Objetivo</strong>
+          <textarea rows="3" disabled="true" class="form-control"> 
+            <%= @project.description %>
+          </textarea>
+      </div>
+  </div><br />
+
+  <div class="row">
+    <div class="col-md-12">
+      <strong>Abstract</strong>
+        <textarea rows="10" disabled="true" class="form-control"> 
+          <%= @project.abstract %>
+        </textarea>
+    </div>
+  </div><br />
+
+  <div class="row">
+    <div class="col-md-6">
+        <strong>Semestre i</strong>
+        <input type="checkbox" disabled="true" value="<%= @project.semestrei %>" class="form-control"> 
+    </div>
+  </div><br />
+
+  <h3 style="text-align: center;">Datos del alumno responsable</h3>
+  <div class="row">
+      <div class="col-md-4">
+          <strong>Nombre</strong>
+          <input type="text" disabled="true" value="<%= @project.student.user.name %>" class="form-control">
+      </div>
+      <div class="col-md-4">
+          <strong>Mail</strong>
+          <input type="text" disabled="true" value="<%= @project.student.user.email %>" class="form-control">
+      </div>
+      <div class="col-md-2">
+          <strong>Carrera</strong>
+          <input type="text" disabled="true" value="<%= @project.student.major.name %>" class="form-control">
+      </div>
+  </div><br />
+
+  <h3 style="text-align: center;">Datos del profesor coordinador</h3>
+  <div class="row">
+      <div class="col-md-4">
+          <strong>Nombre</strong>
+          <input type="text" disabled="true" value="<%= @project.professor.user.name %>" class="form-control">
+      </div>
+      <div class="col-md-4">
+          <strong>Mail</strong>
+          <input type="text" disabled="true" value="<%= @project.professor.user.email %>" class="form-control">
+      </div>
+      <div class="col-md-2">
+          <strong>Departamento</strong>
+          <input type="text" disabled="true" value="<%= @project.professor.department.name %>" class="form-control">
+      </div>
+  </div><br />
+  
+  <div class="row">
+      <div class="col-md-6">
+          <%= link_to "Cancelar", common_projects_path, { class: "btn btn-default", style: "width: 100%; border-color: #DCDCDC;" } %>
+      </div>
+      <div class="col-md-6">
+          <%= f.submit "Guardar", class: "btn btn-primary", style: "width: 100%;", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+      </div>
+  </div><br /><br />
+<% end %>
+
+
