@@ -47,8 +47,8 @@
 			<div class="row">
 				<div class="col-md-8">
 					<small><strong>Calificación: </strong></small>
-					<% if project.selection_score.present? %>
-					<%= project.selection_score %> <br>
+					<% if project.project_grade.present? %>
+					<%= project.project_grade.total_grade %> <br>
 					<%= link_to common_approve_project_path(project), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar este proyecto?'} do %>
 					<span style="color: green; margin-right: 25px;"><i class="fa fa-check"></i> Aprobar</span>
 					<% end %>
@@ -66,11 +66,11 @@
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <% if project.project_grade==nil %>
-              <%= link_to "Crear calificacion Proyecto", new_common_project_project_grade_path(project), class: 'dropdown-item'%>
+              <%= link_to "Calificar Proyecto", new_common_project_project_grade_path(project), class: 'dropdown-item'%>
             <% else %>
-              <%= link_to "Editar calificacion Proyecto", edit_common_project_project_grade_path(project, project.project_grade), class: 'dropdown-item'%>
+              <%= link_to "Calificar Proyecto", edit_common_project_project_grade_path(project, project.project_grade), class: 'dropdown-item'%>
             <% end %>
-							<%= link_to 'Editar/Ver detalle/Calificar', edit_common_project_path(project), class: 'dropdown-item' %>
+							<%= link_to 'Editar/Ver detalle', edit_common_project_path(project), class: 'dropdown-item' %>
 							<%= link_to common_project_path(project), class: 'dropdown-item', method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este proyecto?'} do %>
 							<i class="fa fa-trash"></i> Eliminar
 							<% end %>

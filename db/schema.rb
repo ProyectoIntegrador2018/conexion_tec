@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_25_195840) do
+ActiveRecord::Schema.define(version: 2019_09_28_192910) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 2019_09_25_195840) do
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_grade"
     t.index ["project_id"], name: "index_project_grades_on_project_id"
   end
 
