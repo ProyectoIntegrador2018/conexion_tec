@@ -2,7 +2,7 @@ class Common::StandsAssignmentController < Common::BaseController
     before_action :set_project, only: [:assignStand]
 
     def index
-		    @projects = Project.all.sort_by {|p| p.name}
+		@projects = Project.all.sort_by {|project| project.name}
     end
 
     def assignStand
