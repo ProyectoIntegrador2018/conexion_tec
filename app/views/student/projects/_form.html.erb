@@ -17,32 +17,32 @@
     </div>
     <div class="col-md-6">
         <strong><%= f.label :expertise_area, 'Tipo de proyecto'%></strong>
-        <%= f.select :expertise_area_id, options_from_collection_for_select(ExpertiseArea.all, :id, :area, @project.expertise_area_id), {}, class: 'form-control' %>  
+        <%= f.select :expertise_area_id, options_from_collection_for_select(ExpertiseArea.all, :id, :area, @project.expertise_area_id), {}, class: 'form-control' %>
     </div>
 </div><br />
 
 <div class="row">
     <div class="col-md-6">
         <strong><%= f.label :client, 'Tipo de cliente'%></strong>
-        <%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :client, @project.client_id), {}, class: 'form-control'%>  
+        <%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :client, @project.client_id), {}, class: 'form-control'%>
     </div>
     <div class="col-md-6">
         <strong><%= f.label :video_url, 'Video de Youtube'%></strong>
-        <%= f.text_field :video_url, class: "form-control" %> 
+        <%= f.text_field :video_url, class: "form-control" %>
     </div>
 </div><br />
 
 <div class="row">
     <div class="col-md-12">
         <strong><%= f.label :description, 'Objetivo'%></strong>
-        <%= f.text_area :description, :rows => 3, class: "form-control" %>  
+        <%= f.text_area :description, :rows => 3, class: "form-control" %>
     </div>
 </div><br />
 
 <div class="row">
     <div class="col-md-12">
         <strong><%= f.label :abstract, 'Abstract'%></strong>
-        <%= f.text_area :abstract, :rows => 10, class: "form-control" %> 
+        <%= f.text_area :abstract, :rows => 10, class: "form-control" %>
     </div>
 </div><br />
 <% if @project.professor.nil? %>
@@ -74,6 +74,14 @@
     </div>
 <% end %>
 <br />
+
+<div class="row">
+    <div class="col-md-6">
+        <strong><%= f.label :social_impact, 'Impacto Social' %></strong>
+        <%= f.check_box :social_impact %>
+    </div>
+</div><br />
+
 <div class="row">
     <div class="col-md-6">
         <%= link_to "Cancelar", student_projects_path, { class: "btn btn-default", style: "width: 100%; border-color: #DCDCDC;" } %>
@@ -83,5 +91,3 @@
     </div>
 </div><br /><br />
 <% end %>
-
-

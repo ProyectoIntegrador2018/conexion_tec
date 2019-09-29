@@ -5,7 +5,7 @@ class Student::ProjectsController < Student::BaseController
 
 	def show
     end
-    
+
     def index
         @projects = Project.where(student_id: current_user.userable_id)
     end
@@ -29,7 +29,7 @@ class Student::ProjectsController < Student::BaseController
 					@url = student_projects_path
 					set_project
 					render 'new'
-				end	
+				end
 			else
 				project = create_project(professor)
 				save_project(project)
@@ -45,7 +45,7 @@ class Student::ProjectsController < Student::BaseController
     def edit
 		@url = student_project_path
     end
-    
+
     def update
 		if @project.update_attributes(project_params)
 			flash[:success] = "Información del proyecto actualizada"
@@ -100,15 +100,16 @@ class Student::ProjectsController < Student::BaseController
 		def project_params
 			params.require(:project).permit(
 				:name,
-				:field_id, 
-				:client_id, 
-				:category_id, 
-				:expertise_area_id, 
-				:abstract, 
+				:field_id,
+				:client_id,
+				:category_id,
+				:expertise_area_id,
+				:abstract,
 				:video_url,
 				:description,
 				:email_professor,
 				:name_professor,
+        :social_impact,
 				:department_professor)
 		end
 
