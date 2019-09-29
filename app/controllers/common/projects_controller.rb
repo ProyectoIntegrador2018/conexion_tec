@@ -156,6 +156,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 				:name_student,
 				:professor_id,
 				:name_professor,
+        :social_impact,
 				:stand_id)
 		end
 
