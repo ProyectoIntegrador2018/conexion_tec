@@ -7,7 +7,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 	end
 
 	def index
-		@projects = Project.all
+    @projects = Project.all.sort_by {|p| p.name}
 	end
 
 	def new
@@ -144,11 +144,11 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 		def project_params
 			params.require(:project).permit(
 				:name,
-				:field_id, 
-				:client_id, 
-				:category_id, 
-				:expertise_area_id, 
-				:abstract, 
+				:field_id,
+				:client_id,
+				:category_id,
+				:expertise_area_id,
+				:abstract,
 				:video_url,
 				:description,
 				:selection_score,

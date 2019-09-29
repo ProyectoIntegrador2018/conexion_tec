@@ -3,7 +3,7 @@ class Common::AssignmentsController < Common::BaseController
 	def index
 		if params[:judge_id].present?
 			judge = Judge.find(params[:judge_id])
-			@projects = available_projects(judge)
+			@projects = available_projects(judge).sort_by {|p| p.name}
 		end
 		@judges = Judge.available_judges
 	end
