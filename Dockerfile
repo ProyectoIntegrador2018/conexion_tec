@@ -21,10 +21,12 @@ WORKDIR /usr/src
 # $PATH:
 ENV HOME=/usr/src PATH=/usr/src/bin:$PATH
 
+
 # Step 5: We'll install curl for later dependencies installations
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     curl
+
 
 # Step 6: Add nodejs source
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
@@ -34,7 +36,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 # Step 8: Install the common runtime dependencies:
-# Let's review this for MYSQL libpq5 \
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     apt-transport-https software-properties-common \
@@ -49,10 +51,12 @@ RUN apt-get update && \
 # and development libraries. This is also a first step for building a releasable
 # Docker image:
 
+
 # Step 9: Start off from the "runtime" stage:
 FROM runtime AS development
 
 # Step 10: Install the development dependency packages with debian package
+
 # manager:
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -62,6 +66,7 @@ RUN apt-get update && \
     default-libmysqlclient-dev && \
     #MYSQL lib dev libpq-dev && \
     rm -rf /var/lib/apt/lists/*
+
 
 # Step 11: Copy the project's Gemfile + lock:
 ADD Gemfile* /usr/src/
@@ -77,4 +82,5 @@ RUN bundle install --jobs=4 --retry=3
 CMD [ "rails", "server", "-b", "0.0.0.0" ]
 
 # Step 15: Copy the rest of the code
+
 ADD . /usr/src

@@ -74,6 +74,14 @@
     </div>
 <% end %>
 <br />
+
+<div class="row">
+    <div class="col-md-6">
+        <strong><%= f.label :semestrei, 'Semestre i' %></strong>
+        <%= f.check_box :semestrei %>
+    </div>
+</div><br />
+
 <div class="row">
     <div class="col-md-6">
         <%= link_to "Cancelar", student_projects_path, { class: "btn btn-default", style: "width: 100%; border-color: #DCDCDC;" } %>

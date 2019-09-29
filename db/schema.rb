@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_230849) do
+ActiveRecord::Schema.define(version: 2019_09_28_192910) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -109,6 +109,17 @@ ActiveRecord::Schema.define(version: 2019_05_06_230849) do
     t.integer "department_id"
   end
 
+  create_table "project_grades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "video_grade"
+    t.integer "objective_grade"
+    t.integer "abstract_grade"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "total_grade"
+    t.index ["project_id"], name: "index_project_grades_on_project_id"
+  end
+
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "abstract"
@@ -129,6 +140,7 @@ ActiveRecord::Schema.define(version: 2019_05_06_230849) do
     t.integer "attended", default: 0
     t.integer "stand_id"
     t.float "partial_score", default: 0.0
+    t.boolean "semestrei"
     t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
   end
@@ -170,4 +182,5 @@ ActiveRecord::Schema.define(version: 2019_05_06_230849) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "project_grades", "projects"
 end
