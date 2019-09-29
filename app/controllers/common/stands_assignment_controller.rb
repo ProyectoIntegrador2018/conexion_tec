@@ -1,10 +1,10 @@
 class Common::StandsAssignmentController < Common::BaseController
     before_action :set_project, only: [:assignStand]
-    
+
     def index
-		@projects = Project.all
+		    @projects = Project.all.sort_by {|p| p.name}
     end
-    
+
     def assignStand
         # byebug
         if @project.update_attributes(project_params)

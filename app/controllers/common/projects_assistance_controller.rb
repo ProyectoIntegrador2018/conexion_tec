@@ -4,9 +4,9 @@ class Common::ProjectsAssistanceController < Common::BaseController
     before_action :set_project, only: [:mark_assistance, :block]
 
     def index
-        @projects = Project.all
+        @projects = Project.all.sort_by {|p| p.name}
     end
-    
+
     def mark_assistance
         if projectAttendance(@project)
             flash[:success] = "Asistencia del proyecto registrada"
