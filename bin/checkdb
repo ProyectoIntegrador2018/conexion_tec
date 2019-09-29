@@ -28,7 +28,7 @@ begin
   connection_tries ||= 3
   exit 1 unless connection_to_database?
   exit 0
-rescue PG::ConnectionBad
+rescue Mysql2::Error
   unless (connection_tries -= 1).zero?
     puts "Retrying DB connection #{connection_tries} more times..."
     sleep ENV.fetch("APP_SETUP_WAIT", "5").to_i
