@@ -21,20 +21,22 @@ WORKDIR /usr/src
 # $PATH:
 ENV HOME=/usr/src PATH=/usr/src/bin:$PATH
 
-# Step 6: We'll install curl for later dependencies installations
+
+# Step 5: We'll install curl for later dependencies installations
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     curl
 
-# Step 7: Add nodejs source
+
+# Step 6: Add nodejs source
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 
-# Step 8: Add yarn packages repository
+# Step 7: Add yarn packages repository
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-# Step 5: Install the common runtime dependencies:
-#Let's review this for MYSQL libpq5 \
+# Step 8: Install the common runtime dependencies:
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     apt-transport-https software-properties-common \
@@ -49,10 +51,12 @@ RUN apt-get update && \
 # and development libraries. This is also a first step for building a releasable
 # Docker image:
 
-# Step 6: Start off from the "runtime" stage:
+
+# Step 9: Start off from the "runtime" stage:
 FROM runtime AS development
 
-# Step 7: Install the development dependency packages with debian package
+# Step 10: Install the development dependency packages with debian package
+
 # manager:
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -63,18 +67,20 @@ RUN apt-get update && \
     #MYSQL lib dev libpq-dev && \
     rm -rf /var/lib/apt/lists/*
 
-# Step 8: Copy the project's Gemfile + lock:
+
+# Step 11: Copy the project's Gemfile + lock:
 ADD Gemfile* /usr/src/
 
-# Step 9: Install bundler ~> 2.0
+# Step 12: Install bundler ~> 2.0
 RUN gem install bundler -v 2.0.1
 
-# Step 10: Install the current project gems - they can be safely changed later
+# Step 13: Install the current project gems - they can be safely changed later
 # during development via `bundle install` or `bundle update`:
 RUN bundle install --jobs=4 --retry=3
 
-# Step 11: Set the default command:
+# Step 14: Set the default command:
 CMD [ "rails", "server", "-b", "0.0.0.0" ]
 
-# Step 12: Copy the rest of the code
+# Step 15: Copy the rest of the code
+
 ADD . /usr/src
