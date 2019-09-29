@@ -36,8 +36,7 @@
   <div class="row">
       <div class="col-md-12">
           <strong>Objetivo</strong>
-          <textarea rows="3" disabled="true" class="form-control"> 
-            <%= @project.description %>
+          <textarea rows="3" disabled="true" class="form-control"><%= @project.description %>
           </textarea>
           <%= f.select :objective_grade, [1,2,3,4,5,6,7,8,9,10], {}, :style => "width:50px", class: 'form-control' %>
       </div>
@@ -46,8 +45,7 @@
   <div class="row">
     <div class="col-md-12">
       <strong>Abstract</strong>
-        <textarea rows="10" disabled="true" class="form-control"> 
-          <%= @project.abstract %>
+        <textarea rows="10" disabled="true" style="{ vertical-align: top; }​"class="form-control"><%= @project.abstract %> 
         </textarea>
         <%= f.select :abstract_grade, [1,2,3,4,5,6,7,8,9,10], {}, :style => "width:50px", class: 'form-control' %>
     </div>
