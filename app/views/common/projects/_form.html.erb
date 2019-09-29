@@ -46,6 +46,13 @@
 		</div>
 	</div><br />
 
+  <div class="row">
+    <div class="col-md-6">
+        <strong><%= f.label :semestrei, 'Semestre i' %></strong>
+        <%= f.check_box :semestrei %>
+    </div>
+  </div><br />
+
     <% if @url == common_projects_path %> <!-- New -->
         <h3 style="text-align: center;">Datos de estudiante y profesor</h3>
     	 <div class="row">

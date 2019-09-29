@@ -18,7 +18,8 @@ class Project < ApplicationRecord
 	belongs_to :student
 	belongs_to :edition
 	has_many :assignments
-	has_many :members
+  has_many :members
+  has_one :project_grade
 	belongs_to :stand, optional: true
 	
 	def set_selection_score

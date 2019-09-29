@@ -90,6 +90,10 @@ Rails.application.routes.draw do
     put 'operative/authorize/:id', to: 'operatives#authorize', as: :authorize_user
     
     resources :projects
+
+    resources :projects do 
+      resources :project_grades
+    end
     get 'judges', to: 'judges#index'
     resources 'judges', only: [:destroy]
     get 'evaluations', to: 'evaluations#index'
