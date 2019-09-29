@@ -144,11 +144,11 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 		def project_params
 			params.require(:project).permit(
 				:name,
-				:field_id, 
-				:client_id, 
-				:category_id, 
-				:expertise_area_id, 
-				:abstract, 
+				:field_id,
+				:client_id,
+				:category_id,
+				:expertise_area_id,
+				:abstract,
 				:video_url,
 				:description,
 				:selection_score,
@@ -156,6 +156,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 				:name_student,
 				:professor_id,
 				:name_professor,
+        :social_impact,
 				:stand_id)
 		end
 
