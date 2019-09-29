@@ -111,7 +111,7 @@ class Student::ProjectsController < Student::BaseController
 				:email_professor,
 				:name_professor,
 				:semestrei,
-        :social_impact,
+				:social_impact,
 				:department_professor)
 		end
 
