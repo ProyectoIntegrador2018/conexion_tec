@@ -8,7 +8,7 @@ class Student::ProjectsController < Student::BaseController
 
     def index
         @projects = Project.where(student_id: current_user.userable_id)
-        @projects = @projects.sort_by {|p| p.name}
+        @projects = @projects.sort_by {|project| project.name}
     end
 
     def new
@@ -109,8 +109,9 @@ class Student::ProjectsController < Student::BaseController
 				:video_url,
 				:description,
 				:email_professor,
-        :name_professor,
-        :semestrei,
+				:name_professor,
+				:semestrei,
+				:social_impact,
 				:department_professor)
 		end
 

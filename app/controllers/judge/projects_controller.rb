@@ -7,6 +7,6 @@ class Judge::ProjectsController < Judge::BaseController
     private
         def get_assignments
             judge = current_user.userable
-            @assignments = judge.assignments.sort_by {|a| a.project.name}
+            @assignments = judge.assignments.sort_by {|assignment| assignment.project.name}
         end
 end

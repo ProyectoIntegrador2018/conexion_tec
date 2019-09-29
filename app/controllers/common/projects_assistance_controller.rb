@@ -4,7 +4,7 @@ class Common::ProjectsAssistanceController < Common::BaseController
     before_action :set_project, only: [:mark_assistance, :block]
 
     def index
-        @projects = Project.all.sort_by {|p| p.name}
+        @projects = Project.all.sort_by {|project| project.name}
     end
 
     def mark_assistance

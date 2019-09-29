@@ -7,7 +7,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 	end
 
 	def index
-    @projects = Project.all.sort_by {|p| p.name}
+    @projects = Project.all.sort_by {|project| project.name}
 	end
 
 	def new
@@ -156,6 +156,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 				:name_student,
 				:professor_id,
 				:name_professor,
+				:social_impact,
 				:stand_id)
 		end
 
