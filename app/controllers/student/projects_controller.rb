@@ -16,8 +16,9 @@ class Student::ProjectsController < Student::BaseController
 	end
 
 	def create
-		if project_params['email_professor'].present?
-			email_professor = project_params['email_professor']
+		professor_email = project_params['email_professor']
+		if professor_email.present?
+			email_professor = professor_email
 			professor = User.find_by(email: email_professor)
 			if professor.nil?
 				if email_professor.match(ITESM_MAIL)
