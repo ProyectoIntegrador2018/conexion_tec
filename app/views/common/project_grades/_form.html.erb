@@ -1,103 +1,161 @@
 <%= form_for @project_grade, url: @url do |f|  %>
-  <div class="row">
-    <div class="col-md-6">
-      <strong>Nombre</strong>
-      <input type="text" disabled="true" value="<%= @project.name %>" class="form-control">
-    </div>
-    <div class="col-md-6">
-      <strong>Categoría</strong>
-      <input type="text" disabled="true" value="<%= @project.category.name%>" class="form-control">
-    </div>
-  </div><br />
+	<div class='row'>
+		<div class='col-md-6 form-group'>
+			<strong>Nombre</strong>
+			<input type='text' disabled='true' value='<%= @project.name %>' class='form-control'>
+		</div>
+		<div class='col-md-6 form-group'>
+			<strong>Categoría</strong>
+			<input type='text' disabled='true' value='<%= @project.category.name%>' class='form-control'>
+		</div>
+		<div class='col-md-6 form-group'>
+			<strong>Área temática</strong>
+			<input type='text' disabled='true' value='<%= @project.field.name%>' class='form-control'>
+		</div>
+		<div class='col-md-6 form-group'>
+			<strong>Tipo de proyecto</strong>
+			<input type='text' disabled='true' value='<%= @project.expertise_area.area%>' class='form-control'>
+		</div>
+		<div class='col-md-6 form-group'>
+			<strong>Tipo de cliente</strong>
+			<input type='text' disabled='true' value='<%= @project.client.client %>' class='form-control'>
+		</div>
+		<div class='col-md-6 form-group'>
+			<strong>Video de Youtube</strong>
+			<input type='text' disabled='true' value='<%= @project.video_url %>' class='form-control'>
+		</div>
+		<div class='col-md-6 form-group' style='text-align: center;'>
+			<strong>Semestre i</strong>
+			<input type='checkbox' disabled='true' value='<%= @project.semestrei %>'>
+		</div>
+		<div class='col-md-6 form-group' style='text-align: center;'>
+			<strong>Impacto Social</strong>
+			<input type='checkbox' disabled='true' value='<%= @project.social_impact %>'>
+		</div>
+		<div class='col-md-4 form-group'>
+			<%= f.label :video_grade, 'Calificación' %>
+			<%= f.select :video_grade, [*1..10], { include_blank: true }, :style => 'width:70px', class: 'form-control' %>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <strong>Área temática</strong>
-      <input type="text" disabled="true" value="<%= @project.field.name%>" class="form-control">
-    </div>
-    <div class="col-md-6">
-      <strong>Tipo de proyecto</strong>
-      <input type="text" disabled="true" value="<%= @project.expertise_area.area%>" class="form-control">  
-    </div>
-  </div><br />
+	<hr>
 
-  <div class="row">
-      <div class="col-md-6">
-          <strong>Tipo de cliente</strong>
-          <input type="text" disabled="true" value="<%= @project.client.client %>" class="form-control"> 
-      </div>
-      <div class="col-md-6">
-          <strong>Video de Youtube</strong>
-          <input type="text" disabled="true" value="<%= @project.video_url %>" class="form-control">
-          <%= f.select :video_grade, [1,2,3,4,5,6,7,8,9,10], {}, :style => "width:50px", class: 'form-control' %>
-      </div>
-  </div><br />
+	<div class='row'>
+		<div class='col-md-8 col-centered' style='text-align: center;'>
+			<h3>Objetivos</h3>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-md-12 form-group'>
+			<strong>Objetivo</strong>
+			<textarea rows='3' disabled='true' class='form-control'>
+				<%= @project.description %>
+			</textarea>
+		</div>
+		<div class='col-md-4 form-group'>
+			<%= f.label :objective_grade, 'Calificación' %>
+			<%= f.select :objective_grade, [*1..10], { include_blank: true }, :style => 'width:70px', class: 'form-control' %>
+		</div>
+	</div>
 
-  <div class="row">
-      <div class="col-md-12">
-          <strong>Objetivo</strong>
-          <textarea rows="3" disabled="true" class="form-control"><%= @project.description %>
-          </textarea>
-          <%= f.select :objective_grade, [1,2,3,4,5,6,7,8,9,10], {}, :style => "width:50px", class: 'form-control' %>
-      </div>
-  </div><br />
+	<hr>
 
-  <div class="row">
-    <div class="col-md-12">
-      <strong>Abstract</strong>
-        <textarea rows="10" disabled="true" style="{ vertical-align: top; }​"class="form-control"><%= @project.abstract %> 
-        </textarea>
-        <%= f.select :abstract_grade, [1,2,3,4,5,6,7,8,9,10], {}, :style => "width:50px", class: 'form-control' %>
-    </div>
-  </div><br />
+	<div class='row'>
+		<div class='col-md-8 col-centered' style='text-align: center;'>
+			<h3>Abstract</h3>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-md-12 form-group'>
+			<strong>Problema</strong>
+			<textarea rows='3' disabled='true' class='form-control'>
+				<%= @project.abstract_problem %>
+			</textarea>
+		</div>
+		<div class='col-md-12 form-group'>
+			<strong>Metodología</strong>
+			<textarea rows='3' disabled='true' class='form-control'>
+				<%= @project.abstract_methodology %>
+			</textarea>
+		</div>
+		<div class='col-md-12 form-group'>
+			<strong>Factibilidad</strong>
+			<textarea rows='3' disabled='true' class='form-control'>
+				<%= @project.abstract_feasibility %>
+			</textarea>
+		</div>
+		<div class='col-md-12 form-group'>
+			<strong>Resultados</strong>
+			<textarea rows='3' disabled='true' class='form-control'>
+				<%= @project.abstract_results %>
+			</textarea>
+		</div>
+		<div class='col-md-12 form-group'>
+			<strong>Impacto</strong>
+			<textarea rows='3' disabled='true' class='form-control'>
+				<%= @project.abstract_impact %>
+			</textarea>
+		</div>
+		<div class='col-md-4 form-group'>
+			<%= f.label :abstract_grade, 'Calificación' %>
+			<%= f.select :abstract_grade, [*1..10], { include_blank: true }, :style => 'width:70px', class: 'form-control' %>
+		</div>
+	</div>
 
-  <div class="row">
-    <div class="col-md-6">
-        <strong>Semestre i</strong>
-        <input type="checkbox" disabled="true" value="<%= @project.semestrei %>"> 
-    </div>
-  </div><br />
+	<hr>
 
-  <h3 style="text-align: center;">Datos del alumno responsable</h3>
-  <div class="row">
-      <div class="col-md-4">
-          <strong>Nombre</strong>
-          <input type="text" disabled="true" value="<%= @project.student.user.name %>" class="form-control">
-      </div>
-      <div class="col-md-4">
-          <strong>Mail</strong>
-          <input type="text" disabled="true" value="<%= @project.student.user.email %>" class="form-control">
-      </div>
-      <div class="col-md-2">
-          <strong>Carrera</strong>
-          <input type="text" disabled="true" value="<%= @project.student.major.name %>" class="form-control">
-      </div>
-  </div><br />
+	<div class='row'>
+		<div class='col-md-8 col-centered' style='text-align: center;'>
+			<h3>Datos del alumno responsable</h3>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-md-4 form-group'>
+			<strong>Nombre</strong>
+			<input type='text' disabled='true' value='<%= @project.student.user.name %>' class='form-control'>
+		</div>
+		<div class='col-md-4 form-group'>
+			<strong>Mail</strong>
+			<input type='text' disabled='true' value='<%= @project.student.user.email %>' class='form-control'>
+		</div>
+		<div class='col-md-4 form-group'>
+			<strong>Carrera</strong>
+			<input type='text' disabled='true' value='<%= @project.student.major.name %>' class='form-control'>
+		</div>
+	</div>
 
-  <h3 style="text-align: center;">Datos del profesor coordinador</h3>
-  <div class="row">
-      <div class="col-md-4">
-          <strong>Nombre</strong>
-          <input type="text" disabled="true" value="<%= @project.professor.user.name %>" class="form-control">
-      </div>
-      <div class="col-md-4">
-          <strong>Mail</strong>
-          <input type="text" disabled="true" value="<%= @project.professor.user.email %>" class="form-control">
-      </div>
-      <div class="col-md-2">
-          <strong>Departamento</strong>
-          <input type="text" disabled="true" value="<%= @project.professor.department.name %>" class="form-control">
-      </div>
-  </div><br />
-  
-  <div class="row">
-      <div class="col-md-6">
-          <%= link_to "Cancelar", common_projects_path, { class: "btn btn-default", style: "width: 100%; border-color: #DCDCDC;" } %>
-      </div>
-      <div class="col-md-6">
-          <%= f.submit "Guardar", class: "btn btn-primary", style: "width: 100%;", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
-      </div>
-  </div><br /><br />
+	<hr>
+
+	<div class='row'>
+		<div class='col-md-8 col-centered' style='text-align: center;'>
+			<h3>Datos del profesor coordinador</h3>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-md-4 form-group'>
+			<strong>Nombre</strong>
+			<input type='text' disabled='true' value='<%= @project.professor.user.name %>' class='form-control'>
+		</div>
+		<div class='col-md-4 form-group'>
+			<strong>Mail</strong>
+			<input type='text' disabled='true' value='<%= @project.professor.user.email %>' class='form-control'>
+		</div>
+		<div class='col-md-4 form-group'>
+			<strong>Departamento</strong>
+			<input type='text' disabled='true' value='<%= @project.professor.department.name %>' class='form-control'>
+		</div>
+	</div>
+
+	<br>
+
+	<div class='row'>
+		<div class='col-md-6'>
+			<%= link_to 'Cancelar', common_projects_path, { class: 'btn btn-default', style: 'width: 100%; border-color: #DCDCDC;' } %>
+		</div>
+		<div class='col-md-6'>
+			<%= f.submit 'Guardar', class: 'btn btn-primary', style: 'width: 100%;', data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+		</div>
+	</div>
+	<br>
+	<br>
 <% end %>
-
-

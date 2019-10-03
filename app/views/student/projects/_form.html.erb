@@ -1,98 +1,120 @@
 <%= form_for @project, url: @url do |f|  %>
-<div class="row">
-    <div class="col-md-6">
-        <strong><%= f.label :name, 'Nombre' %></strong>
-        <%= f.text_field :name, class: "form-control" %>
-    </div>
-    <div class="col-md-6">
-        <strong><%= f.label :category, 'Categoría'%></strong>
-        <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @project.category_id),{}, class: 'form-control'  %>
-    </div>
-</div><br />
+	<div class='row'>
+		<div class='col-md-6 form-group'>
+			<strong><%= f.label :name, 'Nombre' %></strong>
+			<%= f.text_field :name, class: 'form-control' %>
+		</div>
+		<div class='col-md-6 form-group'>
+			<strong><%= f.label :category, 'Categoría'%></strong>
+			<%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @project.category_id),{}, class: 'form-control'  %>
+		</div>
+		<div class='col-md-6 form-group'>
+			<strong><%= f.label :field, 'Área temática'%></strong>
+			<%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name, @project.field_id), {}, class: 'form-control' %>
+		</div>
+		<div class='col-md-6 form-group'>
+			<strong><%= f.label :expertise_area, 'Tipo de proyecto'%></strong>
+			<%= f.select :expertise_area_id, options_from_collection_for_select(ExpertiseArea.all, :id, :area, @project.expertise_area_id), {}, class: 'form-control' %>
+		</div>
+		<div class='col-md-6 form-group'>
+			<strong><%= f.label :client, 'Tipo de cliente'%></strong>
+			<%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :client, @project.client_id), {}, class: 'form-control'%>
+		</div>
+		<div class='col-md-6 form-group'>
+			<strong><%= f.label :video_url, 'Video de Youtube'%></strong>
+			<%= f.text_field :video_url, class: 'form-control' %>
+		</div>
+		<div class='col-md-6 form-group' style='text-align: center;'>
+			<strong><%= f.label :semestrei, 'Semestre i' %></strong>
+			<%= f.check_box :semestrei %>
+		</div>
+		<div class='col-md-6 form-group' style='text-align: center;'>
+			<strong><%= f.label :social_impact, 'Impacto Social' %></strong>
+			<%= f.check_box :social_impact %>
+		</div>
+		<div class='col-md-12 form-group'>
+			<strong><%= f.label :description, 'Objetivo'%></strong>
+			<%= f.text_area :description, :rows => 3, class: 'form-control' %>
+		</div>
+	</div>
 
-<div class="row">
-    <div class="col-md-6">
-        <strong><%= f.label :field, 'Área temática'%></strong>
-        <%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name, @project.field_id), {}, class: 'form-control' %>
-    </div>
-    <div class="col-md-6">
-        <strong><%= f.label :expertise_area, 'Tipo de proyecto'%></strong>
-        <%= f.select :expertise_area_id, options_from_collection_for_select(ExpertiseArea.all, :id, :area, @project.expertise_area_id), {}, class: 'form-control' %>
-    </div>
-</div><br />
+	<hr>
 
-<div class="row">
-    <div class="col-md-6">
-        <strong><%= f.label :client, 'Tipo de cliente'%></strong>
-        <%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :client, @project.client_id), {}, class: 'form-control'%>
-    </div>
-    <div class="col-md-6">
-        <strong><%= f.label :video_url, 'Video de Youtube'%></strong>
-        <%= f.text_field :video_url, class: "form-control" %>
-    </div>
-</div><br />
+	<div class='row'>
+		<div class='col-md-8 col-centered' style='text-align: center;'>
+			<h3>Abstract</h3>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-md-12 form-group'>
+			<strong><%= f.label :abstract_problem, 'Problema'%></strong>
+			<%= f.text_area :abstract_problem, :rows => 3, class: 'form-control' %>
+		</div>
+		<div class='col-md-12 form-group'>
+			<strong><%= f.label :abstract_methodology, 'Metodología'%></strong>
+			<%= f.text_area :abstract_methodology, :rows => 3, class: 'form-control' %>
+		</div>
+		<div class='col-md-12 form-group'>
+			<strong><%= f.label :abstract_feasibility, 'Factibilidad'%></strong>
+			<%= f.text_area :abstract_feasibility, :rows => 3, class: 'form-control' %>
+		</div>
+		<div class='col-md-12 form-group'>
+			<strong><%= f.label :abstract_results, 'Resultados'%></strong>
+			<%= f.text_area :abstract_results, :rows => 3, class: 'form-control' %>
+		</div>
+		<div class='col-md-12 form-group'>
+			<strong><%= f.label :abstract_impact, 'Impacto'%></strong>
+			<%= f.text_area :abstract_impact, :rows => 3, class: 'form-control' %>
+		</div>
+	</div>
 
-<div class="row">
-    <div class="col-md-12">
-        <strong><%= f.label :description, 'Objetivo'%></strong>
-        <%= f.text_area :description, :rows => 3, class: "form-control" %>
-    </div>
-</div><br />
+	<hr>
 
-<div class="row">
-    <div class="col-md-12">
-        <strong><%= f.label :abstract, 'Abstract'%></strong>
-        <%= f.text_area :abstract, :rows => 10, class: "form-control" %>
-    </div>
-</div><br />
-<% if @project.professor.nil? %>
-<h3 style="text-align: center;"> Datos del profesor coordinador </h3>
-    <div class="row">
-        <div class="col-md-4">
-            <strong><%= f.label :email_professor, 'Mail'%></strong>
-            <input type="text"  id="email_professor" name="project[email_professor]" class="form-control">
-        </div>
-        <div class="col-md-4">
-            <strong><%= f.label :name_professor, 'Nombre'%></strong>
-            <input type="text"  id="name_professor" name="project[name_professor]" class="form-control">
-        </div>
-        <div class="col-md-4">
-            <strong><%= f.label :department, 'Departamento'%></strong>
-            <select id="department" name="project[department_professor]" class="form-control">
-                <% Department.all.each do |department| %>
-                <option value="<%= department.id %>"><%= department.name %></option>
-                <% end %>
-            </select>
-        </div>
-    </div>
-<% else %>
-    <div class="row">
-        <div class="col-md-4">
-            <strong><%= f.label :name_professor, 'Nombre del Profesor'%></strong>
-            <input type="text"  id="name_professor" class="form-control" value="<%= @project.professor.user.name %>" disabled="true">
-        </div>
-    </div>
-<% end %>
-<br />
+	<% if @project.professor.nil? %>
+		<div class='row'>
+			<div class='col-md-8 col-centered' style='text-align: center;'>
+				<h3>Datos del profesor coordinador</h3>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-md-4 form-group'>
+				<strong><%= f.label :email_professor, 'Mail'%></strong>
+				<input type='text'  id='email_professor' name='project[email_professor]' class='form-control'>
+			</div>
+			<div class='col-md-4 form-group'>
+				<strong><%= f.label :name_professor, 'Nombre'%></strong>
+				<input type='text'  id='name_professor' name='project[name_professor]' class='form-control'>
+			</div>
+			<div class='col-md-4 form-group'>
+				<strong><%= f.label :department_professor, 'Departamento'%></strong>
+				<select id='department' name='project[department_professor]' class='form-control'>
+					<% Department.all.each do |department| %>
+						<option value='<%= department.id %>'>
+							<%= department.name %>
+						</option>
+					<% end %>
+				</select>
+			</div>
+		</div>
+	<% else %>
+		<div class='row'>
+			<div class='col-md-4 form-group'>
+				<strong><%= f.label :name_professor, 'Nombre del Profesor'%></strong>
+				<input type='text'  id='name_professor' class='form-control' value='<%= @project.professor.user.name %>' disabled='true'>
+			</div>
+		</div>
+	<% end %>
 
-<div class="row">
-  <div class="col-md-6">
-      <strong><%= f.label :semestrei, 'Semestre i' %></strong>
-      <%= f.check_box :semestrei %>
-  </div>
+	<br>
 
-  <div class="col-md-6">
-      <strong><%= f.label :social_impact, 'Impacto Social' %></strong>
-      <%= f.check_box :social_impact %>
-  </div>
-</div><br />
-
-<div class="row">
-    <div class="col-md-6">
-        <%= link_to "Cancelar", student_projects_path, { class: "btn btn-default", style: "width: 100%; border-color: #DCDCDC;" } %>
-    </div>
-    <div class="col-md-6">
-        <%= f.submit "Guardar", class: "btn btn-primary", style: "width: 100%;", data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
-    </div>
-</div><br /><br />
+	<div class='row'>
+		<div class='col-md-6'>
+			<%= link_to 'Cancelar', student_projects_path, { class: 'btn btn-default', style: 'width: 100%; border-color: #DCDCDC;' } %>
+		</div>
+		<div class='col-md-6'>
+			<%= f.submit 'Guardar', class: 'btn btn-primary', style: 'width: 100%;', data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+		</div>
+	</div>
+	<br>
+	<br>
 <% end %>
