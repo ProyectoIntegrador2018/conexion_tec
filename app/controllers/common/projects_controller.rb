@@ -148,7 +148,6 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 				:client_id,
 				:category_id,
 				:expertise_area_id,
-				:abstract,
 				:video_url,
 				:description,
 				:selection_score,
