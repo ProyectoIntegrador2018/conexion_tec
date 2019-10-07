@@ -78,19 +78,19 @@
 				<%= f.email_field :student_id, class: 'form-control' %>
 			</div>
 			<div class='col-md-6 form-group'>
-				<strong><%= f.label :name_student, 'Nombre del estudiante'%></strong>
-				<input type='text'  id='name_student' name='project[name_student]' class='form-control'>
+				<strong><%= f.label :student_name, 'Nombre del estudiante'%></strong>
+				<input type='text'  id='student_name' name='project[student_name]' class='form-control'>
 			</div>
 			<div class='col-md-6 form-group'>
 				<strong><%= f.label :professor_id, 'Correo del profesor responsable' %></strong>
 				<%= f.email_field :professor_id, class: 'form-control' %>
 			</div>
 			<div class='col-md-6 form-group'>
-				<strong><%= f.label :name_professor, 'Nombre del profesor'%></strong>
-				<input type='text'  id='name_professor' name='project[name_professor]' class='form-control'>
+				<strong><%= f.label :professor_name, 'Nombre del profesor'%></strong>
+				<input type='text'  id='professor_name' name='project[professor_name]' class='form-control'>
 			</div>
 		</div>
-	<% else %>
+	<% else %> <!-- Edit -->
 		<div class='row'>
 			<div class='col-md-3 form-group'>
 				<strong><%= f.label :selection_score, 'Calificación para selección'%></strong>
@@ -107,11 +107,11 @@
 		</div>
 		<div class='row'>
 			<div class='col-md-4 form-group'>
-				<strong><%= f.label :student_id, 'Nombre'%> </strong>
+				<strong><%= f.label :student_name, 'Nombre'%> </strong>
 				<input type='text' disabled='true' value='<%= @project.student.user.name %>' class='form-control'>
 			</div>
 			<div class='col-md-4 form-group'>
-				<strong><%= f.label :student_id, 'Mail'%> </strong>
+				<strong><%= f.label :student_email, 'Mail'%> </strong>
 				<input type='text' disabled='true' value='<%= @project.student.user.email %>' class='form-control'>
 			</div>
 			<div class='col-md-4 form-group'>
@@ -129,11 +129,11 @@
 		</div>
 		<div class='row'>
 			<div class='col-md-4 form-group'>
-				<strong><%= f.label :professor_id, 'Nombre'%> </strong>
+				<strong><%= f.label :professor_name, 'Nombre'%> </strong>
 				<input type='text' disabled='true' value='<%= @project.professor.user.name %>' class='form-control'>
 			</div>
 			<div class='col-md-4 form-group'>
-				<strong><%= f.label :professor_id, 'Mail'%> </strong>
+				<strong><%= f.label :professor_email, 'Mail'%> </strong>
 				<input type='text' disabled='true' value='<%= @project.professor.user.email %>' class='form-control'>
 			</div>
 			<div class='col-md-4 form-group'>
