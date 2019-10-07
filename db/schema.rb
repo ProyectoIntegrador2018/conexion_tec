@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_29_092223) do
+ActiveRecord::Schema.define(version: 2019_10_03_153517) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -122,7 +122,6 @@ ActiveRecord::Schema.define(version: 2019_09_29_092223) do
 
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.text "abstract"
     t.string "video_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -142,8 +141,19 @@ ActiveRecord::Schema.define(version: 2019_09_29_092223) do
     t.float "partial_score", default: 0.0
     t.boolean "semestrei"
     t.boolean "social_impact"
+    t.string "abstract_impact"
+    t.string "abstract_problem"
+    t.string "abstract_results"
+    t.string "abstract_methodology"
+    t.string "abstract_feasibility"
     t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
+  end
+
+  create_table "projects_students", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "student_id", null: false
+    t.index ["project_id", "student_id"], name: "index_projects_students_on_project_id_and_student_id"
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

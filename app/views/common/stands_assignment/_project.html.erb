@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<h3 data-toggle="tooltip" data-placement="top" data-link="<%project.abstract%>">
+			<h3 data-toggle="tooltip" data-placement="top">
 				<%= project.name %>
 			</h3>
 			<div class="row">
@@ -13,13 +13,13 @@
 				</div>
 				<div class="col-md-4">
 		        	<% if project.stand_id.nil? %>
-		         		<small> <strong>Stand: </strong> Pendiente de asignación </small> 
+		         		<small> <strong>Stand: </strong> Pendiente de asignación </small>
 		        	<% else %>
 		          		<small> <strong>Stand: </strong> <%= project.stand.number%> </small>
 		        	<% end %>
 				</div>
 			</div>
-					
+
 			<div class="row">
 				<div class="col-md-4">
 					<strong>Profesor: </strong> <%= project.professor.user.name %><br>
@@ -39,7 +39,7 @@
 								</div><br />
 								<%= f.submit "Asignar stand", class: "btn btn-primary", data: { confirm: 'Se asignara el stand seleccionado, ¿Estás seguro que deseas guardar estos cambios?' }%>
 							</div><br/>
-	          
+
 	        	<% end %>
 
 	    </div>
