@@ -6,11 +6,11 @@
   </div>
 
   <div class="col-md-8">
-  <% if Time.now > Edition.last.registry_open && Time.now < Edition.last.registry_limit %>
-    <%= link_to new_student_project_path, class: "btn btn-primary btn-block text-white float-right", style: "width: 180px;" do %>
-      <i class="fa fa-plus"></i> Agregar proyecto
+    <% if Time.now > Edition.last.registry_open && Time.now < Edition.last.registry_limit %>
+      <%= link_to new_student_project_path, class: "btn btn-primary btn-block text-white float-right", style: "width: 180px;" do %>
+        <i class="fa fa-plus"></i> Agregar proyecto
+      <% end %>
     <% end %>
-  <% end %>
   </div>
 
 </div><br />
