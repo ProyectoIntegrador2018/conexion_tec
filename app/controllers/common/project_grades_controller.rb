@@ -36,12 +36,12 @@ class Common::ProjectGradesController < Common::BaseController
   def form_params
     params.require(:project_grade).
     permit(:abstract,
-      :description,
-      :abstract_impact,
-      :abstract_problem,
-      :abstract_results,
-      :abstract_methodology,
-      :abstract_feasibility)
+           :description,
+           :abstract_impact,
+           :abstract_problem,
+           :abstract_results,
+           :abstract_methodology,
+           :abstract_feasibility)
   end
 
   def total_grade
