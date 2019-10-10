@@ -1,5 +1,4 @@
 class Common::ProjectGradesController < Common::BaseController
-
   def new
     @project = Project.find(params[:project_id])
     @project_grade = ProjectGrade.new
@@ -45,12 +44,12 @@ class Common::ProjectGradesController < Common::BaseController
   end
 
   def total_grade
-    params[:project_grade][:abstract].to_i +
-    params[:project_grade][:description].to_i  +
-    params[:project_grade][:abstract_impact].to_i +
-    params[:project_grade][:abstract_problem].to_i +
-    params[:project_grade][:abstract_results].to_i +
-    params[:project_grade][:abstract_methodology].to_i +
-    params[:project_grade][:abstract_feasibility].to_i
+    total_grade = params[:project_grade][:abstract].to_i +
+                  params[:project_grade][:description].to_i  +
+                  params[:project_grade][:abstract_impact].to_i +
+                  params[:project_grade][:abstract_problem].to_i +
+                  params[:project_grade][:abstract_results].to_i +
+                  params[:project_grade][:abstract_methodology].to_i +
+                  params[:project_grade][:abstract_feasibility].to_i
   end
 end
