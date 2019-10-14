@@ -8,9 +8,11 @@ class Common::JudgesAssistanceController < Common::BaseController
   end
 
   def mark_assistance
-    flash[:success] = judge_attendance(@judge) ?
-                      'Asistencia registrada' :
-                      'Asistencia retirada'
+    flash[:success] = if judge_attendance(@judge)
+                        'Asistencia registrada'
+                      else
+                        'Asistencia retirada'
+                      end
     redirect_to common_judges_assistance_path
   end
 
