@@ -25,7 +25,6 @@ class Common::ProjectsAssistanceController < Common::BaseController
     redirect_to common_projects_assistance_path
   end
 
-
   private
 
   def set_project

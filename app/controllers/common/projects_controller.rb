@@ -34,7 +34,9 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
 
       if professor.nil? # We need to create a professor
         if professor_email.match(ITESM_MAIL)
-          professor = create_professor(password, professor_name, professor_email)
+          professor = create_professor(password,
+                                       professor_name,
+                                       professor_email)
         end
       end
 
@@ -57,13 +59,14 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
           render 'new'
         end
       else
-        flash[:danger] = 'Por favor asegurese de utilizar correos del TEC.'
+        flash[:danger] = 'Asegurese de utilizar correos del TEC.'
         @url = common_projects_path
         set_project
         render 'new'
       end
     else
-      flash[:danger] = 'Por favor complete los campos relacionados a estudiante y profesor.'
+      message = 'Complete los campos relacionados a estudiante y profesor.'
+      flash[:danger] = message
       @url = common_projects_path
       set_project
       render 'new'

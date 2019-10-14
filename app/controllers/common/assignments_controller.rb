@@ -19,17 +19,16 @@ class Common::AssignmentsController < Common::BaseController
     end
   end
 
-
   private
 
   def available_projects(judge)
     assignments = judge.assignments
-    projects_assigned = assignments.map(&:project_id) # All the projects assigned to that judge
+    projects_assigned = assignments.map(&:project_id)
     areas = judge.expertise_areas.map(&:id)
     projects = Project.where.not(id: projects_assigned)
-    projects = projects.where(status_id: Status.last.id) # Approved projects
-                       .where(attended: 1) # Present projects in the contest
-                       .where(expertise_area_id: areas) # Project related to the field
+    projects = projects.where(status_id: Status.last.id)
+                       .where(attended: 1)
+                       .where(expertise_area_id: areas)
     projects
   end
 

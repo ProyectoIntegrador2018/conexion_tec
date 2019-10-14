@@ -26,7 +26,7 @@ class Student::ProjectsController < Student::BaseController
           project = create_project(professor)
           save_project(project)
         else
-          flash.now[:danger] = 'Favor de ingresar un correo de profesor del TEC'
+          flash.now[:danger] = 'Ingresar un correo de profesor del TEC'
           @url = student_projects_path
           set_project
           render 'new'
@@ -36,7 +36,7 @@ class Student::ProjectsController < Student::BaseController
         save_project(project)
       end
     else
-      flash.now[:danger] = 'Favor de ingresar el correo del profesor'
+      flash.now[:danger] = 'Ingresar el correo del profesor'
       @url = student_projects_path
       set_project
       render 'new'
@@ -71,7 +71,8 @@ class Student::ProjectsController < Student::BaseController
   def create_professor(email_professor)
     # Generates random password
     password = SecureRandom.base64(10)
-    prof_instance = Professor.create(department_id: project_params['department_professor'])
+    department_professor = project_params['department_professor']
+    prof_instance = Professor.create(department_id: department_professor)
     professor = User.create(email: email_professor,
                             userable_type: 'Professor',
                             userable_id: prof_instance.id,
@@ -84,7 +85,8 @@ class Student::ProjectsController < Student::BaseController
 
   def save_project(project)
     if project.save
-      UserMailer.with(user: current_user, project: project).project_confirmation.deliver_now
+      UserMailer.with(user: current_user,
+                      project: project).project_confirmation.deliver_now
       flash[:success] = '¡Proyecto creado exitosamente!'
       redirect_to action: 'index'
     else
@@ -120,6 +122,5 @@ class Student::ProjectsController < Student::BaseController
                                     :abstract_methodology,
                                     :abstract_feasibility,
                                     :department_professor)
-    end
-
+  end
 end

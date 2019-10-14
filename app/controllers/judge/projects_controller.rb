@@ -4,7 +4,6 @@ class Judge::ProjectsController < Judge::BaseController
   def index
   end
 
-
   private
 
   def get_assignments

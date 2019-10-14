@@ -15,7 +15,6 @@ class Common::StandsAssignmentController < Common::BaseController
     end
   end
 
-
   private
 
   def set_project
