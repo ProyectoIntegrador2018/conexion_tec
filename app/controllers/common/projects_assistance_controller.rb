@@ -8,20 +8,16 @@ class Common::ProjectsAssistanceController < Common::BaseController
   end
 
   def mark_assistance
-    if projectAttendance(@project)
-      flash[:success] = 'Asistencia registrada'
-    else
-      flash[:success] = 'Asistencia retirada'
-    end
+    flash[:success] = project_attendance(@project) ?
+                      'Asistencia registrada' :
+                      'Asistencia retirada'
     redirect_to common_projects_assistance_path
   end
 
   def block
-    if blockProject(@project)
-      flash[:success] = 'Proyecto bloquedo'
-    else
-      flash[:success] = 'Proyecto desbloqueado'
-    end
+    flash[:success] = block_project(@project) ?
+                      'Proyecto bloqueado' :
+                      'Proyecto desbloqueado'
     redirect_to common_projects_assistance_path
   end
 
