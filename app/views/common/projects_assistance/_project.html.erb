@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<h3 data-toggle="tooltip" data-placement="top" data-link="<%project.abstract%>">
+			<h3 data-toggle="tooltip" data-placement="top">
 				<%= project.name %>
 			</h3>
 			<div class="row">
@@ -17,7 +17,7 @@
 
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<div class="col-md-4">
 					<strong>Profesor: </strong> <%= project.professor.user.name %><br>
@@ -30,9 +30,9 @@
 		</div>
 	</div><br>
 
-	<div class="row"> 
+	<div class="row">
 		<% if project.attended != 2 %>
-		<div class="col-md-3">           
+		<div class="col-md-3">
 			<% if project.attended == 1 %>
 			<%= link_to common_project_mark_assistance_path(project), method: :mark_assistance, data: { confirm: 'Se quitara la asistencia al proyecto ¿Estás seguro que deseas realizar esta acción?'} do %>
 			<span><i class="fa fa-user-times" style="color: orange"></i></i> Retirar asistencia</span>
@@ -55,7 +55,7 @@
 			<span><i class="fa fa-unlock-alt" style="color: green"></i></i> Desloquear proyecto</span>
 			<% end %>
 			<% end %>
-		</div>    
-	</div>    
+		</div>
+	</div>
 </div>
 <hr>
