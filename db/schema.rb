@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_153517) do
+ActiveRecord::Schema.define(version: 2019_10_08_020814) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -110,13 +110,17 @@ ActiveRecord::Schema.define(version: 2019_10_03_153517) do
   end
 
   create_table "project_grades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "video_grade"
-    t.integer "objective_grade"
-    t.integer "abstract_grade"
     t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "total_grade"
+    t.integer "abstract"
+    t.integer "description"
+    t.integer "abstract_impact"
+    t.integer "abstract_problem"
+    t.integer "abstract_results"
+    t.integer "abstract_methodology"
+    t.integer "abstract_feasibility"
     t.index ["project_id"], name: "index_project_grades_on_project_id"
   end
 

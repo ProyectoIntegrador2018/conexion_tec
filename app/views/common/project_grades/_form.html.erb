@@ -26,36 +26,23 @@
 		</div>
 		<div class='col-md-6 form-group' style='text-align: center;'>
 			<strong>Semestre i</strong>
-			<input type='checkbox' disabled='true' value='<%= @project.semestrei %>'>
+			<input type='checkbox' disabled='true' checked='<%= @project.semestrei %>'>
 		</div>
 		<div class='col-md-6 form-group' style='text-align: center;'>
 			<strong>Impacto Social</strong>
-			<input type='checkbox' disabled='true' value='<%= @project.social_impact %>'>
+			<input type='checkbox' disabled='true' checked='<%= @project.social_impact %>'>
 		</div>
-		<div class='col-md-4 form-group'>
-			<%= f.label :video_grade, 'Calificación' %>
-			<%= f.select :video_grade, [*1..10], { include_blank: true }, :style => 'width:70px', class: 'form-control' %>
-		</div>
-	</div>
-
-	<hr>
-
-	<div class='row'>
-		<div class='col-md-8 col-centered' style='text-align: center;'>
-			<h3>Objetivos</h3>
-		</div>
-	</div>
-	<div class='row'>
 		<div class='col-md-12 form-group'>
-			<strong>Objetivo</strong>
+			<strong>Descripción</strong>
 			<textarea rows='3' disabled='true' class='form-control'>
 				<%= @project.description %>
 			</textarea>
 		</div>
 		<div class='col-md-4 form-group'>
-			<%= f.label :objective_grade, 'Calificación' %>
-			<%= f.select :objective_grade, [*1..10], { include_blank: true }, :style => 'width:70px', class: 'form-control' %>
+			<%= f.label :description, 'Calificación' %>
+			<%= f.select :description, [*1..10], { include_blank: true }, :style => 'width:70px', class: 'form-control' %>
 		</div>
+
 	</div>
 
 	<hr>
@@ -66,39 +53,59 @@
 		</div>
 	</div>
 	<div class='row'>
-		<div class='col-md-12 form-group'>
+		<div class='col-md-11 form-group'>
 			<strong>Problema</strong>
 			<textarea rows='3' disabled='true' class='form-control'>
 				<%= @project.abstract_problem %>
 			</textarea>
 		</div>
-		<div class='col-md-12 form-group'>
+		<div class='col-md-1 form-group'>
+			<%= f.label :abstract_problem, 'Calificación' %>
+			<%= f.select :abstract_problem, [*1..10], { include_blank: true }, :style => 'width:70px', class: 'form-control' %>
+		</div>
+		<div class='col-md-11 form-group'>
 			<strong>Metodología</strong>
 			<textarea rows='3' disabled='true' class='form-control'>
 				<%= @project.abstract_methodology %>
 			</textarea>
 		</div>
-		<div class='col-md-12 form-group'>
+		<div class='col-md-1 form-group'>
+			<%= f.label :abstract_methodology, 'Calificación' %>
+			<%= f.select :abstract_methodology, [*1..10], { include_blank: true }, :style => 'width:70px', class: 'form-control' %>
+		</div>
+		<div class='col-md-11 form-group'>
 			<strong>Factibilidad</strong>
 			<textarea rows='3' disabled='true' class='form-control'>
 				<%= @project.abstract_feasibility %>
 			</textarea>
 		</div>
-		<div class='col-md-12 form-group'>
+		<div class='col-md-1 form-group'>
+			<%= f.label :abstract_feasibility, 'Calificación' %>
+			<%= f.select :abstract_feasibility, [*1..10], { include_blank: true }, :style => 'width:70px', class: 'form-control' %>
+		</div>
+		<div class='col-md-11 form-group'>
 			<strong>Resultados</strong>
 			<textarea rows='3' disabled='true' class='form-control'>
 				<%= @project.abstract_results %>
 			</textarea>
 		</div>
-		<div class='col-md-12 form-group'>
+		<div class='col-md-1 form-group'>
+			<%= f.label :abstract_results, 'Calificación' %>
+			<%= f.select :abstract_results, [*1..10], { include_blank: true }, :style => 'width:70px', class: 'form-control' %>
+		</div>
+		<div class='col-md-11 form-group'>
 			<strong>Impacto</strong>
 			<textarea rows='3' disabled='true' class='form-control'>
 				<%= @project.abstract_impact %>
 			</textarea>
 		</div>
+		<div class='col-md-1 form-group'>
+			<%= f.label :abstract_impact, 'Calificación' %>
+			<%= f.select :abstract_impact, [*1..10], { include_blank: true }, :style => 'width:70px', class: 'form-control' %>
+		</div>
 		<div class='col-md-4 form-group'>
-			<%= f.label :abstract_grade, 'Calificación' %>
-			<%= f.select :abstract_grade, [*1..10], { include_blank: true }, :style => 'width:70px', class: 'form-control' %>
+			<%= f.label :abstract, 'Calificación' %>
+			<%= f.select :abstract, [*1..10], { include_blank: true }, :style => 'width:70px', class: 'form-control' %>
 		</div>
 	</div>
 
