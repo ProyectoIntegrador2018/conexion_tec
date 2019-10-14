@@ -154,12 +154,6 @@ ActiveRecord::Schema.define(version: 2019_10_08_020814) do
     t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
   end
 
-  create_table "projects_students", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "project_id", null: false
-    t.bigint "student_id", null: false
-    t.index ["project_id", "student_id"], name: "index_projects_students_on_project_id_and_student_id"
-  end
-
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "text"
