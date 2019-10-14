@@ -18,7 +18,7 @@ class ProfessorSessionsController < ApplicationController
         mail = raw_information["mail"] || raw_information["userPrincipalName"]
         full_name = raw_information["displayName"]
 
-        if mail.match(ITESM_MAIL)
+        # if mail.match(ITESM_MAIL)
             user = User.find_by(email: mail)
             if user
                 auto_login(user)
@@ -37,10 +37,10 @@ class ProfessorSessionsController < ApplicationController
                 auto_login(user)
                 redirect_to professor_edit_path
             end
-        else
-            flash[:danger] = 'Correo invalido: favor de utilizar correo del ITESM.'
-            redirect_to action: 'new'
-        end
+        # else
+        #     flash[:danger] = 'Correo invalido: favor de utilizar correo del ITESM.'
+        #     redirect_to action: 'new'
+        # end
     end
 
     def destroy
