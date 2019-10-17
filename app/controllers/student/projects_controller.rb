@@ -121,6 +121,9 @@ class Student::ProjectsController < Student::BaseController
                                     :expertise_area_id,
                                     :abstract_methodology,
                                     :abstract_feasibility,
-                                    :department_professor)
+                                    :department_professor,
+                                    :social_impact_empathy,
+                                    :social_impact_problem,
+                                    :social_impact_responsibility)
   end
 end
