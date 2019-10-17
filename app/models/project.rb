@@ -46,4 +46,20 @@ class Project < ApplicationRecord
     end
     evaluations
   end
+
+  after_initialize do |project|
+    if not project.social_impact
+      project.social_impact_empathy = ''
+      project.social_impact_problem = ''
+      project.social_impact_responsibility = ''
+    end
+  end
+
+  after_update do |project|
+    if not project.social_impact
+      project.social_impact_empathy = ''
+      project.social_impact_problem = ''
+      project.social_impact_responsibility = ''
+    end
+  end
 end
