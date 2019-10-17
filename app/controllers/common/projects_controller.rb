@@ -178,6 +178,9 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
                                     :abstract_results,
                                     :expertise_area_id,
                                     :abstract_feasibility,
-                                    :abstract_methodology)
+                                    :abstract_methodology,
+                                    :social_impact_empathy,
+                                    :social_impact_problem,
+                                    :social_impact_responsibility)
   end
 end
