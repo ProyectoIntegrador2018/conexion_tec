@@ -56,7 +56,7 @@ class Project < ApplicationRecord
   end
 
   after_update do |project|
-    if not project.social_impact
+    if !project.social_impact
       project.social_impact_empathy = ''
       project.social_impact_problem = ''
       project.social_impact_responsibility = ''
