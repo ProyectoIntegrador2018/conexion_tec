@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_221053) do
+ActiveRecord::Schema.define(version: 2019_10_17_235240) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -145,11 +145,11 @@ ActiveRecord::Schema.define(version: 2019_10_17_221053) do
     t.float "partial_score", default: 0.0
     t.boolean "semestrei"
     t.boolean "social_impact"
-    t.string "abstract_impact"
-    t.string "abstract_problem"
-    t.string "abstract_results"
-    t.string "abstract_methodology"
-    t.string "abstract_feasibility"
+    t.text "abstract_impact"
+    t.text "abstract_problem"
+    t.text "abstract_results"
+    t.text "abstract_methodology"
+    t.text "abstract_feasibility"
     t.string "social_impact_empathy"
     t.string "social_impact_problem"
     t.string "social_impact_responsibility"
