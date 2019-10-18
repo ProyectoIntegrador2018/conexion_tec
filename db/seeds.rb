@@ -175,10 +175,10 @@ Project.create(
 	Este semestre el desarrollo se centra específicamente en el reto de “Speech and Person Recognition”, el cual engloba diferentes áreas de investigación y desarrollo inteligente de tareas complejas como: interacción humano-robot en situaciones realísticas, detección de objetos y humanos con visión, control y navegación, mapeo del entorno, procesamiento (parsing) de voz, uso de IoT, al igual que un elevado reto mecánico estructural y funcional.
 	Algunas de las tecnologías utilizadas para realizar el sistema son ROS, Tensorflow, Kinect v1 y diferentes herramientas de mapeo en tiempo real.
 	Finalmente, el proyecto podria en un futuro brindar un servicio de comodidad, seguridad y ayuda a personas con discapacidades motrices o que requieran atención especial dentro de su propia casa.",
-	abstract_impact: "Impacto"
-	abstract_results: "Resultados"
-	abstract_methodology: "Metodología"
-	abstract_feasibility: "Factibilidad"
+	abstract_impact: "Impacto",
+	abstract_results: "Resultados",
+	abstract_methodology: "Metodología",
+	abstract_feasibility: "Factibilidad",
 	category_id: Category.first.id,
 	expertise_area_id: ExpertiseArea.first.id,
 	description: "Desarrollar un robot de servicio que ayude con las tareas del hogar.",
@@ -213,10 +213,10 @@ User.create(
 Project.create(
 	name: "Espectrometría de Bajo Costo",
 	abstract_problem:"Nuestro proyecto consiste en el diseño, construcción y calibración de un sistema de espectrometría de reflectancia para el análisis de suelo. El alto costo de estos análisis en laboratorio ha limitado el desarrollo sostenible de comunidades agrícolas y rurales (Gublo, 2015). Por este motivo, es necesario crear alternativas de bajo costo que ayuden a mejorar el acceso a la información sobre producción agrícola. El hardware del espectrómetro está basado en conceptos de óptica y consiste principalmente en una caja impresa en material 3D con una entrada de luz a través de un cable de fibra óptica; la luz es canalizada hacia una rejilla de difracción que se encarga de dispersarla hacia un sensor de imagen lineal de la marca SONY. El software del proyecto consiste en la recopilación de datos del sensor a través de Arduino, su posterior análisis en MATLAB, y finalmente la realización de un mapeo bioquímico del terreno en Python. Los componentes individuales del espectrómetro ya se tienen y se está trabajando en su calibración e integración en el sistema ciberfísico, que esperamos esté listo para tomar mediciones a finales del mes de Marzo y tenga la capacidad de detectar al menos un compuesto orgánico para el mes de Abril del 2019. Este proyecto puede tener un impacto positivo en comunidades agrícolas, ya que a través de la recopilación de información sobre su siembra a través del espectrómetro, se puede empoderar a los sembradores para que mejoren la productividad y sostenibilidad de sus comunidades y cosechas.",
-	abstract_impact: "Impacto"
-	abstract_results: "Resultados"
-	abstract_methodology: "Metodología"
-	abstract_feasibility: "Factibilidad"
+	abstract_impact: "Impacto",
+	abstract_results: "Resultados",
+	abstract_methodology: "Metodología",
+	abstract_feasibility: "Factibilidad",
 	category_id: Category.first.id,
 	expertise_area_id: ExpertiseArea.first.id,
 	description: "Desarrollar un espectrómetro de reflectancia de bajo costo que permita el muestreo y análisis de suelo en zonas agrícolas rurales.",
@@ -256,10 +256,10 @@ Project.create(
 	El proyecto busca relacionar múltiples departamentos para establecer tanto las características críticas como la viabilidad de darle trazabilidad a cada lote del proceso y mejorar de esta manera los indicadores de desempeño y los tiempos de inspección.
 	El producto final para principios de Mayo 2019, será una plataforma web en la cual se podrán analizar en tiempo real los procesos de producción de los proveedores, dando mayor capacidad a la empresa para identificar defectos y estableciendo una relación puerta a puerta para los materiales que se reciben de los proveedores.
 	Este proyecto forma parte del Semestre i del programa InternING de la carrera de Ingeniería Industrial y de Sistemas del Tecnológico de Monterrey, Campus Saltillo.",
-	abstract_impact: "Impacto"
-	abstract_results: "Resultados"
-	abstract_methodology: "Metodología"
-	abstract_feasibility: "Factibilidad"
+	abstract_impact: "Impacto",
+	abstract_results: "Resultados",
+	abstract_methodology: "Metodología",
+	abstract_feasibility: "Factibilidad",
 	category_id: Category.first.id,
 	expertise_area_id: ExpertiseArea.first.id,
 	description: "Desarrollar un sistema de comunicación entre empresas para monitorear los procesos de manufactura de los proveedores, a fin de mejorar los indicadores de las operaciones de inspección-recibo en la empresa, basados en el control estadístico de la producción incluido en la norma IATF:16949, para principios de Mayo 2019.",
@@ -294,10 +294,10 @@ User.create(
 Project.create(
 	name: "Prototipo de Naves Industrial para Evaluar el Uso de Materiales Cambiantes de Fase (PCM)",
 	abstract_problem:"Este proyecto, que forma parte del consorcio que el Tecnologico de Monterrey tiene con varias empresas locales y que impulsa el uso de tecnologías emergentes y apoya a las economías locales, está a cargo del Dr. José Ignacio Huertas Cardozo y supervisado directamento por  Enrique Darinel González Campos. Se está trabajando en conjunto con la empresa local NRGY en construir dos prototipos de nave industrial en el cual uno tendría PCMs por dentro y el otro no. Estas naves tendrán unidades de aire acondicionado y varios instrumentos de medición de temperatura, consumo energético, entre otros. Estas estarán en las mismas condiciones excepto por la instalación de PCMs. Esto con el objetivo de obtener información en tiempo real, con la instalación de un sistema que esté brindando información al momento de las temperaturas de ambos prototipos acerca del consumo energético y poder encontrar las ventajas y desventajas que se puedan observar con el uso de PCMs en las construcciones. Esta información nos permitirá realizar varios análisis y poder encontrar el ahorro de energía por uso de PCMs por área instalada y también, posteriormente, lograr comparar distintos tipos de PCMs y acomodos para encontrar el más óptimo. ",
-	abstract_impact: "Impacto"
-	abstract_results: "Resultados"
-	abstract_methodology: "Metodología"
-	abstract_feasibility: "Factibilidad"
+	abstract_impact: "Impacto",
+	abstract_results: "Resultados",
+	abstract_methodology: "Metodología",
+	abstract_feasibility: "Factibilidad",
 	category_id: Category.first.id,
 	expertise_area_id: ExpertiseArea.first.id,
 	description: "Hacer pruebas e ilustrar la reducción en consumo energético asociado al aire acondicionado usando PCMs en prototipos de naves industriales.",
