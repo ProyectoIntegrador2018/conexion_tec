@@ -22,14 +22,14 @@ class Professor::ProjectsController < Professor::BaseController
 
     private 
     
-    def project_save
-      if @project.save
-        flash[:success] = 'Proyecto actualizado'
-      else
-        flash[:danger] = 'Error al rechazar proyecto'
+      def project_save
+        if @project.save
+          flash[:success] = 'Proyecto actualizado'
+        else
+          flash[:danger] = 'Error al rechazar proyecto'
+        end
+        redirect_to professor_projects_path
       end
-      redirect_to professor_projects_path
-    end
 end
     
 

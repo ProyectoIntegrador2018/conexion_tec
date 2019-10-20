@@ -1,5 +1,4 @@
 class Project < ApplicationRecord
-
   validates :name,
             :field_id,
             :client_id,
@@ -26,7 +25,6 @@ class Project < ApplicationRecord
   has_many :assignments
 
   has_one :project_grade, dependent: :destroy
-
  
   def evaluations
     evaluations = 0
