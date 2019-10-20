@@ -120,7 +120,7 @@ Status.create(status: "No calificado")
 Status.create(status: "Calificado")
 Status.create(status: "No aprobado")
 Status.create(status: "Aprobado")
-Status.create(status: "Esperando aprobación de Profesor")
+Status.create(status: "Esperando revision de Profesor")
 Status.create(status: "Rechazado por profesor")
 
 ExpertiseArea.create(area: "Agrobiotecnología")
