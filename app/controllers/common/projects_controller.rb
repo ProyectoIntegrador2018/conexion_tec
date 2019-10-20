@@ -1,4 +1,6 @@
 class Common::ProjectsController < Common::AdminCommitteeBaseController
+  include Admin::ProjectsHelper
+
   before_action :set_project,
                 only: [:new,
                        :show,
@@ -17,13 +19,10 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
     params[:order_by] ||= 0
     params[:order_by] = params[:order_by].to_i
     @projects = if params[:order_by].zero?
-                  Project.all.sort_by { |project| project.name.downcase }
+                  sort_by_name(Project.all)
                 else
-                  Project.select{ |project| project.project_grade.present? }
-                         .sort_by { |project| project.project_grade.total_grade }
-                         .reverse
-                         .concat(Project.select { |project| project.project_grade.nil? }
-                                        .sort_by { |project| project.name.downcase })
+                  sort_by_grade(projects_with_grade)
+                    .concat(sort_by_name(projects_without_grade))
                 end
   end
 
