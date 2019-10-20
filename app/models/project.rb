@@ -25,7 +25,6 @@ class Project < ApplicationRecord
   has_many :assignments
 
   has_one :project_grade, dependent: :destroy
- 
   def evaluations
     evaluations = 0
     assignments = self.assignments # All the assignments
