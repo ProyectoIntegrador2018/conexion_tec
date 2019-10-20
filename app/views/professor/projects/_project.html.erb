@@ -8,7 +8,17 @@
         </td>
         <td><%= project.video_url.present? ? project.video_url : "Pendiente"%></td>
         <td><%= project.status.status %></td>
-        <td><%= project.selection_score.present? ? project.selection_score : "Pendiente de calificar" %></td>
+        <td>
+        <% if project.status.status == "No calificado"%>
+        <%= link_to professor_approve_project_path(project), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar este proyecto?'} do %>
+					<span style="color: green; margin-right: 25px;"><i class="fa fa-check"></i> Aprobar</span>
+				<% end %>
+        <% else %>
+        <%= link_to professor_reject_project_path(project), method: :reject, data: { confirm: '¿Estás seguro que deseas rechazar este proyecto?'} do %>
+          <span style="color: red"><i class="fa fa-times"></i> Rechazar</span>
+        <% end %>
+        <% end %>
+        </td>
       </tr>
 
 </tr>
