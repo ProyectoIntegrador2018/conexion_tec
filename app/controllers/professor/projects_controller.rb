@@ -5,28 +5,30 @@ class Professor::ProjectsController < Professor::BaseController
     end
         
     def index
-        @projects = Project.where(professor_id: current_user.userable_id)
+      @projects = Project.where(professor_id: current_user.userable_id)
     end
 
     def approve
-      @project.status_id = Status.last.id
+      @project = Project.find(params[:id])
+      @project.status_id = Status.first.id
       if @project.save
         flash[:success] = 'Proyecto aprobado'
-        redirect_to common_projects_path
+        redirect_to professor_projects_path
       else
         flash[:danger] = 'Error al aprobar proyecto'
-        redirect_to common_projects_path
+        redirect_to professor_projects_path
       end
     end
   
     def reject
-      @project.status_id = Status.third.id
+      @project = Project.find(params[:id])
+      @project.status_id = Status.last.id
       if @project.save
         flash[:success] = 'Proyecto rechazado'
-        redirect_to common_projects_path
+        redirect_to professor_projects_path
       else
         flash[:danger] = 'Error al rechazar proyecto'
-        redirect_to common_projects_path
+        redirect_to professor_projects_path
       end
     end
 end

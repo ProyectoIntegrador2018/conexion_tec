@@ -29,10 +29,10 @@ class Project < ApplicationRecord
   has_one :project_grade
 
   def set_selection_score
-    if self.selection_score.present? && self.status_id == Status.first.id
+    if self.selection_score.present? && self.status_id == Status.fifth.id
       self.status_id = Status.second.id
     elsif !self.selection_score.present?
-      self.status_id = Status.first.id
+      self.status_id = Status.fifth.id
     end
   end
 

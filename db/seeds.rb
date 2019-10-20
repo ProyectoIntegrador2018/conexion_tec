@@ -188,7 +188,7 @@ Project.create(
 	student_id: student.id,
 	field_id: Field.first.id,
 	client_id: Client.first.id,
-	status_id: Status.first.id,
+	status_id: Status.fourth.id,
 	edition_id: Edition.first.id,
 	attended: 0)
 
@@ -226,7 +226,7 @@ Project.create(
 	student_id: student.id,
 	field_id: Field.first.id,
 	client_id: Client.first.id,
-	status_id: Status.first.id,
+	status_id: Status.fourth.id,
 	edition_id: Edition.first.id,
 	attended: 0)
 
@@ -269,7 +269,7 @@ Project.create(
 	student_id: student.id,
 	field_id: Field.first.id,
 	client_id: Client.first.id,
-	status_id: Status.first.id,
+	status_id: Status.fourth.id,
 	edition_id: Edition.first.id,
 	attended: 0)
 
@@ -307,6 +307,6 @@ Project.create(
 	student_id: student.id,
 	field_id: Field.first.id,
 	client_id: Client.first.id,
-	status_id: Status.first.id,
+	status_id: Status.fourth.id,
 	edition_id: Edition.first.id,
 	attended: 0)
