@@ -16,8 +16,7 @@ class Common::ProjectGradesController < Common::BaseController
     @project_grade = ProjectGrade.create(form_params)
     @project.project_grade = @project_grade
     update_project_status
-    flash[:success] = 'Proyecto calificado exitosamente'
-    redirect_to common_projects_path
+    success_redirect
   end
 
   def update
@@ -26,8 +25,7 @@ class Common::ProjectGradesController < Common::BaseController
     @project_grade.update(form_params)
     @project.project_grade = @project_grade
     update_project_status
-    flash[:success] = 'Proyecto calificado exitosamente'
-    redirect_to common_projects_path
+    success_redirect
   end
 
   private
@@ -35,6 +33,11 @@ class Common::ProjectGradesController < Common::BaseController
   def update_project_status
     @project.status_id = Status.second.id
     @project.save
+  end
+
+  def success_redirect
+    flash[:success] = 'Proyecto calificado exitosamente'
+    redirect_to common_projects_path
   end
 
   def form_params

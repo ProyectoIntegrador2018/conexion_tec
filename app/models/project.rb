@@ -1,8 +1,4 @@
 class Project < ApplicationRecord
-<<<<<<< HEAD
-
-=======
->>>>>>> 91308781efd7a9b530fe34acc65a4fec2e5606a3
   validates :name,
             :field_id,
             :client_id,
