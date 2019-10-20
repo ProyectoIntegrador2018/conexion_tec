@@ -11,13 +11,13 @@ class Professor::ProjectsController < Professor::BaseController
   def approve
     project = Project.find(params[:id])
     project.status_id = Status.first.id
-    project_save(project, "Proyecto aprobado")
+    project_save(project, 'Proyecto aprobado')
   end
 
   def reject
     project = Project.find(params[:id])
     project.status_id = Status.last.id
-    project_save(project, "Proyecto rechazado")
+    project_save(project, 'Proyecto rechazado')
   end
 
   private 
