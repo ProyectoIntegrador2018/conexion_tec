@@ -1,5 +1,8 @@
 class Project < ApplicationRecord
+<<<<<<< HEAD
 
+=======
+>>>>>>> 91308781efd7a9b530fe34acc65a4fec2e5606a3
   validates :name,
             :field_id,
             :client_id,
@@ -25,10 +28,7 @@ class Project < ApplicationRecord
   has_many :members
   has_many :assignments
 
-  has_one :project_grade
-
- 
-
+  has_one :project_grade, dependent: :destroy
   def evaluations
     evaluations = 0
     assignments = self.assignments # All the assignments
