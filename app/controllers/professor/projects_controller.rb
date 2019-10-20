@@ -11,25 +11,24 @@ class Professor::ProjectsController < Professor::BaseController
     def approve
       @project = Project.find(params[:id])
       @project.status_id = Status.first.id
-      if @project.save
-        flash[:success] = 'Proyecto aprobado'
-        redirect_to professor_projects_path
-      else
-        flash[:danger] = 'Error al aprobar proyecto'
-        redirect_to professor_projects_path
-      end
+      project_save
     end
   
     def reject
       @project = Project.find(params[:id])
       @project.status_id = Status.last.id
+      project_save
+    end
+
+    private 
+    
+    def project_save
       if @project.save
-        flash[:success] = 'Proyecto rechazado'
-        redirect_to professor_projects_path
+        flash[:success] = 'Proyecto actualizado'
       else
         flash[:danger] = 'Error al rechazar proyecto'
-        redirect_to professor_projects_path
       end
+      redirect_to professor_projects_path
     end
 end
     
