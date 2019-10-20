@@ -14,7 +14,17 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
   end
 
   def index
-    @projects = Project.all.sort_by { |project| project.name.downcase }
+    params[:order_by] ||= 0
+    params[:order_by] = params[:order_by].to_i
+    @projects = if params[:order_by].zero?
+                  Project.all.sort_by { |project| project.name.downcase }
+                else
+                  Project.select{ |project| project.project_grade.present? }
+                         .sort_by { |project| project.project_grade.total_grade }
+                         .reverse
+                         .concat(Project.select { |project| project.project_grade.nil? }
+                                        .sort_by { |project| project.name.downcase })
+                end
   end
 
   def new
