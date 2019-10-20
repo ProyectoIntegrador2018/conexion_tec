@@ -1,5 +1,5 @@
 class Common::ProjectsController < Common::AdminCommitteeBaseController
-  include Admin::ProjectsHelper
+  include Common::ProjectsHelper
 
   before_action :set_project,
                 only: [:new,
