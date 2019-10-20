@@ -118,6 +118,10 @@ body {
 @import "project/*";
 
 .col-centered{
-    float: none;
-    margin: 0 auto;
+	float: none;
+	margin: 0 auto;
+}
+
+.col-text-centered{
+	text-align: center;
 }
