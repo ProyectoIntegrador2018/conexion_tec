@@ -9,7 +9,7 @@
         <td><%= project.video_url.present? ? project.video_url : "Pendiente"%></td>
         <td><%= project.status.status %></td>
         <td>
-        <% if project.status.status == "Esperando revision de Profesor"%>
+        <% if project.status_id == Status.fifth.id %>
         <%= link_to professor_approve_project_path(project), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar este proyecto?'} do %>
 					<span style="color: green; margin-right: 25px;"><i class="fa fa-check"></i> Aprobar</span>
 				<% end %>
