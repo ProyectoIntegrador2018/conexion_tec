@@ -15,8 +15,8 @@ class Common::ProjectGradesController < Common::BaseController
     @project = Project.find(params[:project_id])
     @project_grade = ProjectGrade.create(form_params)
     @project.project_grade = @project_grade
-    flash[:success] = 'Proyecto calificado exitosamente'
-    redirect_to common_projects_path
+    update_project_status
+    success_redirect
   end
 
   def update
@@ -24,11 +24,20 @@ class Common::ProjectGradesController < Common::BaseController
     @project_grade = ProjectGrade.find(params[:id])
     @project_grade.update(form_params)
     @project.project_grade = @project_grade
-    flash[:success] = 'Proyecto calificado exitosamente'
-    redirect_to common_projects_path
+    success_redirect
   end
 
   private
+
+  def update_project_status
+    @project.status_id = Status.second.id
+    @project.save
+  end
+
+  def success_redirect
+    flash[:success] = 'Proyecto calificado exitosamente'
+    redirect_to common_projects_path
+  end
 
   def form_params
     params.require(:project_grade).
