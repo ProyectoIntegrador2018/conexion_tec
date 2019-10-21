@@ -1,4 +1,6 @@
 class Common::ProjectsController < Common::AdminCommitteeBaseController
+  include Common::ProjectsHelper
+
   before_action :set_project,
                 only: [:new,
                        :show,
@@ -14,7 +16,14 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
   end
 
   def index
-    @projects = Project.all.sort_by { |project| project.name.downcase }
+    params[:order_by] ||= 0
+    params[:order_by] = params[:order_by].to_i
+    @projects = if params[:order_by].zero?
+                  sort_by_name(Project.all)
+                else
+                  sort_by_grade(projects_with_grade)
+                    .concat(sort_by_name(projects_without_grade))
+                end
   end
 
   def new
