@@ -120,6 +120,8 @@ Status.create(status: "No calificado")
 Status.create(status: "Calificado")
 Status.create(status: "No aprobado")
 Status.create(status: "Aprobado")
+Status.create(status: "Esperando revision de Profesor")
+Status.create(status: "Rechazado por profesor")
 
 ExpertiseArea.create(area: "Agrobiotecnología")
 ExpertiseArea.create(area: "Automatización de Procesos")
@@ -186,7 +188,7 @@ Project.create(
 	student_id: student.id,
 	field_id: Field.first.id,
 	client_id: Client.first.id,
-	status_id: Status.first.id,
+	status_id: Status.fourth.id,
 	edition_id: Edition.first.id,
 	attended: 0)
 
@@ -224,7 +226,7 @@ Project.create(
 	student_id: student.id,
 	field_id: Field.first.id,
 	client_id: Client.first.id,
-	status_id: Status.first.id,
+	status_id: Status.fourth.id,
 	edition_id: Edition.first.id,
 	attended: 0)
 
@@ -267,7 +269,7 @@ Project.create(
 	student_id: student.id,
 	field_id: Field.first.id,
 	client_id: Client.first.id,
-	status_id: Status.first.id,
+	status_id: Status.fourth.id,
 	edition_id: Edition.first.id,
 	attended: 0)
 
@@ -305,6 +307,6 @@ Project.create(
 	student_id: student.id,
 	field_id: Field.first.id,
 	client_id: Client.first.id,
-	status_id: Status.first.id,
+	status_id: Status.fourth.id,
 	edition_id: Edition.first.id,
 	attended: 0)

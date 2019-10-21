@@ -64,6 +64,8 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#index'
     get 'edit', to: 'profile#edit'
     patch 'update', to: 'profile#update'
+    post '/projects/approve/:id', to: "projects#approve", as: :approve_project
+    post '/projects/reject/:id', to: "projects#reject", as: :reject_project
     resources 'projects'
   end
 

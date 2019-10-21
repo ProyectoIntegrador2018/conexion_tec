@@ -94,7 +94,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
   end
 
   def approve
-    @project.status_id = Status.last.id
+    @project.status_id = Status.fourth.id
     if @project.save
       flash[:success] = 'Proyecto aprobado'
       redirect_to common_projects_path
@@ -126,7 +126,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
     project.student_id = student.userable_id
     project.professor_id = professor.userable_id
     project.edition_id = Edition.last.id
-    project.status_id = Status.first.id
+    project.status_id = Status.fourth.id
     project
   end
 

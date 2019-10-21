@@ -1,6 +1,4 @@
 class Project < ApplicationRecord
-  before_save :set_selection_score
-
   validates :name,
             :field_id,
             :client_id,
@@ -26,16 +24,7 @@ class Project < ApplicationRecord
   has_many :members
   has_many :assignments
 
-  has_one :project_grade
-
-  def set_selection_score
-    if self.selection_score.present? && self.status_id == Status.first.id
-      self.status_id = Status.second.id
-    elsif !self.selection_score.present?
-      self.status_id = Status.first.id
-    end
-  end
-
+  has_one :project_grade, dependent: :destroy
   def evaluations
     evaluations = 0
     assignments = self.assignments # All the assignments
