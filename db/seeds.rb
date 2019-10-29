@@ -310,3 +310,11 @@ Project.create(
 	status_id: Status.fourth.id,
 	edition_id: Edition.first.id,
 	attended: 0)
+
+Campus.create(
+	name: 'Monterrey',
+	code: 'MTY')
+
+Campus.create(
+	name: 'Saltillo',
+	code: 'SAL')
