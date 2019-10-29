@@ -110,6 +110,7 @@ class Student::ProjectsController < Student::BaseController
                                     :campus_id,
                                     :client_id,
                                     :semestrei,
+                                    :team_size,
                                     :video_url,
                                     :category_id,
                                     :description,

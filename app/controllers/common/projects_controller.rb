@@ -174,6 +174,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
                                     :campus_id,
                                     :client_id,
                                     :semestrei,
+                                    :team_size,
                                     :video_url,
                                     :student_id,
                                     :category_id,
