@@ -1,6 +1,6 @@
 <%= form_for @project, url: @url do |f|  %>
   <div class='row'>
-    <div class='col-md-6 form-group'>
+    <div class='col-md-12 form-group'>
       <strong><%= f.label :name, 'Nombre' %></strong>
       <%= f.text_field :name, class: 'form-control' %>
     </div>
@@ -19,6 +19,10 @@
     <div class='col-md-6 form-group'>
       <strong><%= f.label :client, 'Cliente del proyecto' %></strong>
       <%= f.select :client_id, Client.pluck(:client, :id), {}, class: 'form-control' %>
+    </div>
+    <div class='col-md-6 form-group'>
+      <strong><%= f.label :campus_id, 'Campus' %></strong>
+      <%= f.select :campus_id, Campus.pluck(:name, :id), {}, class: 'form-control' %>
     </div>
     <div class='col-md-6 form-group'>
       <strong><%= f.label :video_url, 'Liga del vídeo' %></strong>
@@ -114,19 +118,23 @@
       </div>
     </div>
     <div class='row'>
-      <div class='col-md-6 form-group'>
+      <div class='col-md-5 form-group'>
         <strong>
           <%= f.label :student_name, 'Nombre' %>
           <small>(Como aparecerá en el reconocimiento oficial)</small>
         </strong>
         <input type='text'  id='student_name' name='project[student_name]' class='form-control'>
       </div>
-      <div class='col-md-6 form-group'>
+      <div class='col-md-5 form-group'>
         <strong>
           <%= f.label :student_id, 'Email' %>
           <small>(Institucional)</small>
         </strong>
         <%= f.email_field :student_id, class: 'form-control' %>
+      </div>
+      <div class='col-md-2 form-group'>
+        <strong><%= f.label :team_size, 'No. de integrantes' %></strong>
+        <%= f.number_field :team_size, max: 5, class: 'form-control' %>
       </div>
     </div>
 

@@ -1,40 +1,37 @@
-<%= form_for @question, url: @url do |q|  %>
-
-<div class="row">
-  <div class="col">
-    <div class="form-group">
-      <%= q.label :title, "Pregunta" %>
-      <%= q.text_field :title, class: "form-control" %>
+<%= form_for @question, url: @url do |f|  %>
+  <div class='row'>
+    <div class='col'>
+      <div class='form-group'>
+        <%= f.label :title, 'Pregunta' %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col">
-    <div class="form-group">
-      <%= q.label :text, "Descripción" %>
-      <%= q.text_field :text, class: "form-control" %>
+  <div class='row'>
+    <div class='col'>
+      <div class='form-group'>
+        <%= f.label :text, 'Descripción' %>
+        <%= f.text_field :text, class: 'form-control' %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col">
-    <div class="form-group">
-      <%= q.label :category_id, "Categoría" %>
-      <%= q.select :category_id, 
-      options_for_select(Category.all.collect { |p| [p.name, p.id]}), 
-      {}, class: "form-control" %>
+  <div class='row'>
+    <div class='col'>
+      <div class='form-group'>
+        <%= f.label :category_id, 'Categoría' %>
+        <%= f.select :category_id, Category.pluck(:name, :id), {}, class: 'form-control' %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-md-6">
-    <%= link_to "Cancelar", common_questions_path, { class: "btn btn-default", style: "width: 100%; border-color: #DCDCDC;" } %>
+  <div class='row'>
+    <div class='col-md-6'>
+      <%= link_to 'Cancelar', common_questions_path, class: 'btn btn-light btn-block' %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.submit 'Crear pregunta', class: 'btn btn-primary btn-block' %>
+    </div>
   </div>
-  <div class="col-md-6">
-    <%= q.submit "Crear pregunta", class: "btn btn-primary", style: "width: 100%;" %>
-  </div>
-</div>
 <% end %>
