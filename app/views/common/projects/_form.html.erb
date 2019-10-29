@@ -165,19 +165,23 @@
       </div>
     </div>
     <div class='row'>
-      <div class='col-md-6 form-group'>
+      <div class='col-md-5 form-group'>
         <strong>
           <%= f.label :student_name, 'Nombre' %>
           <small>(Como aparecerá en el reconocimiento oficial)</small>
         </strong>
         <input type='text' disabled='true' value='<%= @project.student.user.name %>' class='form-control'>
       </div>
-      <div class='col-md-6 form-group'>
+      <div class='col-md-5 form-group'>
         <strong>
           <%= f.label :student_email, 'Email' %>
           <small>(Institucional)</small>
         </strong>
         <input type='text' disabled='true' value='<%= @project.student.user.email %>' class='form-control'>
+      </div>
+      <div class='col-md-2 form-group'>
+        <strong><%= f.label :team_size, 'No. de integrantes' %></strong>
+        <input type='text' disabled='true' value='<%= @project.team_size %>' class='form-control'>
       </div>
     </div>
 

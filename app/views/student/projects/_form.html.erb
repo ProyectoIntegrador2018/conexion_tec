@@ -1,6 +1,6 @@
 <%= form_for @project, url: @url do |f|  %>
   <div class='row'>
-    <div class='col-md-6 form-group'>
+    <div class='col-md-12 form-group'>
       <strong><%= f.label :name, 'Nombre' %></strong>
       <%= f.text_field :name, class: 'form-control' %>
     </div>
@@ -20,9 +20,21 @@
       <strong><%= f.label :client, 'Cliente del proyecto' %></strong>
       <%= f.select :client_id, Client.pluck(:client, :id), {}, class: 'form-control' %>
     </div>
+    <div class='col-md-3 form-group'>
+      <strong><%= f.label :campus_id, 'Campus' %></strong>
+      <%= f.select :campus_id, Campus.pluck(:name, :id), {}, class: 'form-control' %>
+    </div>
     <div class='col-md-6 form-group'>
       <strong><%= f.label :video_url, 'Liga del vídeo' %></strong>
       <%= f.text_field :video_url, class: 'form-control' %>
+    </div>
+    <div class='col-md-3 form-group'>
+      <strong><%= f.label :team_size, 'No. de integrantes' %></strong>
+    <% if @project.professor.nil? %> <!-- New -->
+      <%= f.number_field :team_size, max: 5, class: 'form-control' %>
+    <% else %>
+      <input type='text' id='team_size' class='form-control' value='<%= @project.team_size %>' disabled='true'>
+    <% end %>
     </div>
     <div class='col-md-6 form-group col-text-centered'>
       <strong><%= f.label :semestrei, 'Semestre i' %></strong>
@@ -107,23 +119,24 @@
 
   <hr>
 
-  <% if @project.professor.nil? %> <!-- New -->
-    <div class='row'>
-      <div class='col-md-8 col-centered col-text-centered'>
-        <h3>Datos del profesor coordinador</h3>
-      </div>
+  <div class='row'>
+    <div class='col-md-8 col-centered col-text-centered'>
+      <h3>Datos del profesor coordinador</h3>
     </div>
+  </div>
+
+  <% if @project.professor.nil? %> <!-- New -->
     <div class='row'>
       <div class='col-md-4 form-group'>
         <strong><%= f.label :name_professor, 'Nombre' %></strong>
-        <input type='text'  id='name_professor' name='project[name_professor]' class='form-control'>
+        <input type='text' id='name_professor' name='project[name_professor]' class='form-control'>
       </div>
       <div class='col-md-4 form-group'>
         <strong>
           <%= f.label :email_professor, 'Email' %>
           <small>(Institucional)</small>
         </strong>
-        <input type='text'  id='email_professor' name='project[email_professor]' class='form-control'>
+        <input type='text' id='email_professor' name='project[email_professor]' class='form-control'>
       </div>
       <div class='col-md-4 form-group'>
         <strong><%= f.label :department_professor, 'Departamento' %></strong>
@@ -140,14 +153,14 @@
     <div class='row'>
       <div class='col-md-6 form-group'>
         <strong><%= f.label :name_professor, 'Nombre' %></strong>
-        <input type='text'  id='name_professor' class='form-control' value='<%= @project.professor.user.name %>' disabled='true'>
+        <input type='text' id='name_professor' class='form-control' value='<%= @project.professor.user.name %>' disabled='true'>
       </div>
       <div class='col-md-6 form-group'>
         <strong>
           <%= f.label :email_professor, 'Email' %>
           <small>(Institucional)</small>
         </strong>
-        <input type='text'  id='email_professor' class='form-control' value='<%= @project.professor.user.email %>' disabled='true'>
+        <input type='text' id='email_professor' class='form-control' value='<%= @project.professor.user.email %>' disabled='true'>
       </div>
     </div>
   <% end %>
