@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   validates :name,
             :field_id,
+            :campus_id,
             :client_id,
             :description,
             :abstract_impact,
@@ -12,6 +13,7 @@ class Project < ApplicationRecord
             presence: true
 
   belongs_to :field
+  belongs_to :campus
   belongs_to :client
   belongs_to :status
   belongs_to :student
