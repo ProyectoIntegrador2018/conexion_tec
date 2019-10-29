@@ -107,6 +107,7 @@ class Student::ProjectsController < Student::BaseController
   def project_params
     params.require(:project).permit(:name,
                                     :field_id,
+                                    :campus_id,
                                     :client_id,
                                     :semestrei,
                                     :video_url,

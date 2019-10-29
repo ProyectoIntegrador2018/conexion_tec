@@ -171,6 +171,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
     params.require(:project).permit(:name,
                                     :field_id,
                                     :stand_id,
+                                    :campus_id,
                                     :client_id,
                                     :semestrei,
                                     :video_url,
