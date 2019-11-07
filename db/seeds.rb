@@ -6,6 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Campus.create(
+	name: 'Monterrey',
+	code: 'MTY')
+
+Campus.create(
+	name: 'Saltillo',
+	code: 'SAL')
 
 admin = Administrator.create()
 User.create(
@@ -171,6 +178,14 @@ User.create(
 	userable_id: professor.id,
 	authorized: 1)
 
+field_id = Field.first.id
+campus_id = Campus.first.id
+client_id = Client.first.id
+status_id = Status.fourth.id
+edition_id = Edition.first.id
+category_id = Category.first.id
+expertise_area_id = ExpertiseArea.first.id
+
 Project.create(
 	name: "RoBorregos @Home",
 	abstract_problem: "El equipo de robótica RoBorregos, en colaboración con clase de proyecto de robótica, trabaja este semestre en la creación de un robot de servicio doméstico para la competencia internacional de Robocup @HOME, categoría Open, en la cual se busca desarrollar soluciones tecnológicas para el hogar.
@@ -181,15 +196,16 @@ Project.create(
 	abstract_results: "Resultados",
 	abstract_methodology: "Metodología",
 	abstract_feasibility: "Factibilidad",
-	category_id: Category.first.id,
-	expertise_area_id: ExpertiseArea.first.id,
 	description: "Desarrollar un robot de servicio que ayude con las tareas del hogar.",
-	professor_id: professor.id,
+	field_id: field_id,
+	campus_id: campus_id
+	client_id: client_id,
+	status_id: status_id,
+	edition_id: edition_id,
 	student_id: student.id,
-	field_id: Field.first.id,
-	client_id: Client.first.id,
-	status_id: Status.fourth.id,
-	edition_id: Edition.first.id,
+	category_id: category_id,
+	professor_id: professor.id,
+	expertise_area_id: expertise_area_id,
 	attended: 0)
 
 student = Student.create(major_id: Major.first.id)
@@ -219,15 +235,16 @@ Project.create(
 	abstract_results: "Resultados",
 	abstract_methodology: "Metodología",
 	abstract_feasibility: "Factibilidad",
-	category_id: Category.first.id,
-	expertise_area_id: ExpertiseArea.first.id,
 	description: "Desarrollar un espectrómetro de reflectancia de bajo costo que permita el muestreo y análisis de suelo en zonas agrícolas rurales.",
-	professor_id: professor.id,
+	field_id: field_id,
+	campus_id: campus_id
+	client_id: client_id,
+	status_id: status_id,
+	edition_id: edition_id,
 	student_id: student.id,
-	field_id: Field.first.id,
-	client_id: Client.first.id,
-	status_id: Status.fourth.id,
-	edition_id: Edition.first.id,
+	category_id: category_id,
+	professor_id: professor.id,
+	expertise_area_id: expertise_area_id,
 	attended: 0)
 
 student = Student.create(major_id: Major.first.id)
@@ -262,15 +279,16 @@ Project.create(
 	abstract_results: "Resultados",
 	abstract_methodology: "Metodología",
 	abstract_feasibility: "Factibilidad",
-	category_id: Category.first.id,
-	expertise_area_id: ExpertiseArea.first.id,
 	description: "Desarrollar un sistema de comunicación entre empresas para monitorear los procesos de manufactura de los proveedores, a fin de mejorar los indicadores de las operaciones de inspección-recibo en la empresa, basados en el control estadístico de la producción incluido en la norma IATF:16949, para principios de Mayo 2019.",
-	professor_id: professor.id,
+	field_id: field_id,
+	campus_id: campus_id
+	client_id: client_id,
+	status_id: status_id,
+	edition_id: edition_id,
 	student_id: student.id,
-	field_id: Field.first.id,
-	client_id: Client.first.id,
-	status_id: Status.fourth.id,
-	edition_id: Edition.first.id,
+	category_id: category_id,
+	professor_id: professor.id,
+	expertise_area_id: expertise_area_id,
 	attended: 0)
 
 student = Student.create(major_id: Major.first.id)
@@ -300,13 +318,14 @@ Project.create(
 	abstract_results: "Resultados",
 	abstract_methodology: "Metodología",
 	abstract_feasibility: "Factibilidad",
-	category_id: Category.first.id,
-	expertise_area_id: ExpertiseArea.first.id,
 	description: "Hacer pruebas e ilustrar la reducción en consumo energético asociado al aire acondicionado usando PCMs en prototipos de naves industriales.",
-	professor_id: professor.id,
+	field_id: field_id,
+	campus_id: campus_id
+	client_id: client_id,
+	status_id: status_id,
+	edition_id: edition_id,
 	student_id: student.id,
-	field_id: Field.first.id,
-	client_id: Client.first.id,
-	status_id: Status.fourth.id,
-	edition_id: Edition.first.id,
+	category_id: category_id,
+	professor_id: professor.id,
+	expertise_area_id: expertise_area_id,
 	attended: 0)
