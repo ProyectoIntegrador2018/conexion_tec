@@ -20,7 +20,7 @@
         </td>
         <% if Time.now > project.edition.registry_open && Time.now < project.edition.registry_limit %>
           <td>
-            <%= link_to 'Editar', edit_professor_project_path(project) %><br />
+            <%= link_to 'Ver/Editar Proyecto', edit_professor_project_path(project) %><br />
           </td>
         <% end %>
       </tr>
