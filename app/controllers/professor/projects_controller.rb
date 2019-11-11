@@ -1,5 +1,6 @@
 class Professor::ProjectsController < Professor::BaseController
   before_action :set_project, only: [:show]
+  helper_method :accepted_statuses
   
   def show
   end
@@ -18,6 +19,12 @@ class Professor::ProjectsController < Professor::BaseController
     project = Project.find(params[:id])
     project.status_id = Status.last.id
     project_save(project, 'Proyecto rechazado')
+  end
+
+  def accepted_statuses
+    Status.where({ status: ["No calificado", 
+                  "Esperando revision de Profesor", 
+                  "Rechazado por profesor"]})
   end
 
   private 
