@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_235240) do
+ActiveRecord::Schema.define(version: 2019_11_08_025247) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 2019_10_17_235240) do
   create_table "assignments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "judge_id"
     t.integer "project_id"
+  end
+
+  create_table "campus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -43,6 +50,8 @@ ActiveRecord::Schema.define(version: 2019_10_17_235240) do
     t.date "registry_limit"
     t.date "video_open"
     t.date "video_limit"
+    t.date "starting_date", default: "2019-11-08"
+    t.date "ending_date", default: "2019-11-08"
   end
 
   create_table "evaluation_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -153,6 +162,9 @@ ActiveRecord::Schema.define(version: 2019_10_17_235240) do
     t.string "social_impact_empathy"
     t.string "social_impact_problem"
     t.string "social_impact_responsibility"
+    t.integer "team_size"
+    t.bigint "campus_id"
+    t.index ["campus_id"], name: "index_projects_on_campus_id"
     t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"
   end
@@ -195,4 +207,5 @@ ActiveRecord::Schema.define(version: 2019_10_17_235240) do
   end
 
   add_foreign_key "project_grades", "projects"
+  add_foreign_key "projects", "campus", column: "campus_id"
 end
