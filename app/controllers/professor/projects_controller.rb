@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class Professor::ProjectsController < Professor::BaseController
   before_action :set_project, only: [:show]
   helper_method :accepted_statuses
-  
-  def show
-  end
-      
+
+  def show; end
+
   def index
     @projects = Project.where(professor_id: current_user.userable_id)
   end
@@ -22,13 +23,13 @@ class Professor::ProjectsController < Professor::BaseController
   end
 
   def accepted_statuses
-    Status.where({ status: ["No calificado", 
-                  "Esperando revision de Profesor", 
-                  "Rechazado por profesor"]})
+    Status.where(status: ['No calificado',
+                          'Esperando revision de Profesor',
+                          'Rechazado por profesor'])
   end
 
-  private 
-  
+  private
+
   def project_save(project, message)
     if project.save
       flash[:success] = message
@@ -38,6 +39,5 @@ class Professor::ProjectsController < Professor::BaseController
     redirect_to professor_projects_path
   end
 end
-    
 
     
