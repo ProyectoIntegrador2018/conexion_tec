@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class Professor::ProjectsController < Professor::BaseController
   before_action :set_project, only: [:show]
-  
-  def show
-  end
-      
+  helper_method :accepted_statuses
+
+  def show; end
+
   def index
     @projects = Project.where(professor_id: current_user.userable_id)
   end
@@ -36,8 +38,14 @@ class Professor::ProjectsController < Professor::BaseController
     project_save(project, 'Proyecto rechazado')
   end
 
-  private 
-  
+  def accepted_statuses
+    Status.where(status: ['No calificado',
+                          'Esperando revision de Profesor',
+                          'Rechazado por profesor'])
+  end
+
+  private
+
   def project_save(project, message)
     if project.save
       flash[:success] = message
@@ -72,6 +80,5 @@ class Professor::ProjectsController < Professor::BaseController
                                     :social_impact_responsibility)
   end
 end
-    
 
     
