@@ -7,8 +7,14 @@
     <div class='col-md-4 form-group col-text-centered'>
       <%= f.label :starting_date, 'Fechas del evento' %>
       <div class='input-group'>
-        <%= f.text_field :starting_date, class: 'form-control', data:{ provide: 'datepicker' } %>
-        <%= f.text_field :ending_date, class: 'form-control', data:{ provide: 'datepicker' } %>
+        <%= f.text_field :starting_date,
+            class: 'form-control',
+            data: { provide: 'datepicker', date_format: 'd/m/yyyy'},
+            value: @edition.starting_date.present? ? @edition.starting_date.strftime('%d/%m/%Y') : '' %>
+        <%= f.text_field :ending_date,
+            class: 'form-control',
+            data: { provide: 'datepicker', date_format: 'd/m/yyyy' },
+            value: @edition.ending_date.present? ? @edition.ending_date.strftime('%d/%m/%Y') : '' %>
       </div>
     </div>
   </div>
@@ -27,15 +33,27 @@
     <div class='col-md-4 form-group col-text-centered'>
       <%= f.label :registry_open, 'Registro de proyecto' %>
       <div class='input-group'>
-        <%= f.text_field :registry_open, class: 'form-control', data: { provide: 'datepicker' } %>
-        <%= f.text_field :registry_limit, class: 'form-control', data: { provide: 'datepicker' } %>
+        <%= f.text_field :registry_open,
+            class: 'form-control',
+            data: { provide: 'datepicker', date_format: 'd/m/yyyy' },
+            value: @edition.registry_open.present? ? @edition.registry_open.strftime('%d/%m/%Y') : '' %>
+        <%= f.text_field :registry_limit,
+            class: 'form-control',
+            data: { provide: 'datepicker', date_format: 'd/m/yyyy' },
+            value: @edition.registry_limit.present? ? @edition.registry_limit.strftime('%d/%m/%Y') : '' %>
       </div>
     </div>
     <div class='col-md-4 form-group col-text-centered'>
       <%= f.label :video_open, 'Registro de liga del vídeo' %>
       <div class='input-group'>
-        <%= f.text_field :video_open, class: 'form-control', data: { provide: 'datepicker' } %>
-        <%= f.text_field :video_limit, class: 'form-control', data: { provide: 'datepicker' } %>
+        <%= f.text_field :video_open,
+            class: 'form-control',
+            data: { provide: 'datepicker', date_format: 'd/m/yyyy' },
+            value: @edition.video_open.present? ? @edition.video_open.strftime('%d/%m/%Y') : '' %>
+        <%= f.text_field :video_limit,
+            class: 'form-control',
+            data: { provide: 'datepicker', date_format: 'd/m/yyyy' },
+            value: @edition.video_limit.present? ? @edition.video_limit.strftime('%d/%m/%Y') : '' %>
       </div>
     </div>
   </div>
