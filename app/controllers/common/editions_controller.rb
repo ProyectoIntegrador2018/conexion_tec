@@ -17,6 +17,7 @@ class Common::EditionsController < Common::AdminCommitteeBaseController
   end
 
   def create
+    # validate number uniqueness
     if @edition.save
       flash[:success] = 'Edición creada'
       redirect_to common_editions_path
@@ -36,6 +37,12 @@ class Common::EditionsController < Common::AdminCommitteeBaseController
       flash.now[:danger] = 'Error al editar edición'
       render 'edit'
     end
+  end
+
+  def destroy
+    @edition.delete
+    flash[:success] = 'Edición eliminada'
+    redirect_to common_editions_path
   end
 
   private
