@@ -31,16 +31,16 @@
 
   <div class='row'>
     <div class='col-md-4 form-group col-text-centered'>
-      <%= f.label :registry_open, 'Registro de proyecto' %>
+      <%= f.label :project_registration_starting_date, 'Registro de proyecto' %>
       <div class='input-group'>
-        <%= f.text_field :registry_open,
+        <%= f.text_field :project_registration_starting_date,
             class: 'form-control',
             data: { provide: 'datepicker', date_format: 'd/m/yyyy' },
-            value: @edition.registry_open.present? ? @edition.registry_open.strftime('%d/%m/%Y') : '' %>
-        <%= f.text_field :registry_limit,
+            value: @edition.project_registration_starting_date.present? ? @edition.project_registration_starting_date.strftime('%d/%m/%Y') : '' %>
+        <%= f.text_field :project_registration_ending_date,
             class: 'form-control',
             data: { provide: 'datepicker', date_format: 'd/m/yyyy' },
-            value: @edition.registry_limit.present? ? @edition.registry_limit.strftime('%d/%m/%Y') : '' %>
+            value: @edition.project_registration_ending_date.present? ? @edition.project_registration_ending_date.strftime('%d/%m/%Y') : '' %>
       </div>
     </div>
     <div class='col-md-4 form-group col-text-centered'>
