@@ -1,44 +1,53 @@
 <% provide(:title, 'Ediciones') %>
 
-<div class="row">
-  <div class="col-md-4">
-    <h1>Ediciones</h1>
-</div>
-
-<div class="col-md-6"></div>
-
-<div class="float-right">
-    <%= link_to "Crear edición", new_common_edition_path, class: "btn btn-primary btn-block text-white"%>
-</div>
-</div><br />
-
-<% if @editions.length > 0 %>
-<div class="container-fluid">
-  <table class="table table-responsive">
-    <thead>
-      <tr>
-        <th scope="col">Número</th>
-        <th scope="col">Fechas de registro</th>
-        <th scope="col">Fechas para subir video</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render @editions %>
-    </tbody>
-  </table>
-  <br /> <br />
-</div>
-<% else %>
-<div class="row">
-  <div class="col-md-12">
-    <div class="card border-dark mb-3">
-          <div class="card-header">Aviso</div>
-          <div class="card-body text-dark">
-              <h5 class="card-title">No tienes ediciones dadas de alta</h5>
-              <p class="card-text">Por el momento no cuentas con ediciones dadas de alta, para crear una edición favor de dar click en "Crear edición".</p>
-          </div>
-        </div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-4 col-centered col-text-centered'>
+      <h1>Ediciones</h1>
     </div>
- </div>
-<% end %>
+  </div>
+  <div class='row'>
+    <div class='offset-md-10 col-md-2'>
+      <%= link_to 'Nueva edición', new_common_edition_path, class: 'btn btn-primary btn-block text-white'%>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class='row'>
+  <div class='col-md-12'>
+    <% if @editions.length > 0 %>
+      <table class='table table-striped'>
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Fechas de registro</th>
+            <th>Fechas para subir video</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @editions %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class='card border-dark mb-3'>
+        <div class='card-header'>
+          Aviso
+        </div>
+        <div class='card-body text-dark'>
+          <h5 class='card-title'>
+            No tienes ediciones dadas de alta
+          </h5>
+          <p class='card-text'>
+            Por el momento no cuentas con ediciones dadas de alta, para crear una edición favor de dar click en 'Crear edición'.
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<br>
+<br>
