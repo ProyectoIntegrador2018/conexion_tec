@@ -1,23 +1,25 @@
 <% provide(:title, 'Proyectos') %>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-md-4 col-centered col-text-centered'>
-        <h1>Proyectos</h1>
-      </div>
-    </div>
-    <div class='row'>
-      <div class='col-md-4'>
-        Ordenar por:
-        <%= link_to 'Nombre', common_projects_path(order_by: 0), class: 'btn btn-info' %>
-        <%= link_to 'Calificacións', common_projects_path(order_by: 1), class: 'btn btn-warning text-white' %>
-      </div>
-      <div class='offset-md-6 col-md-2'>
-        <%= link_to 'Nuevo proyecto', new_common_project_path, class: 'btn btn-primary btn-block text-white'%>
-      </div>
-    </div>
 
-    <hr />
-
-    <%= render @projects %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-4 col-centered col-text-centered'>
+      <h1>Proyectos</h1>
+    </div>
   </div>
+  <div class='row'>
+    <div class='col-md-4'>
+      Ordenar por:
+      <%= link_to 'Nombre', common_projects_path(order_by: 0), class: 'btn btn-info' %>
+      <%= link_to 'Calificacións', common_projects_path(order_by: 1), class: 'btn btn-warning text-white' %>
+    </div>
+    <div class='offset-md-6 col-md-2'>
+      <%= link_to 'Nuevo proyecto', new_common_project_path, class: 'btn btn-primary btn-block text-white'%>
+    </div>
+  </div>
+
+  <hr />
+
+  <%= render @projects %>
+</div>
+
 <br>

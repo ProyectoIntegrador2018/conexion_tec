@@ -1,31 +1,27 @@
 <%= form_for @project, url: @url do |f|  %>
   <div class='row'>
-    <div class='col-md-12 form-group'>
+    <div class='col-md-6 form-group'>
       <strong><%= f.label :name, 'Nombre' %></strong>
       <%= f.text_field :name, class: 'form-control' %>
     </div>
     <div class='col-md-6 form-group'>
-      <strong><%= f.label :category, 'Categoría' %></strong>
-      <%= f.select :category_id, Category.pluck(:name, :id), {}, class: 'form-control'  %>
+      <strong><%= f.label :category, 'Categoría'%></strong>
+      <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @project.category_id),{}, class: 'form-control'  %>
     </div>
     <div class='col-md-6 form-group'>
-      <strong><%= f.label :field, 'Área temática' %></strong>
-      <%= f.select :field_id, Field.pluck(:name, :id), {}, class: 'form-control' %>
+      <strong><%= f.label :field, 'Área temática'%></strong>
+      <%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name, @project.field_id), {}, class: 'form-control' %>
     </div>
     <div class='col-md-6 form-group'>
-      <strong><%= f.label :expertise_area, 'Tipo de proyecto' %></strong>
-      <%= f.select :expertise_area_id, ExpertiseArea.pluck(:area, :id), {}, class: 'form-control' %>
+      <strong><%= f.label :expertise_area, 'Tipo de proyecto'%></strong>
+      <%= f.select :expertise_area_id, options_from_collection_for_select(ExpertiseArea.all, :id, :area, @project.expertise_area_id), {}, class: 'form-control' %>
     </div>
     <div class='col-md-6 form-group'>
-      <strong><%= f.label :client, 'Cliente del proyecto' %></strong>
-      <%= f.select :client_id, Client.pluck(:client, :id), {}, class: 'form-control' %>
+      <strong><%= f.label :client, 'Tipo de cliente'%></strong>
+      <%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :client, @project.client_id), {}, class: 'form-control'%>
     </div>
     <div class='col-md-6 form-group'>
-      <strong><%= f.label :campus_id, 'Campus' %></strong>
-      <%= f.select :campus_id, Campus.pluck(:name, :id), {}, class: 'form-control' %>
-    </div>
-    <div class='col-md-6 form-group'>
-      <strong><%= f.label :video_url, 'Liga del vídeo' %></strong>
+      <strong><%= f.label :video_url, 'Video de Youtube'%></strong>
       <%= f.text_field :video_url, class: 'form-control' %>
     </div>
     <div class='col-md-6 form-group col-text-centered'>
@@ -37,7 +33,7 @@
       <%= f.check_box :social_impact %>
     </div>
     <div class='col-md-12 form-group'>
-      <strong><%= f.label :description, 'Descripción' %></strong>
+      <strong><%= f.label :description, 'Descripción'%></strong>
       <%= f.text_area :description, :rows => 3, class: 'form-control' %>
     </div>
   </div>
@@ -49,31 +45,34 @@
       <h3>Impacto Social</h3>
     </div>
   </div>
+
+  <br>
+
   <div class='row'>
     <% if @project.social_impact %>
       <div class='col-md-12 form-group'>
-        <strong><%= f.label :social_impact_problem, 'Atención de problemas sociales' %></strong>
+        <strong><%= f.label :social_impact_problem, 'Atención de problemas sociales'%></strong>
         <%= f.text_area :social_impact_problem, :rows => 2, class: 'form-control' %>
       </div>
       <div class='col-md-12 form-group'>
-        <strong><%= f.label :social_impact_empathy, 'Reconocimiento y empatía' %></strong>
+        <strong><%= f.label :social_impact_empathy, 'Reconocimiento y empatía'%></strong>
         <%= f.text_area :social_impact_empathy, :rows => 2, class: 'form-control' %>
       </div>
       <div class='col-md-12 form-group'>
-        <strong><%= f.label :social_impact_responsibility, 'Responsabilidad social' %></strong>
+        <strong><%= f.label :social_impact_responsibility, 'Responsabilidad social'%></strong>
         <%= f.text_area :social_impact_responsibility, :rows => 2, class: 'form-control' %>
       </div>
     <% else %>
       <div class='col-md-12 form-group'>
-        <strong><%= f.label :social_impact_problem, 'Atención de problemas sociales' %></strong>
+        <strong><%= f.label :social_impact_problem, 'Atención de problemas sociales'%></strong>
         <%= f.text_area :social_impact_problem, :rows => 2, class: 'form-control', disabled: true %>
       </div>
       <div class='col-md-12 form-group'>
-        <strong><%= f.label :social_impact_empathy, 'Reconocimiento y empatía' %></strong>
+        <strong><%= f.label :social_impact_empathy, 'Reconocimiento y empatía'%></strong>
         <%= f.text_area :social_impact_empathy, :rows => 2, class: 'form-control', disabled: true %>
       </div>
       <div class='col-md-12 form-group'>
-        <strong><%= f.label :social_impact_responsibility, 'Responsabilidad social' %></strong>
+        <strong><%= f.label :social_impact_responsibility, 'Responsabilidad social'%></strong>
         <%= f.text_area :social_impact_responsibility, :rows => 2, class: 'form-control', disabled: true %>
       </div>
     <% end %>
@@ -86,102 +85,91 @@
       <h3>Abstract</h3>
     </div>
   </div>
+
+  <br>
+
   <div class='row'>
     <div class='col-md-12 form-group'>
-      <strong><%= f.label :abstract_problem, 'Problema' %></strong>
+      <strong><%= f.label :abstract_problem, 'Problema'%></strong>
       <%= f.text_area :abstract_problem, :rows => 2, class: 'form-control' %>
     </div>
     <div class='col-md-12 form-group'>
-      <strong><%= f.label :abstract_methodology, 'Metodología' %></strong>
+      <strong><%= f.label :abstract_methodology, 'Metodología'%></strong>
       <%= f.text_area :abstract_methodology, :rows => 2, class: 'form-control' %>
     </div>
     <div class='col-md-12 form-group'>
-      <strong><%= f.label :abstract_feasibility, 'Factibilidad' %></strong>
+      <strong><%= f.label :abstract_feasibility, 'Factibilidad'%></strong>
       <%= f.text_area :abstract_feasibility, :rows => 2, class: 'form-control' %>
     </div>
     <div class='col-md-12 form-group'>
-      <strong><%= f.label :abstract_results, 'Resultados' %></strong>
+      <strong><%= f.label :abstract_results, 'Resultados'%></strong>
       <%= f.text_area :abstract_results, :rows => 2, class: 'form-control' %>
     </div>
     <div class='col-md-12 form-group'>
-      <strong><%= f.label :abstract_impact, 'Impacto' %></strong>
+      <strong><%= f.label :abstract_impact, 'Impacto'%></strong>
       <%= f.text_area :abstract_impact, :rows => 2, class: 'form-control' %>
     </div>
   </div>
 
-  <hr>
-
   <% if @url == common_projects_path %> <!-- New -->
-    <div class='row'>
-      <div class='col-md-8 col-centered col-text-centered'>
-        <h3>Datos del alumno responsable</h3>
-      </div>
-    </div>
-    <div class='row'>
-      <div class='col-md-5 form-group'>
-        <strong>
-          <%= f.label :student_name, 'Nombre' %>
-          <small>(Como aparecerá en el reconocimiento oficial)</small>
-        </strong>
-        <input type='text'  id='student_name' name='project[student_name]' class='form-control'>
-      </div>
-      <div class='col-md-5 form-group'>
-        <strong>
-          <%= f.label :student_id, 'Email' %>
-          <small>(Institucional)</small>
-        </strong>
-        <%= f.email_field :student_id, class: 'form-control' %>
-      </div>
-      <div class='col-md-2 form-group'>
-        <strong><%= f.label :team_size, 'No. de integrantes' %></strong>
-        <%= f.number_field :team_size, max: 5, class: 'form-control' %>
-      </div>
-    </div>
-
     <hr>
 
     <div class='row'>
       <div class='col-md-8 col-centered col-text-centered'>
-        <h3>Datos del profesor coordinador</h3>
+        <h3>Datos de estudiante y profesor</h3>
       </div>
     </div>
+
+    <br>
+
     <div class='row'>
       <div class='col-md-6 form-group'>
-        <strong><%= f.label :professor_name, 'Nombre' %></strong>
-        <input type='text'  id='professor_name' name='project[professor_name]' class='form-control'>
+        <strong><%= f.label :student_id, 'Correo del estudiante responsable' %></strong>
+        <%= f.email_field :student_id, class: 'form-control' %>
       </div>
       <div class='col-md-6 form-group'>
-        <strong>
-          <%= f.label :professor_id, 'Email' %>
-          <small>(Institucional)</small>
-        </strong>
+        <strong><%= f.label :student_name, 'Nombre del estudiante'%></strong>
+        <input type='text'  id='student_name' name='project[student_name]' class='form-control'>
+      </div>
+      <div class='col-md-6 form-group'>
+        <strong><%= f.label :professor_id, 'Correo del profesor responsable' %></strong>
         <%= f.email_field :professor_id, class: 'form-control' %>
+      </div>
+      <div class='col-md-6 form-group'>
+        <strong><%= f.label :professor_name, 'Nombre del profesor'%></strong>
+        <input type='text'  id='professor_name' name='project[professor_name]' class='form-control'>
       </div>
     </div>
   <% else %> <!-- Edit -->
     <div class='row'>
+      <div class='col-md-3 form-group'>
+        <strong><%= f.label :selection_score, 'Calificación para selección'%></strong>
+        <%= f.text_field :selection_score, class: 'form-control' %>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class='row'>
       <div class='col-md-8 col-centered col-text-centered'>
         <h3>Datos del alumno responsable</h3>
       </div>
     </div>
+
+    <br>
+
     <div class='row'>
-      <div class='col-md-5 form-group'>
-        <strong>
-          <%= f.label :student_name, 'Nombre' %>
-          <small>(Como aparecerá en el reconocimiento oficial)</small>
-        </strong>
+      <div class='col-md-4 form-group'>
+        <strong><%= f.label :student_name, 'Nombre'%> </strong>
         <input type='text' disabled='true' value='<%= @project.student.user.name %>' class='form-control'>
       </div>
-      <div class='col-md-5 form-group'>
-        <strong>
-          <%= f.label :student_email, 'Email' %>
-          <small>(Institucional)</small>
-        </strong>
+      <div class='col-md-4 form-group'>
+        <strong><%= f.label :student_email, 'Mail'%> </strong>
         <input type='text' disabled='true' value='<%= @project.student.user.email %>' class='form-control'>
       </div>
-      <div class='col-md-2 form-group'>
-        <strong><%= f.label :team_size, 'No. de integrantes' %></strong>
-        <input type='text' disabled='true' value='<%= @project.team_size %>' class='form-control'>
+      <div class='col-md-4 form-group'>
+        <strong><%= f.label :major, 'Carrera'%> </strong>
+        <input type='text' disabled='true' value='<%= @project.student.major.name %>' class='form-control'>
       </div>
     </div>
 
@@ -193,18 +181,17 @@
       </div>
     </div>
     <div class='row'>
-      <div class='col-md-6 form-group'>
-        <strong>
-          <%= f.label :professor_name, 'Nombre' %>
-        </strong>
+      <div class='col-md-4 form-group'>
+        <strong><%= f.label :professor_name, 'Nombre'%> </strong>
         <input type='text' disabled='true' value='<%= @project.professor.user.name %>' class='form-control'>
       </div>
-      <div class='col-md-6 form-group'>
-        <strong>
-          <%= f.label :professor_email, 'Mail' %>
-          <small>(Institucional)</small>
-        </strong>
+      <div class='col-md-4 form-group'>
+        <strong><%= f.label :professor_email, 'Mail'%> </strong>
         <input type='text' disabled='true' value='<%= @project.professor.user.email %>' class='form-control'>
+      </div>
+      <div class='col-md-4 form-group'>
+        <strong><%= f.label :major, 'Departamento'%> </strong>
+        <input type='text' disabled='true' value='<%= @project.professor.department.name %>' class='form-control'>
       </div>
     </div>
   <% end %>
@@ -213,10 +200,10 @@
 
   <div class='row'>
     <div class='col-md-6'>
-      <%= link_to 'Cancelar', common_projects_path, class: 'btn btn-light btn-block' %>
+      <%= link_to 'Cancelar', common_projects_path, { class: 'btn btn-default', style: 'width: 100%; border-color: #DCDCDC;' } %>
     </div>
     <div class='col-md-6'>
-      <%= f.submit 'Guardar', class: 'btn btn-primary btn-block', data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
+      <%= f.submit 'Guardar', class: 'btn btn-primary', style: 'width: 100%;', data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
     </div>
   </div>
   <br>

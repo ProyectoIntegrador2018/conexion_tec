@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2019_10_29_214816) do
     t.date "registry_limit"
     t.date "video_open"
     t.date "video_limit"
+    t.date "starting_date"
+    t.date "ending_date"
   end
 
   create_table "evaluation_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
