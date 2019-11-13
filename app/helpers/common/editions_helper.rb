@@ -4,6 +4,6 @@ module Common::EditionsHelper
   end
 
   def parse_date(date)
-    Date.strptime(date, '%d-%m-%Y')
+    date.present? ? Date.strptime(date, '%d/%m/%Y') : ''
   end
 end

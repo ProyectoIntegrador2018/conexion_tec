@@ -57,12 +57,12 @@ class Common::EditionsController < Common::AdminCommitteeBaseController
     registry_limit = edition_params['registry_limit']
 
     @edition.number = edition_params['number']
-    @edition.video_open = video_open.present? ? parse_date(video_open) : nil
-    @edition.video_limit = video_limit.present? ? parse_date(video_limit) : nil
-    @edition.ending_date = ending_date.present? ? parse_date(ending_date) : nil
-    @edition.starting_date = starting_date.present? ? parse_date(starting_date) : nil
-    @edition.registry_open = registry_open.present? ? parse_date(registry_open) : nil
-    @edition.registry_limit = registry_limit.present? ? parse_date(registry_limit) : nil
+    @edition.video_open = parse_date(video_open)
+    @edition.video_limit = parse_date(video_limit)
+    @edition.ending_date = parse_date(ending_date)
+    @edition.starting_date = parse_date(starting_date)
+    @edition.registry_open = parse_date(registry_open)
+    @edition.registry_limit = parse_date(registry_limit)
   end
 
   def set_edition
