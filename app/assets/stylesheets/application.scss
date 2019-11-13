@@ -117,11 +117,20 @@ body {
 @import "main_screen";
 @import "project/*";
 
-.col-centered{
+.col-centered {
 	float: none;
 	margin: 0 auto;
 }
 
-.col-text-centered{
+.col-text-centered {
 	text-align: center;
+}
+
+th {
+	text-align: center;
+}
+
+td.table-cell {
+	text-align: center;
+	vertical-align: middle;
 }
