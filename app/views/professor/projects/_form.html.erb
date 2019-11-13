@@ -6,7 +6,7 @@
     </div>
     <div class='col-md-6 form-group'>
       <strong><%= f.label :category, 'Categoría' %></strong>
-      <%= f.select :category_id, Category.pluck(:name, :id),{}, class: 'form-control' %>
+      <%= f.select :category_id, Category.pluck(:name, :id), {}, class: 'form-control'  %>
     </div>
     <div class='col-md-6 form-group'>
       <strong><%= f.label :field, 'Área temática' %></strong>
@@ -20,21 +20,13 @@
       <strong><%= f.label :client, 'Cliente del proyecto' %></strong>
       <%= f.select :client_id, Client.pluck(:client, :id), {}, class: 'form-control' %>
     </div>
-    <div class='col-md-3 form-group'>
+    <div class='col-md-6 form-group'>
       <strong><%= f.label :campus_id, 'Campus' %></strong>
       <%= f.select :campus_id, Campus.pluck(:name, :id), {}, class: 'form-control' %>
     </div>
     <div class='col-md-6 form-group'>
       <strong><%= f.label :video_url, 'Liga del vídeo' %></strong>
       <%= f.text_field :video_url, class: 'form-control' %>
-    </div>
-    <div class='col-md-3 form-group'>
-      <strong><%= f.label :team_size, 'No. de integrantes' %></strong>
-    <% if @project.professor.nil? %> <!-- New -->
-      <%= f.number_field :team_size, max: 5, class: 'form-control' %>
-    <% else %>
-      <input type='text' id='team_size' class='form-control' value='<%= @project.team_size %>' disabled='true'>
-    <% end %>
     </div>
     <div class='col-md-6 form-group col-text-centered'>
       <strong><%= f.label :semestrei, 'Semestre i' %></strong>
@@ -119,48 +111,100 @@
 
   <hr>
 
-  <div class='row'>
-    <div class='col-md-8 col-centered col-text-centered'>
-      <h3>Datos del profesor coordinador</h3>
-    </div>
-  </div>
-
-  <% if @project.professor.nil? %> <!-- New -->
+  <% if @url == common_projects_path %> <!-- New -->
     <div class='row'>
-      <div class='col-md-4 form-group'>
-        <strong><%= f.label :name_professor, 'Nombre' %></strong>
-        <input type='text' id='name_professor' name='project[name_professor]' class='form-control'>
+      <div class='col-md-8 col-centered col-text-centered'>
+        <h3>Datos del alumno responsable</h3>
       </div>
-      <div class='col-md-4 form-group'>
+    </div>
+    <div class='row'>
+      <div class='col-md-5 form-group'>
         <strong>
-          <%= f.label :email_professor, 'Email' %>
+          <%= f.label :student_name, 'Nombre' %>
+          <small>(Como aparecerá en el reconocimiento oficial)</small>
+        </strong>
+        <input type='text'  id='student_name' name='project[student_name]' class='form-control'>
+      </div>
+      <div class='col-md-5 form-group'>
+        <strong>
+          <%= f.label :student_id, 'Email' %>
           <small>(Institucional)</small>
         </strong>
-        <input type='text' id='email_professor' name='project[email_professor]' class='form-control'>
+        <%= f.email_field :student_id, class: 'form-control' %>
       </div>
-      <div class='col-md-4 form-group'>
-        <strong><%= f.label :department_professor, 'Departamento' %></strong>
-        <select id='department' name='project[department_professor]' class='form-control'>
-          <% Department.all.each do |department| %>
-            <option value='<%= department.id %>'>
-              <%= department.name %>
-            </option>
-          <% end %>
-        </select>
+      <div class='col-md-2 form-group'>
+        <strong><%= f.label :team_size, 'No. de integrantes' %></strong>
+        <%= f.number_field :team_size, max: 5, class: 'form-control' %>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class='row'>
+      <div class='col-md-8 col-centered col-text-centered'>
+        <h3>Datos del profesor coordinador</h3>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-6 form-group'>
+        <strong><%= f.label :professor_name, 'Nombre' %></strong>
+        <input type='text'  id='professor_name' name='project[professor_name]' class='form-control'>
+      </div>
+      <div class='col-md-6 form-group'>
+        <strong>
+          <%= f.label :professor_id, 'Email' %>
+          <small>(Institucional)</small>
+        </strong>
+        <%= f.email_field :professor_id, class: 'form-control' %>
       </div>
     </div>
   <% else %> <!-- Edit -->
     <div class='row'>
+      <div class='col-md-8 col-centered col-text-centered'>
+        <h3>Datos del alumno responsable</h3>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-5 form-group'>
+        <strong>
+          <%= f.label :student_name, 'Nombre' %>
+          <small>(Como aparecerá en el reconocimiento oficial)</small>
+        </strong>
+        <input type='text' disabled='true' value='<%= @project.student.user.name %>' class='form-control'>
+      </div>
+      <div class='col-md-5 form-group'>
+        <strong>
+          <%= f.label :student_email, 'Email' %>
+          <small>(Institucional)</small>
+        </strong>
+        <input type='text' disabled='true' value='<%= @project.student.user.email %>' class='form-control'>
+      </div>
+      <div class='col-md-2 form-group'>
+        <strong><%= f.label :team_size, 'No. de integrantes' %></strong>
+        <input type='text' disabled='true' value='<%= @project.team_size %>' class='form-control'>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class='row'>
+      <div class='col-md-8 col-centered col-text-centered'>
+        <h3>Datos del profesor coordinador</h3>
+      </div>
+    </div>
+    <div class='row'>
       <div class='col-md-6 form-group'>
-        <strong><%= f.label :name_professor, 'Nombre' %></strong>
-        <input type='text' id='name_professor' class='form-control' value='<%= @project.professor.user.name %>' disabled='true'>
+        <strong>
+          <%= f.label :professor_name, 'Nombre' %>
+        </strong>
+        <input type='text' disabled='true' value='<%= @project.professor.user.name %>' class='form-control'>
       </div>
       <div class='col-md-6 form-group'>
         <strong>
-          <%= f.label :email_professor, 'Email' %>
+          <%= f.label :professor_email, 'Mail' %>
           <small>(Institucional)</small>
         </strong>
-        <input type='text' id='email_professor' class='form-control' value='<%= @project.professor.user.email %>' disabled='true'>
+        <input type='text' disabled='true' value='<%= @project.professor.user.email %>' class='form-control'>
       </div>
     </div>
   <% end %>
@@ -169,7 +213,7 @@
 
   <div class='row'>
     <div class='col-md-6'>
-      <%= link_to 'Cancelar', student_projects_path, class: 'btn btn-light btn-block' %>
+      <%= link_to 'Cancelar', common_projects_path, class: 'btn btn-light btn-block' %>
     </div>
     <div class='col-md-6'>
       <%= f.submit 'Guardar', class: 'btn btn-primary btn-block', data: { confirm: '¿Estás seguro que deseas guardar los cambios?' } %>
