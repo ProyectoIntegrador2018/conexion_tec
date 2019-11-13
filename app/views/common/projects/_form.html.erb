@@ -24,11 +24,11 @@
       <strong><%= f.label :video_url, 'Video de Youtube'%></strong>
       <%= f.text_field :video_url, class: 'form-control' %>
     </div>
-    <div class='col-md-6 form-group' style='text-align: center;'>
+    <div class='col-md-6 form-group col-text-centered'>
       <strong><%= f.label :semestrei, 'Semestre i' %></strong>
       <%= f.check_box :semestrei %>
     </div>
-    <div class='col-md-6 form-group' style='text-align: center;'>
+    <div class='col-md-6 form-group col-text-centered'>
       <strong><%= f.label :social_impact, 'Impacto Social' %></strong>
       <%= f.check_box :social_impact %>
     </div>
@@ -41,10 +41,13 @@
   <hr>
 
   <div class='row'>
-    <div class='col-md-8 col-centered' style='text-align: center;'>
+    <div class='col-md-8 col-centered col-text-centered'>
       <h3>Impacto Social</h3>
     </div>
   </div>
+
+  <br>
+
   <div class='row'>
     <% if @project.social_impact %>
       <div class='col-md-12 form-group'>
@@ -78,10 +81,13 @@
   <hr>
 
   <div class='row'>
-    <div class='col-md-8 col-centered' style='text-align: center;'>
+    <div class='col-md-8 col-centered col-text-centered'>
       <h3>Abstract</h3>
     </div>
   </div>
+
+  <br>
+
   <div class='row'>
     <div class='col-md-12 form-group'>
       <strong><%= f.label :abstract_problem, 'Problema'%></strong>
@@ -108,7 +114,14 @@
   <% if @url == common_projects_path %> <!-- New -->
     <hr>
 
-    <h3 style='text-align: center;'>Datos de estudiante y profesor</h3>
+    <div class='row'>
+      <div class='col-md-8 col-centered col-text-centered'>
+        <h3>Datos de estudiante y profesor</h3>
+      </div>
+    </div>
+
+    <br>
+
     <div class='row'>
       <div class='col-md-6 form-group'>
         <strong><%= f.label :student_id, 'Correo del estudiante responsable' %></strong>
@@ -138,10 +151,13 @@
     <hr>
 
     <div class='row'>
-      <div class='col-md-8 col-centered' style='text-align: center;'>
+      <div class='col-md-8 col-centered col-text-centered'>
         <h3>Datos del alumno responsable</h3>
       </div>
     </div>
+
+    <br>
+
     <div class='row'>
       <div class='col-md-4 form-group'>
         <strong><%= f.label :student_name, 'Nombre'%> </strong>
@@ -160,7 +176,7 @@
     <hr>
 
     <div class='row'>
-      <div class='col-md-8 col-centered' style='text-align: center;'>
+      <div class='col-md-8 col-centered col-text-centered'>
         <h3>Datos del profesor coordinador</h3>
       </div>
     </div>
