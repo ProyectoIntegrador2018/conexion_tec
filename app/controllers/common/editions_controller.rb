@@ -49,20 +49,13 @@ class Common::EditionsController < Common::AdminCommitteeBaseController
   private
 
   def set_params
-    video_open = edition_params['video_open']
-    video_limit = edition_params['video_limit']
-    ending_date = edition_params['ending_date']
-    starting_date = edition_params['starting_date']
-    registry_open = edition_params['registry_open']
-    registry_limit = edition_params['registry_limit']
-
     @edition.number = edition_params['number']
-    @edition.video_open = parse_date(video_open)
-    @edition.video_limit = parse_date(video_limit)
-    @edition.ending_date = parse_date(ending_date)
-    @edition.starting_date = parse_date(starting_date)
-    @edition.registry_open = parse_date(registry_open)
-    @edition.registry_limit = parse_date(registry_limit)
+    @edition.video_open = parse_date(edition_params['video_open'])
+    @edition.video_limit = parse_date(edition_params['video_limit'])
+    @edition.ending_date = parse_date(edition_params['ending_date'])
+    @edition.starting_date = parse_date(edition_params['starting_date'])
+    @edition.registry_open = parse_date(edition_params['registry_open'])
+    @edition.registry_limit = parse_date(edition_params['registry_limit'])
   end
 
   def set_edition
