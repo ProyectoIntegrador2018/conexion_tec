@@ -1,27 +1,47 @@
 <%= form_for @edition, url: @url do |f|  %>
   <div class='row'>
-    <div class='col-md-2 form-group'>
+    <div class='col-md-2 form-group col-text-centered'>
       <%= f.label :number, 'Número de edición' %>
       <%= f.number_field :number, class: 'form-control' %>
     </div>
-    <div class='col-md-5'>
-      <%= f.label 'Fechas de registro' %>
-      <div class='input-daterange input-group' id='datepicker'>
-        <input type='text' class='input-sm form-control' name='edition[registry_open]' value='<%= @edition.registry_open.strftime('%d/%m/%Y') if @edition.registry_open.present? %>' />
-        <span class='input-group-addon'></span>
-        <input type='text' class='input-sm form-control' name='edition[registry_limit]' value='<%= @edition.registry_limit.strftime('%d/%m/%Y') if @edition.registry_limit.present? %>' />
+    <div class='col-md-4 form-group col-text-centered'>
+      <%= f.label :starting_date, 'Fechas del evento' %>
+      <div class='input-group'>
+        <%= f.text_field :starting_date, class: 'form-control', data:{ provide: 'datepicker' } %>
+        <%= f.text_field :ending_date, class: 'form-control', data:{ provide: 'datepicker' } %>
       </div>
     </div>
+  </div>
 
-    <div class='col-md-5'>
-      <%= f.label 'Fechas de video' %>
-      <div class='input-daterange input-group' id='datepicker'>
-        <input type='text' class='input-sm form-control' name='edition[video_open]' value='<%= @edition.video_open.strftime('%d/%m/%Y') if @edition.video_open.present? %>' />
-        <span class='input-group-addon'></span>
-        <input type='text' class='input-sm form-control' name='edition[video_limit]' value='<%= @edition.video_limit.strftime('%d/%m/%Y') if @edition.video_limit.present? %>' />
+  <hr>
+
+  <div class='row'>
+    <div class='col-md-8 col-centered col-text-centered'>
+      <h3>Fechas límite</h3>
+    </div>
+  </div>
+
+  <br>
+
+  <div class='row'>
+    <div class='col-md-4 form-group col-text-centered'>
+      <%= f.label :registry_open, 'Registro de proyecto' %>
+      <div class='input-group'>
+        <%= f.text_field :registry_open, class: 'form-control', data: { provide: 'datepicker' } %>
+        <%= f.text_field :registry_limit, class: 'form-control', data: { provide: 'datepicker' } %>
       </div>
     </div>
-  </div><br />
+    <div class='col-md-4 form-group col-text-centered'>
+      <%= f.label :video_open, 'Registro de liga del vídeo' %>
+      <div class='input-group'>
+        <%= f.text_field :video_open, class: 'form-control', data: { provide: 'datepicker' } %>
+        <%= f.text_field :video_limit, class: 'form-control', data: { provide: 'datepicker' } %>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
 
   <div class='row'>
     <div class='col-md-6'>
@@ -33,11 +53,5 @@
   </div>
 <% end %>
 
-<script type='text/javascript'>
-  $(document).ready(function(){
-    $('.input-daterange').datepicker({
-      autoclose: true,
-      format: 'dd/mm/yyyy'
-    });
-  });
-</script>
+<br>
+<br>
