@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_155454) do
+ActiveRecord::Schema.define(version: 2019_11_14_172754) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2019_11_14_155454) do
     t.integer "number"
     t.date "project_registration_starting_date"
     t.date "project_registration_ending_date"
-    t.date "video_open"
-    t.date "video_limit"
+    t.date "video_link_registration_starting_date"
+    t.date "video_link_registration_ending_date"
     t.date "starting_date"
     t.date "ending_date"
     t.date "project_edition_starting_date"
