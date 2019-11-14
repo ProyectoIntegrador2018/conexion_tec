@@ -50,8 +50,6 @@ class Common::EditionsController < Common::AdminCommitteeBaseController
 
   def set_params
     @edition.number = edition_params['number']
-    @edition.video_open = parse_date(edition_params['video_open'])
-    @edition.video_limit = parse_date(edition_params['video_limit'])
     @edition.ending_date = parse_date(edition_params['ending_date'])
     @edition.starting_date = parse_date(edition_params['starting_date'])
     @edition.project_edition_ending_date = \
@@ -62,6 +60,10 @@ class Common::EditionsController < Common::AdminCommitteeBaseController
       parse_date(edition_params['project_registration_ending_date'])
     @edition.project_registration_starting_date = \
       parse_date(edition_params['project_registration_starting_date'])
+    @edition.video_link_registration_ending_date = \
+      parse_date(edition_params['video_link_registration_ending_date'])
+    @edition.video_link_registration_starting_date = \
+      parse_date(edition_params['video_link_registration_starting_date'])
   end
 
   def set_edition
@@ -70,13 +72,13 @@ class Common::EditionsController < Common::AdminCommitteeBaseController
 
   def edition_params
     params.require(:edition).permit(:number,
-                                    :video_open,
-                                    :video_limit,
                                     :ending_date,
                                     :starting_date,
                                     :project_edition_ending_date,
                                     :project_edition_starting_date,
                                     :project_registration_ending_date,
-                                    :project_registration_starting_date)
+                                    :project_registration_starting_date,
+                                    :video_link_registration_ending_date,
+                                    :video_link_registration_starting_date)
   end
 end
