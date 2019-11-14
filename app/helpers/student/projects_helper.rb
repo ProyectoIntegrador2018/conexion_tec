@@ -8,8 +8,10 @@ module Student::ProjectsHelper
     can_register = true
     if starting_date
       can_register &= starting_date <= today
+    end
     if ending_date
       can_register &= today <= ending_date
+    end
     can_register
   end
 end
