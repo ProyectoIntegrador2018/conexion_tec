@@ -156,7 +156,7 @@ Category.create(name: "Desarrollo de Software")
 Category.create(name: "Investigación y Desarrollo de Propuestas de Mejora")
 Category.create(name: "Productos o Servicios para Emprendimiento de Base Tecnológica")
 
-Edition.create(number: 1, registry_open: Date.today, registry_limit: Date.today + 30)
+Edition.create(number: 1, project_registration_starting_date: Date.today, project_registration_ending_date: Date.today + 30)
 
 student = Student.create(major_id: Major.first.id)
 User.create(

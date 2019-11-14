@@ -18,7 +18,7 @@
         <% end %>
         <% end %>
         </td>
-        <% if Time.now > project.edition.registry_open && Time.now < project.edition.registry_limit %>
+        <% if Time.now > project.edition.project_registration_starting_date && Time.now < project.edition.project_registration_ending_date %>
           <td>
             <%= link_to 'Ver/Editar Proyecto', edit_professor_project_path(project) %><br />
           </td>

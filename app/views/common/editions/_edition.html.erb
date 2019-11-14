@@ -3,9 +3,9 @@
     <%= edition.number %>
   </td>
   <td class='table-cell'>
-    <%= edition.registry_open.strftime('%d/%m/%Y') if edition.registry_open.present? %>
+    <%= edition.project_registration_starting_date.strftime('%d/%m/%Y') if edition.project_registration_starting_date.present? %>
     -
-    <%= edition.registry_limit.strftime('%d/%m/%Y') if edition.registry_limit.present? %>
+    <%= edition.project_registration_ending_date.strftime('%d/%m/%Y') if edition.project_registration_ending_date.present? %>
   </td>
   <td class='table-cell'>
     <%= edition.video_open.strftime('%d/%m/%Y') if edition.video_open.present? %>

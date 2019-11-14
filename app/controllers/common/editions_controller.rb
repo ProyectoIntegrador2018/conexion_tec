@@ -54,8 +54,10 @@ class Common::EditionsController < Common::AdminCommitteeBaseController
     @edition.video_limit = parse_date(edition_params['video_limit'])
     @edition.ending_date = parse_date(edition_params['ending_date'])
     @edition.starting_date = parse_date(edition_params['starting_date'])
-    @edition.registry_open = parse_date(edition_params['registry_open'])
-    @edition.registry_limit = parse_date(edition_params['registry_limit'])
+    @edition.project_registration_ending_date = \
+      parse_date(edition_params['project_registration_ending_date'])
+    @edition.project_registration_starting_date = \
+      parse_date(edition_params['project_registration_starting_date'])
   end
 
   def set_edition
@@ -68,7 +70,7 @@ class Common::EditionsController < Common::AdminCommitteeBaseController
                                     :video_limit,
                                     :ending_date,
                                     :starting_date,
-                                    :registry_open,
-                                    :registry_limit)
+                                    :project_registration_ending_date,
+                                    :project_registration_starting_date)
   end
 end
