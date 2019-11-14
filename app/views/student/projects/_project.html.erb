@@ -23,6 +23,8 @@
     <%= project.selection_score.present? ? project.selection_score : 'Por calificar' %>
   </td>
   <td class='table-cell'>
-    <%= link_to 'Editar', edit_student_project_path(project), class: 'btn btn-info' %>
+    <% if can_edit_project %>
+      <%= link_to 'Editar', edit_student_project_path(project), class: 'btn btn-info' %>
+    <% end %>
   </td>
 </tr>

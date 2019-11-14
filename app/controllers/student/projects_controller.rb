@@ -1,4 +1,6 @@
 class Student::ProjectsController < Student::BaseController
+  include Student::ProjectsHelper
+
   before_action :set_project, only: [:new, :show, :edit, :update]
 
   ITESM_MAIL = /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(itesm|tec)\.mx$/
@@ -44,6 +46,9 @@ class Student::ProjectsController < Student::BaseController
   end
 
   def edit
+    if !can_edit_project
+      redirect_to action: 'index'
+    end
     @url = student_project_path
   end
 
