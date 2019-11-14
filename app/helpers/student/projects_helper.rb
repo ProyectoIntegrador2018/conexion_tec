@@ -6,12 +6,8 @@ module Student::ProjectsHelper
     today = Date.today
 
     can_register = true
-    if starting_date
-      can_register &= starting_date <= today
-    end
-    if ending_date
-      can_register &= today <= ending_date
-    end
+    can_register &= starting_date ? starting_date <= today : true
+    can_register &= ending_date ? today <= ending_date : true
     can_register
   end
 end
