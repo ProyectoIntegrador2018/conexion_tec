@@ -1,18 +1,25 @@
 class Student::ProjectsController < Student::BaseController
+  include Student::ProjectsHelper
+
   before_action :set_project, only: [:new, :show, :edit, :update]
 
   ITESM_MAIL = /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(itesm|tec)\.mx$/
-
-  def show
-  end
 
   def index
     @projects = Project.where(student_id: current_user.userable_id)
     @projects = @projects.sort_by { |project| project.name.downcase }
   end
 
+  def show
+  end
+
   def new
+    redirect_to action: 'index' unless can_register_project
     @url = student_projects_path
+  end
+
+  def edit
+    @url = student_project_path
   end
 
   def create
@@ -43,10 +50,6 @@ class Student::ProjectsController < Student::BaseController
     end
   end
 
-  def edit
-    @url = student_project_path
-  end
-
   def update
     if @project.update_attributes(project_params)
       flash[:success] = 'Información del proyecto actualizada'
@@ -56,6 +59,8 @@ class Student::ProjectsController < Student::BaseController
       render 'edit'
     end
   end
+
+  private
 
   def create_project(professor)
     project = Project.new(project_params.except(:email_professor,
@@ -96,9 +101,6 @@ class Student::ProjectsController < Student::BaseController
       render 'new'
     end
   end
-
-
-  private
 
   def set_project
     @project = params[:id].present? ? Project.find(params[:id]) : Project.new
