@@ -57,16 +57,16 @@
       </div>
     </div>
     <div class='col-md-4 form-group col-text-centered'>
-      <%= f.label :video_open, 'Registro de liga del vídeo' %>
+      <%= f.label :video_link_registration_starting_date, 'Registro de liga del vídeo' %>
       <div class='input-group'>
-        <%= f.text_field :video_open,
+        <%= f.text_field :video_link_registration_starting_date,
             class: 'form-control',
             data: { provide: 'datepicker', date_format: 'd/m/yyyy' },
-            value: @edition.video_open.present? ? @edition.video_open.strftime('%d/%m/%Y') : '' %>
-        <%= f.text_field :video_limit,
+            value: @edition.video_link_registration_starting_date.present? ? @edition.video_link_registration_starting_date.strftime('%d/%m/%Y') : '' %>
+        <%= f.text_field :video_link_registration_ending_date,
             class: 'form-control',
             data: { provide: 'datepicker', date_format: 'd/m/yyyy' },
-            value: @edition.video_limit.present? ? @edition.video_limit.strftime('%d/%m/%Y') : '' %>
+            value: @edition.video_link_registration_ending_date.present? ? @edition.video_link_registration_ending_date.strftime('%d/%m/%Y') : '' %>
       </div>
     </div>
   </div>
