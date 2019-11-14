@@ -1,20 +1,28 @@
 <tr>
-  <tr scope="row">
-    <td><%= project.name %></td>
-    <td>
-      <%= project.field.name %><br />
-      <small><%= "Tipo de proyecto: #{project.expertise_area.area}" %></small><br />
-      <small><%= "Categoría: #{project.category.name}" %></small>
-    </td>
-    <td><%= project.video_url.present? ? project.video_url : "Pendiente"%></td>
-    <td><%= project.status.status %></td>
-    <td><%= project.selection_score.present? ? project.selection_score : "Pendiente de calificar" %></td>
-    <% if Time.now > project.edition.registry_open && Time.now < project.edition.registry_limit %>
-      <td>
-        <%= link_to 'Editar', edit_student_project_path(project) %><br />
-      </td>
-    <% end %>
-  </tr>
-
+  <td class='table-cell'>
+    <%= project.name %>
+  </td>
+  <td class='table-cell'>
+    <%= project.field.name %>
+    <br>
+    <small>
+      <%= "Tipo de proyecto: #{project.expertise_area.area}" %>
+    </small>
+    <br>
+    <small>
+      <%= "Categoría: #{project.category.name}" %>
+    </small>
+  </td>
+  <td class='table-cell'>
+    <%= project.video_url.present? ? project.video_url : 'Pendiente' %>
+  </td>
+  <td class='table-cell'>
+    <%= project.status.status %>
+  </td>
+  <td class='table-cell'>
+    <%= project.selection_score.present? ? project.selection_score : 'Por calificar' %>
+  </td>
+  <td class='table-cell'>
+    <%= link_to 'Editar', edit_student_project_path(project), class: 'btn btn-info' %>
+  </td>
 </tr>
-
