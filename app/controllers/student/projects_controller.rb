@@ -19,6 +19,7 @@ class Student::ProjectsController < Student::BaseController
   end
 
   def edit
+    redirect_to action: 'index' unless can_edit_project
     @url = student_project_path
   end
 

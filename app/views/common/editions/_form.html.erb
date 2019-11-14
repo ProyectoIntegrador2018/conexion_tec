@@ -44,6 +44,19 @@
       </div>
     </div>
     <div class='col-md-4 form-group col-text-centered'>
+      <%= f.label :project_edition_starting_date, 'Modificación de proyecto' %>
+      <div class='input-group'>
+        <%= f.text_field :project_edition_starting_date,
+            class: 'form-control',
+            data: { provide: 'datepicker', date_format: 'd/m/yyyy' },
+            value: @edition.project_edition_starting_date.present? ? @edition.project_edition_starting_date.strftime('%d/%m/%Y') : '' %>
+        <%= f.text_field :project_edition_ending_date,
+            class: 'form-control',
+            data: { provide: 'datepicker', date_format: 'd/m/yyyy' },
+            value: @edition.project_edition_ending_date.present? ? @edition.project_edition_ending_date.strftime('%d/%m/%Y') : '' %>
+      </div>
+    </div>
+    <div class='col-md-4 form-group col-text-centered'>
       <%= f.label :video_open, 'Registro de liga del vídeo' %>
       <div class='input-group'>
         <%= f.text_field :video_open,
