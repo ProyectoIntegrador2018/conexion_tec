@@ -3,9 +3,19 @@
     <%= edition.number %>
   </td>
   <td class='table-cell'>
+    <%= edition.starting_date.strftime('%d/%m/%Y') if edition.starting_date.present? %>
+    -
+    <%= edition.ending_date.strftime('%d/%m/%Y') if edition.ending_date.present? %>
+  </td>
+  <td class='table-cell'>
     <%= edition.project_registration_starting_date.strftime('%d/%m/%Y') if edition.project_registration_starting_date.present? %>
     -
     <%= edition.project_registration_ending_date.strftime('%d/%m/%Y') if edition.project_registration_ending_date.present? %>
+  </td>
+  <td class='table-cell'>
+    <%= edition.project_edition_starting_date.strftime('%d/%m/%Y') if edition.project_edition_starting_date.present? %>
+    -
+    <%= edition.project_edition_ending_date.strftime('%d/%m/%Y') if edition.project_edition_ending_date.present? %>
   </td>
   <td class='table-cell'>
     <%= edition.video_open.strftime('%d/%m/%Y') if edition.video_open.present? %>
