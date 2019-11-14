@@ -40,7 +40,7 @@
 		</div>
 		<div class='col-md-4 form-group'>
 			<%= f.label :description, 'Calificación' %>
-			<%= f.select :description, [*1..10], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
+			<%= f.select :description, [*0..2], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
 		</div>
 
 	</div>
@@ -61,7 +61,7 @@
 		</div>
 		<div class='col-md-1 form-group'>
 			<%= f.label :abstract_problem, 'Calificación' %>
-			<%= f.select :abstract_problem, [*1..10], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
+			<%= f.select :abstract_problem, [*0..2], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
 		</div>
 		<div class='col-md-11 form-group'>
 			<strong>Metodología</strong>
@@ -71,7 +71,7 @@
 		</div>
 		<div class='col-md-1 form-group'>
 			<%= f.label :abstract_methodology, 'Calificación' %>
-			<%= f.select :abstract_methodology, [*1..10], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
+			<%= f.select :abstract_methodology, [*0..2], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
 		</div>
 		<div class='col-md-11 form-group'>
 			<strong>Factibilidad</strong>
@@ -81,7 +81,7 @@
 		</div>
 		<div class='col-md-1 form-group'>
 			<%= f.label :abstract_feasibility, 'Calificación' %>
-			<%= f.select :abstract_feasibility, [*1..10], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
+			<%= f.select :abstract_feasibility, [*0..2], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
 		</div>
 		<div class='col-md-11 form-group'>
 			<strong>Resultados</strong>
@@ -91,7 +91,7 @@
 		</div>
 		<div class='col-md-1 form-group'>
 			<%= f.label :abstract_results, 'Calificación' %>
-			<%= f.select :abstract_results, [*1..10], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
+			<%= f.select :abstract_results, [*0..2], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
 		</div>
 		<div class='col-md-11 form-group'>
 			<strong>Impacto</strong>
@@ -101,11 +101,11 @@
 		</div>
 		<div class='col-md-1 form-group'>
 			<%= f.label :abstract_impact, 'Calificación' %>
-			<%= f.select :abstract_impact, [*1..10], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
+			<%= f.select :abstract_impact, [*0..2], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
 		</div>
 		<div class='col-md-4 form-group'>
 			<%= f.label :abstract, 'Calificación del abstract' %>
-			<%= f.select :abstract, [*1..10], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
+			<%= f.select :abstract, [*0..2], { include_blank: false }, :style => 'width:70px', class: 'form-control' %>
 		</div>
 	</div>
 
