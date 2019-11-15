@@ -54,8 +54,12 @@ class Common::EditionsController < Common::AdminCommitteeBaseController
     @edition.starting_date = parse_date(edition_params['starting_date'])
     @edition.project_edition_ending_date = \
       parse_date(edition_params['project_edition_ending_date'])
+    @edition.project_approval_ending_date = \
+      parse_date(edition_params['project_approval_ending_date'])
     @edition.project_edition_starting_date = \
       parse_date(edition_params['project_edition_starting_date'])
+    @edition.project_approval_starting_date = \
+      parse_date(edition_params['project_approval_starting_date'])
     @edition.project_registration_ending_date = \
       parse_date(edition_params['project_registration_ending_date'])
     @edition.project_registration_starting_date = \
@@ -75,7 +79,9 @@ class Common::EditionsController < Common::AdminCommitteeBaseController
                                     :ending_date,
                                     :starting_date,
                                     :project_edition_ending_date,
+                                    :project_approval_ending_date,
                                     :project_edition_starting_date,
+                                    :project_approval_starting_date,
                                     :project_registration_ending_date,
                                     :project_registration_starting_date,
                                     :video_link_registration_ending_date,

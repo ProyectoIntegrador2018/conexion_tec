@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_172754) do
+ActiveRecord::Schema.define(version: 2019_11_14_234538) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2019_11_14_172754) do
     t.date "ending_date"
     t.date "project_edition_starting_date"
     t.date "project_edition_ending_date"
+    t.date "project_approval_starting_date"
+    t.date "project_approval_ending_date"
   end
 
   create_table "evaluation_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
