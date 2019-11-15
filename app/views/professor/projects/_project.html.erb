@@ -1,29 +1,36 @@
 <tr>
-      <tr scope="row">
-        <td><%= project.name %></td>
-        <td>
-          <%= project.field.name %><br />
-          <small><%= "Tipo de proyecto: #{project.expertise_area.area}" %></small><br />
-          <small><%= "Categoría: #{project.category.name}" %></small>
-        </td>
-        <td><%= project.video_url.present? ? project.video_url : "Pendiente"%></td>
-        <td><%= project.status.status %></td>
-        <td>
-        <% if project.status.in?(accepted_statuses) %>
-        <%= link_to professor_approve_project_path(project), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar este proyecto?'} do %>
-					<span style="color: green; margin-right: 25px;"><i class="fa fa-check"></i> Aprobar</span>
-				<% end %>
-        <%= link_to professor_reject_project_path(project), method: :reject, data: { confirm: '¿Estás seguro que deseas rechazar este proyecto?'} do %>
-          <span style="color: red"><i class="fa fa-times"></i> Rechazar</span>
-        <% end %>
-        <% end %>
-        </td>
-        <% if Time.now > project.edition.project_registration_starting_date && Time.now < project.edition.project_registration_ending_date %>
-          <td>
-            <%= link_to 'Ver/Editar Proyecto', edit_professor_project_path(project) %><br />
-          </td>
-        <% end %>
-      </tr>
-
+  <td class='table-cell'>
+    <%= project.name %>
+  </td>
+  <td class='table-cell'>
+    <%= project.field.name %>
+    <br>
+    <small>
+      <%= "Tipo de proyecto: #{project.expertise_area.area}" %>
+    </small>
+    <br>
+    <small><%= "Categoría: #{project.category.name}" %></small>
+  </td>
+  <td class='table-cell'>
+    <%= project.video_url.present? ? project.video_url : 'Pendiente' %>
+  </td>
+  <td class='table-cell'>
+    <%= project.status.status %>
+  </td>
+  <td class='table-cell'>
+    <% if project.status.in?(accepted_statuses) && can_approve_project %>
+      <%= link_to professor_approve_project_path(project), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar este proyecto?'} do %>
+        <span style="color: green"><i class="fa fa-check"></i> Aprobar</span>
+      <% end %>
+      <br>
+      <%= link_to professor_reject_project_path(project), method: :reject, data: { confirm: '¿Estás seguro que deseas rechazar este proyecto?'} do %>
+        <span style="color: red"><i class="fa fa-times"></i> Rechazar</span>
+      <% end %>
+    <% end %>
+  </td>
+  <td class='table-cell'>
+    <% if can_edit_project %>
+      <%= link_to 'Ver/Editar Proyecto', edit_professor_project_path(project), class: 'btn btn-info' %>
+    <% end %>
+  </td>
 </tr>
-
