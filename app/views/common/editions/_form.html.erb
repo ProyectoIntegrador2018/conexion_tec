@@ -69,6 +69,19 @@
             value: @edition.video_link_registration_ending_date.present? ? @edition.video_link_registration_ending_date.strftime('%d/%m/%Y') : '' %>
       </div>
     </div>
+    <div class='col-md-4 form-group col-text-centered'>
+      <%= f.label :project_approval_starting_date, 'Aprobación de proyectos' %>
+      <div class='input-group'>
+        <%= f.text_field :project_approval_starting_date,
+            class: 'form-control',
+            data: { provide: 'datepicker', date_format: 'd/m/yyyy' },
+            value: @edition.project_approval_starting_date.present? ? @edition.project_approval_starting_date.strftime('%d/%m/%Y') : '' %>
+        <%= f.text_field :project_approval_ending_date,
+            class: 'form-control',
+            data: { provide: 'datepicker', date_format: 'd/m/yyyy' },
+            value: @edition.project_approval_ending_date.present? ? @edition.project_approval_ending_date.strftime('%d/%m/%Y') : '' %>
+      </div>
+    </div>
   </div>
 
   <br>
