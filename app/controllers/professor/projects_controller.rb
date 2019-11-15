@@ -1,16 +1,18 @@
-# frozen_string_literal: true
-
 class Professor::ProjectsController < Professor::BaseController
+  include Professor::ProjectsHelper
+
   before_action :set_project, only: [:show]
   helper_method :accepted_statuses
 
-  def show; end
+  def show
+  end
 
   def index
     @projects = Project.where(professor_id: current_user.userable_id)
   end
 
   def edit
+    redirect_to action: 'index' unless can_edit_project
     @project = Project.find(params[:id])
     @url = professor_project_path
   end
@@ -27,15 +29,19 @@ class Professor::ProjectsController < Professor::BaseController
   end
 
   def approve
-    project = Project.find(params[:id])
-    project.status_id = Status.first.id
-    project_save(project, 'Proyecto aprobado')
+    if can_approve_project
+      project = Project.find(params[:id])
+      project.status_id = Status.first.id
+      project_save(project, 'Proyecto aprobado')
+    end
   end
 
   def reject
-    project = Project.find(params[:id])
-    project.status_id = Status.last.id
-    project_save(project, 'Proyecto rechazado')
+    if can_approve_project
+      project = Project.find(params[:id])
+      project.status_id = Status.last.id
+      project_save(project, 'Proyecto rechazado')
+    end
   end
 
   def accepted_statuses
@@ -80,5 +86,3 @@ class Professor::ProjectsController < Professor::BaseController
                                     :social_impact_responsibility)
   end
 end
-
-    
