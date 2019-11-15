@@ -34,11 +34,11 @@
     </div>
     <div class='col-md-3 form-group'>
       <strong><%= f.label :team_size, 'No. de integrantes' %></strong>
-    <% if @project.professor.nil? %> <!-- New -->
-      <%= f.number_field :team_size, max: 5, class: 'form-control' %>
-    <% else %>
-      <input type='text' id='project_team_size' class='form-control' value='<%= @project.team_size %>' disabled='true'>
-    <% end %>
+      <% if @project.professor.nil? %> <!-- New -->
+        <%= f.number_field :team_size, max: 5, class: 'form-control' %>
+      <% else %>
+        <input type='text' id='project_team_size' class='form-control' value='<%= @project.team_size %>' disabled='true'>
+      <% end %>
     </div>
     <div class='col-md-6 form-group col-text-centered'>
       <strong><%= f.label :semestrei, 'Semestre i' %></strong>

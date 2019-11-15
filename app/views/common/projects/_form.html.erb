@@ -1,28 +1,40 @@
 <%= form_for @project, url: @url do |f|  %>
   <div class='row'>
-    <div class='col-md-6 form-group'>
+    <div class='col-md-12 form-group'>
       <strong><%= f.label :name, 'Nombre' %></strong>
       <%= f.text_field :name, class: 'form-control' %>
     </div>
     <div class='col-md-6 form-group'>
-      <strong><%= f.label :category, 'Categoría'%></strong>
-      <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @project.category_id),{}, class: 'form-control'  %>
+      <strong><%= f.label :category, 'Categoría' %></strong>
+      <%= f.select :category_id, Category.pluck(:name, :id),{}, class: 'form-control' %>
     </div>
     <div class='col-md-6 form-group'>
-      <strong><%= f.label :field, 'Área temática'%></strong>
-      <%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name, @project.field_id), {}, class: 'form-control' %>
+      <strong><%= f.label :field, 'Área temática' %></strong>
+      <%= f.select :field_id, Field.pluck(:name, :id), {}, class: 'form-control' %>
     </div>
     <div class='col-md-6 form-group'>
-      <strong><%= f.label :expertise_area, 'Tipo de proyecto'%></strong>
-      <%= f.select :expertise_area_id, options_from_collection_for_select(ExpertiseArea.all, :id, :area, @project.expertise_area_id), {}, class: 'form-control' %>
+      <strong><%= f.label :expertise_area, 'Tipo de proyecto' %></strong>
+      <%= f.select :expertise_area_id, ExpertiseArea.pluck(:area, :id), {}, class: 'form-control' %>
     </div>
     <div class='col-md-6 form-group'>
-      <strong><%= f.label :client, 'Tipo de cliente'%></strong>
-      <%= f.select :client_id, options_from_collection_for_select(Client.all, :id, :client, @project.client_id), {}, class: 'form-control'%>
+      <strong><%= f.label :client, 'Cliente del proyecto' %></strong>
+      <%= f.select :client_id, Client.pluck(:client, :id), {}, class: 'form-control' %>
+    </div>
+    <div class='col-md-3 form-group'>
+      <strong><%= f.label :campus_id, 'Campus' %></strong>
+      <%= f.select :campus_id, Campus.pluck(:name, :id), {}, class: 'form-control' %>
     </div>
     <div class='col-md-6 form-group'>
-      <strong><%= f.label :video_url, 'Video de Youtube'%></strong>
+      <strong><%= f.label :video_url, 'Liga del vídeo' %></strong>
       <%= f.text_field :video_url, class: 'form-control' %>
+    </div>
+    <div class='col-md-3 form-group'>
+      <strong><%= f.label :team_size, 'No. de integrantes' %></strong>
+      <% if @project.professor.nil? %> <!-- New -->
+        <%= f.number_field :team_size, max: 5, class: 'form-control' %>
+      <% else %>
+        <input type='text' id='project_team_size' class='form-control' value='<%= @project.team_size %>' disabled='true'>
+      <% end %>
     </div>
     <div class='col-md-6 form-group col-text-centered'>
       <strong><%= f.label :semestrei, 'Semestre i' %></strong>
@@ -33,7 +45,7 @@
       <%= f.check_box :social_impact %>
     </div>
     <div class='col-md-12 form-group'>
-      <strong><%= f.label :description, 'Descripción'%></strong>
+      <strong><%= f.label :description, 'Descripción' %></strong>
       <%= f.text_area :description, :rows => 3, class: 'form-control' %>
     </div>
   </div>
