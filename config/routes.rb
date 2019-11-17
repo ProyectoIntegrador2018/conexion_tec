@@ -95,6 +95,7 @@ Rails.application.routes.draw do
       resources :project_grades
     end
     get 'judges', to: 'judges#index'
+    post 'judges/:id/edit', to: 'judges#update'
     resources 'judges', only: [:edit, :update, :destroy]
     get 'evaluations', to: 'evaluations#index'
     resources 'evaluations', only: [:destroy]

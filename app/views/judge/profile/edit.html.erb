@@ -7,14 +7,14 @@
 	    <div class="row">
 	        <div class="col">
 	            <%= f.label :departamento %>
-	            <%= f.select :department_id, 
-	              options_for_select(Department.all.collect{|d| [d.name, d.id]}, @judge.department_id,), 
+	            <%= f.select :department_id,
+	              options_for_select(Department.all.collect{|d| [d.name, d.id]}, @judge.department_id,),
 	                        {}, class: "form-control" %>
 	        </div>
 			<div class="col">
 	            <%= f.label :¿Cuenta_con_laptop_o_tableta? %>
-	            <%= f.select :has_tablet, 
-	              options_for_select({"Si" => 1, "No" => 0}, @judge.has_tablet), 
+	            <%= f.select :has_tablet,
+	              options_for_select({"Si" => true, "No" => false}, @judge.has_tablet),
 	                        {}, class: "form-control" %>
 	        </div>
 	    </div><br />
@@ -62,14 +62,14 @@
 	    <div class="row">
 	        <div class="col-md-4">
 	            <%= f.label :departamento %>
-	            <%= f.select :department_id, 
-	              options_for_select(Department.all.collect{|d| [d.name, d.id]}, @judge.department_id), 
+	            <%= f.select :department_id,
+	              options_for_select(Department.all.collect{|d| [d.name, d.id]}, @judge.department_id),
 	                        {}, class: "form-control" %>
 	        </div>
 			<div class="col-md-4">
 	            <%= f.label :¿Cuenta_con_laptop_o_tableta? %>
-	            <%= f.select :has_tablet, 
-	              options_for_select([['Sí', true], ['No', false]], @judge.has_tablet), 
+	            <%= f.select :has_tablet,
+	              options_for_select([['Sí', true], ['No', false]], @judge.has_tablet),
 	                        {}, class: "form-control" %>
 	        </div>
 	        <div class="col-md-4">
@@ -85,7 +85,7 @@
                 </div>
 	        </div>
 	    </div><br />
-		
+
 	    <div class="row">
 	        <div class="col-md-6">
 	        	<%= link_to "Cancelar", judge_profile_path, { class: "btn btn-default", style: "width: 100%; border-color: #DCDCDC;" } %>
