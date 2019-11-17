@@ -40,15 +40,20 @@ class Common::JudgesController <  Common::AdminCommitteeBaseController
   end
 
   def update
-
+    judge_id = @judge.id
     if @judge.update_attributes(judge_params.except(:expertise_areas))
-      ExpertiseAreasJudge.where(judge_id: @judge.id).delete_all # Delete all records, to create new ones
 
-  		areas = judge_params[:expertise_areas] # New expertise_areas add
-  		create_relation(areas, @judge.id) # Create the relation between judge and expertise_area
+      # Delete all records, to create new ones
+      ExpertiseAreasJudge.where(judge_id: judge_id).delete_all
+
+      # New expertise_areas add
+      areas = judge_params[:expertise_areas]
+
+      # Create the relation between judge and expertise_area
+      create_relation(areas, judge_id)
 
       if @judge.save
-        flash[:success] = "Información del juez actualizada"
+        flash[:success] = 'Información del juez actualizada'
         redirect_to action: 'index'
       else
         render 'edit'
@@ -70,11 +75,11 @@ class Common::JudgesController <  Common::AdminCommitteeBaseController
     end
 
     def judge_params
-		  params.require(:judge).permit(:has_tablet,
-				:department_id,
-				:ex_nombreEmpresaExterna,
-				:ex_contactName,
-				:ex_contactEmail,
-				expertise_areas: [])
-      end
+      params.require(:judge).permit(:has_tablet,
+				                            :department_id,
+				                            :ex_nombreEmpresaExterna,
+				                            :ex_contactName,
+				                            :ex_contactEmail,
+				                            expertise_areas: [])
     end
+end
