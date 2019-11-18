@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_234538) do
+ActiveRecord::Schema.define(version: 2019_11_16_012308) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -151,7 +151,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_234538) do
     t.integer "student_id"
     t.integer "field_id"
     t.integer "client_id"
-    t.integer "status_id"
+    t.integer "current_status"
     t.integer "edition_id"
     t.integer "attended", default: 0
     t.integer "stand_id"
@@ -185,10 +185,6 @@ ActiveRecord::Schema.define(version: 2019_11_14_234538) do
 
   create_table "stands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "number"
-  end
-
-  create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "status"
   end
 
   create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

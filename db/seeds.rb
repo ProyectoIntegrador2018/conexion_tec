@@ -123,13 +123,6 @@ Field.create(name: "Sostenibilidad")
 Field.create(name: "Emprendimiento de base tecnológica")
 Field.create(name: "Otra")
 
-Status.create(status: "No calificado")
-Status.create(status: "Calificado")
-Status.create(status: "No aprobado")
-Status.create(status: "Aprobado")
-Status.create(status: "Esperando revision de Profesor")
-Status.create(status: "Rechazado por profesor")
-
 ExpertiseArea.create(area: "Agrobiotecnología")
 ExpertiseArea.create(area: "Automatización de Procesos")
 ExpertiseArea.create(area: "Bionegocios")
@@ -181,9 +174,9 @@ User.create(
 field_id = Field.first.id
 campus_id = Campus.first.id
 client_id = Client.first.id
-status_id = Status.fourth.id
 edition_id = Edition.first.id
 category_id = Category.first.id
+current_status = 'No_aprobado'
 expertise_area_id = ExpertiseArea.first.id
 
 Project.create(
@@ -200,11 +193,11 @@ Project.create(
 	field_id: field_id,
 	campus_id: campus_id
 	client_id: client_id,
-	status_id: status_id,
 	edition_id: edition_id,
 	student_id: student.id,
 	category_id: category_id,
 	professor_id: professor.id,
+	current_status: current_status,
 	expertise_area_id: expertise_area_id,
 	attended: 0)
 
@@ -239,11 +232,11 @@ Project.create(
 	field_id: field_id,
 	campus_id: campus_id
 	client_id: client_id,
-	status_id: status_id,
 	edition_id: edition_id,
 	student_id: student.id,
 	category_id: category_id,
 	professor_id: professor.id,
+	current_status: current_status,
 	expertise_area_id: expertise_area_id,
 	attended: 0)
 
@@ -283,11 +276,11 @@ Project.create(
 	field_id: field_id,
 	campus_id: campus_id
 	client_id: client_id,
-	status_id: status_id,
 	edition_id: edition_id,
 	student_id: student.id,
 	category_id: category_id,
 	professor_id: professor.id,
+	current_status: current_status,
 	expertise_area_id: expertise_area_id,
 	attended: 0)
 
@@ -322,10 +315,10 @@ Project.create(
 	field_id: field_id,
 	campus_id: campus_id
 	client_id: client_id,
-	status_id: status_id,
 	edition_id: edition_id,
 	student_id: student.id,
 	category_id: category_id,
 	professor_id: professor.id,
+	current_status: current_status,
 	expertise_area_id: expertise_area_id,
 	attended: 0)
