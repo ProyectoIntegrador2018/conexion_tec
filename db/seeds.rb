@@ -16,8 +16,8 @@ Campus.create(
 
 admin = Administrator.create()
 User.create(
-	name: "Steve Rogers",
-	email: "santiago_st_95@hotmail.com",
+	name: "Javier",
+	email: "javier_delagarza9@hotmail.com",
 	password: "password",
 	password_confirmation: "password",
 	userable_type: "Administrator",
@@ -198,7 +198,7 @@ Project.create(
 	abstract_feasibility: "Factibilidad",
 	description: "Desarrollar un robot de servicio que ayude con las tareas del hogar.",
 	field_id: field_id,
-	campus_id: campus_id
+	campus_id: campus_id,
 	client_id: client_id,
 	status_id: status_id,
 	edition_id: edition_id,
@@ -237,7 +237,7 @@ Project.create(
 	abstract_feasibility: "Factibilidad",
 	description: "Desarrollar un espectrómetro de reflectancia de bajo costo que permita el muestreo y análisis de suelo en zonas agrícolas rurales.",
 	field_id: field_id,
-	campus_id: campus_id
+	campus_id: campus_id,
 	client_id: client_id,
 	status_id: status_id,
 	edition_id: edition_id,
@@ -281,7 +281,7 @@ Project.create(
 	abstract_feasibility: "Factibilidad",
 	description: "Desarrollar un sistema de comunicación entre empresas para monitorear los procesos de manufactura de los proveedores, a fin de mejorar los indicadores de las operaciones de inspección-recibo en la empresa, basados en el control estadístico de la producción incluido en la norma IATF:16949, para principios de Mayo 2019.",
 	field_id: field_id,
-	campus_id: campus_id
+	campus_id: campus_id,
 	client_id: client_id,
 	status_id: status_id,
 	edition_id: edition_id,
@@ -320,7 +320,7 @@ Project.create(
 	abstract_feasibility: "Factibilidad",
 	description: "Hacer pruebas e ilustrar la reducción en consumo energético asociado al aire acondicionado usando PCMs en prototipos de naves industriales.",
 	field_id: field_id,
-	campus_id: campus_id
+	campus_id: campus_id,
 	client_id: client_id,
 	status_id: status_id,
 	edition_id: edition_id,
