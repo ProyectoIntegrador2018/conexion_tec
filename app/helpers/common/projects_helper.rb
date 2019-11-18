@@ -14,4 +14,8 @@ module Common::ProjectsHelper
   def sort_by_grade(projects)
     projects.sort_by { |project| project.project_grade.total_grade }.reverse
   end
+
+  def approved(project)
+    project.current_status == 'Aprobado'
+  end
 end
