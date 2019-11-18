@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # resources :administrator_sessions, only: [:new, :destroy, :create]
   # resources :monitor_sessions, only: [:new, :destroy, :create]
   # resources :staff_sessions, only: [:new, :destroy, :create]
-  
+
   # Admin session
   get 'login-administrador', to: 'administrator_session#new', as: :login_admin
   get 'authorize-admin', to: 'administrator_session#create'
@@ -90,14 +90,15 @@ Rails.application.routes.draw do
     resources :assignments
     resources :operatives
     put 'operative/authorize/:id', to: 'operatives#authorize', as: :authorize_user
-    
+
     resources :projects
 
-    resources :projects do 
+    resources :projects do
       resources :project_grades
     end
     get 'judges', to: 'judges#index'
-    resources 'judges', only: [:destroy]
+    post 'judges/:id/edit', to: 'judges#update'
+    resources 'judges', only: [:edit, :update, :destroy]
     get 'evaluations', to: 'evaluations#index'
     resources 'evaluations', only: [:destroy]
     get 'questions', to: 'questions#index'

@@ -8,39 +8,44 @@ class Judge::ProfileController < Judge::BaseController
 		@url = judge_update_path
 		@judge = current_user.userable
 		@areas_ids = @judge.expertise_areas.map(&:id)
-	  end
-	
-	  def update
-		@judge = current_user.userable
-		if @judge.update_attributes(judge_params.except(:expertise_areas))
-			ExpertiseAreasJudge.where(judge_id: @judge.id).delete_all # Delete all records, to create new ones
+  end
 
-			areas = judge_params[:expertise_areas] # New expertise_areas add
-			create_relation(areas, @judge.id) # Create the relation between judge and expertise_area
+  def update
+  	@judge = current_user.userable
+  	if @judge.update_attributes(judge_params.except(:expertise_areas))
 
-			flash[:success] = "Información actualizada correctamente"
-			redirect_to judge_profile_path  
-		else
-			@url = judge_update_path
-		  	flash.now[:danger] = "Error al actualizar la información"
-		  	render 'edit'
-		end
-	  end
+      # Delete all records, to create new ones
+      ExpertiseAreasJudge.where(judge_id: @judge.id).delete_all
 
-	  def create_relation(areas, judge_id)
+      # New expertise_areas add
+      areas = judge_params[:expertise_areas]
+
+      # Create the relation between judge and expertise_area
+      create_relation(areas, @judge.id)
+
+  		flash[:success] = "Información actualizada correctamente"
+  		redirect_to judge_profile_path
+  	else
+  		@url = judge_update_path
+  	  	flash.now[:danger] = "Error al actualizar la información"
+  	  	render 'edit'
+  	end
+  end
+
+	private
+
+    def create_relation(areas, judge_id)
 	  	areas.each do |area|
 	  		ExpertiseAreasJudge.create(expertise_area_id: area, judge_id: judge_id)
 	  	end
 	  end
-	
-	  private
-	
+
 		def judge_params
 		  params.require(:judge).permit(:has_tablet,
-				:department_id,
-				:ex_nombreEmpresaExterna,
-				:ex_contactName,
-				:ex_contactEmail,
-				expertise_areas: [])
-		end
-end
+				                            :department_id,
+				                            :ex_nombreEmpresaExterna,
+				                            :ex_contactName,
+				                            :ex_contactEmail,
+				                            expertise_areas: [])
+	  end
+  end

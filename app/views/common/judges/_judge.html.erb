@@ -7,29 +7,42 @@
       <% else %>
         No
       <% end %>
-  </td>
-  <td>
+    </td>
+    <td>
       <% judge.expertise_areas.each do | ea | %>
         <%= ea.area%><br />
       <%end%>
-  </td>
-  <td>
-      <% if judge.user.authorized %>
-          <span id="authorize" style="color: green"> Autorizado</span><br> 
-          <span>
-              <%= link_to common_reject_judge_path(judge), method: :reject do %>
-              <span id="deauthorize" style="color: black"><i class="fa fa-hand-paper-o" style="color: orange"></i> Desautorizar</span>
-              <% end %>
-          </span>
-        <% else %>
-            <%= link_to common_approve_judge_path(judge), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar a este juez?'} do %>
-                <span style="color: green"><i class="fa fa-check"></i> Aprobar</span>
-            <% end %>
+    </td>
+    <td>
+    <% if judge.user.authorized %>
+      <span id="authorize" style="color: green"> Autorizado</span><br>
+      <span>
+        <%= link_to common_reject_judge_path(judge), method: :reject do %>
+        <span id="deauthorize" style="color: black"><i class="fa fa-hand-paper-o" style="color: orange"></i> Desautorizar</span>
         <% end %>
-      <td>
-          <%= link_to common_judge_path(judge), method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este juez?'} do %>
-            <span style="color: red"><i class="fa fa-trash"></i>Eliminar</span>
+      </span>
+      <% else %>
+          <%= link_to common_approve_judge_path(judge), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar a este juez?'} do %>
+              <span style="color: green"><i class="fa fa-check"></i> Aprobar</span>
           <% end %>
-      </td>
+      <% end %>
+    </td>
+
+    <td>
+      <div class="col-md-4">
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+            Acciones
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to 'Editar/Ver detalle', edit_common_judge_path(judge), class: 'dropdown-item' %>
+            <%= link_to common_judge_path(judge), class: 'dropdown-item', method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este juez?'} do %>
+            <i class="fa fa-trash"></i> Eliminar
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </td>
+
   </tr>
 </tr>
