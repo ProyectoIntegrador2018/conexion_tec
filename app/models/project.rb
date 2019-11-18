@@ -15,7 +15,6 @@ class Project < ApplicationRecord
   belongs_to :field
   belongs_to :campus
   belongs_to :client
-  belongs_to :status
   belongs_to :student
   belongs_to :edition
   belongs_to :category
@@ -27,6 +26,17 @@ class Project < ApplicationRecord
   has_many :assignments
 
   has_one :project_grade, dependent: :destroy
+
+  enum current_status: [:No_aprobado,
+                        :Aprobado,
+                        :Rechazado,
+                        :Calificado,
+                        :Aceptado,
+                        :Confirmado,
+                        :Declinado,
+                        :Presente,
+                        :Ausente]
+
   def evaluations
     evaluations = 0
     assignments = self.assignments # All the assignments
