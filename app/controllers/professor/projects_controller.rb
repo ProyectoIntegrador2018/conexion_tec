@@ -2,7 +2,6 @@ class Professor::ProjectsController < Professor::BaseController
   include Professor::ProjectsHelper
 
   before_action :set_project, only: [:show]
-  helper_method :accepted_statuses
 
   def show
   end
@@ -31,7 +30,7 @@ class Professor::ProjectsController < Professor::BaseController
   def approve
     if can_approve_project
       project = Project.find(params[:id])
-      project.status_id = Status.first.id
+      project.current_status = 'Aprobado'
       project_save(project, 'Proyecto aprobado')
     end
   end
@@ -39,15 +38,9 @@ class Professor::ProjectsController < Professor::BaseController
   def reject
     if can_approve_project
       project = Project.find(params[:id])
-      project.status_id = Status.last.id
+      project.current_status = 'Rechazado'
       project_save(project, 'Proyecto rechazado')
     end
-  end
-
-  def accepted_statuses
-    Status.where(status: ['No calificado',
-                          'Esperando revision de Profesor',
-                          'Rechazado por profesor'])
   end
 
   private

@@ -103,7 +103,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
   end
 
   def approve
-    @project.status_id = Status.fourth.id
+    @project.current_status = 'Aprobado'
     if @project.save
       flash[:success] = 'Proyecto aprobado'
       redirect_to common_projects_path
@@ -113,8 +113,19 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
     end
   end
 
+  def accept
+    @project.current_status = 'Aceptado'
+    if @project.save
+      flash[:success] = 'Proyecto aceptado'
+      redirect_to common_projects_path
+    else
+      flash[:danger] = 'Error al aceptar proyecto'
+      redirect_to common_projects_path
+    end
+  end
+
   def reject
-    @project.status_id = Status.third.id
+    @project.current_status = 'Rechazado'
     if @project.save
       flash[:success] = 'Proyecto rechazado'
       redirect_to common_projects_path
@@ -135,7 +146,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
     project.student_id = student.userable_id
     project.professor_id = professor.userable_id
     project.edition_id = Edition.last.id
-    project.status_id = Status.fourth.id
+    project.current_status = 'No_aprobado'
     project
   end
 

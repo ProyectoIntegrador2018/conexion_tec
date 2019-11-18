@@ -24,13 +24,14 @@ class Common::ProjectGradesController < Common::BaseController
     @project_grade = ProjectGrade.find(params[:id])
     @project_grade.update(form_params)
     @project.project_grade = @project_grade
+    update_project_status
     success_redirect
   end
 
   private
 
   def update_project_status
-    @project.status_id = Status.second.id
+    @project.current_status = 'Calificado'
     @project.save
   end
 
