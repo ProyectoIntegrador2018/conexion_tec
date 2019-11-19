@@ -35,7 +35,7 @@
     <div class='col-md-3 form-group'>
       <strong><%= f.label :team_size, 'No. de integrantes' %></strong>
       <% if @project.professor.nil? %> <!-- New -->
-        <%= f.number_field :team_size, max: 5, class: 'form-control' %>
+        <%= f.number_field :team_size, class: 'form-control' %>
       <% else %>
         <input type='text' id='project_team_size' class='form-control' value='<%= @project.team_size %>' disabled='true'>
       <% end %>
@@ -170,6 +170,14 @@
   <% end %>
 
   <br>
+
+  <hr>
+
+  <div class='row'>
+    <div class='col-md-8 col-centered col-text-centered'>
+      <h3>Integrantes</h3>
+    </div>
+  </div>
 
   <div class='row'>
     <div class='col-md-6'>

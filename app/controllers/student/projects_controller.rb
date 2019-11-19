@@ -1,7 +1,7 @@
 class Student::ProjectsController < Student::BaseController
   include Student::ProjectsHelper
 
-  before_action :set_project, only: [:new, :show, :edit, :update]
+  before_action :set_project, only: [:new, :show, :edit, :update, :destroy]
 
   ITESM_MAIL = /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(itesm|tec)\.mx$/
 
@@ -11,6 +11,12 @@ class Student::ProjectsController < Student::BaseController
   end
 
   def show
+  end
+
+  def destroy
+    @project.delete
+    flash[:success] = 'Proyecto eliminado'
+    redirect_to student_projects_path
   end
 
   def new

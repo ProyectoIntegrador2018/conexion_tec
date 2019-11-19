@@ -23,8 +23,20 @@
     <%= project.selection_score.present? ? project.selection_score : 'Por calificar' %>
   </td>
   <td class='table-cell'>
-    <% if can_edit_project %>
-      <%= link_to 'Editar', edit_student_project_path(project), class: 'btn btn-info' %>
-    <% end %>
+    <div class="col-md-4">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+          Acciones
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <% if can_edit_project %>
+            <%= link_to 'Editar/Ver detalle', edit_student_project_path(project), class: 'dropdown-item' %>
+          <% end %>
+          <%= link_to student_project_path(project), class: 'dropdown-item', method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este proyecto?'} do %>
+          <i class="fa fa-trash"></i> Eliminar
+          <% end %>
+        </div>
+      </div>
+    </div>
   </td>
 </tr>
