@@ -174,8 +174,9 @@
   <hr>
 
   <div class='row'>
-    <div class='col-md-8 col-centered col-text-centered'>
+    <div class='col-md-10 col-centered col-text-centered'>
       <h3>Integrantes</h3>
+      <br>
       <div class='row'>
         <div class='col-md-12'>
           <table class='table table-striped'>
@@ -187,8 +188,8 @@
               </tr>
             </thead>
             <tbody>
-              <%# @integrantes = project.integrantes%>
-              <%# render integrantes %>
+              <%@integrantes = @project.integrantes%>
+              <%= render 'integrantes'%>
             </tbody>
           </table>
         </div>
