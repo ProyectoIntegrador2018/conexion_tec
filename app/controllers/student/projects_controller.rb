@@ -70,7 +70,7 @@ class Student::ProjectsController < Student::BaseController
     project.student_id = current_user.userable_id
     project.professor_id = professor.userable_id
     project.edition_id = Edition.last.id
-    project.status_id = Status.fifth.id
+    project.current_status = 'No_aprobado'
     project
   end
 
