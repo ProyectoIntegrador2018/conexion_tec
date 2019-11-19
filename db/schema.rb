@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_234538) do
+ActiveRecord::Schema.define(version: 2019_11_19_070525) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -168,6 +168,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_234538) do
     t.string "social_impact_responsibility"
     t.integer "team_size"
     t.bigint "campus_id"
+    t.text "integrantes"
     t.index ["campus_id"], name: "index_projects_on_campus_id"
     t.index ["category_id"], name: "index_projects_on_category_id"
     t.index ["expertise_area_id"], name: "index_projects_on_expertise_area_id"

@@ -16,7 +16,7 @@ Campus.create(
 
 admin = Administrator.create()
 User.create(
-	name: "Javier",
+	name: "Javier Admin",
 	email: "javier_delagarza9@hotmail.com",
 	password: "password",
 	password_confirmation: "password",
@@ -210,8 +210,8 @@ Project.create(
 
 student = Student.create(major_id: Major.first.id)
 User.create(
-	name: "Rodrigo Ruz Cuen",
-	email: "a01703007@itesm.mx",
+	name: "Javier Estudiante",
+	email: "a01281323@itesm.mx",
 	password: "password",
 	password_confirmation: "password",
 	userable_type: "Student",
@@ -245,6 +245,7 @@ Project.create(
 	category_id: category_id,
 	professor_id: professor.id,
 	expertise_area_id: expertise_area_id,
+  integrantes: {"José Eduardo" => "A012xxx.itesm.mx"},
 	attended: 0)
 
 student = Student.create(major_id: Major.first.id)

@@ -12,6 +12,8 @@ class Project < ApplicationRecord
             :abstract_feasibility,
             presence: true
 
+  serialize :integrantes, Hash
+  
   belongs_to :field
   belongs_to :campus
   belongs_to :client
