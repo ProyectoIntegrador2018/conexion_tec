@@ -27,7 +27,7 @@
 	        	<div class="form-group">
                     <label class="font-noraml">Áreas de expertise</label>
                     <div class="input-group">
-                        <select data-placeholder="Elige tus áreas de expertis" class="chosen-select" multiple style="width:100%;" tabindex="4" name="judge[expertise_areas][]">
+                        <select data-placeholder="Elige tus áreas de expertise" class="chosen-select" multiple style="width:100%;" tabindex="4" name="judge[expertise_areas][]">
                         	<% ExpertiseArea.all.each do |area| %>
                         		<option value="<%= area.id %>" <%= "selected" if @areas_ids.include?(area.id) %>><%= area.area %></option>
                         	<% end %>
@@ -76,7 +76,7 @@
 	        	<div class="form-group">
                     <label class="font-noraml">Áreas de expertise</label>
                     <div class="input-group">
-                        <select data-placeholder="Elige tus áreas de expertis" class="chosen-select" multiple style="width:350px;" tabindex="4" name="judge[expertise_areas][]">
+                        <select data-placeholder="Elige tus áreas de expertise" class="chosen-select" multiple style="width:350px;" tabindex="4" name="judge[expertise_areas][]">
                         	<% ExpertiseArea.all.each do |area| %>
                         		<option value="<%= area.id %>" <%= "selected" if @areas_ids.include?(area.id) %>><%= area.area %></option>
                         	<% end %>
