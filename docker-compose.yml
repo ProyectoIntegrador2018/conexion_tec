@@ -1,7 +1,7 @@
 version: '2.4'
 
 volumes:
-  mysql_data: 
+  mysql_data:
 
 services:
   mysql:
