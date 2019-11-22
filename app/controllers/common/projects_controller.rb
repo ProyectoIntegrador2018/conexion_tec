@@ -8,6 +8,7 @@ class Common::ProjectsController < Common::AdminCommitteeBaseController
                        :reject,
                        :update,
                        :destroy,
+                       :accept,
                        :approve]
 
   ITESM_MAIL = /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(itesm|tec)\.mx$/
