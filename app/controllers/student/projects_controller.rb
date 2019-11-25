@@ -109,8 +109,28 @@ class Student::ProjectsController < Student::BaseController
     end
   end
 
+  def add_integrante()
+    flash[:success] = '¡Proyecto creado exitosamente!'
+=begin
+    if @project.key?(mail)
+      flash[:error] = 'El usuario ya está integrado al equipo'
+    else
+      @project.integrantes[mail] = name
+      @project.save
+    end
+    redirect_to student_project_path
+=end
+  end
+
+  def remove_integrante(mail)
+    @project.delete(mail)
+    @project.save
+    redirect_to student_project_path
+  end
+
   def set_project
     @project = params[:id].present? ? Project.find(params[:id]) : Project.new
+    @integrantes = @project.integrantes
   end
 
   def project_params

@@ -173,29 +173,31 @@
 
   <hr>
 
-  <div class='row'>
-    <div class='col-md-10 col-centered col-text-centered'>
-      <h3>Integrantes</h3>
-      <br>
-      <div class='row'>
-        <div class='col-md-12'>
-          <table class='table table-striped'>
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Correo Institucional</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <%@integrantes = @project.integrantes%>
-              <%= render 'integrantes'%>
-            </tbody>
-          </table>
+  <% if !@project.professor.nil? %> <!-- New -->
+    <div class='row'>
+      <div class='col-md-10 col-centered col-text-centered'>
+        <h3>Integrantes</h3>
+        <br>
+        <div class='row'>
+          <div class='col-md-12'>
+            <table class='table table-striped'>
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Correo Institucional</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <%= render 'integrantes'%>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 
   <div class='row'>
     <div class='col-md-6'>

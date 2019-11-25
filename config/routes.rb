@@ -54,6 +54,7 @@ Rails.application.routes.draw do
     get 'profile', to: 'profile#index'
     get 'edit', to: 'profile#edit'
     patch 'update', to: 'profile#update'
+    post '/projects/add_integrante/:id', to: "project#add_integrante", as: :add_integrante
   end
 
   namespace :operative do

@@ -245,7 +245,9 @@ Project.create(
 	category_id: category_id,
 	professor_id: professor.id,
 	expertise_area_id: expertise_area_id,
-  integrantes: {"José Eduardo" => "A012xxx.itesm.mx"},
+  integrantes: {"gallo.sanchez23@gmail.com" => "José Eduardo Sánchez",
+                "domene96@gmail.com" => "José Antonio Domene",
+                "juancarlosgzz23@gmail.com" => "Juan Carlos González"},
 	attended: 0)
 
 student = Student.create(major_id: Major.first.id)

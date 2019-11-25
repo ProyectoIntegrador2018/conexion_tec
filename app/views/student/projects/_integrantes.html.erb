@@ -7,5 +7,28 @@
     <td class='table-cell'>
       <%= integrante.first %>
     </td>
+    <td class='table-cell'>
+      <%= link_to 'Eliminar'%>
+    </td>
   </tr>
+<% end %>
+
+
+<%= form_for @project, url: @url do |f|  %>
+  <div class='row'>
+    <div class='col-md-12 form-group'>
+      <strong><%= f.label :name, 'Nombre' %></strong>
+      <%= f.text_field :name, class: 'form-control',:value => '', disabled: true %>
+    </div>
+
+    <div class='col-md-12 form-group'>
+      <strong><%= f.label :name, 'Correo institucional' %></strong>
+      <%= f.text_field :name, class: 'form-control', :value => '', disabled: true %>
+    </div>
+    <div class='col-md-12 form-group'>
+      <%= link_to 'Agregar'%>
+    </div>
+
+  </div>
+
 <% end %>
