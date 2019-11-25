@@ -76,8 +76,8 @@
         <%= project.student.user.email %>
       </div>
       <div class='col-md-4'>
-        <strong>Status:</strong>
-        <%= project.status.status%>
+        <strong>Estatus:</strong>
+        <%= project.current_status%>
       </div>
     </div>
 
@@ -85,47 +85,44 @@
 
     <div class='row'>
       <div class='col-md-8'>
-        <% if project.project_grade.present? %>
-          <div class='row'>
-            <div class='col-md-3'>
-              <small>
-                <strong>Calificación:</strong>
-                <%= project.project_grade.total_grade %>
-              </small>
-            </div>
-            <div class='col-md-5'>
-              <%= link_to common_approve_project_path(project), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar este proyecto?'} do %>
-                <span style='color: green; margin-right: 25px;'>
-                  <i class='fa fa-check'></i>
-                  Aprobar
-                </span>
-              <% end %>
-              <%= link_to common_reject_project_path(project), method: :reject, data: { confirm: '¿Estás seguro que deseas rechazar este proyecto?'} do %>
-                <span style='color: red'>
-                  <i class='fa fa-times'></i>
-                  Rechazar
-                </span>
-              <% end %>
-            </div>
-          </div>
-        <% else %>
-          <small>
+        <div class='row'>
+          <div class='col-md-4'>
             <strong>Calificación:</strong>
-            Pendiente
-          </small>
-        <% end %>
+            <small>
+              <%= project.project_grade.present? ? project.project_grade.total_grade : 'Pendiente' %>
+            </small>
+          </div>
+          <div class='col-md-8 col-text-centered'>
+            <%= link_to 'Aprobar',
+                common_approve_project_path(project),
+                method: :approve,
+                data: { confirm: '¿Estás seguro que deseas aprobar este proyecto?'},
+                class: 'btn btn-info' %>
+            <%= link_to 'Rechazar',
+                common_reject_project_path(project),
+                method: :reject,
+                data: { confirm: '¿Estás seguro que deseas rechazar este proyecto?'},
+                class: 'btn btn-danger' %>
+            <%= link_to 'Aceptar',
+                common_accept_project_path(project),
+                method: :accept,
+                data: { confirm: '¿Estás seguro que deseas aceptar este proyecto?'},
+                class: 'btn btn-success' %>
+          </div>
+        </div>
       </div>
-
       <div class='col-md-4'>
         <div class='dropdown'>
           <button class='btn btn-primary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'>
             Acciones
           </button>
           <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-            <% if project.project_grade.nil? %>
-              <%= link_to 'Calificar Proyecto', new_common_project_project_grade_path(project), class: 'dropdown-item'%>
-            <% else %>
-              <%= link_to 'Calificar Proyecto', edit_common_project_project_grade_path(project, project.project_grade), class: 'dropdown-item'%>
+            <% if approved(project) %>
+              <% if project.project_grade.nil? %>
+                <%= link_to 'Calificar Proyecto', new_common_project_project_grade_path(project), class: 'dropdown-item'%>
+              <% else %>
+                <%= link_to 'Calificar Proyecto', edit_common_project_project_grade_path(project, project.project_grade), class: 'dropdown-item'%>
+              <% end %>
             <% end %>
             <%= link_to 'Editar / Ver detalle', edit_common_project_path(project), class: 'dropdown-item' %>
             <%= link_to common_project_path(project), class: 'dropdown-item', method: :delete, data: { confirm: '¿Estás seguro que deseas eliminar este proyecto?'} do %>

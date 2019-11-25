@@ -13,4 +13,4 @@ test:
   <<: *default
 
 production:
-  url: mysql2://baa969126dcedd:b1fd2892@us-cdbr-iron-east-03.cleardb.net/heroku_4a7ab8f6d526ba7
+  url: <%= ENV['DATABASE_URL'] %>

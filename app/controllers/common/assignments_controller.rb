@@ -26,7 +26,7 @@ class Common::AssignmentsController < Common::BaseController
     projects_assigned = assignments.map(&:project_id)
     areas = judge.expertise_areas.map(&:id)
     projects = Project.where.not(id: projects_assigned)
-    projects = projects.where(status_id: Status.fourth.id)
+    projects = projects.where(current_status: 'Aprobado')
                        .where(attended: 1)
                        .where(expertise_area_id: areas)
     projects

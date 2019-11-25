@@ -1,4 +1,8 @@
 module Professor::ProjectsHelper
+  def not_approved(project)
+    project.current_status == 'No_aprobado'
+  end
+
   def can_edit_project
     current_edition = Edition.last
     starting_date = current_edition[:project_edition_starting_date]

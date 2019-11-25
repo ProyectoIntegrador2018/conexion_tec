@@ -2,7 +2,8 @@
 
 <div class="container">
 	<h1 style="text-align: center;">Actualiza los datos del juez</h1><br />
-
+    <h4>Nombre:  <%= @user.name %> </h4>
+    <hr>
     <%= form_for @judge, url: @url, :method => :POST do |f|  %>
 	     <div class="row">
 	        <div class="col">

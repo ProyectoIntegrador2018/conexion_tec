@@ -15,10 +15,10 @@
     <%= project.video_url.present? ? project.video_url : 'Pendiente' %>
   </td>
   <td class='table-cell'>
-    <%= project.status.status %>
+    <%= project.current_status %>
   </td>
   <td class='table-cell'>
-    <% if project.status.in?(accepted_statuses) && can_approve_project %>
+    <% if not_approved(project) && can_approve_project %>
       <%= link_to professor_approve_project_path(project), method: :approve, data: { confirm: '¿Estás seguro que deseas aprobar este proyecto?'} do %>
         <span style="color: green"><i class="fa fa-check"></i> Aprobar</span>
       <% end %>
