@@ -63,6 +63,14 @@ Página web para el manejo del evento conexión tec.
 | Jose Antonio Domene Reyes			 | domene96@gmail.com 				 | Development |
 | Juan Carlos Gonzalez Petrocchi | juancarlosgzz23@gmail.com   | Development |
 
+**ConectaTec - FEB - JUN 2020**
+
+| Name                           | Email                       | Role        |
+| ------------------------------ | --------------------------- | ----------- |
+| Carlos Fernando Garza Martínez | carlosfgarza@gmail.com      | Development |
+| Ana Jimena Lomelí Cantú        | jimena.lomeli1@gmail.com    | Development |
+| Renata Saldívar González       | renata.saldivar97@gmail.com | Development |
+
 
 ### Management tools
 
