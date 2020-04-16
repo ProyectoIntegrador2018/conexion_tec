@@ -24,6 +24,7 @@ class Project < ApplicationRecord
 
   has_many :members
   has_many :assignments
+  has_many :collaborators
 
   has_one :project_grade, dependent: :destroy
 

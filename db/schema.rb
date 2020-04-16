@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_16_012308) do
+ActiveRecord::Schema.define(version: 2020_04_16_025921) do
 
   create_table "administrators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
   end
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(version: 2019_11_16_012308) do
 
   create_table "clients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "client"
+  end
+
+  create_table "collaborators", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "student_code"
+    t.bigint "major_id"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["major_id"], name: "index_collaborators_on_major_id"
+    t.index ["project_id"], name: "index_collaborators_on_project_id"
   end
 
   create_table "committees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -206,6 +218,8 @@ ActiveRecord::Schema.define(version: 2019_11_16_012308) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "collaborators", "majors"
+  add_foreign_key "collaborators", "projects"
   add_foreign_key "project_grades", "projects"
   add_foreign_key "projects", "campus", column: "campus_id"
 end
