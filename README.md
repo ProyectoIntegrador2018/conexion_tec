@@ -126,7 +126,7 @@ Once you have installed the required third-party software, you can follow this s
 
 ### Running the stack for development
 
-In yout termina, run:
+In your terminal, run:
 
 `plis`
 
@@ -144,8 +144,35 @@ If the service is already running, you can run the command `plis attach frontend
 
 ***NOTE: You can allways run `plis run frontend-web bash` or `docker-compose run frontend-web bash` commands to enter the container's console.***
 
-***NOTE: If you have trouble with the connection between the rails application and the database, try turning up the database container and the web container in different terminal window: `plis start db` or `docker-compose up db`, and `plis start web` or `docker-compose up web`.***
+***NOTE: If you have trouble with the connection between the rails application and the database, try turning up the database container and the web container in different terminal window: `plis start mysql` or `docker-compose up mysql`, and `plis start web` or `docker-compose up web`.***
 
+### Running the database
+
+In your terminal, run:
+
+`docker-compose`
+
+```bash
+$ docker-compose run web bash
+```
+
+Create the database:
+
+```bash
+$ rails db:create
+```
+
+Run the migrations:
+
+```bash
+$ rails db:migrate
+```
+
+If you want to use the rails console to interact with the models of the application, run:
+
+```bash
+$ rails db:console
+```
 
 ### Stopping services
 
