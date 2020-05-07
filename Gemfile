@@ -32,7 +32,7 @@ gem 'popper_js', '~> 1.14.3'
 gem "bootstrap", ">= 4.3.1"
 
 # user authentication library
-gem 'sorcery', '~> 0.12.0'
+gem 'sorcery', '~> 0.15.0'
 
 # user authorization 
 gem 'cancancan', '~> 2.0'
